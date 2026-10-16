@@ -48,17 +48,15 @@ const DECK_URL = '/demos/landing/';
     <div #root role="group" aria-label="A deck typed as markdown, and its slides next to it">
       <div class="demo-editor">
         <div class="filename">./slides.md</div>
-        @if (done()) {
-          <button
-            type="button"
-            class="replay"
-            title="Replay"
-            aria-label="Replay the demo"
-            (click)="play()"
-          >
-            <svg [lucideIcon]="replayIcon" class="size-4" aria-hidden="true"></svg>
-          </button>
-        }
+        <button
+          type="button"
+          class="replay"
+          title="Replay"
+          aria-label="Replay the demo"
+          (click)="play()"
+        >
+          <svg [lucideIcon]="replayIcon" class="size-4" aria-hidden="true"></svg>
+        </button>
         <div class="code">
           <pre
             class="text"
@@ -330,17 +328,6 @@ const DECK_URL = '/demos/landing/';
       bottom: 0.25rem;
       display: flex;
       gap: 0.125rem;
-      opacity: 0;
-      transition: opacity 150ms;
-    }
-    .chevrons:hover,
-    .chevrons:focus-within {
-      opacity: 1;
-    }
-    @media (hover: none) {
-      .chevrons {
-        opacity: 0.85;
-      }
     }
     .chevron {
       display: inline-flex;
@@ -399,8 +386,6 @@ export class LandingDemo {
   protected readonly page = signal(0);
   /** The slide each page shows: -1 for none yet. Page 1 is stages 0 to 4, page 2 is 5 to 9. */
   protected readonly stage = signal<[number, number]>([-1, -1]);
-  /** The replay button shows once the typing is done. */
-  protected readonly done = signal(false);
   /** The card's width over the design width. */
   protected readonly scale = signal(720 / SLIDE_WIDTH);
   protected readonly loaded = signal<[boolean, boolean]>([false, false]);
@@ -421,7 +406,6 @@ export class LandingDemo {
     },
     onState: (state) => {
       this.state.set(state);
-      if (state === 'done') this.done.set(true);
     },
   });
 
@@ -493,7 +477,6 @@ export class LandingDemo {
 
   protected play(): void {
     this.started = true;
-    this.done.set(false);
     this.page.set(0);
     this.stage.set([-1, -1]);
     if (this.reducedMotion()) {
@@ -506,7 +489,6 @@ export class LandingDemo {
   /** The end state at once: all the text, the cover on page 1, no motion. */
   private showAll(): void {
     this.player.showAll();
-    this.done.set(true);
   }
 
   private exec(label: string): void {
