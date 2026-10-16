@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # page dates come from git history
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run format:check
+      - run: pnpm test
+      # The build runs the link guards: a broken internal link or heading anchor fails it.
+      - run: pnpm run build
+      - name: Check internal links in the built HTML
+        run: pnpm run check:dist
+      - name: Check the built demo decks are there
+        run: |
+          for deck in public/demos/*/; do
+            test -f "${deck}index.html" || { echo "missing ${deck}index.html"; exit 1; }
+          done
