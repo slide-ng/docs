@@ -1,1 +1,0 @@
-import"./main-EHVWPIPC.js";import{C,w as v}from"./chunk-0gnOa4AH.js";export{v as createArchitectureServices};
