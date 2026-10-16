@@ -61,7 +61,7 @@ Count is {{ c.n() }}.
           <code>---</code>, notes live in a comment.
         </ngmd-card>
         <ngmd-card icon="code" title="Angular inside">
-          <code>&#123;&#123; &#125;&#125;</code>, <code>&#64;if</code>, <code>&#64;for</code> and
+          <code ngNonBindable>{{ }}</code>, <code>&#64;if</code>, <code>&#64;for</code> and
           your own standalone components work in a slide. Each slide is compiled ahead of time.
         </ngmd-card>
         <ngmd-card icon="rocket" title="Static output">
