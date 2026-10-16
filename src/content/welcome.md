@@ -49,5 +49,5 @@ Every page that shows a deck embeds a real build of it. You can also open them d
 - [The theme gallery](/customize/theme-gallery), one deck for each official theme
 
 <ngmd-callout type="warning" title="Status">
-  slide.ng is early. It is not published to npm yet, and some Slidev features are missing. The [list of what is not supported](./migrating/not-supported.md) is kept honest.
+  slide.ng is early. Version 0.1.0 is on npm as `@slide-ng/core`, and some Slidev features are missing. The [list of what is not supported](./migrating/not-supported.md) is kept honest.
 </ngmd-callout>

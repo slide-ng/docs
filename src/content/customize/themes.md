@@ -38,10 +38,6 @@ theme: seriph
 ---
 ```
 
-<ngmd-callout type="warning" title="Not published yet">
-  The theme packages are not on npm yet. Until they are, install them from a checkout of slide.ng-themes with a `file:` path, or use `--theme /path/to/slide.ng-themes/packages/theme-seriph`.
-</ngmd-callout>
-
 Slidev themes are written for Vue and are not compatible. Only the folder names are alike.
 
 ## What a theme can set

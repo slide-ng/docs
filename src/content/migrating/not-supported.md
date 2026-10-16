@@ -44,7 +44,6 @@ These were not tried, so treat them as unknown rather than working:
 - Firefox and Safari, for the app, export and the offline folder. Only Chromium was used.
 - Real devices over a real network for `--remote`, the real screen share picker, wake lock behaviour and real projectors.
 - Real Google Fonts for `fonts.selfHost`, a PWA update on an installed deck, and hosting on GitHub Pages or Netlify beyond writing the files they read.
-- Installing slide.ng from a package registry, because it is not published.
 - Open Graph pictures in a real crawler.
 
 ## Where this list comes from

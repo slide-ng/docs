@@ -13,36 +13,36 @@ description: Requirements and how to get slide.ng running today.
 
 ## Get slide.ng
 
-<ngmd-callout type="warning" title="Not on npm yet">
-  The package is marked private and is not published to a registry. For now you use it from a checkout of the repository. The notes below change when it is published.
-</ngmd-callout>
+Make a new deck folder with the published package:
 
-Clone the repository and install its dependencies:
+```sh
+npx @slide-ng/core create my-deck
+cd my-deck
+npm install
+npm run dev     # dev server at http://localhost:4230
+```
+
+Or add it to an existing folder:
+
+```sh
+npm install -D @slide-ng/core
+npx slide-ng dev
+```
+
+The command is `slide-ng`, described in [The command line](./cli.md). [Your first deck](./first-deck.md) shows what to do next.
+
+## From a checkout
+
+To work on slide.ng itself, clone the repository and install its dependencies:
 
 ```sh
 git clone https://github.com/slide-ng/slide.ng.git
 cd slide.ng
 npm install
-```
-
-The repository contains a deck of its own, `slides.md`, so you can run it straight away:
-
-```sh
 npm start          # dev server at http://localhost:4230
-npm run build      # production build of that deck in dist/slide-ng/browser
 ```
 
-`npm start` and `npm run build` are the plain scripts of the repository. The command meant for your own decks is `slide-ng`, described in [The command line](./cli.md).
-
-## Start a deck of your own
-
-From the checkout, make a new deck folder next to it:
-
-```sh
-node bin/slide-ng.mjs create ../my-deck
-```
-
-[Your first deck](./first-deck.md) shows what to do next.
+The repository contains a deck of its own, `slides.md`. `npm start` and `npm run build` are the plain scripts of the repository.
 
 ## Optional: themes
 
