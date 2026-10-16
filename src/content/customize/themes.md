@@ -26,7 +26,7 @@ addons:
 
 ## The official themes
 
-`seriph`, `shibainu`, `bricks` and `apple-basic` are rebuilt from the official Slidev themes, and published from a separate repository, slide.ng-themes, one package each. `default` is the built-in look. See the [Theme gallery](./theme-gallery.md).
+`seriph`, `shibainu`, `bricks` and `apple-basic` are rebuilt from the official Slidev themes, `adev` is inspired by angular.dev, and all are published from a separate repository, slide.ng-themes, one package each. `default` is the built-in look. See the [Theme gallery](./theme-gallery.md).
 
 ```sh
 npm i -D @slide-ng/theme-seriph

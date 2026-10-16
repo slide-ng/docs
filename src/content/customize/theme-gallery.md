@@ -1,11 +1,11 @@
 ---
 title: Theme gallery
-description: The four official slide.ng themes, with a live deck for each and credits to the original designers.
+description: The five official slide.ng themes, with a live deck for each and credits to the original designers.
 ---
 
 # Theme gallery
 
-The official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng. Each one lives in its own package in the slide.ng-themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks` and `@slide-ng/theme-apple-basic`. Each deck below has a slide for every layout of its theme. The theme fonts load from Google Fonts, so the decks look right with a network.
+Four of the official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng, and `adev` is a new theme inspired by angular.dev. Each one lives in its own package in the slide.ng-themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks`, `@slide-ng/theme-apple-basic` and `@slide-ng/theme-adev`. Each deck below has a slide for every layout of its theme. The theme fonts load from Google Fonts, so the decks look right with a network.
 
 <ngmd-tabs>
   <ngmd-tab title="seriph">
@@ -19,6 +19,9 @@ The official themes are ports of the official Slidev themes, rebuilt as Angular 
   </ngmd-tab>
   <ngmd-tab title="apple-basic">
     <ngmd-demo src="/demos/theme-apple-basic/" title="apple-basic, 11 slides"></ngmd-demo>
+  </ngmd-tab>
+  <ngmd-tab title="adev">
+    <ngmd-demo src="/demos/theme-adev/" title="adev, 30 slides"></ngmd-demo>
   </ngmd-tab>
 </ngmd-tabs>
 
@@ -54,6 +57,15 @@ A plain white theme after Keynote's "Basic White". Original by [Jeremy Meissner]
 - 10 layouts: `intro`, `intro-image`, `intro-image-right`, `image-right`, `bullets`, `section`, `statement`, `fact`, `quote` and `3-images`.
 - No pictures of its own: picture props take an address or a colour.
 
+## adev
+
+The look of [angular.dev](https://angular.dev), the Angular documentation site, in light and dark. Inspired by angular.dev, not an official Angular theme.
+
+- Fonts `Inter`, `Inter Tight` and `DM Mono`. The grey scale, accent colours and gradients are adev's own tokens, with its dark mode mixes.
+- 12 layouts: `cover`, `intro`, `default`, `center`, `section`, `two-cols`, `image-right`, `image-left`, `quote`, `fact`, `statement` and `end`. A slide can be forced to a scheme with `class: dark` or `class: light`.
+- Components `<adev-callout>`, `<adev-card-grid>` with `<adev-card>`, `<adev-stat>`, `<adev-count-up>`, `<adev-code-card>`, `<adev-steps>` and `<adev-button>`.
+- No Angular logo, wordmark or mascot is included.
+
 ## Use one
 
 ```md
@@ -66,6 +78,8 @@ See [Themes and addons](./themes.md) for installing and for how a theme is found
 
 ## Credits and licence
 
-The code of the original themes is MIT licensed, copyright (c) 2021 Slidev.js Team. The layout names, slots, CSS values and font settings follow the originals, and the Angular components are new code. The images and other assets of the original themes are licensed CC BY-NC-SA 4.0, which does not allow commercial use, so none of them is copied. Where an original draws a picture, the port draws its own CSS gradients, and code colours come from Shiki instead of Prism. Each package's README says what is ported and what differs.
+`adev` follows the design tokens and styles of angular.dev (Angular, MIT licensed, copyright (c) 2010-2026 Google LLC). slide.ng is a community project and is not affiliated with or endorsed by Google or the Angular team. The Angular logo is CC BY 4.0 and is not used.
+
+The code of the original Slidev themes is MIT licensed, copyright (c) 2021 Slidev.js Team. The layout names, slots, CSS values and font settings follow the originals, and the Angular components are new code. The images and other assets of the original themes are licensed CC BY-NC-SA 4.0, which does not allow commercial use, so none of them is copied. Where an original draws a picture, the port draws its own CSS gradients, and code colours come from Shiki instead of Prism. Each package's README says what is ported and what differs.
 
 There is no community theme gallery, and community Slidev themes cannot be used.

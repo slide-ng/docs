@@ -49,7 +49,7 @@ slide.ng adds `build --offline`, which makes a folder that opens from disk, and 
 
 ## Themes and addons
 
-Slidev themes and addons are Vue packages. They cannot be used. slide.ng has its own contract, described in [Themes and addons](../customize/themes.md), and rebuilt versions of `seriph`, `shibainu`, `bricks` and `apple-basic`. Theme settings that Slidev keeps in `package.json#slidev` are in a `theme.json` here. There is no theme or addon gallery beyond the [official themes](../customize/theme-gallery.md).
+Slidev themes and addons are Vue packages. They cannot be used. slide.ng has its own contract, described in [Themes and addons](../customize/themes.md), and rebuilt versions of `seriph`, `shibainu`, `bricks` and `apple-basic`, and a new `adev` theme. Theme settings that Slidev keeps in `package.json#slidev` are in a `theme.json` here. There is no theme or addon gallery beyond the [official themes](../customize/theme-gallery.md).
 
 ## Setup files
 
