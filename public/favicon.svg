@@ -1,15 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="slide.ng">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#f43f5e"/>
-      <stop offset="0.5" stop-color="#d946ef"/>
-      <stop offset="1" stop-color="#a855f7"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <rect x="9" y="14" width="46" height="29" rx="4.5" fill="#fff"/>
-  <rect x="15" y="20" width="18" height="4" rx="2" fill="#c026d3"/>
-  <rect x="15" y="28" width="28" height="3" rx="1.5" fill="#c026d3" opacity="0.5"/>
-  <rect x="15" y="34" width="21" height="3" rx="1.5" fill="#c026d3" opacity="0.3"/>
-  <path d="M25 50h14" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Redrawn from a preview of the designer's logo. The designer's own SVG replaces this file. -->
+  <path fill="#D9480F" stroke="#D9480F" stroke-width="2" stroke-linejoin="round" d="M32 3 57.8 11 55.5 45.5 32 61 8.5 45.5 6.2 11Z"/>
+  <path fill="#A93A0C" d="M25 12.6h26.7a2.8 2.8 0 0 1 2.8 2.8V32H25Z"/>
+  <path fill="#7A2A08" d="M11.2 23.4a3 3 0 0 1 3-3h28.4a3 3 0 0 1 3 3V43.2a3 3 0 0 1-3 3H14.2a3 3 0 0 1-3-3Z"/>
+  <path fill="#FBF8F3" d="M11.2 22.4a3 3 0 0 1 3-3h28.4a3 3 0 0 1 3 3V39.4a3 3 0 0 1-3 3H14.2a3 3 0 0 1-3-3Z"/>
+  <path fill="#D9480F" d="M28.2 15.6h8.6a1 1 0 0 1 0 2h-8.6a1 1 0 0 1 0-2ZM15.4 25.6h13.4a1.3 1.3 0 0 1 0 2.6H15.4a1.3 1.3 0 0 1 0-2.6Zm0 5.2h20.2a1.2 1.2 0 0 1 0 2.4H15.4a1.2 1.2 0 0 1 0-2.4Zm0 4.7h14.6a1.1 1.1 0 0 1 0 2.2H15.4a1.1 1.1 0 0 1 0-2.2ZM39.6 33.3a2.3 2.3 0 1 1 0 4.6 2.3 2.3 0 0 1 0-4.6Z"/>
 </svg>
