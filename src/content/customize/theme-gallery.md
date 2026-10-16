@@ -62,7 +62,7 @@ A plain white theme after Keynote's "Basic White". Original by [Jeremy Meissner]
 The look of [angular.dev](https://angular.dev), the Angular documentation site, in light and dark. Inspired by angular.dev, not an official Angular theme.
 
 - Fonts `Inter`, `Inter Tight` and `DM Mono`. The grey scale, accent colours and gradients are adev's own tokens, with its dark mode mixes.
-- Light and dark are both complete, as on angular.dev: switch the whole deck with the colour-schema switch or the system preference.
+- Light and dark are both complete, as on angular.dev, with the theme's own switch: a small sun or moon button in the top right corner of every slide. It only recolours the slides, not the slide.ng dock, and the choice is stored and starts from the system preference.
 - Code uses angular.dev's Shiki themes (`github-light` and `github-dark`), and Angular code is highlighted out of the box: `angular-ts`, `angular-html`, `ng`, `ng-ts` and `ng-html` fences need no setup file, including `@Component` templates and `@if`, `@for` and `@defer` blocks.
 - 12 layouts: `cover`, `intro`, `default`, `center`, `section`, `two-cols`, `image-right`, `image-left`, `quote`, `fact`, `statement` and `end`.
 - Components `<adev-callout>`, `<adev-card-grid>` with `<adev-card>`, `<adev-stat>`, `<adev-count-up>`, `<adev-code-card>`, `<adev-steps>` and `<adev-button>`.
