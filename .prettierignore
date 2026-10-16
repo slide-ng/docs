@@ -17,3 +17,4 @@ yarn.lock
 src/content
 create-ngmd/template
 demos
+src/app/landing/deck-source.ts
