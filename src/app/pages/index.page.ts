@@ -1,97 +1,77 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {NgmdCard, NgmdCardGrid, NgmdCodeBlock, NgmdDemo} from '../ui';
+import {GithubIcon} from '../ui/github-icon';
+import {LandingDemo} from '../landing/landing-demo';
+import {LandingFeatures} from '../landing/landing-features';
 
-const SAMPLE = `---
-layout: center
----
-
-# Hello
-
-Count is {{ c.n() }}.
-
-<app-counter #c [start]="5" />
-
-<div v-click>Appears on the first click</div>`;
-
+/**
+ * The home page. It has no docs sidebar (the app shell hides it on `/`): the name, the tagline
+ * and two buttons on the left, the live demo on the right, three highlights below.
+ */
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, NgmdCard, NgmdCardGrid, NgmdCodeBlock, NgmdDemo],
+  imports: [RouterLink, GithubIcon, LandingDemo, LandingFeatures],
   template: `
-    <section class="mx-auto max-w-4xl px-6 pt-16 pb-8 text-center">
-      <img src="logo-mark.svg" alt="" aria-hidden="true" class="mx-auto size-16" />
-      <h1 class="mt-6 text-5xl font-bold tracking-tight">slide.ng</h1>
-      <p class="mx-auto mt-4 max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
-        Presentations written in markdown, with real Angular template syntax inside. One file in, a
-        static site out.
+    <div class="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:py-16 xl:px-12">
+      <section
+        class="grid items-center gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12"
+      >
+        <div class="flex flex-col items-center text-center">
+          <img src="logo-mark.svg" alt="" aria-hidden="true" class="size-24 sm:size-28" />
+          <h1
+            class="mt-6 mb-0 font-[Geist_Mono,ui-monospace,monospace] text-5xl font-bold tracking-tight sm:text-6xl"
+          >
+            slide.ng
+          </h1>
+          <p class="mt-4 mb-0 text-xl text-zinc-600 sm:text-2xl dark:text-zinc-400">
+            Presentation slides for Angular developers
+          </p>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a
+              routerLink="/getting-started/install"
+              class="landing-button rounded-xl bg-fuchsia-700 px-6 py-3 text-lg font-bold !text-white no-underline hover:bg-fuchsia-800"
+            >
+              Get Started
+            </a>
+            <a
+              routerLink="/getting-started/what-and-why"
+              class="landing-button rounded-xl bg-zinc-800 px-6 py-3 text-lg font-bold !text-white no-underline hover:bg-zinc-600 dark:bg-zinc-200 dark:!text-zinc-900 dark:hover:bg-zinc-400"
+            >
+              Why
+            </a>
+          </div>
+          <p class="mt-6 flex items-center gap-4 text-sm text-zinc-500">
+            <a
+              [href]="githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 text-zinc-500 no-underline hover:text-zinc-900 dark:hover:text-zinc-100"
+            >
+              <svg ngmdGithubIcon class="size-4"></svg>
+              GitHub
+            </a>
+            <a
+              routerLink="/welcome"
+              class="text-zinc-500 no-underline hover:text-zinc-900 dark:hover:text-zinc-100"
+            >
+              Introduction
+            </a>
+          </p>
+        </div>
+
+        <app-landing-demo />
+      </section>
+
+      <section class="mt-16 border-t border-zinc-200 pt-10 dark:border-zinc-800 lg:mt-20">
+        <app-landing-features />
+      </section>
+
+      <p class="mt-12 mb-0 text-center text-sm text-zinc-500">
+        slide.ng is early and not on npm yet. Read
+        <a routerLink="/migrating/not-supported">what is not supported</a>
+        before you start.
       </p>
-      <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-        <a
-          routerLink="/getting-started/what-and-why"
-          class="inline-flex items-center rounded-md px-5 py-2.5 text-sm font-medium bg-zinc-900 text-white hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
-        >
-          Get started
-        </a>
-        <a
-          routerLink="/guide/syntax"
-          class="inline-flex items-center rounded-md border border-zinc-200 dark:border-zinc-800 px-5 py-2.5 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900"
-        >
-          Read the guide
-        </a>
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-5xl px-6 py-8">
-      <div class="grid gap-6 md:grid-cols-2 items-start">
-        <div>
-          <p class="mb-2 text-sm font-medium text-zinc-500">slides.md</p>
-          <ngmd-code-block language="md" [code]="sample"></ngmd-code-block>
-        </div>
-        <div>
-          <p class="mb-2 text-sm font-medium text-zinc-500">A starter deck, built with slide.ng</p>
-          <ngmd-demo src="/demos/starter/" title="The starter deck"></ngmd-demo>
-        </div>
-      </div>
-    </section>
-
-    <section class="mx-auto max-w-5xl px-6 py-8">
-      <ngmd-card-grid [columns]="3">
-        <ngmd-card icon="layers" title="Slidev's format">
-          The same file format, the same layout names and most of the same keys. Slides split on
-          <code>---</code>, notes live in a comment.
-        </ngmd-card>
-        <ngmd-card icon="code" title="Angular inside">
-          <code ngNonBindable>{{}}</code>, <code>&#64;if</code>, <code>&#64;for</code> and your own
-          standalone components work in a slide. Each slide is compiled ahead of time.
-        </ngmd-card>
-        <ngmd-card icon="rocket" title="Static output">
-          A site any web host can serve, an offline folder that opens from disk, and PDF, PNG, PPTX
-          and Markdown export.
-        </ngmd-card>
-        <ngmd-card icon="terminal" title="Code, math, diagrams">
-          Shiki highlighting with click steps, Magic Move, Twoslash, Monaco editors, KaTeX, Mermaid
-          and PlantUML.
-        </ngmd-card>
-        <ngmd-card icon="compass" title="Presenter tools">
-          A presenter view with notes and timer, drawing, a camera bubble, recording, and sync
-          between windows and devices.
-        </ngmd-card>
-        <ngmd-card
-          icon="palette"
-          title="Themes and setup files"
-          link="/customize/theme-gallery"
-          cta="Gallery"
-        >
-          Four official themes, plus your own layouts, components and setup hooks.
-        </ngmd-card>
-      </ngmd-card-grid>
-    </section>
-
-    <section class="mx-auto max-w-2xl px-6 pb-20 pt-4 text-center text-sm text-zinc-500">
-      slide.ng is early and not on npm yet. Read
-      <a routerLink="/migrating/not-supported">what is not supported</a>
-      before you start.
-    </section>
+    </div>
   `,
   styles: `
     :host {
@@ -100,6 +80,5 @@ Count is {{ c.n() }}.
   `,
 })
 export default class HomePage {
-  protected readonly sample = SAMPLE;
-  protected readonly braces = '{{ }}';
+  protected readonly githubUrl = 'https://github.com/slide-ng/slide.ng';
 }
