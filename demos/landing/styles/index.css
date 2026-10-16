@@ -1,6 +1,6 @@
 /* The slide.ng brand on the landing deck: paper and ink, the orange for large headings and bullets. */
 :root {
-  --slidev-theme-primary: #d9480f;
+  --slidev-theme-primary: #cc4209;
   --slidev-slide-container-background: #fbf8f3;
 }
 html.dark {
@@ -16,12 +16,12 @@ html.dark .canvas {
   color: #fbf8f3;
 }
 .slidev-layout h1 {
-  color: #d9480f;
+  color: #cc4209;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
 .slidev-layout li::marker {
-  color: #d9480f;
+  color: #cc4209;
 }
 /* The same list spacing as Slidev's home page demo. */
 .slidev-layout ul {

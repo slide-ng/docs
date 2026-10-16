@@ -94,15 +94,17 @@ import {ContentBanners} from './components/content-banners';
           class="flex items-center gap-2 text-lg font-bold tracking-tight font-[Geist_Mono,ui-monospace,monospace]"
         >
           <img
-            src="logo-mark.svg"
-            alt=""
-            class="size-[34px] text-zinc-900 dark:text-zinc-50"
-            aria-hidden="true"
+            src="brand/lockup-horizontal-color.svg"
+            [alt]="siteName"
+            height="34"
+            class="h-[34px] w-auto dark:hidden"
           />
-          <span
-            >{{ nameLead
-            }}<span class="text-brand-deep dark:text-brand-amber">{{ nameTail }}</span></span
-          >
+          <img
+            src="brand/lockup-horizontal-color-dark.svg"
+            [alt]="siteName"
+            height="34"
+            class="hidden h-[34px] w-auto dark:block"
+          />
         </a>
 
         @if (headerNav.length > 0) {
@@ -307,9 +309,6 @@ export class App implements OnInit {
   readonly autoIcon = LucideSunMoon;
 
   readonly siteName = siteConfig.site.name;
-  /** The name with its `.ng` ending set apart, so the brand's orange can go on it. */
-  readonly nameLead = siteConfig.site.name.replace(/\.ng$/, '');
-  readonly nameTail = siteConfig.site.name.endsWith('.ng') ? '.ng' : '';
   readonly githubUrl = siteConfig.site.githubUrl;
   readonly discordUrl = siteConfig.site.links?.discord;
   readonly headerNav = siteConfig.headerNav ?? [];

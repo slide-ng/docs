@@ -14,10 +14,10 @@
   --color-zinc-800: #2a2630;
   --color-zinc-900: #211d27;
   --color-zinc-950: #16131a;
-  --color-brand: #d9480f;
-  --color-brand-deep: #a93a0c;
-  --color-brand-dark: #7a2a08;
-  --color-brand-amber: #f08c00;
+  --color-brand: #cc4209;
+  --color-brand-deep: #8f300a;
+  --color-brand-dark: #561c08;
+  --color-brand-bright: #e5541a;
   --color-brand-muted-dark: #c9c4cf;
 }
 
@@ -223,12 +223,13 @@
 @layer base {
   :root {
     /* The slide.ng palette (the tokens of the brand kit) */
-    --slideng-orange: #d9480f; /* logo, large headings, icons */
-    --slideng-orange-deep: #a93a0c; /* small text, links, button backgrounds on light */
-    --slideng-orange-dark: #7a2a08;
-    --slideng-amber: #f08c00; /* accent on dark backgrounds only */
+    --slideng-orange: #cc4209; /* logo, text on light (4.56:1 on paper) */
+    --slideng-orange-bright: #e5541a; /* orange on dark (4.92:1 on ink) */
+    --slideng-orange-deep: #8f300a; /* small text on sand, button backgrounds on light */
+    --slideng-slide-edge: #561c08;
     --slideng-ink: #16131a;
     --slideng-paper: #fbf8f3;
+    --slideng-cream: #faf6ee;
     --slideng-sand: #f1ebe1;
     --slideng-ink-raised: #211d27;
     --slideng-text-muted: #4f4b55;
@@ -248,15 +249,15 @@
     --accent: var(--slideng-orange);
     --accent-strong: var(--slideng-orange-deep);
     --accent-fg: var(--slideng-paper);
-    --accent-soft: rgba(217, 72, 15, 0.1);
-    --accent-gradient: linear-gradient(to right, #d9480f 0%, #f08c00 100%);
+    --accent-soft: rgba(204, 66, 9, 0.1);
+    --accent-gradient: linear-gradient(to right, #cc4209 0%, #e5541a 100%);
     --accent-gradient-soft: linear-gradient(
       to bottom right,
-      rgba(217, 72, 15, 0.08) 0%,
-      rgba(240, 140, 0, 0.08) 100%
+      rgba(204, 66, 9, 0.08) 0%,
+      rgba(229, 84, 26, 0.08) 100%
     );
-    --code-border-gradient: linear-gradient(135deg, #f08c00, #d9480f, #a93a0c);
-    --line-highlight: rgba(217, 72, 15, 0.1);
+    --code-border-gradient: linear-gradient(135deg, #e5541a, #cc4209, #8f300a);
+    --line-highlight: rgba(204, 66, 9, 0.1);
 
     /* Geometry */
     --radius-sm: 0.25rem;
@@ -283,18 +284,19 @@
 
     --primary: var(--slideng-paper);
     --primary-fg: var(--slideng-ink);
-    --accent: var(--slideng-amber);
-    --accent-strong: var(--slideng-amber);
+    --accent: var(--slideng-orange-bright);
+    /* A step lighter than the brand orange, so text on the raised ink stays above 4.5:1. */
+    --accent-strong: #ef6430;
     --accent-fg: var(--slideng-ink);
-    --accent-soft: rgba(240, 140, 0, 0.14);
-    --accent-gradient: linear-gradient(to right, #d9480f 0%, #f08c00 100%);
+    --accent-soft: rgba(229, 84, 26, 0.14);
+    --accent-gradient: linear-gradient(to right, #cc4209 0%, #e5541a 100%);
     --accent-gradient-soft: linear-gradient(
       to bottom right,
-      rgba(217, 72, 15, 0.12) 0%,
-      rgba(240, 140, 0, 0.12) 100%
+      rgba(204, 66, 9, 0.12) 0%,
+      rgba(229, 84, 26, 0.12) 100%
     );
-    --code-border-gradient: linear-gradient(135deg, #f08c00, #d9480f, #a93a0c);
-    --line-highlight: rgba(240, 140, 0, 0.12);
+    --code-border-gradient: linear-gradient(135deg, #e5541a, #cc4209, #8f300a);
+    --line-highlight: rgba(229, 84, 26, 0.12);
 
     color-scheme: dark;
   }
@@ -465,7 +467,7 @@
   analog-markdown-route h2 code,
   analog-markdown h3 code,
   analog-markdown-route h3 code {
-    color: var(--accent);
+    color: var(--accent-strong);
     background: transparent;
     padding: 0;
     font-size: 0.95em;

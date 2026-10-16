@@ -124,7 +124,7 @@ const DECK_URL = '/demos/landing/';
       --demo-slide: #fbf8f3;
       --demo-edge: rgba(22, 19, 26, 0.06);
       --demo-edge-strong: rgba(22, 19, 26, 0.18);
-      --demo-key: #a93a0c;
+      --demo-key: #8f300a;
       --demo-rule: #67626e;
       --demo-offset-x: 1.25rem;
       --demo-offset-y: 2.5rem;
@@ -139,7 +139,7 @@ const DECK_URL = '/demos/landing/';
       --demo-slide: #16131a;
       --demo-edge: rgba(251, 248, 243, 0.1);
       --demo-edge-strong: rgba(251, 248, 243, 0.3);
-      --demo-key: #f08c00;
+      --demo-key: #ef6430;
       --demo-rule: #a39ea9;
       --demo-shadow:
         0 0 0 1px var(--demo-edge), 0 0 30px 1px color-mix(in srgb, #000 40%, transparent);

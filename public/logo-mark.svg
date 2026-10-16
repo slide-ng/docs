@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="slide.ng">
-  <!-- Redrawn from a preview of the designer's logo. The designer's own SVG replaces this file. -->
-  <path fill="#D9480F" stroke="#D9480F" stroke-width="2" stroke-linejoin="round" d="M32 3 57.8 11 55.5 45.5 32 61 8.5 45.5 6.2 11Z"/>
-  <path fill="#A93A0C" d="M25 12.6h26.7a2.8 2.8 0 0 1 2.8 2.8V32H25Z"/>
-  <path fill="#7A2A08" d="M11.2 23.4a3 3 0 0 1 3-3h28.4a3 3 0 0 1 3 3V43.2a3 3 0 0 1-3 3H14.2a3 3 0 0 1-3-3Z"/>
-  <path fill="#FBF8F3" d="M11.2 22.4a3 3 0 0 1 3-3h28.4a3 3 0 0 1 3 3V39.4a3 3 0 0 1-3 3H14.2a3 3 0 0 1-3-3Z"/>
-  <path fill="#D9480F" d="M28.2 15.6h8.6a1 1 0 0 1 0 2h-8.6a1 1 0 0 1 0-2ZM15.4 25.6h13.4a1.3 1.3 0 0 1 0 2.6H15.4a1.3 1.3 0 0 1 0-2.6Zm0 5.2h20.2a1.2 1.2 0 0 1 0 2.4H15.4a1.2 1.2 0 0 1 0-2.4Zm0 4.7h14.6a1.1 1.1 0 0 1 0 2.2H15.4a1.1 1.1 0 0 1 0-2.2ZM39.6 33.3a2.3 2.3 0 1 1 0 4.6 2.3 2.3 0 0 1 0-4.6Z"/>
-</svg>

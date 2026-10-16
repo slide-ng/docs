@@ -62,9 +62,9 @@ SLIDE_NG_DIR=../slide.ng pnpm run demos landing --write-source
 
 ## Brand
 
-The palette (orange, deep orange, amber, ink, paper, sand) is in `src/styles.css` as `--slideng-*` tokens, mapped to the site's variables in light and dark mode; the grey scale of the components is the warm paper and ink scale. Orange is for the logo, large headings and icons. Small text, links and button backgrounds use the deep orange, because the orange alone does not reach 4.5:1 on paper. Amber is for dark backgrounds only.
+The palette (orange, bright orange, deep orange, slide edge, ink, paper, cream, sand) is in `src/styles.css` as `--slideng-*` tokens, mapped to the site's variables in light and dark mode; the grey scale of the components is the warm paper and ink scale. Orange (#CC4209) reaches 4.56:1 on paper and is used for the logo, headings and icons; on dark the bright orange (#E5541A, 4.92:1 on ink) takes its place. Small text on sand and button backgrounds use the deep orange.
 
-`public/logo-mark.svg` (and `favicon.svg`) is a redraw of the logo from a preview image. The real SVG from the designer replaces it: drop it in at the same names and run `node scripts/make-brand-assets.mjs` to make the PNG icons, `favicon.ico` and `og.png` again. The wordmark files (`logo-title-light.svg`, `logo-title-dark.svg`) are outlined from Inter Bold.
+The logo files come from the official slide.ng logo kit: `public/brand/` (mark and lockups, light and dark), `public/favicon.ico`, `public/favicon.svg`, `public/icons/` (app icons and apple-touch-icon), `public/site.webmanifest` and `public/og.png` (the 1280x640 social preview). The wordmark is Space Grotesk Bold, outlined in the SVGs, so the site loads no font for it. The shield is original artwork. slide.ng is a community project, not affiliated with the Angular team.
 
 ## Hosting
 

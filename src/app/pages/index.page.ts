@@ -18,28 +18,20 @@ import {LandingFeatures} from '../landing/landing-features';
       <div class="flex min-h-[37.5rem] flex-col items-center justify-center max-xl:min-h-[28rem]">
         <h1 class="sr-only">slide.ng</h1>
         <img
-          src="logo-mark.svg"
-          alt=""
-          aria-hidden="true"
-          width="160"
-          height="160"
-          class="w-36 xl:w-44"
-        />
-        <img
-          src="logo-title-light.svg"
+          src="brand/lockup-stacked-color.svg"
           alt=""
           aria-hidden="true"
           width="400"
-          height="112"
-          class="mt-4 w-72 xl:w-96 dark:hidden"
+          height="356"
+          class="w-72 xl:w-96 dark:hidden"
         />
         <img
-          src="logo-title-dark.svg"
+          src="brand/lockup-stacked-color-dark.svg"
           alt=""
           aria-hidden="true"
           width="400"
-          height="112"
-          class="mt-4 hidden w-72 xl:w-96 dark:block"
+          height="356"
+          class="hidden w-72 xl:w-96 dark:block"
         />
         <p class="m-0 mt-3 text-balance text-center text-2xl text-brand-muted sm:text-3xl">
           Presentation slides for Angular developers

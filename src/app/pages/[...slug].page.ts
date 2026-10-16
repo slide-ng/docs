@@ -53,7 +53,7 @@ const NOT_FOUND = '__ngmd-not-found__';
         <section
           class="mx-auto max-w-xl w-full px-6 py-16 text-center flex flex-col items-center justify-center min-h-[calc(100vh-12rem)]"
         >
-          <img src="logo-mark.svg" alt="" aria-hidden="true" class="mx-auto mb-6 size-16" />
+          <img src="brand/mark-color.svg" alt="" aria-hidden="true" class="mx-auto mb-6 size-16" />
           <p
             class="text-sm font-medium tracking-[0.2em] text-brand-muted dark:text-brand-muted-dark"
           >

@@ -3,7 +3,7 @@ title: Introduction
 description: slide.ng turns one markdown file into a slide deck that is compiled with Angular. Start here.
 ---
 
-<ngmd-hero title="slide.ng" logo="/logo-mark.svg" gradient>
+<ngmd-hero title="slide.ng" logo="/brand/mark-color.svg" gradient>
   Presentations written in markdown, with real Angular template syntax inside. One file in, a static site out.
 </ngmd-hero>
 
