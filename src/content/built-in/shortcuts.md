@@ -25,6 +25,8 @@ The bar at the bottom left has buttons for fullscreen, previous, next, overview,
 
 <ngmd-image src="/images/ui/nav-bar-light.png" alt="The navigation bar at the bottom left of a slide" caption="The navigation bar" width="480"></ngmd-image>
 
+The settings button (More Options) opens the same menu as in Slidev: Invert, then sliders with a number box for Brightness, Contrast, Saturation, Sepia and Hue Rotate (double click a slider to reset it; a dot on the button shows that a filter is active), then Cursor Style (Cursor or Laser), Slide Scale (Fit or 1:1), Wake Lock (where the browser has it) and Hide Idle Cursor. The filters change how the slides look on your screen and are remembered. With Laser selected, a red dot follows your pointer on the slide, in the normal view and in the presenter view (where the audience sees it too). A switch for the dark mode (when the deck does not fix it), the camera and microphone choices and "Download as PDF" are listed below a divider.
+
 Right click opens a menu with the same actions. Hold Shift while right clicking for the browser's own menu. Click the dark area beside the slide: the right half goes to the next click, the left half to the previous one. On a touch screen, swiping left or right moves through clicks, and swiping up or down moves between slides.
 
 ## Change the keys
