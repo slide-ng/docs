@@ -3,6 +3,7 @@ import {tmpdir} from 'node:os';
 import {dirname, join} from 'node:path';
 import type {Plugin} from 'vite';
 import {resolveDocLinks} from './md-links.plugin';
+import {releaseAfterLastBuild} from './angular-release.plugin';
 import {rewriteDemoBase} from './demos-base.plugin';
 import {prerenderRoutes} from './plugin-utils';
 import {siteHtmlPlugin} from './site-html.plugin';
@@ -106,5 +107,38 @@ describe('rewriteDemoBase', () => {
     expect(rewriteDemoBase(html, '/')).toBe(html);
     const once = rewriteDemoBase(html, '/repo/');
     expect(rewriteDemoBase(once, '/repo/')).toBe(once);
+  });
+});
+
+describe('releaseAfterLastBuild', () => {
+  function fake() {
+    const calls: string[] = [];
+    const plugin = {
+      name: '@analogjs/vite-plugin-angular',
+      buildStart: () => void calls.push('start'),
+      buildEnd: () => void calls.push('end'),
+    } as unknown as Plugin;
+    return {calls, plugin};
+  }
+
+  it('runs buildEnd once, after the last build that started', async () => {
+    const {calls, plugin} = fake();
+    const [wrapped] = releaseAfterLastBuild([plugin]) as Plugin[];
+    call(wrapped, 'buildStart', {});
+    call(wrapped, 'buildStart', {});
+    call(wrapped, 'buildEnd', {});
+    expect(calls).toEqual(['start', 'start']);
+    call(wrapped, 'buildEnd', {});
+    expect(calls).toEqual(['start', 'start', 'end']);
+  });
+
+  it('runs buildEnd at once for a single build, and finds a plugin behind a promise', async () => {
+    const {calls, plugin} = fake();
+    const [wrapped] = (await Promise.all(
+      releaseAfterLastBuild([Promise.resolve(plugin)]),
+    )) as Plugin[];
+    call(wrapped, 'buildStart', {});
+    call(wrapped, 'buildEnd', {});
+    expect(calls).toEqual(['start', 'end']);
   });
 });

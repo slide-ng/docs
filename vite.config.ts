@@ -10,6 +10,7 @@ import {internalLinkGuard} from './link-guard.plugin.ts';
 import {mdLinksPlugin} from './md-links.plugin.ts';
 import {siteHtmlPlugin} from './site-html.plugin.ts';
 import {sitemapPlugin} from './sitemap.plugin.ts';
+import {releaseAfterLastBuild} from './angular-release.plugin.ts';
 import {demosBasePlugin} from './demos-base.plugin.ts';
 import {searchIndexPlugin} from './search-index.plugin.ts';
 import {rawMdPlugin} from './raw-md.plugin.ts';
@@ -78,27 +79,39 @@ export default defineConfig(async () => ({
     rawMdPlugin(),
     searchIndexPlugin(),
     apiGenPlugin(),
-    analog({
-      apiPrefix: '_server',
-      prerender: {
-        routes: async () => prerenderRoutes(import.meta.dirname),
-      },
-      content: {
-        highlighter: 'shiki',
-        markedOptions: {
-          extensions: await getBuildExtensions(base),
+    releaseAfterLastBuild(
+      analog({
+        apiPrefix: '_server',
+        prerender: {
+          routes: async () => prerenderRoutes(import.meta.dirname),
         },
-        shikiOptions: {
-          highlight: {
-            themes: {light: 'github-light-default', dark: 'github-dark-default'},
-            defaultColor: false,
+        content: {
+          highlighter: 'shiki',
+          markedOptions: {
+            extensions: await getBuildExtensions(base),
           },
-          highlighter: {
-            additionalLangs: ['bash', 'md', 'json', 'yaml', 'toml', 'nginx', 'mermaid', 'sh', 'js'],
+          shikiOptions: {
+            highlight: {
+              themes: {light: 'github-light-default', dark: 'github-dark-default'},
+              defaultColor: false,
+            },
+            highlighter: {
+              additionalLangs: [
+                'bash',
+                'md',
+                'json',
+                'yaml',
+                'toml',
+                'nginx',
+                'mermaid',
+                'sh',
+                'js',
+              ],
+            },
           },
         },
-      },
-    }),
+      }),
+    ),
     tailwindcss(),
   ],
   test: {
