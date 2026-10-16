@@ -63,6 +63,10 @@ pnpm run check:dist
 - Commit messages: `<type>: short imperative summary`, with `docs` for content, `feat` for the site, `build` for tooling, `fix` and `chore`. Keep the first line under 70 characters.
 - One logical change per commit and per pull request.
 
+## Recognising contributions
+
+Everyone who helps is listed in the Contributors section of the README, whatever the kind of help: code, docs, design, review or triage. To add someone, comment `@all-contributors please add @user for code` on an issue or pull request (use another type such as `doc`, `review` or `bug` when it fits). The bot opens a pull request that updates `.all-contributorsrc` and the README.
+
 ## Licence
 
 By contributing you agree that your changes are released under the MIT licence of this repository.
