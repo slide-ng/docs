@@ -202,6 +202,7 @@ const config: NgmdConfig = {
         {label: 'Export', href: '/guide/export'},
         {label: 'Hosting', href: '/guide/hosting'},
         {label: 'Presenting offline', href: '/guide/offline'},
+        {label: 'Agents and the skill', href: '/guide/agents'},
       ],
     },
     {

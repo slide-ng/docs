@@ -11,7 +11,7 @@ The pen button in the bar, or the right-click menu, opens a toolbar: pen, line, 
 
 <ngmd-image src="/images/ui/drawing-toolbar.png" alt="The drawing toolbar over a slide" caption="The drawing toolbar" width="640"></ngmd-image>
 
-Keys while the toolbar is open: `L` line, `A` arrow, `S` stylus, `R` rectangle, `E` eraser, `C` clear, digits for colours, `Ctrl+Z` undo, `Escape` closes. Drawings belong to a slide, are shared between windows and are kept in the browser.
+Keys while the toolbar is open: `L` line, `A` arrow, `S` stylus, `R` rectangle, `E` ellipse, `C` clear, digits for colours, `Ctrl+Z` undo, `Escape` closes. The eraser is a button in the toolbar and has no key. Drawings belong to a slide, are shared between windows and are kept in the browser.
 
 ```md
 ---
@@ -34,5 +34,5 @@ The camera is a round, draggable picture over the slides. Recording uses the bro
 The presenter page has a Screen Mirror switch that shows a shared window instead of the slide.
 
 <ngmd-callout type="info" title="Limits">
-  The file has no duration field, so some players show the length only after a seek. There is no separate camera file, no mp4 or mkv, and no cloud upload. See [Recording](../features/recording.md).
+  There is no separate camera file, no mp4 or mkv, and no cloud upload. See [Recording](../features/recording.md).
 </ngmd-callout>

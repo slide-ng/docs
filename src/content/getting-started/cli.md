@@ -17,6 +17,7 @@ slide-ng export-notes [slides.md]  # a PDF of the speaker notes
 slide-ng format [slides.md]        # tidy the markdown file
 slide-ng theme eject               # copy the theme in use into ./theme
 slide-ng mcp [slides.md]           # MCP server on stdio
+slide-ng skills install            # copy the agent skill into .agents/skills/slide-ng
 ```
 
 In a checkout of the repository, run the same thing as `node bin/slide-ng.mjs <command>`. In a deck made by `create`, the scripts `npm run dev`, `build`, `export` and `format` call it for you.

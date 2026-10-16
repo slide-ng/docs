@@ -96,6 +96,14 @@ slide-ng mcp [slides.md]
 
 Starts the MCP server on stdio. See [MCP server](../features/mcp.md).
 
+## skills install
+
+```sh
+slide-ng skills install [--dir <folder>] [--force]
+```
+
+Copies the agent skill into `<dir>/slide-ng`. `--dir` defaults to `.agents/skills`. `--force` replaces an earlier copy. It never writes outside the current folder. See [Agents and the skill](../guide/agents.md).
+
 ## create
 
 ```sh

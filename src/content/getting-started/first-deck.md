@@ -31,7 +31,7 @@ Open `http://localhost:4230`. The page reloads when you save `slides.md`.
 
 ## 3. Read the starter deck
 
-This is the deck you just got. Press the right arrow or space to step through it, `o` for the overview.
+This is the starter repository's deck; `create` makes a shorter one. Press the right arrow or space to step through it, `o` for the overview.
 
 <ngmd-demo src="/demos/starter/" title="The starter deck"></ngmd-demo>
 
