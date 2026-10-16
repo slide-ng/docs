@@ -14,4 +14,4 @@ aspectRatio: 16/9
 ---
 ```
 
-`aspectRatio` can be a fraction such as `4/3` or a number such as `1.6`. A smaller `canvasWidth` makes everything look bigger on the screen. Positions in `v-drag` and `<arrow>` are in canvas pixels.
+`aspectRatio` can be a fraction such as `4/3` or a number such as `1.6`. A smaller `canvasWidth` makes everything look bigger on the screen. Positions in `slide-ng-drag` and `<slide-ng-arrow>` are in canvas pixels.

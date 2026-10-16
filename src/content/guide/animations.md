@@ -7,33 +7,33 @@ description: Reveal things step by step with clicks, and move between slides wit
 
 ## Clicks
 
-Clicks reveal things one step at a time. Add `v-click` to any HTML element:
+Clicks reveal things one step at a time. Add `slide-ng-click` to any HTML element:
 
 ```md
-<div v-click>Shows on the next click</div>
-<div v-click="3">Shows at click 3</div>
-<div v-click="+2">Shows two clicks after the previous element</div>
-<div [v-click]="[2, 4]">Shows from click 2 until click 4, then hides</div>
-<div v-after>Shows together with the element before it</div>
-<div v-click="2" v-click-hide>Visible first, hides at click 2</div>
+<div slide-ng-click>Shows on the next click</div>
+<div slide-ng-click="3">Shows at click 3</div>
+<div slide-ng-click="+2">Shows two clicks after the previous element</div>
+<div [slide-ng-click]="[2, 4]">Shows from click 2 until click 4, then hides</div>
+<div slide-ng-after>Shows together with the element before it</div>
+<div slide-ng-click="2" slide-ng-click-hide>Visible first, hides at click 2</div>
 ```
 
-There are two forms because of how Angular reads attributes. `v-click="3"` and `v-click="+2"` are plain text, and slide.ng turns them into a number or a relative step. `[v-click]="[2, 4]"` is an Angular binding, for ranges and for any value you compute.
+There are two forms because of how Angular reads attributes. `slide-ng-click="3"` and `slide-ng-click="+2"` are plain text, and slide.ng turns them into a number or a relative step. `[slide-ng-click]="[2, 4]"` is an Angular binding, for ranges and for any value you compute.
 
-To reveal list items one by one, wrap the list in `<v-clicks>`. Leave an empty line after the opening tag and before the closing one, otherwise markdown does not turn the list into HTML.
+To reveal list items one by one, wrap the list in `<slide-ng-clicks>`. Leave an empty line after the opening tag and before the closing one, otherwise markdown does not turn the list into HTML.
 
 ```md
-<v-clicks>
+<slide-ng-clicks>
 
 - first
 - second
 
-</v-clicks>
+</slide-ng-clicks>
 ```
 
 Options: `depth="2"` includes nested lists, `every="2"` shows two items per click, `at="3"` sets the first click, `hide` makes the items hide instead of show.
 
-`<v-switch>` shows one child per click, and `<v-click-gap size="2" />` leaves two clicks empty. See [Directives](../built-in/directives.md) and [Components](../built-in/components.md).
+`<slide-ng-switch>` shows one child per click, and `<slide-ng-click-gap size="2" />` leaves two clicks empty. See [Directives](../built-in/directives.md) and [Components](../built-in/components.md).
 
 <ngmd-callout type="tip" title="Set the number of clicks yourself">
   `clicks: 3` in a slide's frontmatter fixes the number of clicks, whatever its elements ask for. `clicksStart` sets the first click number, `0` by default.

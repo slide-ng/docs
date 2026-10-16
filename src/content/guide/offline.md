@@ -35,7 +35,7 @@ Things to know:
 - All lazy code is in one file, so a deck with Monaco and Mermaid is a large script. A deck without them is about 450 kB.
 - The PDF button opens `<exportFilename>.pdf` in a new tab. Save it from the PDF viewer.
 - Presenter and audience windows sync with a `BroadcastChannel`. They must be windows of the same browser profile, opened from the same folder: the presenter at `index.html#/presenter/1`, the audience at `index.html#/1`.
-- Not offline by nature: PlantUML, `<youtube>`, `<tweet>`, `<blue-sky>`, and any picture or font that could not be downloaded at build time. The build warns with `could not download` lines.
+- Not offline by nature: PlantUML, `<slide-ng-youtube>`, `<slide-ng-tweet>`, `<slide-ng-blue-sky>`, and any picture or font that could not be downloaded at build time. The build warns with `could not download` lines.
 
 ## Option 2: a PWA
 

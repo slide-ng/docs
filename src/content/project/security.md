@@ -17,7 +17,7 @@ A deck can contain Angular templates, components, setup files and themes, and sl
 
 ## What the tool checks
 
-**The dev server.** `slide-ng dev` runs three processes. The companion server, which saves slides, drawings and `v-drag` positions, listens on `127.0.0.1` only, and the dev server proxies `/__slide-ng/*` to it. For every request and every WebSocket upgrade it checks the `Host` and `Origin`. Writes need a random session token and a JSON content type, and with a password the cookie as well. A request never names a file: it names a slide number, which is looked up with the parser, or an `<integer>.svg`. Every path is confined to the deck's folder, so `..`, absolute paths and symlinks out are refused. Bodies and WebSocket messages have size limits, and drawing markup is checked against a whitelist of shapes.
+**The dev server.** `slide-ng dev` runs three processes. The companion server, which saves slides, drawings and `slide-ng-drag` positions, listens on `127.0.0.1` only, and the dev server proxies `/__slide-ng/*` to it. For every request and every WebSocket upgrade it checks the `Host` and `Origin`. Writes need a random session token and a JSON content type, and with a password the cookie as well. A request never names a file: it names a slide number, which is looked up with the parser, or an `<integer>.svg`. Every path is confined to the deck's folder, so `..`, absolute paths and symlinks out are refused. Bodies and WebSocket messages have size limits, and drawing markup is checked against a whitelist of shapes.
 
 **`--remote`.** Only the dev server listens on the network. The password is optional, and the other checks still apply without one. It is sent without encryption and there is no HTTPS, so use it on a network you trust.
 

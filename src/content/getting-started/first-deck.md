@@ -55,8 +55,8 @@ Speaker notes go in the last HTML comment of a slide.
 
 # Clicks
 
-<div v-click>Appears on the first click</div>
-<div v-click>Appears on the second click</div>
+<div slide-ng-click>Appears on the first click</div>
+<div slide-ng-click>Appears on the second click</div>
 
 ---
 layout: two-cols

@@ -5,13 +5,13 @@ description: Draw hand-made marks on text at a click.
 
 # Marks
 
-`v-mark` draws a hand-made mark on an element at a click, with rough-notation. The library is only loaded when a deck uses it. It works like `v-click`:
+`slide-ng-mark` draws a hand-made mark on an element at a click, with rough-notation. The library is only loaded when a deck uses it. It works like `slide-ng-click`:
 
 ```md
-<span v-mark.red.circle="1">circled at click 1</span>
-<span v-mark.underline>underlined at the next click</span>
-<span v-mark="{ at: 3, type: 'box', color: '#234' }">boxed at click 3</span>
-<span v-mark="[2, 4]">shown at clicks 2 and 3 only</span>
+<span slide-ng-mark.red.circle="1">circled at click 1</span>
+<span slide-ng-mark.underline>underlined at the next click</span>
+<span slide-ng-mark="{ at: 3, type: 'box', color: '#234' }">boxed at click 3</span>
+<span slide-ng-mark="[2, 4]">shown at clicks 2 and 3 only</span>
 ```
 
 Modifiers:

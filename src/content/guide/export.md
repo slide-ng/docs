@@ -24,7 +24,7 @@ Export opens the deck in Chromium. slide.ng never downloads a browser, so set `C
 
 ## Clicks
 
-In a PDF, a slide that has clicks shows its last state. `--with-clicks` makes a page for every click step. `render-when context="print"` shows content only on paper, see [Components](../built-in/components.md).
+In a PDF, a slide that has clicks shows its last state. `--with-clicks` makes a page for every click step. `<slide-ng-render-when context="print">` shows content only on paper, see [Components](../built-in/components.md).
 
 ## Choosing slides and looks
 

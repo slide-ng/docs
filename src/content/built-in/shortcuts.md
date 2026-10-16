@@ -17,7 +17,7 @@ description: The keyboard and mouse controls of a deck, and how to change them.
 | `g` | Go to a slide: type a number or part of a title, then Enter |
 | Escape | Close the overview, dialogs and menus |
 
-Shortcuts are off while you type in an editor and while the drawing toolbar is open. When a `v-drag` element is selected, the arrow keys nudge it instead of moving through the slides.
+Shortcuts are off while you type in an editor and while the drawing toolbar is open. When a `slide-ng-drag` element is selected, the arrow keys nudge it instead of moving through the slides.
 
 ## Mouse
 

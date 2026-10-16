@@ -22,15 +22,15 @@ Notes are the last HTML comment of a slide. They show up in the presenter view.
 
 Press the right arrow or space.
 
-<v-clicks>
+<slide-ng-clicks>
 
 - the first item
 - the second item
 - the third item
 
-</v-clicks>
+</slide-ng-clicks>
 
-<div v-click class="mt-6 text-xl">And a block that shows on the next click.</div>
+<div slide-ng-click class="mt-6 text-xl">And a block that shows on the next click.</div>
 
 ---
 layout: two-cols
@@ -81,8 +81,8 @@ class: text-center
 
 # Marks and templates
 
-This is <span v-mark.red.circle="1">circled</span> at the first click,
-and <span v-mark.underline="2">underlined</span> at the second.
+This is <span slide-ng-mark.red.circle="1">circled</span> at the first click,
+and <span slide-ng-mark.underline="2">underlined</span> at the second.
 
 @let total = 3;
 

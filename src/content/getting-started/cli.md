@@ -29,7 +29,7 @@ A deck inside the slide.ng repository is built in place. Any other deck gets a w
 
 | Command | What it does |
 | --- | --- |
-| `dev` | Starts the dev server at `http://localhost:4230`, with live reload, the side editor and the companion server that saves drawings and `v-drag` positions. |
+| `dev` | Starts the dev server at `http://localhost:4230`, with live reload, the side editor and the companion server that saves drawings and `slide-ng-drag` positions. |
 | `build` | Makes a static site. `--base /talk/` for a sub-path, `--download` to also make the PDF. |
 | `export` | Opens the deck in Chromium and writes a PDF. `--format png`, `pptx` or `md` for the others. |
 | `format` | Rewrites `slides.md` with tidy spacing and clean YAML. |

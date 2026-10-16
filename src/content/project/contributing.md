@@ -20,7 +20,7 @@ Node 22.22.3 or newer. The tests use Chromium through `playwright-core`. Set `CH
 ```sh
 npm test             # unit tests: the generator, code and math handling, the click engine, shortcuts, transitions
 npm run test:e2e     # builds the starter deck and the feature decks and checks them in a real browser
-npm run test:dev     # starts the dev server: live updates, v-drag write-back, drawings, side editor
+npm run test:dev     # starts the dev server: live updates, slide-ng-drag write-back, drawings, side editor
 npm run test:export  # the command line: export, build, themes, create, the MCP server, offline
 ```
 

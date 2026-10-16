@@ -17,7 +17,7 @@ routeAlias: intro
 ---
 ```
 
-Now `/intro` opens the slide. `<slide-link to="intro">` links to it, see [Components](../built-in/components.md).
+Now `/intro` opens the slide. `<slide-ng-link to="intro">` links to it, see [Components](../built-in/components.md).
 
 ## Hash or history
 

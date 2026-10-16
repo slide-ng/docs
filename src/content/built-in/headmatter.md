@@ -15,7 +15,7 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `class` | Extra UnoCSS classes on the layout, or on the content for layouts with a `class` prop. |
 | `title` | The slide title. Otherwise the first `#` heading. Used in the browser tab, the table of contents and the go-to box. |
 | `level` | Depth in the table of contents. Otherwise the number of `#` in the first heading. |
-| `hideInToc` | Leave this slide out of `<slide-toc>`. |
+| `hideInToc` | Leave this slide out of `<slide-ng-toc>`. |
 | `routeAlias` | An extra address: `routeAlias: intro` makes `/intro` open the slide. |
 | `hide`, `disabled` | The slide is left out of the deck completely. |
 | `clicks` | Fixes the number of clicks, whatever the elements ask for. |
@@ -23,7 +23,7 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `transition` | The transition to the next slide. |
 | `src` | Take the slides from another file, optionally with a `#range`. |
 | `zoom` | Scale this slide. Wins over the headmatter. |
-| `dragPos` | Named positions for `v-drag`. |
+| `dragPos` | Named positions for `slide-ng-drag`. |
 | `image`, `url`, `scale`, `backgroundSize`, `background`, `layoutClass` | Props of some layouts. |
 
 ## Headmatter, for the deck

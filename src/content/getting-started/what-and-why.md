@@ -20,7 +20,7 @@ Count is {{ c.n() }}.
 
 <app-counter #c [start]="5" />
 
-<div v-click>Appears on the first click</div>
+<div slide-ng-click>Appears on the first click</div>
 ```
 
 ## Why it exists

@@ -26,13 +26,13 @@ This list is taken from the parity table that is kept with the slide.ng source, 
 
 ## Only in part
 
-- `v-motion`: CSS transitions between states, no spring physics or presets.
+- `slide-ng-motion`: CSS transitions between states, no spring physics or presets.
 - Recording: no separate camera file, no mp4 or mkv, no cloud upload.
 - `<youtube>`: no start time or playlist options.
 - `fonts`: loaded from the provider like Slidev's, plus `selfHost`, which is tested against a fake provider only.
 - Magic Move: `magicMoveDuration` and `magicMoveCopy` are read, the other `shiki.magicMove` options are not.
 - `colorSchema`: `auto`, `light` and `dark` work, `all` does not.
-- Touch: swiping works, but pinch zoom and touch tuning for drawing and `v-drag` were not tried on a real device.
+- Touch: swiping works, but pinch zoom and touch tuning for drawing and `slide-ng-drag` were not tried on a real device.
 - `addons`: resolution and merge order are tested, but no deck was built with an addon end to end.
 - Raw HTML: HTML and `<style>` work, `<script setup>` has no equivalent.
 

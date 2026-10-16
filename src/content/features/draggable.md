@@ -5,14 +5,14 @@ description: Move and resize elements on a slide, and save the position into the
 
 # Draggable elements
 
-`v-drag` makes an element movable:
+`slide-ng-drag` makes an element movable:
 
 ```md
-<img v-drag="[100, 200, 300, 150]" src="/pic.png">   <!-- x, y, width, height, in slide pixels -->
-<div v-drag="square">named: numbers in the frontmatter</div>
-<div v-drag>starts where it is and can be moved</div>
-<v-drag pos="100,200,300,_">height follows the content</v-drag>
-<v-drag-arrow pos="100,100,300,200" color="red" [width]="3" />
+<img slide-ng-drag="[100, 200, 300, 150]" src="/pic.png">   <!-- x, y, width, height, in slide pixels -->
+<div slide-ng-drag="square">named: numbers in the frontmatter</div>
+<div slide-ng-drag>starts where it is and can be moved</div>
+<slide-ng-drag pos="100,200,300,_">height follows the content</slide-ng-drag>
+<slide-ng-drag-arrow pos="100,100,300,200" color="red" [width]="3" />
 ```
 
 A named position lives in the slide's frontmatter:
