@@ -10,7 +10,7 @@ import {
   signal,
 } from '@angular/core';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
-import {LucideDynamicIcon, LucideChevronDown} from '@lucide/angular';
+import {LucideDynamicIcon, LucideChevronDown, LucideHeart} from '@lucide/angular';
 import config from '../../ngmd.config';
 import {BADGE_VARIANTS, type BadgeVariant} from '../../types/badge';
 import {onNavigation} from '../utils/enhance-on-navigation';
@@ -82,6 +82,17 @@ export class SidebarState {
           }
         </div>
       }
+      @if (sponsorUrl) {
+        <a
+          [href]="sponsorUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center gap-2 rounded-md px-3 py-1.5 text-zinc-700 dark:text-brand-muted-dark hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)]"
+        >
+          <svg [lucideIcon]="heart" class="size-4 text-[color:var(--accent-strong)]"></svg>
+          Sponsor
+        </a>
+      }
     </nav>
   `,
 })
@@ -95,6 +106,8 @@ export class Sidebar implements AfterViewInit {
 
   readonly sections = config.nav;
   readonly chevron = LucideChevronDown;
+  readonly heart = LucideHeart;
+  readonly sponsorUrl = config.site.links?.sponsor;
 
   isOpen(label: string): boolean {
     return this.state.openSections().has(label);

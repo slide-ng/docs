@@ -152,6 +152,7 @@ const config: NgmdConfig = {
     // Sub-path the site is served from. '/' is a host root.
     base: '/',
     githubUrl: 'https://github.com/slide-ng/slide.ng',
+    links: {sponsor: 'https://github.com/sponsors/erkamyaman'},
   },
 
   // No page actions on this site.

@@ -17,6 +17,7 @@ import {
   LucideDynamicIcon,
   LucideMenu,
   LucideMoon,
+  LucideHeart,
   LucideSearch,
   LucideSun,
   LucideSunMoon,
@@ -162,6 +163,17 @@ import {ContentBanners} from './components/content-banners';
             <svg [lucideIcon]="searchIcon" class="size-5"></svg>
           </button>
           <span class="hidden sm:block h-4 w-px bg-zinc-300/60 dark:bg-zinc-700/60"></span>
+          @if (sponsorUrl) {
+            <a
+              [href]="sponsorUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded p-1.5 text-[color:var(--accent-strong)] hover:bg-zinc-100 dark:hover:bg-zinc-900"
+              aria-label="Sponsor"
+            >
+              <svg [lucideIcon]="heartIcon" class="size-5"></svg>
+            </a>
+          }
           <a
             [href]="githubUrl"
             target="_blank"
@@ -304,6 +316,7 @@ export class App implements OnInit {
   readonly menuIcon = LucideMenu;
   readonly closeIcon = LucideX;
   readonly searchIcon = LucideSearch;
+  readonly heartIcon = LucideHeart;
   readonly sunIcon = LucideSun;
   readonly moonIcon = LucideMoon;
   readonly autoIcon = LucideSunMoon;
@@ -311,6 +324,7 @@ export class App implements OnInit {
   readonly siteName = siteConfig.site.name;
   readonly githubUrl = siteConfig.site.githubUrl;
   readonly discordUrl = siteConfig.site.links?.discord;
+  readonly sponsorUrl = siteConfig.site.links?.sponsor;
   readonly headerNav = siteConfig.headerNav ?? [];
 
   readonly drawerOpen = signal(false);
