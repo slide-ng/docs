@@ -1,0 +1,48 @@
+// Builds the example decks in demos/ into public/demos/<name>/ with the slide.ng command line.
+//
+//   node scripts/build-demos.mjs [name ...]
+//
+// It needs a checkout of slide.ng (with its dependencies installed) and, for the theme decks, a checkout of
+// slide.ng-themes. Point to them with SLIDE_NG_DIR and SLIDE_NG_THEMES_DIR (defaults: ../slide.ng and
+// ../slide.ng-themes). The built decks are committed, so the site build itself needs neither.
+import {spawnSync} from 'node:child_process';
+import {existsSync, readdirSync, rmSync} from 'node:fs';
+import {dirname, join, resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const slideNg = resolve(process.env.SLIDE_NG_DIR ?? join(root, '..', 'slide.ng'));
+const themes = resolve(process.env.SLIDE_NG_THEMES_DIR ?? join(root, '..', 'slide.ng-themes'));
+const cli = join(slideNg, 'bin', 'slide-ng.mjs');
+if (!existsSync(cli)) throw new Error(`No slide.ng checkout at ${slideNg}. Set SLIDE_NG_DIR.`);
+
+const all = readdirSync(join(root, 'demos'), {withFileTypes: true})
+  .filter(
+    (entry) => entry.isDirectory() && existsSync(join(root, 'demos', entry.name, 'slides.md')),
+  )
+  .map((entry) => entry.name);
+const wanted = process.argv.slice(2).length ? process.argv.slice(2) : all;
+
+for (const name of wanted) {
+  if (!all.includes(name)) throw new Error(`Unknown demo "${name}". Known: ${all.join(', ')}`);
+  const args = [
+    cli,
+    'build',
+    join('demos', name, 'slides.md'),
+    '--base',
+    `/demos/${name}/`,
+    '--out',
+    join('public', 'demos', name),
+  ];
+  // demos/theme-<name> use the theme package of the slide.ng-themes checkout instead of one from node_modules.
+  const theme = name.startsWith('theme-') ? join(themes, 'packages', name) : null;
+  if (theme) {
+    if (!existsSync(theme))
+      throw new Error(`No theme package at ${theme}. Set SLIDE_NG_THEMES_DIR.`);
+    args.push('--theme', theme);
+  }
+  console.log(`\n== ${name}`);
+  const result = spawnSync(process.execPath, args, {cwd: root, stdio: 'inherit'});
+  if (result.status !== 0) throw new Error(`Building the demo "${name}" failed`);
+  rmSync(join(root, 'public', 'demos', name, '_redirects'), {force: true});
+}
