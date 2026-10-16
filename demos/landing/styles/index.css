@@ -1,0 +1,52 @@
+/* The slide.ng brand on the landing deck: paper and ink, the orange for large headings and bullets. */
+:root {
+  --slidev-theme-primary: #d9480f;
+  --slidev-slide-container-background: #fbf8f3;
+}
+html.dark {
+  --slidev-slide-container-background: #16131a;
+}
+.canvas {
+  background: #fbf8f3;
+  color: #16131a;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+html.dark .canvas {
+  background: #16131a;
+  color: #fbf8f3;
+}
+.slidev-layout h1 {
+  color: #d9480f;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.slidev-layout li::marker {
+  color: #d9480f;
+}
+/* The same list spacing as Slidev's home page demo. */
+.slidev-layout ul {
+  padding: 0;
+}
+.slidev-layout li {
+  line-height: 2.4em;
+}
+/* The cover has a dark picture behind it, in light mode too. */
+.slidev-layout.cover {
+  color: #fbf8f3;
+  background-color: #16131a;
+}
+.slidev-layout.cover h1 {
+  color: #fbf8f3;
+}
+.slidev-layout.cover h1 + p,
+html.dark .slidev-layout.cover h1 + p {
+  color: #e4dfe9;
+}
+/* The subtitle under a title: full strength, in the muted text colour of the site. */
+.slidev-layout h1 + p {
+  opacity: 1;
+  color: #4f4b55;
+}
+html.dark .slidev-layout h1 + p {
+  color: #c9c4cf;
+}

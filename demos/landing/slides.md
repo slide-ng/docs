@@ -1,47 +1,16 @@
 ---
-routerMode: hash
-canvasWidth: 560
+layout: cover
+background: /demo-cover.svg
 ---
 
-# slide.ng
+# Welcome to slide.ng!
 
 Presentation slides for Angular developers
 
 ---
 
-# Markdown in
+# Page 2
 
-<v-clicks>
-
-- One file, `slides.md`
-- Angular templates inside: {{ 6 * 7 }}
-- A static site out
-
-</v-clicks>
-
----
-
-# Code, step by step
-
-```ts {1|2|all}
-const name = 'slide.ng';
-const hello = `Hello ${name}`;
-```
-
----
-layout: two-cols
----
-
-# Left
-
-Plain markdown.
-
-::right::
-
-# Right
-
-Angular too.
-
----
-layout: end
----
+- 📄 Write slides in a single Markdown file
+- 🌈 Themes, code blocks, Angular components
+- 😎 Read the docs to learn more!

@@ -38,7 +38,7 @@ const FEATURES: Feature[] = [
       @for (feature of features; track feature.title) {
         <li>
           <h2 class="m-0 text-base font-semibold">{{ feature.title }}</h2>
-          <p class="mt-2 mb-3 text-sm text-zinc-600 dark:text-zinc-400">
+          <p class="mt-2 mb-3 text-sm text-brand-muted">
             {{ feature.text }}
           </p>
           <p class="m-0 flex flex-wrap gap-x-4 text-sm">
