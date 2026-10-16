@@ -11,11 +11,11 @@ Wrap blocks in `::code-group` and `::`. The tab name is the title in brackets.
 ::code-group
 
 ```sh [npm]
-npm i slide-ng
+npm i @slide-ng/core
 ```
 
 ```sh [yarn]
-yarn add slide-ng
+yarn add @slide-ng/core
 ```
 
 ::

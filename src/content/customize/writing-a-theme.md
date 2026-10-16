@@ -94,7 +94,7 @@ A theme is a folder, so publish it as an npm package with these folders at the t
   "license": "MIT",
   "keywords": ["slide-ng-theme", "slide-ng"],
   "files": ["layouts", "components", "styles", "public", "setup", "theme.json"],
-  "peerDependencies": { "slide-ng": "*" }
+  "peerDependencies": { "@slide-ng/core": "*" }
 }
 ```
 
