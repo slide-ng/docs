@@ -11,6 +11,8 @@ The four official themes are rebuilt from the official Slidev themes: `seriph` b
 
 slide.ng is built on *Angular, with *Shiki, *KaTeX, *Mermaid, *Monaco and *UnoCSS, and draws with `drauu` and `rough-notation`.
 
+The cover of the demo on the home page shows the Angular logo, drawn in one flat colour. The logo is by Google LLC and the Angular team, from the [Angular press kit](https://angular.dev/press-kit), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). It was changed: the gradient was removed and the colour set to the slide.ng orange. This is not an endorsement by Google or the Angular team. Angular is a trademark of Google LLC.
+
 This documentation is made with *NgMd. The pictures of layouts and of the interface are screenshots of slide.ng's own test decks.
 
 ## Licence
