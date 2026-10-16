@@ -77,6 +77,19 @@ NGMD_BASE=/slide.ng-docs/ pnpm run check:dist
 
 The base is written into `<base href>`, the router, the links and images in the pages, the sitemap and the embedded decks (`demos-base.plugin.ts` puts the base in front of the deck addresses, so the committed decks need no rebuild). Set `site.url` to the origin, without the sub-path, so the sitemap and the social tags are right. The deploy workflow publishes to GitHub Pages.
 
+### Cloudflare Pages (slide-ng.dev)
+
+In the Cloudflare dashboard: Workers & Pages, Create, Pages, Connect to Git, pick this repository, then:
+
+| Setting                | Value                |
+| ---------------------- | -------------------- |
+| Production branch      | `main`               |
+| Build command          | `pnpm run build`     |
+| Build output directory | `dist/analog/public` |
+| Root directory         | (empty)              |
+
+`.node-version` picks Node 22 and the lockfile picks pnpm. After the first deploy, add the custom domain `slide-ng.dev` in the project's Custom domains tab. `public/_headers` sets the cache and security headers, and the build writes a `404.html` that Pages serves for unknown addresses.
+
 ## Writing
 
 `CONTRIBUTING.md` is the writing guide: voice, how a page is built, how samples are checked.
