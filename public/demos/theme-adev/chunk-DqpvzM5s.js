@@ -1,0 +1,1 @@
+import"./main-P5M3VN3K.js";import{C,w as v}from"./chunk-DhkdZtQ1.js";export{v as createArchitectureServices};
