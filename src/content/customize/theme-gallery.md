@@ -5,7 +5,7 @@ description: The five official slide.ng themes, with a live deck for each and cr
 
 # Theme gallery
 
-Four of the official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng, and `adev` is a new theme inspired by angular.dev. Each one lives in its own package in the slide.ng-themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks`, `@slide-ng/theme-apple-basic` and `@slide-ng/theme-adev`. Each deck below has a slide for every layout of its theme. The theme fonts load from Google Fonts, so the decks look right with a network.
+Four of the official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng, and `adev` is a new theme inspired by angular.dev. Each one lives in its own package in the slide.ng-themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks`, `@slide-ng/theme-apple-basic` and `@slide-ng/theme-adev`. Each deck below has a slide for every layout of its theme, and the adev deck has a slide for every component too. The theme fonts load from Google Fonts, so the decks look right with a network.
 
 <ngmd-tabs>
   <ngmd-tab title="seriph">
@@ -21,7 +21,7 @@ Four of the official themes are ports of the official Slidev themes, rebuilt as 
     <ngmd-demo src="/demos/theme-apple-basic/" title="apple-basic, 11 slides"></ngmd-demo>
   </ngmd-tab>
   <ngmd-tab title="adev">
-    <ngmd-demo src="/demos/theme-adev/" title="adev, 20 slides"></ngmd-demo>
+    <ngmd-demo src="/demos/theme-adev/" title="adev, 39 slides"></ngmd-demo>
   </ngmd-tab>
 </ngmd-tabs>
 
@@ -65,7 +65,10 @@ The look of [angular.dev](https://angular.dev), the Angular documentation site, 
 - Light and dark are both complete, as on angular.dev, with the theme's own switch: a small sun or moon button in the top right corner of every slide. It only recolours the slides, not the slide.ng dock, and the choice is stored and starts from the system preference.
 - Code uses angular.dev's Shiki themes (`github-light` and `github-dark`), and Angular code is highlighted out of the box: `angular-ts`, `angular-html`, `ng`, `ng-ts` and `ng-html` fences need no setup file, including `@Component` templates and `@if`, `@for` and `@defer` blocks.
 - 12 layouts: `cover`, `intro`, `default`, `center`, `section`, `two-cols`, `image-right`, `image-left`, `quote`, `fact`, `statement` and `end`.
-- Components `<adev-callout>`, `<adev-card-grid>` with `<adev-card>`, `<adev-stat>`, `<adev-count-up>`, `<adev-code-card>`, `<adev-steps>` and `<adev-button>`.
+- Components: alerts (nine kinds, also as `NOTE:` paragraphs), pills, API item labels, kbd keys, a decorative header, `<adev-callout>`, `<adev-card-grid>` with `<adev-card>`, `<adev-stat>`, `<adev-count-up>`, `<adev-steps>` and `<adev-button>`.
+- Code: prefer and avoid cards (`{prefer}` and `{avoid}` fences), line numbers, highlights, diff lines, a copy button, `::code-group` file tabs, `<<<` snippet cards and `<adev-code-card>`.
+- Media: tabs with `<adev-tab-group>`, image sizes (`#small`, `#medium`), `<adev-video>` and Mermaid diagrams drawn in the theme colours.
+- Every component has its syntax and an example in the [theme README](https://github.com/slide-ng/slide.ng-themes/blob/main/packages/theme-adev/README.md).
 - No Angular logo, wordmark or mascot is included.
 
 ## Use one
