@@ -84,6 +84,7 @@ export default defineConfig(async () => ({
     releaseAfterLastBuild(
       analog({
         apiPrefix: '_server',
+        nitro: {preset: 'static'},
         prerender: {
           routes: async () => prerenderRoutes(import.meta.dirname),
         },
