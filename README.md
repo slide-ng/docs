@@ -24,7 +24,7 @@ pnpm is what the lockfile and CI use. `npm install` works too: the `overrides` i
 
 - Pages are markdown files under `src/content/`. The path is the URL.
 - The sidebar, header links and the site's name and URL are in `src/ngmd.config.ts`.
-- The home page is `src/app/pages/index.page.ts`. It has no sidebar. Its live demo (`src/app/landing/`) types out `demos/landing/slides.md` and shows the built deck next to it. See "The landing demo" below.
+- The home page is `src/app/pages/index.page.ts`. It has no sidebar. Its live demo (`src/app/landing/`) types out `demos/landing/slides.md` and shows the built slides next to it. See "The landing demo" below.
 - `<ngmd-demo src="/demos/starter/" title="..."></ngmd-demo>` embeds a built deck in an iframe. The component is `src/app/ui/demo.ts`.
 - NgMd's other authoring components (callouts, cards, tabs, ...) work inline in markdown. See `CONTRIBUTING.md`.
 
@@ -43,17 +43,28 @@ Rebuild them when slide.ng changes in a way a deck shows.
 
 ## The landing demo
 
-The right side of the home page types `demos/landing/slides.md` into an editor panel, and a frame shows the real build of that deck (`public/demos/landing/`), one slide at a time, as each slide's markdown is complete. A click on the frame takes over; typing stops. With `prefers-reduced-motion` the whole text is shown at once.
+The home page copies the hero demo of Slidev's own site: an editor window that types a deck, and a slide card over its bottom right corner that shows the real slides as they take shape. The card has two pages side by side, and turns from the first to the second while the bullets are typed.
 
-After you change `demos/landing/slides.md`, run:
+- `src/app/landing/choreography.ts` is the script: a list of steps (type, move, delete, pause, exec) run by the small engine in `steps.ts`, with the timings of Slidev's demo. Its `exec` steps say when the slide changes.
+- `demos/landing/slides.md` is the whole text the script types. `pnpm test` fails if the script types anything else, byte for byte. The text has no `v-` tags.
+- The slides are real slide.ng output. `scripts/landing-stages.mjs` replays the script, takes the markdown at each moment and writes one deck with a slide for every moment (title, title and subtitle, `layout: center`, `cover`, with the background, page 2 empty, its title, one, two and three bullets). `demos/landing/public/` and `demos/landing/styles/` (the cover picture, an SVG made for this site, and the brand colours) go into it. The card shows slide N of that deck in a frame of the design size (980 wide), scaled to the card, so its text is as large relative to the card as in Slidev.
+- With `prefers-reduced-motion` the whole text and the last state are shown at once.
+
+After you change the script, `demos/landing/slides.md`, the cover or the styles, run:
 
 ```sh
-SLIDE_NG_DIR=../slide.ng pnpm run demos landing
+SLIDE_NG_DIR=../slide.ng pnpm run demos landing --write-source
 ```
 
-It rebuilds the deck, copies the text into `src/app/landing/deck-source.ts` and writes a fingerprint next to the build. `pnpm test` fails if either is out of date. If the deck gets more slides or clicks, update `DECK_CLICKS` in `src/app/landing/deck.ts`.
+`--write-source` writes `slides.md` from the script first. The build goes to `public/demos/landing/` (one deck of about 500 KB, loaded twice by the page from the same address, so the browser fetches it once) with a fingerprint next to it; `pnpm test` fails if the fingerprint is out of date.
 
-`pnpm run check:landing` opens the built site in Chromium (it needs `playwright-core` and a Chromium, see the top of `scripts/check-landing.mjs`), checks the demo and writes screenshots to `tmp/landing-shots/`.
+`pnpm run check:landing` opens the built site in Chromium (it needs `playwright-core` and a Chromium, see the top of `scripts/check-landing.mjs`), checks the demo, the keyboard access and the contrast of every text (WCAG AA), and writes screenshots to `tmp/landing-shots/`.
+
+## Brand
+
+The palette (orange, deep orange, amber, ink, paper, sand) is in `src/styles.css` as `--slideng-*` tokens, mapped to the site's variables in light and dark mode; the grey scale of the components is the warm paper and ink scale. Orange is for the logo, large headings and icons. Small text, links and button backgrounds use the deep orange, because the orange alone does not reach 4.5:1 on paper. Amber is for dark backgrounds only.
+
+`public/logo-mark.svg` (and `favicon.svg`) is a redraw of the logo from a preview image. The real SVG from the designer replaces it: drop it in at the same names and run `node scripts/make-brand-assets.mjs` to make the PNG icons, `favicon.ico` and `og.png` again. The wordmark files (`logo-title-light.svg`, `logo-title-dark.svg`) are outlined from Inter Bold.
 
 ## Hosting
 

@@ -1,84 +1,90 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
-import {GithubIcon} from '../ui/github-icon';
 import {LandingDemo} from '../landing/landing-demo';
 import {LandingFeatures} from '../landing/landing-features';
 
 /**
- * The home page. It has no docs sidebar (the app shell hides it on `/`): the name, the tagline
- * and two buttons on the left, the live demo on the right, three highlights below.
+ * The home page, laid out like Slidev's: no docs sidebar (the app shell hides it on `/`), a left
+ * column with the logo, the tagline and two buttons, and the live demo on the right. On screens
+ * narrower than `xl` the two stack. Three highlights follow below.
  */
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, GithubIcon, LandingDemo, LandingFeatures],
+  imports: [RouterLink, LandingDemo, LandingFeatures],
   template: `
-    <div class="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:py-16 xl:px-12">
-      <section
-        class="grid items-center gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12"
-      >
-        <div class="flex flex-col items-center text-center">
-          <img src="logo-mark.svg" alt="" aria-hidden="true" class="size-24 sm:size-28" />
-          <h1
-            class="mt-6 mb-0 font-[Geist_Mono,ui-monospace,monospace] text-5xl font-bold tracking-tight sm:text-6xl"
+    <div
+      class="mx-auto min-h-[80vh] max-w-[100vw] gap-4 px-8 py-5 xl:grid xl:max-w-[112.5rem] xl:grid-cols-[3fr_4fr] xl:px-20"
+    >
+      <div class="flex min-h-[37.5rem] flex-col items-center justify-center max-xl:min-h-[28rem]">
+        <h1 class="sr-only">slide.ng</h1>
+        <img
+          src="logo-mark.svg"
+          alt=""
+          aria-hidden="true"
+          width="160"
+          height="160"
+          class="w-36 xl:w-44"
+        />
+        <img
+          src="logo-title-light.svg"
+          alt=""
+          aria-hidden="true"
+          width="400"
+          height="112"
+          class="mt-4 w-72 xl:w-96 dark:hidden"
+        />
+        <img
+          src="logo-title-dark.svg"
+          alt=""
+          aria-hidden="true"
+          width="400"
+          height="112"
+          class="mt-4 hidden w-72 xl:w-96 dark:block"
+        />
+        <p class="m-0 mt-3 text-balance text-center text-2xl text-brand-muted sm:text-3xl">
+          Presentation slides for Angular developers
+        </p>
+        <div class="mt-5 flex justify-center gap-3 p-4">
+          <a
+            routerLink="/getting-started/install"
+            class="landing-button h-max rounded-xl bg-brand-deep px-5 py-3 text-xl font-bold !text-zinc-50 no-underline hover:bg-brand-dark"
           >
-            slide.ng
-          </h1>
-          <p class="mt-4 mb-0 text-xl text-zinc-600 sm:text-2xl dark:text-zinc-400">
-            Presentation slides for Angular developers
-          </p>
-          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a
-              routerLink="/getting-started/install"
-              class="landing-button rounded-xl bg-fuchsia-700 px-6 py-3 text-lg font-bold !text-white no-underline hover:bg-fuchsia-800"
-            >
-              Get Started
-            </a>
-            <a
-              routerLink="/getting-started/what-and-why"
-              class="landing-button rounded-xl bg-zinc-800 px-6 py-3 text-lg font-bold !text-white no-underline hover:bg-zinc-600 dark:bg-zinc-200 dark:!text-zinc-900 dark:hover:bg-zinc-400"
-            >
-              Why
-            </a>
-          </div>
-          <p class="mt-6 flex items-center gap-4 text-sm text-zinc-500">
-            <a
-              [href]="githubUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-zinc-500 no-underline hover:text-zinc-900 dark:hover:text-zinc-100"
-            >
-              <svg ngmdGithubIcon class="size-4"></svg>
-              GitHub
-            </a>
-            <a
-              routerLink="/welcome"
-              class="text-zinc-500 no-underline hover:text-zinc-900 dark:hover:text-zinc-100"
-            >
-              Introduction
-            </a>
-          </p>
+            Get Started
+          </a>
+          <a
+            routerLink="/getting-started/what-and-why"
+            class="landing-button h-max rounded-xl bg-zinc-950 px-5 py-3 text-xl font-bold !text-zinc-50 no-underline hover:bg-brand-deep dark:bg-zinc-100 dark:!text-zinc-950 dark:hover:!text-zinc-50"
+          >
+            Why
+          </a>
         </div>
+      </div>
 
-        <app-landing-demo />
-      </section>
-
-      <section class="mt-16 border-t border-zinc-200 pt-10 dark:border-zinc-800 lg:mt-20">
-        <app-landing-features />
-      </section>
-
-      <p class="mt-12 mb-0 text-center text-sm text-zinc-500">
-        slide.ng is early and not on npm yet. Read
-        <a routerLink="/migrating/not-supported">what is not supported</a>
-        before you start.
-      </p>
+      <div class="flex">
+        <app-landing-demo class="m-auto w-full" />
+      </div>
     </div>
+
+    <section
+      class="mx-auto mt-10 max-w-6xl border-t border-zinc-200 px-8 pt-10 dark:border-zinc-800"
+    >
+      <app-landing-features />
+    </section>
+
+    <p class="mt-12 mb-10 text-center text-sm text-brand-muted">
+      slide.ng is early and not on npm yet. Read
+      <a routerLink="/migrating/not-supported">what is not supported</a>
+      before you start.
+    </p>
   `,
   styles: `
     :host {
       display: block;
     }
+    .landing-button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
   `,
 })
-export default class HomePage {
-  protected readonly githubUrl = 'https://github.com/slide-ng/slide.ng';
-}
+export default class HomePage {}

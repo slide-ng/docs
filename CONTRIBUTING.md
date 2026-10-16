@@ -42,7 +42,7 @@ A deck in `demos/<name>/slides.md` is built into `public/demos/<name>/` by `pnpm
 <ngmd-demo src="/demos/<name>/" title="What the reader sees"></ngmd-demo>
 ```
 
-The home page types out `demos/landing/slides.md`. After a change to it run `pnpm run demos landing`, which also refreshes `src/app/landing/deck-source.ts`. `pnpm test` fails when the file, the copy or the build is out of date.
+The home page types out `demos/landing/slides.md`, following the script in `src/app/landing/choreography.ts`. After a change to either run `pnpm run demos landing --write-source`. `pnpm test` fails when the file, the script or the build is out of date.
 
 Keep decks small. Do not use Monaco in a demo: it makes the deck many megabytes.
 
