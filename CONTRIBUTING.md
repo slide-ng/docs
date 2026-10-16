@@ -55,6 +55,7 @@ pnpm run build
 pnpm run check:dist
 ```
 
+- Links in `src/content` start with `/` or are relative `.md` paths; both work under a `site.base`. Check a sub-path build with `NGMD_BASE=/x/ pnpm run build` and `NGMD_BASE=/x/ pnpm run check:dist`.
 - Prettier formats the TypeScript, CSS and config files. It leaves `src/content` and `demos` alone, so line breaks in prose are yours.
 - The build fails on a broken internal link or heading anchor. Fix the link, not the check.
 - Commit messages: `<type>: short imperative summary`, with `docs` for content, `feat` for the site, `build` for tooling, `fix` and `chore`. Keep the first line under 70 characters.

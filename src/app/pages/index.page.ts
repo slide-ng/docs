@@ -19,7 +19,7 @@ Count is {{ c.n() }}.
   imports: [RouterLink, NgmdCard, NgmdCardGrid, NgmdCodeBlock, NgmdDemo],
   template: `
     <section class="mx-auto max-w-4xl px-6 pt-16 pb-8 text-center">
-      <img src="/logo-mark.svg" alt="" aria-hidden="true" class="mx-auto size-16" />
+      <img src="logo-mark.svg" alt="" aria-hidden="true" class="mx-auto size-16" />
       <h1 class="mt-6 text-5xl font-bold tracking-tight">slide.ng</h1>
       <p class="mx-auto mt-4 max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
         Presentations written in markdown, with real Angular template syntax inside. One file in, a

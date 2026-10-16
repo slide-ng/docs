@@ -17,7 +17,7 @@ pnpm test             # unit tests of the authoring components
 pnpm run format:check
 ```
 
-`npm install` does not work with the scaffold's `overrides` (npm 10 stops with `Unable to resolve reference $vitest`), so the repository uses pnpm.
+pnpm is what the lockfile and CI use. `npm install` works too: the `overrides` in `package.json` are literal version ranges.
 
 ## How the site is made
 
@@ -42,7 +42,14 @@ Rebuild them when slide.ng changes in a way a deck shows.
 
 ## Hosting
 
-The site must be served from the root of a host (`https://docs.example.org/`, not `https://example.org/slide.ng-docs/`). NgMd writes absolute paths and has no base path option. The deploy workflow publishes to GitHub Pages: use a custom domain, or an organisation site named `<org>.github.io`. Set `site.url` in `src/ngmd.config.ts` to the real address so the sitemap and the social tags are right.
+The site is built for the root of a host (`https://docs.example.org/`) by default. To serve it from a sub-path, for example a GitHub Pages project site at `https://slide-ng.github.io/slide.ng-docs/`, set `site.base` in `src/ngmd.config.ts` or build with the environment variable, which wins over the config:
+
+```sh
+NGMD_BASE=/slide.ng-docs/ pnpm run build
+NGMD_BASE=/slide.ng-docs/ pnpm run check:dist
+```
+
+The base is written into `<base href>`, the router, the links and images in the pages, the sitemap and the embedded decks (`demos-base.plugin.ts` puts the base in front of the deck addresses, so the committed decks need no rebuild). Set `site.url` to the origin, without the sub-path, so the sitemap and the social tags are right. The deploy workflow publishes to GitHub Pages.
 
 ## Writing
 

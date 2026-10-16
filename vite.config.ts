@@ -10,12 +10,17 @@ import {internalLinkGuard} from './link-guard.plugin.ts';
 import {mdLinksPlugin} from './md-links.plugin.ts';
 import {siteHtmlPlugin} from './site-html.plugin.ts';
 import {sitemapPlugin} from './sitemap.plugin.ts';
+import {demosBasePlugin} from './demos-base.plugin.ts';
 import {searchIndexPlugin} from './search-index.plugin.ts';
 import {rawMdPlugin} from './raw-md.plugin.ts';
 import {varsPlugin} from './vars.plugin.ts';
 import {apiGenPlugin} from './api-gen.plugin.ts';
 import {prerenderRoutes, withoutCode} from './plugin-utils.ts';
 import config from './src/ngmd.config.ts';
+import {resolveBase} from './src/base.ts';
+
+// Sub-path the site is served from. `NGMD_BASE` wins over `site.base`.
+const base = resolveBase(config.site.base, process.env['NGMD_BASE']);
 
 /**
  * Build-time guard: errors when a markdown file in `src/content/` contains
@@ -53,21 +58,23 @@ export default defineConfig(async () => ({
   build: {
     target: ['es2020'],
   },
+  base,
   resolve: {
     mainFields: ['module'],
   },
   plugins: [
-    siteHtmlPlugin(config.site),
+    siteHtmlPlugin({...config.site, base}),
     varsPlugin(),
     externalLinkGuard(),
     internalLinkGuard(),
-    mdLinksPlugin(),
+    mdLinksPlugin({base}),
     pageMetaPlugin({
       repoUrl: config.site.githubUrl,
       branch: config.site.githubBranch ?? 'main',
       dir: config.site.githubDir,
     }),
-    sitemapPlugin({siteUrl: config.site.url}),
+    sitemapPlugin({siteUrl: config.site.url, base}),
+    demosBasePlugin({base}),
     rawMdPlugin(),
     searchIndexPlugin(),
     apiGenPlugin(),
@@ -79,7 +86,7 @@ export default defineConfig(async () => ({
       content: {
         highlighter: 'shiki',
         markedOptions: {
-          extensions: await getBuildExtensions(),
+          extensions: await getBuildExtensions(base),
         },
         shikiOptions: {
           highlight: {
@@ -98,7 +105,7 @@ export default defineConfig(async () => ({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['src/test-setup.ts'],
-    include: ['src/**/*.spec.ts'],
+    include: ['*.spec.ts', 'src/**/*.spec.ts'],
     reporters: ['default'],
   },
 }));

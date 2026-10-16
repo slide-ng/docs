@@ -1,11 +1,21 @@
 import {Marked} from 'marked';
 import {findFences, getAttr, hasFlag} from './fences';
 import {ngmdImageExtension} from './ngmd-image';
+import {ngmdBaseExtension, prefixRootLinks} from './ngmd-base';
 import {ngmdKeywordsExtension} from './ngmd-keywords';
 import {ngmdVideoExtension} from './ngmd-video';
 import {ngmdRuntimeExtensions} from './runtime';
 
-vi.mock('../ngmd.config.ts', () => ({default: {keywords: {Kw: '/kw'}}}));
+vi.mock('../ngmd.config.ts', () => ({
+  default: {
+    keywords: {
+      Kw: '/kw',
+      'slide.ng': '/slide-ng',
+      'Next.js': 'https://nextjs.org',
+      'Kw.js': '/kw-js',
+    },
+  },
+}));
 
 function render(markdown: string): string {
   return new Marked({extensions: [ngmdImageExtension, ngmdVideoExtension]}).parse(
@@ -84,11 +94,98 @@ describe('ngmd-keywords', () => {
     );
   });
 
+  describe('dotted keywords', () => {
+    it('links a keyword that contains a dot', () => {
+      expect(md('Built with *slide.ng today')).toBe(
+        '<p>Built with <a href="/slide-ng">slide.ng</a> today</p>\n',
+      );
+      expect(md('Use *Next.js here')).toBe(
+        '<p>Use <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer">Next.js</a> here</p>\n',
+      );
+    });
+
+    it('leaves a trailing dot at the end of a sentence outside the link', () => {
+      expect(md('It is *slide.ng.')).toBe('<p>It is <a href="/slide-ng">slide.ng</a>.</p>\n');
+      expect(md('See *slide.ng... or *Kw.')).toBe(
+        '<p>See <a href="/slide-ng">slide.ng</a>... or <a href="/kw">Kw</a>.</p>\n',
+      );
+      expect(md('(*slide.ng.) and *slide.ng, *slide.ng; *slide.ng!')).toBe(
+        '<p>(<a href="/slide-ng">slide.ng</a>.) and <a href="/slide-ng">slide.ng</a>, <a href="/slide-ng">slide.ng</a>; <a href="/slide-ng">slide.ng</a>!</p>\n',
+      );
+    });
+
+    it('prefers the longest configured keyword and falls back to a shorter prefix', () => {
+      expect(md('*Kw.js is fast')).toBe('<p><a href="/kw-js">Kw.js</a> is fast</p>\n');
+      expect(md('*Kw.Other thing')).toBe('<p><a href="/kw">Kw</a>.Other thing</p>\n');
+      expect(md('*slide.ng.x')).toBe('<p><a href="/slide-ng">slide.ng</a>.x</p>\n');
+    });
+
+    it('keeps dotted keywords out of links and code', () => {
+      expect(md('[the *slide.ng docs](/x) `*slide.ng`')).toBe(
+        '<p><a href="/x">the slide.ng docs</a> <code>*slide.ng</code></p>\n',
+      );
+    });
+
+    it('leaves lowercase emphasis and unknown lowercase words alone, without warning', () => {
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+      expect(md('*slide.ng* and *other.thing here *note* *constructor x')).toBe(
+        '<p><em>slide.ng</em> and *other.thing here <em>note</em> *constructor x</p>\n',
+      );
+      expect(warn).not.toHaveBeenCalled();
+      warn.mockRestore();
+    });
+
+    it('does not treat a double dot or bold as part of the keyword', () => {
+      expect(md('**slide.ng** and *slide..ng')).toBe(
+        '<p><strong>slide.ng</strong> and *slide..ng</p>\n',
+      );
+    });
+  });
+
   it('does not warn about emphasis that starts with a capital', () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
     expect(md('*Note:* hi')).toBe('<p><em>Note:</em> hi</p>\n');
     expect(warn).not.toHaveBeenCalled();
     warn.mockRestore();
+  });
+});
+
+describe('ngmd-base', () => {
+  const md = (src: string, base: string) =>
+    new Marked(ngmdBaseExtension(base)).parse(src) as string;
+
+  it('prefixes root-absolute links and images with the base', () => {
+    expect(md('[Theming](/concepts/theming) ![cat](/images/cat.jpg)', '/repo/')).toBe(
+      '<p><a href="/repo/concepts/theming">Theming</a> <img src="/repo/images/cat.jpg" alt="cat"></p>\n',
+    );
+  });
+
+  it('keeps the link fragment and handles the home link', () => {
+    expect(md('[a](/guide#setup) [home](/)', '/repo/')).toBe(
+      '<p><a href="/repo/guide#setup">a</a> <a href="/repo/">home</a></p>\n',
+    );
+  });
+
+  it('leaves external, protocol-relative, relative and fragment links alone', () => {
+    const src = '[a](https://x.dev/a) [b](//cdn.x.dev/b) [c](rel/c) [d](#frag) [e](mailto:a@b.c)';
+    expect(md(src, '/repo/')).toBe(new Marked().parse(src));
+  });
+
+  it('prefixes raw HTML anchors and media, but not custom elements', () => {
+    const html =
+      '<a class="x" href="/a">a</a><img alt="" src=\'/logos/v.svg\'><video src="/v.mp4"></video>' +
+      '<ngmd-card href="/concepts/theming"></ngmd-card><ngmd-pill href="/x"></ngmd-pill>';
+    expect(prefixRootLinks(html, '/repo/')).toBe(
+      '<a class="x" href="/repo/a">a</a><img alt="" src=\'/repo/logos/v.svg\'><video src="/repo/v.mp4"></video>' +
+        '<ngmd-card href="/concepts/theming"></ngmd-card><ngmd-pill href="/x"></ngmd-pill>',
+    );
+  });
+
+  it('does nothing when the base is the root, and ignores code samples', () => {
+    expect(prefixRootLinks('<a href="/a">a</a>', '/')).toBe('<a href="/a">a</a>');
+    expect(md('`<a href="/a">`', '/repo/')).toBe(
+      '<p><code>&lt;a href=&quot;/a&quot;&gt;</code></p>\n',
+    );
   });
 });
 

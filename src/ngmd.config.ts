@@ -66,6 +66,12 @@ export interface SiteConfig {
   tagline?: string;
   /** Public origin (no trailing slash). Used by sitemap.xml + robots.txt. */
   url: string;
+  /** Sub-path the site is served from, for hosts like GitHub Pages project
+   *  sites (`https://user.github.io/repo/` uses `'/repo/'`). Defaults to `/`.
+   *  The `NGMD_BASE` environment variable overrides it, so CI can set it
+   *  without editing the config. `url` stays the origin; the base is added to
+   *  the sitemap, `robots.txt` and social URLs. */
+  base?: string;
   /** Repository URL. Powers the GitHub icon in the header. */
   githubUrl: string;
   /** Default branch used to build GitHub blob/edit links (e.g. the
@@ -103,12 +109,32 @@ export interface Sponsor {
   login: string;
 }
 
+/**
+ * Switches for the "Copy Markdown" control shown on every markdown page.
+ * Each action defaults to `true`; set one to `false` to remove it.
+ */
+export interface PageActionsConfig {
+  /** The main "Copy Markdown" button. */
+  copyMarkdown?: boolean;
+  /** "Copy Markdown Link" in the menu. */
+  copyLink?: boolean;
+  /** "Open in GitHub" in the menu. */
+  github?: boolean;
+  /** "Open in ChatGPT" in the menu. */
+  chatgpt?: boolean;
+  /** "Open in Claude" in the menu. */
+  claude?: boolean;
+}
+
 export interface NgmdConfig {
   site: SiteConfig;
   /** Links rendered in the header next to the brand, in order. Internal
    *  paths route in-app; `http(s)` URLs open in a new tab. Leave undefined
    *  for no header links. */
   headerNav?: NavItem[];
+  /** Actions in the "Copy Markdown" control on markdown pages: turn each on
+   *  or off, or pass `false` to hide the control. All are on when omitted. */
+  pageActions?: PageActionsConfig | false;
   /** Sponsors listed by `<app-sponsor-list>`. Leave undefined to render
    *  nothing. */
   sponsors?: Sponsor[];
@@ -118,7 +144,8 @@ export interface NgmdConfig {
    * Inline-link keywords. In any `.md` body, `*Keyword` resolves to a link
    * pointing at the configured URL. Unknown keywords log a warning and fall
    * back to literal `*Keyword` text. Change the URL here once, every doc
-   * follows.
+   * follows. Names may contain dots (`'slide.ng'`, `'Next.js'`); a dot that
+   * ends a sentence is not part of the keyword.
    */
   keywords?: Record<string, string>;
   /**
@@ -137,11 +164,16 @@ const config: NgmdConfig = {
     description:
       'Presentations written in markdown, with real Angular template syntax inside. Documentation for slide.ng.',
     tagline: 'Slides in markdown, built with Angular',
-    // Placeholder. The site must be served from the root of its host: NgMd has no sub-path support,
-    // so use a custom domain or an organisation Pages site, not github.io/<repo>/.
+    // Placeholder origin. For a project site (github.io/<repo>/) set `base` below, or build with
+    // NGMD_BASE=/<repo>/.
     url: 'https://slide-ng.github.io',
+    // Sub-path the site is served from. '/' is a host root.
+    base: '/',
     githubUrl: 'https://github.com/slide-ng/slide.ng-docs',
   },
+
+  // The AI page actions were removed from this site, so the control is hidden.
+  pageActions: false,
 
   headerNav: [
     {label: 'Docs', href: '/welcome'},

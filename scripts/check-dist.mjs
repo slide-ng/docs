@@ -15,6 +15,10 @@ if (!existsSync(dist)) {
   process.exit(1);
 }
 
+// The site base, when the site is built for a sub-path: NGMD_BASE=/repo/ node scripts/check-dist.mjs
+const rawBase = (process.env.NGMD_BASE ?? '').trim().replace(/^\/+|\/+$/g, '');
+const base = rawBase ? `/${rawBase}/` : '/';
+
 const pages = [];
 (function walk(dir) {
   for (const name of readdirSync(dir)) {
@@ -26,7 +30,12 @@ const pages = [];
   }
 })(dist);
 
-const exists = (url) => {
+const exists = (url, plainPath = false) => {
+  // Under a base every internal URL has to start with it; the files sit at the top of dist.
+  if (base !== '/' && !plainPath) {
+    if (!url.startsWith(base) && url !== base.slice(0, -1)) return false;
+    url = '/' + url.slice(base.length);
+  }
   const clean = decodeURIComponent(url.split('#')[0].split('?')[0]);
   const target = join(dist, clean);
   if (!target.startsWith(dist)) return false;
@@ -40,9 +49,14 @@ for (const page of pages) {
   // Code samples print attributes as text, so look at tags outside of <pre> blocks only.
   const html = readFileSync(page, 'utf8').replace(/<pre[\s\S]*?<\/pre>/g, '');
   const where = page.slice(dist.length) || '/';
-  for (const [, url] of html.matchAll(/\b(?:href|src)="(\/[^"/][^"]*|\/)"/g)) {
-    checked++;
-    if (!exists(url)) problems.push(`${where}: ${url}`);
+  for (const [, tag, attrs] of html.matchAll(/<([a-z][\w-]*)\b([^>]*)>/gi)) {
+    for (const [, name, url] of attrs.matchAll(/([\w-]*\b(?:href|src))="(\/[^"/][^"]*|\/)"/g)) {
+      checked++;
+      // <ngmd-*> elements and data-* attributes hold a plain site path; the script that reads
+      // them adds the base when the page runs.
+      const plain = tag.startsWith('ngmd-') || name.startsWith('data-');
+      if (!exists(url, plain)) problems.push(`${where}: ${url}`);
+    }
   }
 }
 

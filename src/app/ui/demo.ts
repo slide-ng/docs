@@ -1,5 +1,6 @@
 import {Component, computed, inject, input} from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
+import {appBase, withBase} from '../../base';
 
 /**
  * Embeds a built slide deck (or any page of this site's own `public/` folder) in an iframe,
@@ -45,7 +46,9 @@ export class NgmdDemo {
   /** The path, or `about:blank` when it does not point inside this site. */
   protected readonly path = computed(() => {
     const src = this.src().trim();
-    return /^\/(?!\/)[\w./~-]*$/.test(src) && !src.includes('..') ? src : 'about:blank';
+    return /^\/(?!\/)[\w./~-]*$/.test(src) && !src.includes('..')
+      ? withBase(appBase(), src)
+      : 'about:blank';
   });
 
   protected readonly safeUrl = computed(() =>
