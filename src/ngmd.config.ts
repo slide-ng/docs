@@ -151,7 +151,6 @@ const config: NgmdConfig = {
   ],
 
   keywords: {
-    'slide.ng': '/welcome',
     Slidev: 'https://sli.dev',
     Angular: 'https://angular.dev',
     Shiki: 'https://shiki.style',

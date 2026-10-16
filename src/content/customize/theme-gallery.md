@@ -5,7 +5,7 @@ description: The four official slide.ng themes, with a live deck for each and cr
 
 # Theme gallery
 
-The official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng. Each one lives in its own package in the *slide.ng-themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks` and `@slide-ng/theme-apple-basic`. Each deck below has a slide for every layout of its theme. The theme fonts load from Google Fonts, so the decks look right with a network.
+The official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng. Each one lives in its own package in the slide.ng-themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks` and `@slide-ng/theme-apple-basic`. Each deck below has a slide for every layout of its theme. The theme fonts load from Google Fonts, so the decks look right with a network.
 
 <ngmd-tabs>
   <ngmd-tab title="seriph">

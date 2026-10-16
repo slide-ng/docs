@@ -48,7 +48,7 @@ Count is {{ c.n() }}.
           <ngmd-code-block language="md" [code]="sample"></ngmd-code-block>
         </div>
         <div>
-          <p class="mb-2 text-sm font-medium text-zinc-500">The result</p>
+          <p class="mb-2 text-sm font-medium text-zinc-500">A starter deck, built with slide.ng</p>
           <ngmd-demo src="/demos/starter/" title="The starter deck"></ngmd-demo>
         </div>
       </div>
@@ -101,4 +101,5 @@ Count is {{ c.n() }}.
 })
 export default class HomePage {
   protected readonly sample = SAMPLE;
+  protected readonly braces = '{{ }}';
 }

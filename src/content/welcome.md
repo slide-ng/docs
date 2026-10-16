@@ -9,7 +9,7 @@ description: slide.ng turns one markdown file into a slide deck that is compiled
 
 # Introduction
 
-*slide.ng is a slide deck tool for people who write talks in markdown and want Angular, not a separate framework, under the slides. It is inspired by *Slidev and keeps Slidev's file format, layout names and many of its features.
+slide.ng is a slide deck tool for people who write talks in markdown and want Angular, not a separate framework, under the slides. It is inspired by *Slidev and keeps Slidev's file format, layout names and many of its features.
 
 You write one file, `slides.md`. Each slide in it becomes a small *Angular component that is compiled ahead of time. That is why `{{ }}`, `@if` and your own standalone components work inside a slide.
 
