@@ -37,7 +37,8 @@ const exists = (url) => {
 const problems = [];
 let checked = 0;
 for (const page of pages) {
-  const html = readFileSync(page, 'utf8');
+  // Code samples print attributes as text, so look at tags outside of <pre> blocks only.
+  const html = readFileSync(page, 'utf8').replace(/<pre[\s\S]*?<\/pre>/g, '');
   const where = page.slice(dist.length) || '/';
   for (const [, url] of html.matchAll(/\b(?:href|src)="(\/[^"/][^"]*|\/)"/g)) {
     checked++;
