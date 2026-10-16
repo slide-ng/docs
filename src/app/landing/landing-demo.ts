@@ -97,7 +97,7 @@ const DECK_URL = '/demos/landing/';
               [disabled]="page() === 0"
               (click)="page.set(0)"
             >
-              <svg [lucideIcon]="leftIcon" class="size-5" aria-hidden="true"></svg>
+              <svg [lucideIcon]="leftIcon" class="size-6" aria-hidden="true"></svg>
             </button>
             <button
               type="button"
@@ -106,7 +106,7 @@ const DECK_URL = '/demos/landing/';
               [disabled]="page() === 1"
               (click)="page.set(1)"
             >
-              <svg [lucideIcon]="rightIcon" class="size-5" aria-hidden="true"></svg>
+              <svg [lucideIcon]="rightIcon" class="size-6" aria-hidden="true"></svg>
             </button>
           </div>
         </div>
@@ -336,20 +336,20 @@ const DECK_URL = '/demos/landing/';
       width: 2rem;
       height: 2rem;
       border: 0;
-      border-radius: 0.375rem;
-      background: rgba(22, 19, 26, 0.78);
-      color: #fbf8f3;
+      padding: 0;
+      background: transparent;
+      color: var(--demo-fg);
       cursor: pointer;
     }
+    .chevron svg {
+      stroke-width: 1.25;
+    }
     .chevron:hover:not(:disabled) {
-      background: #16131a;
+      color: var(--demo-key);
     }
     .chevron:disabled {
-      opacity: 0.4;
+      opacity: 0.35;
       cursor: default;
-    }
-    :host-context(.dark) .chevron {
-      background: rgba(251, 248, 243, 0.2);
     }
     @media (prefers-reduced-motion: reduce) {
       .track {
