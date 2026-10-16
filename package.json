@@ -1,0 +1,89 @@
+{
+  "name": "slide.ng-docs",
+  "version": "0.1.0",
+  "description": "The documentation website for slide.ng, built with NgMd.",
+  "license": "MIT",
+  "keywords": [
+    "slide.ng",
+    "slides",
+    "presentations",
+    "angular",
+    "documentation"
+  ],
+  "type": "module",
+  "engines": {
+    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
+  },
+  "scripts": {
+    "ng": "ng",
+    "dev": "vite",
+    "start": "pnpm run dev",
+    "build": "vite build",
+    "watch": "vite build --watch",
+    "preview": "node dist/analog/server/index.mjs",
+    "check:dist": "node scripts/check-dist.mjs",
+    "demos": "node scripts/build-demos.mjs",
+    "test": "vitest run",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@analogjs/content": "^2.7.5",
+    "@analogjs/router": "^2.7.5",
+    "@angular/animations": "^22.2.0",
+    "@angular/common": "^22.2.0",
+    "@angular/compiler": "^22.2.0",
+    "@angular/core": "^22.2.0",
+    "@angular/elements": "^22.2.0",
+    "@angular/forms": "^22.2.0",
+    "@angular/platform-browser": "^22.2.0",
+    "@angular/platform-server": "^22.2.0",
+    "@angular/router": "^22.2.0",
+    "@lucide/angular": "^1.48.0",
+    "@orama/orama": "^3.1.18",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "front-matter": "^4.0.2",
+    "h3": "^1.13.0",
+    "marked": "^15.0.7",
+    "marked-gfm-heading-id": "^4.1.3",
+    "marked-highlight": "^2.2.3",
+    "marked-mangle": "^1.1.14",
+    "marked-shiki": "^1.2.1",
+    "motion": "^13.4.4",
+    "postcss": "^8.5.28",
+    "prismjs": "^1.29.0",
+    "rxjs": "~7.8.0",
+    "shiki": "^1.29.2",
+    "tailwindcss": "^4.3.3",
+    "ts-morph": "^28.0.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@analogjs/platform": "^2.7.5",
+    "@analogjs/vite-plugin-angular": "^2.7.5",
+    "@analogjs/vitest-angular": "^2.7.5",
+    "@angular/build": "^22.2.0",
+    "@angular/cli": "^22.2.0",
+    "@angular/compiler-cli": "^22.2.0",
+    "jsdom": "^30.1.1",
+    "prettier": "^3.9.9",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.1",
+    "vitest": "^4.1.11"
+  },
+  "overrides": {
+    "vite": "$vite",
+    "vitest": "$vitest"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slide-ng/slide.ng-docs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/slide-ng/slide.ng-docs/issues"
+  },
+  "homepage": "https://github.com/slide-ng/slide.ng-docs#readme",
+  "packageManager": "pnpm@10.28.0"
+}
