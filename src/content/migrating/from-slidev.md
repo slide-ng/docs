@@ -5,7 +5,7 @@ description: What stays the same, what is written differently, and how to move a
 
 # What differs from Slidev
 
-slide.ng reads the same markdown file format as *Slidev, with the same parser. Anything about Vue, Vite plugins or Slidev's own theme packages is different, because slide.ng is Angular. This page lists the changes you will meet when you move a deck. For the features that are missing, see [Not supported](./not-supported.md).
+slide.ng reads the same markdown file format as *Slidev, with the same slide splitter and frontmatter reader (the markdown inside a slide is converted with `marked`, so smart quotes are not made). Anything about Vue, Vite plugins or Slidev's own theme packages is different, because slide.ng is Angular. This page lists the changes you will meet when you move a deck. For the features that are missing, see [Not supported](./not-supported.md).
 
 ## The same
 
@@ -25,7 +25,7 @@ slide.ng reads the same markdown file format as *Slidev, with the same parser. A
 | `v-click`, `v-after`, `v-click-hide`, `<v-clicks>`, `<v-click-gap>`, `<v-switch>`, `v-mark`, `v-motion`, `v-drag`, `<v-drag>`, `<v-drag-arrow>` | The same name with the `slide-ng-` prefix: `slide-ng-click`, `slide-ng-after`, `slide-ng-click-hide`, `<slide-ng-clicks>`, `<slide-ng-click-gap>`, `<slide-ng-switch>`, `slide-ng-mark`, `slide-ng-motion`, `slide-ng-drag`, `<slide-ng-drag>`, `<slide-ng-drag-arrow>`. The old names stop the generator |
 | `v-click="[2, 4]"` | `[slide-ng-click]="[2, 4]"`, because Angular reads a plain attribute as text. `slide-ng-click="3"` and `"+2"` are fine as they are |
 | PascalCase components: `<Toc />`, `<Link>`, `<Youtube>`, `<SlidevVideo>`, `<AutoFitText>`, `<LightOrDark>`, `<RenderWhen>`, `<SlideCurrentNo>`, `<SlidesTotal>`, `<Transform>`, `<Arrow>`, `<VDragArrow>` | kebab-case tags with the `slide-ng-` prefix: `<slide-ng-toc />`, `<slide-ng-link>`, `<slide-ng-youtube>`, `<slide-ng-video>`, `<slide-ng-auto-fit-text>`, `<slide-ng-light-or-dark>`, `<slide-ng-render-when>`, `<slide-ng-current-no />`, `<slide-ng-total />`, `<slide-ng-transform>`, `<slide-ng-arrow>`, `<slide-ng-drag-arrow>` |
-| `$slidev`, `$nav`, `$clicks`, `$page` | Angular injection: `Nav`, `ClicksContext`, `SLIDE_NO`, `RENDER_CONTEXT` from `slide-ng/lib/...` |
+| `$slidev`, `$nav`, `$clicks`, `$page` | Angular injection: `Nav`, `ClicksContext`, `SLIDE_NO`, `RENDER_CONTEXT` from `slide-ng/lib/...`. There is no global in markdown: a small component exposes the value and a `#ref` reads it |
 | Slide hooks `onSlideEnter`, `onSlideLeave` | Not available. A component can inject `Nav` or `ClicksContext` and use signals |
 | Your own components in `components/`, written in Vue | Standalone Angular components in `components/`, found by their `selector` |
 | Layouts in `layouts/*.vue` | Layouts in `layouts/*.ts`, see [Layouts and components](../customize/layouts-components.md) |
