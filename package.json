@@ -73,8 +73,8 @@
     "vitest": "^4.1.11"
   },
   "overrides": {
-    "vite": "$vite",
-    "vitest": "$vitest"
+    "vite": "^8.3.1",
+    "vitest": "^4.1.11"
   },
   "private": true,
   "repository": {
