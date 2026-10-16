@@ -13,6 +13,7 @@ pnpm install
 pnpm run dev          # http://localhost:5173
 pnpm run build        # static site in dist/analog/public, with the link guards
 pnpm run check:dist   # checks every internal link, image and script of the built HTML
+pnpm run check:landing # opens the built home page in Chromium and checks the live demo
 pnpm test             # unit tests of the authoring components
 pnpm run format:check
 ```
@@ -23,7 +24,7 @@ pnpm is what the lockfile and CI use. `npm install` works too: the `overrides` i
 
 - Pages are markdown files under `src/content/`. The path is the URL.
 - The sidebar, header links and the site's name and URL are in `src/ngmd.config.ts`.
-- The home page is `src/app/pages/index.page.ts`.
+- The home page is `src/app/pages/index.page.ts`. It has no sidebar. Its live demo (`src/app/landing/`) types out `demos/landing/slides.md` and shows the built deck next to it. See "The landing demo" below.
 - `<ngmd-demo src="/demos/starter/" title="..."></ngmd-demo>` embeds a built deck in an iframe. The component is `src/app/ui/demo.ts`.
 - NgMd's other authoring components (callouts, cards, tabs, ...) work inline in markdown. See `CONTRIBUTING.md`.
 
@@ -39,6 +40,20 @@ pnpm run demos tour       # only one deck
 ```
 
 Rebuild them when slide.ng changes in a way a deck shows.
+
+## The landing demo
+
+The right side of the home page types `demos/landing/slides.md` into an editor panel, and a frame shows the real build of that deck (`public/demos/landing/`), one slide at a time, as each slide's markdown is complete. A click on the frame takes over; typing stops. With `prefers-reduced-motion` the whole text is shown at once.
+
+After you change `demos/landing/slides.md`, run:
+
+```sh
+SLIDE_NG_DIR=../slide.ng pnpm run demos landing
+```
+
+It rebuilds the deck, copies the text into `src/app/landing/deck-source.ts` and writes a fingerprint next to the build. `pnpm test` fails if either is out of date. If the deck gets more slides or clicks, update `DECK_CLICKS` in `src/app/landing/deck.ts`.
+
+`pnpm run check:landing` opens the built site in Chromium (it needs `playwright-core` and a Chromium, see the top of `scripts/check-landing.mjs`), checks the demo and writes screenshots to `tmp/landing-shots/`.
 
 ## Hosting
 
