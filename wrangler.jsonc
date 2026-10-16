@@ -3,6 +3,6 @@
   "compatibility_date": "2026-10-16",
   "assets": {
     "directory": "./dist/analog/public",
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "404-page",
+  },
 }
