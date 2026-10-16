@@ -97,7 +97,7 @@ const DECK_URL = '/demos/landing/';
               [disabled]="page() === 0"
               (click)="page.set(0)"
             >
-              <svg [lucideIcon]="leftIcon" class="size-6" aria-hidden="true"></svg>
+              <svg [lucideIcon]="leftIcon" class="size-5" aria-hidden="true"></svg>
             </button>
             <button
               type="button"
@@ -106,7 +106,7 @@ const DECK_URL = '/demos/landing/';
               [disabled]="page() === 1"
               (click)="page.set(1)"
             >
-              <svg [lucideIcon]="rightIcon" class="size-6" aria-hidden="true"></svg>
+              <svg [lucideIcon]="rightIcon" class="size-5" aria-hidden="true"></svg>
             </button>
           </div>
         </div>
@@ -333,8 +333,8 @@ const DECK_URL = '/demos/landing/';
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 2rem;
-      height: 2rem;
+      width: 1.75rem;
+      height: 1.75rem;
       border: 0;
       padding: 0;
       background: transparent;

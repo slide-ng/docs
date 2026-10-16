@@ -1,32 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <radialGradient id="glow" cx="78%" cy="18%" r="75%">
-      <stop offset="0" stop-color="#561C08"/>
-      <stop offset="0.55" stop-color="#2A1A1F"/>
+    <radialGradient id="glow" cx="78%" cy="50%" r="70%">
+      <stop offset="0" stop-color="#3A1520"/>
+      <stop offset="0.6" stop-color="#201620"/>
       <stop offset="1" stop-color="#16131A"/>
     </radialGradient>
   </defs>
   <rect width="1600" height="900" fill="url(#glow)"/>
-  <g fill="none" stroke="#E5541A" stroke-opacity="0.16" stroke-width="2">
-    <circle cx="1400" cy="120" r="260"/>
-    <circle cx="1400" cy="120" r="390"/>
-    <circle cx="1400" cy="120" r="520"/>
-  </g>
-  <g transform="translate(250 20) rotate(-9 1180 560)">
-    <rect x="860" y="360" width="560" height="315" rx="26" fill="#8F300A"/>
-    <rect x="896" y="400" width="190" height="22" rx="11" fill="#CC4209"/>
-  </g>
-  <g transform="translate(250 20) rotate(-9 1100 640)">
-    <rect x="780" y="440" width="560" height="315" rx="26" fill="#561C08"/>
-    <rect x="780" y="418" width="560" height="315" rx="26" fill="#FBF8F3" fill-opacity="0.96"/>
-    <rect x="828" y="470" width="250" height="26" rx="13" fill="#CC4209"/>
-    <rect x="828" y="534" width="400" height="18" rx="9" fill="#CC4209" fill-opacity="0.55"/>
-    <rect x="828" y="578" width="320" height="18" rx="9" fill="#CC4209" fill-opacity="0.55"/>
-    <circle cx="1262" cy="672" r="22" fill="#CC4209"/>
-  </g>
-  <g fill="#E5541A">
-    <circle cx="240" cy="760" r="9" fill-opacity="0.8"/>
-    <circle cx="300" cy="800" r="5" fill-opacity="0.5"/>
-    <circle cx="120" cy="690" r="5" fill-opacity="0.4"/>
+  <g transform="translate(1030 170) scale(2.6)">
+    <path fill="#DD0031" d="m222.077 39.192-8.019 125.923L137.387 0l84.69 39.192Zm-53.105 162.825-57.933 33.056-57.934-33.056 11.783-28.556h92.301l11.783 28.556ZM111.039 62.675l30.357 73.803H80.681l30.358-73.803ZM7.937 165.115 0 39.192 84.69 0 7.937 165.115Z"/>
   </g>
 </svg>
