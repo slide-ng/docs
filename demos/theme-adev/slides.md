@@ -120,13 +120,14 @@ layout: default
 
 # Alerts
 
-<div class="grid grid-cols-3 gap-x-5">
+<div class="grid grid-cols-4 gap-x-5">
 <adev-alert kind="note">Notes use the blue rail.</adev-alert>
 <adev-alert kind="tip">Tips use the green and cyan rail.</adev-alert>
 <adev-alert kind="todo">A to do, in gray.</adev-alert>
 <adev-alert kind="question">Questions are blue to cyan.</adev-alert>
 <adev-alert kind="summary">Summaries are violet.</adev-alert>
 <adev-alert kind="tldr">Too long, did not read, in pink.</adev-alert>
+<adev-alert kind="warning">Warnings are amber to orange.</adev-alert>
 <adev-alert kind="critical">Critical is pink to orange red.</adev-alert>
 <adev-alert kind="important">Important is red to pink.</adev-alert>
 <adev-alert kind="helpful" title="Handy">Helpful, with a title of your own.</adev-alert>
@@ -146,8 +147,6 @@ so it may take several lines.
 CRITICAL: Braces are safe: `{{ value() }}` and a plain &#123;brace&#125;.
 
 <adev-alert kind="todo" bare>The tag form also takes `bare`, which drops the label.</adev-alert>
-
-<adev-callout type="warning" title="Callout">The older callout keeps its own five types.</adev-callout>
 
 ---
 layout: default
