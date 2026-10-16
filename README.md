@@ -32,7 +32,7 @@ SLIDE_NG_DIR=../slide.ng SLIDE_NG_THEMES_DIR=../slide.ng-themes pnpm run demos
 
 ## Hosting
 
-The site is built for the root of a host by default. For a sub-path, set `site.base` in `src/ngmd.config.ts` or build with `NGMD_BASE=/slide.ng-docs/ pnpm run build`. The production site (slide-ng.dev) is on Cloudflare Pages with build command `pnpm run build` and output directory `dist/analog/public`. The deploy workflow publishes to GitHub Pages.
+The site is built for the root of a host by default. For a sub-path, set `site.base` in `src/ngmd.config.ts` or build with `NGMD_BASE=/slide.ng-docs/ pnpm run build`. The production site (slide-ng.dev) is on Cloudflare with build command `pnpm run build` and deploy command `npx wrangler deploy`; `wrangler.jsonc` serves `dist/analog/public` and the 404 page. The deploy workflow publishes to GitHub Pages.
 
 ## Contributing
 
