@@ -148,7 +148,7 @@ const config: NgmdConfig = {
     tagline: 'Slides in markdown, built with Angular',
     // Placeholder origin. For a project site (github.io/<repo>/) set `base` below, or build with
     // NGMD_BASE=/<repo>/.
-    url: 'https://slide-ng.github.io',
+    url: 'https://slide-ng.dev',
     // Sub-path the site is served from. '/' is a host root.
     base: '/',
     githubUrl: 'https://github.com/slide-ng/slide.ng-docs',
