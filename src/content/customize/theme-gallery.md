@@ -65,7 +65,7 @@ The look of [angular.dev](https://angular.dev), the Angular documentation site, 
 - Light and dark are both complete, as on angular.dev, with the theme's own switch: a small sun or moon button in the top right corner of every slide. It only recolours the slides, not the slide.ng dock, and the choice is stored and starts from the system preference.
 - Code uses angular.dev's Shiki themes (`github-light` and `github-dark`), and Angular code is highlighted out of the box: `angular-ts`, `angular-html`, `ng`, `ng-ts` and `ng-html` fences need no setup file, including `@Component` templates and `@if`, `@for` and `@defer` blocks.
 - 12 layouts: `cover`, `intro`, `default`, `center`, `section`, `two-cols`, `image-right`, `image-left`, `quote`, `fact`, `statement` and `end`.
-- Components: alerts (nine kinds, also as `NOTE:` paragraphs), pills, API item labels, kbd keys, a decorative header, `<adev-callout>`, `<adev-card-grid>` with `<adev-card>`, `<adev-stat>`, `<adev-count-up>`, `<adev-steps>` and `<adev-button>`.
+- Components: alerts (ten kinds, nine of them also as `NOTE:` paragraphs), pills, API item labels, kbd keys, a decorative header, `<adev-card-grid>` with `<adev-card>`, `<adev-stat>`, `<adev-count-up>`, `<adev-steps>` and `<adev-button>`.
 - Code: prefer and avoid cards (`{prefer}` and `{avoid}` fences), line numbers, highlights, diff lines, a copy button, `::code-group` file tabs, `<<<` snippet cards and `<adev-code-card>`.
 - Media: tabs with `<adev-tab-group>`, image sizes (`#small`, `#medium`), `<adev-video>` and Mermaid diagrams drawn in the theme colours.
 - Every component has its syntax and an example in the [theme README](https://github.com/slide-ng/slide.ng-themes/blob/main/packages/theme-adev/README.md).
