@@ -12,6 +12,7 @@ import {siteHtmlPlugin} from './site-html.plugin.ts';
 import {sitemapPlugin} from './sitemap.plugin.ts';
 import {releaseAfterLastBuild} from './angular-release.plugin.ts';
 import {demosBasePlugin} from './demos-base.plugin.ts';
+import {demosDevPlugin} from './demos-dev.plugin.ts';
 import {searchIndexPlugin} from './search-index.plugin.ts';
 import {rawMdPlugin} from './raw-md.plugin.ts';
 import {varsPlugin} from './vars.plugin.ts';
@@ -64,6 +65,7 @@ export default defineConfig(async () => ({
     mainFields: ['module'],
   },
   plugins: [
+    demosDevPlugin(),
     siteHtmlPlugin({...config.site, base}),
     varsPlugin(),
     externalLinkGuard(),

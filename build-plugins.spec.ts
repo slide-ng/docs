@@ -5,6 +5,7 @@ import type {Plugin} from 'vite';
 import {resolveDocLinks} from './md-links.plugin';
 import {releaseAfterLastBuild} from './angular-release.plugin';
 import {rewriteDemoBase} from './demos-base.plugin';
+import {demosDevPlugin} from './demos-dev.plugin';
 import {prerenderRoutes} from './plugin-utils';
 import {siteHtmlPlugin} from './site-html.plugin';
 import {sitemapPlugin} from './sitemap.plugin';
@@ -140,5 +141,32 @@ describe('releaseAfterLastBuild', () => {
     call(wrapped, 'buildStart', {});
     call(wrapped, 'buildEnd', {});
     expect(calls).toEqual(['start', 'end']);
+  });
+});
+
+describe('demosDevPlugin', () => {
+  function serve(url: string): string {
+    const plugin = demosDevPlugin();
+    let handler: (req: {url: string}, res: unknown, next: () => void) => void = () => {};
+    const server = {
+      config: {publicDir: root},
+      middlewares: {use: (fn: typeof handler) => (handler = fn)},
+    };
+    call(plugin, 'configureServer', null, server);
+    const req = {url};
+    handler(req, {}, () => {});
+    return req.url;
+  }
+
+  test('a deck folder address answers with its index.html', () => {
+    write({'demos/tour/index.html': '<html></html>'});
+    expect(serve('/demos/tour/')).toBe('/demos/tour/index.html');
+    expect(serve('/demos/tour/?x=1')).toBe('/demos/tour/index.html');
+  });
+
+  test('other addresses are left alone', () => {
+    write({'demos/tour/index.html': '<html></html>'});
+    expect(serve('/demos/missing/')).toBe('/demos/missing/');
+    expect(serve('/guide/')).toBe('/guide/');
   });
 });
