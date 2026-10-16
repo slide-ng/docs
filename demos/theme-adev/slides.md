@@ -372,6 +372,129 @@ class: dark
 > Quotes get the same gradient rail as an alert.
 
 ---
+layout: default
+---
+
+# Angular, built in
+
+```angular-ts [user.component.ts]
+@Component({
+  selector: 'app-user',
+  template: `
+    @if (user(); as u) {
+      <h2 [class.admin]="u.admin">{{ u.name | titlecase }}</h2>
+    }
+  `,
+})
+export class UserComponent {
+  user = input<User>();
+}
+```
+
+```ng-html [alias.html]
+@if (ready()) { <input [(ngModel)]="draft" #field (keyup.enter)="save(field.value)" /> }
+```
+
+---
+layout: default
+class: dark
+---
+
+# Angular, built in
+
+```angular-ts [user.component.ts]
+@Component({
+  selector: 'app-user',
+  template: `
+    @if (user(); as u) {
+      <h2 [class.admin]="u.admin">{{ u.name | titlecase }}</h2>
+    }
+  `,
+})
+export class UserComponent {
+  user = input<User>();
+}
+```
+
+```ng-html [alias.html]
+@if (ready()) { <input [(ngModel)]="draft" #field (keyup.enter)="save(field.value)" /> }
+```
+
+---
+layout: default
+---
+
+# Control flow
+
+```angular-html [list.component.html]
+@for (item of items(); track item.id) {
+  <li [class.done]="item.done" (click)="toggle(item)">{{ item.title }}</li>
+} @empty {
+  <li>Nothing yet</li>
+}
+@defer (on viewport) {
+  <app-chart [data]="data" />
+} @placeholder {
+  <p>Chart</p>
+}
+@switch (status) {
+  @case ('ok') { <app-ok /> }
+  @default { <app-fail /> }
+}
+```
+
+---
+layout: default
+class: dark
+---
+
+# Control flow
+
+```angular-html [list.component.html]
+@for (item of items(); track item.id) {
+  <li [class.done]="item.done" (click)="toggle(item)">{{ item.title }}</li>
+} @empty {
+  <li>Nothing yet</li>
+}
+@defer (on viewport) {
+  <app-chart [data]="data" />
+} @placeholder {
+  <p>Chart</p>
+}
+@switch (status) {
+  @case ('ok') { <app-ok /> }
+  @default { <app-fail /> }
+}
+```
+
+---
+layout: default
+---
+
+# Buttons
+
+<adev-button>Get started</adev-button> <adev-button variant="secondary">Read the docs</adev-button>
+
+<div class="flex gap-4 mt-8"><adev-button>In a flex row</adev-button><adev-button variant="secondary">With a gap</adev-button></div>
+
+<div class="mt-8"><adev-button>On its own line</adev-button></div>
+<div class="mt-4"><adev-button variant="secondary">And another</adev-button></div>
+
+---
+layout: default
+class: dark
+---
+
+# Buttons
+
+<adev-button>Get started</adev-button> <adev-button variant="secondary">Read the docs</adev-button>
+
+<div class="flex gap-4 mt-8"><adev-button>In a flex row</adev-button><adev-button variant="secondary">With a gap</adev-button></div>
+
+<div class="mt-8"><adev-button>On its own line</adev-button></div>
+<div class="mt-4"><adev-button variant="secondary">And another</adev-button></div>
+
+---
 layout: end
 ---
 
