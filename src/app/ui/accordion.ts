@@ -21,7 +21,7 @@ let idCounter = 0;
   imports: [LucideDynamicIcon],
   template: `
     <div
-      class="ngmd-accordion-item rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 overflow-hidden"
+      class="ngmd-accordion-item rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 overflow-hidden"
       [class.is-open]="expanded()"
     >
       <button
@@ -61,7 +61,7 @@ let idCounter = 0;
         class="ngmd-accordion-body"
       >
         <div
-          class="ngmd-accordion-body-inner px-5 pt-4 pb-4 text-sm text-zinc-700 dark:text-zinc-300 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+          class="ngmd-accordion-body-inner px-5 pt-4 pb-4 text-sm text-zinc-700 dark:text-brand-muted-dark [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
         >
           <ng-content></ng-content>
         </div>

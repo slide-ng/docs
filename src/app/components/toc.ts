@@ -29,7 +29,7 @@ interface Heading {
               <a
                 [href]="path() + '#' + h.id"
                 (click)="scrollToHeading(h.id, $event)"
-                class="block rounded px-2 -mx-2 py-0.5 text-zinc-500 dark:text-zinc-400 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)] focus:outline-none focus-visible:outline-none"
+                class="block rounded px-2 -mx-2 py-0.5 text-brand-muted dark:text-brand-muted-dark hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)] focus:outline-none focus-visible:outline-none"
                 [class]="
                   isActive(h.id)
                     ? 'bg-[color:var(--accent-soft)]! text-[color:var(--accent-strong)]! font-medium'

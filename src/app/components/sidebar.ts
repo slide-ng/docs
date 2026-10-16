@@ -65,7 +65,7 @@ export class SidebarState {
                     routerLinkActive="bg-[color:var(--accent-soft)]! text-[color:var(--accent-strong)]! font-medium"
                     [routerLinkActiveOptions]="{exact: true}"
                     ariaCurrentWhenActive="page"
-                    class="flex items-center justify-between gap-2 rounded-md px-3 py-1.5 text-zinc-700 dark:text-zinc-300 hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)] focus:outline-none focus-visible:outline-2 focus-visible:outline focus-visible:outline-offset-[-2px] focus-visible:outline-[color:var(--accent)]"
+                    class="flex items-center justify-between gap-2 rounded-md px-3 py-1.5 text-zinc-700 dark:text-brand-muted-dark hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)] focus:outline-none focus-visible:outline-2 focus-visible:outline focus-visible:outline-offset-[-2px] focus-visible:outline-[color:var(--accent)]"
                   >
                     <span class="min-w-0 truncate">{{ item.label }}</span>
                     @if (item.status; as status) {

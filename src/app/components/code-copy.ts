@@ -40,7 +40,7 @@ export class CodeCopy implements AfterViewInit {
     button.type = 'button';
     button.setAttribute('aria-label', 'Copy code');
     button.className =
-      'absolute top-2 right-2 inline-flex items-center justify-center size-7 rounded-md bg-zinc-200/80 text-zinc-600 hover:bg-zinc-300 hover:text-zinc-900 dark:bg-zinc-800/80 dark:text-zinc-300 dark:hover:bg-zinc-700 dark:hover:text-white opacity-0 transition-opacity group-hover/code:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100';
+      'absolute top-2 right-2 inline-flex items-center justify-center size-7 rounded-md bg-zinc-200/80 text-brand-muted hover:bg-zinc-300 hover:text-zinc-900 dark:bg-zinc-800/80 dark:text-brand-muted-dark dark:hover:bg-zinc-700 dark:hover:text-white opacity-0 transition-opacity group-hover/code:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100';
     button.innerHTML = COPY_ICON;
 
     let resetTimer: ReturnType<typeof setTimeout> | undefined;

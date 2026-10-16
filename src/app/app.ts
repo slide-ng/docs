@@ -99,7 +99,10 @@ import {ContentBanners} from './components/content-banners';
             class="size-[34px] text-zinc-900 dark:text-zinc-50"
             aria-hidden="true"
           />
-          {{ siteName }}
+          <span
+            >{{ nameLead
+            }}<span class="text-brand-deep dark:text-brand-amber">{{ nameTail }}</span></span
+          >
         </a>
 
         @if (headerNav.length > 0) {
@@ -131,18 +134,18 @@ import {ContentBanners} from './components/content-banners';
           <button
             type="button"
             (click)="palette.toggle()"
-            class="hidden lg:inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-3 py-1.5 text-sm text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 min-w-56"
+            class="hidden lg:inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-3 py-1.5 text-sm text-brand-muted dark:text-brand-muted-dark hover:bg-zinc-100 dark:hover:bg-zinc-800 min-w-56"
           >
             <svg [lucideIcon]="searchIcon" class="size-4"></svg>
             <span class="flex-1 text-left">Search documentation...</span>
             <span class="flex items-center gap-0.5">
               <kbd
-                class="inline-flex h-5 min-w-5 items-center justify-center rounded border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-950 px-1 text-xs font-medium"
+                class="inline-flex h-5 min-w-5 items-center justify-center rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 px-1 text-xs font-medium"
               >
                 ⌘
               </kbd>
               <kbd
-                class="inline-flex h-5 min-w-5 items-center justify-center rounded border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-950 px-1 text-xs font-medium"
+                class="inline-flex h-5 min-w-5 items-center justify-center rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 px-1 text-xs font-medium"
               >
                 K
               </kbd>
@@ -219,7 +222,7 @@ import {ContentBanners} from './components/content-banners';
           <aside
             #drawer
             aria-label="Documentation menu"
-            class="lg:hidden fixed left-0 top-[57px] bottom-0 z-40 w-64 overflow-y-auto border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-4 transform transition-transform duration-200 ease-out"
+            class="lg:hidden fixed left-0 top-[57px] bottom-0 z-40 w-64 overflow-y-auto border-r border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-4 transform transition-transform duration-200 ease-out"
             [class.-translate-x-full]="!drawerOpen()"
             [class.translate-x-0]="drawerOpen()"
             [attr.aria-hidden]="!drawerOpen()"
@@ -304,6 +307,9 @@ export class App implements OnInit {
   readonly autoIcon = LucideSunMoon;
 
   readonly siteName = siteConfig.site.name;
+  /** The name with its `.ng` ending set apart, so the brand's orange can go on it. */
+  readonly nameLead = siteConfig.site.name.replace(/\.ng$/, '');
+  readonly nameTail = siteConfig.site.name.endsWith('.ng') ? '.ng' : '';
   readonly githubUrl = siteConfig.site.githubUrl;
   readonly discordUrl = siteConfig.site.links?.discord;
   readonly headerNav = siteConfig.headerNav ?? [];

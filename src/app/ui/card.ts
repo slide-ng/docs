@@ -67,21 +67,21 @@ const ICON_MAP: Record<string, LucideIcon> = {
           [href]="link()"
           target="_blank"
           rel="noopener noreferrer"
-          class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 text-inherit no-underline transition-colors hover:border-zinc-400 dark:hover:border-zinc-600"
+          class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-5 text-inherit no-underline transition-colors hover:border-zinc-400 dark:hover:border-zinc-600"
         >
           <ng-container *ngTemplateOutlet="body"></ng-container>
         </a>
       } @else {
         <a
           [routerLink]="route()"
-          class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5 text-inherit no-underline transition-colors hover:border-zinc-400 dark:hover:border-zinc-600"
+          class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-5 text-inherit no-underline transition-colors hover:border-zinc-400 dark:hover:border-zinc-600"
         >
           <ng-container *ngTemplateOutlet="body"></ng-container>
         </a>
       }
     } @else {
       <div
-        class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-5"
+        class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-5"
       >
         <ng-container *ngTemplateOutlet="body"></ng-container>
       </div>
@@ -113,7 +113,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
         </p>
       }
       <div
-        class="text-sm text-zinc-600 dark:text-zinc-400 flex-1 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+        class="text-sm text-brand-muted dark:text-brand-muted-dark flex-1 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
       >
         <ng-content></ng-content>
       </div>

@@ -21,7 +21,7 @@ const RELATED_MAX = 4;
       <footer class="mt-2 border-t border-zinc-200 dark:border-zinc-800 pt-5 pb-10 text-sm">
         @if (related().length && currentSection(); as section) {
           <p
-            class="text-xs font-medium tracking-[0.2em] uppercase text-zinc-500 dark:text-zinc-400 mb-3"
+            class="text-xs font-medium tracking-[0.2em] uppercase text-brand-muted dark:text-brand-muted-dark mb-3"
           >
             More in {{ section }}
           </p>
@@ -46,7 +46,9 @@ const RELATED_MAX = 4;
                 [routerLink]="p.href"
                 class="group rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 hover:border-[color:var(--accent)] transition-colors sm:col-start-1"
               >
-                <span class="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+                <span
+                  class="flex items-center gap-1.5 text-xs text-brand-muted dark:text-brand-muted-dark"
+                >
                   <svg [lucideIcon]="prevIcon" class="size-3.5"></svg>
                   Previous
                 </span>
@@ -61,7 +63,7 @@ const RELATED_MAX = 4;
                 class="group rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 hover:border-[color:var(--accent)] transition-colors text-right sm:col-start-2"
               >
                 <span
-                  class="flex items-center justify-end gap-1.5 text-xs text-zinc-500 dark:text-zinc-400"
+                  class="flex items-center justify-end gap-1.5 text-xs text-brand-muted dark:text-brand-muted-dark"
                 >
                   Next
                   <svg [lucideIcon]="nextIcon" class="size-3.5"></svg>

@@ -11,18 +11,18 @@ import {writeToClipboard} from '../utils/clipboard';
   selector: 'ngmd-code-block',
   template: `
     <div
-      class="group relative rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden bg-white dark:bg-zinc-950"
+      class="group relative rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden bg-zinc-50 dark:bg-zinc-950"
     >
       @if (header()) {
         <div
-          class="flex items-center justify-between px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 font-mono text-xs text-zinc-500 dark:text-zinc-400"
+          class="flex items-center justify-between px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 font-mono text-xs text-brand-muted dark:text-brand-muted-dark"
         >
           <span>{{ header() }}</span>
           <button
             type="button"
             (click)="copy()"
             [attr.aria-label]="copied() ? 'Copied' : 'Copy code'"
-            class="inline-flex items-center justify-center size-6 rounded-md text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 opacity-0 group-hover:opacity-100 focus:opacity-100 pointer-coarse:opacity-100 transition-opacity"
+            class="inline-flex items-center justify-center size-6 rounded-md text-brand-muted dark:text-brand-muted-dark hover:bg-zinc-200 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100 opacity-0 group-hover:opacity-100 focus:opacity-100 pointer-coarse:opacity-100 transition-opacity"
           >
             @if (copied()) {
               <svg

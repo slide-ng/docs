@@ -17,7 +17,7 @@ import {watchHostAttribute} from '../utils/watch-host-attribute';
   template: `
     <div class="flex gap-4 pb-8 relative ngmd-step">
       <div
-        class="flex-shrink-0 w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex items-center justify-center font-semibold text-sm relative z-10"
+        class="flex-shrink-0 w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center font-semibold text-sm relative z-10"
       >
         {{ index() + 1 }}
       </div>
@@ -28,7 +28,7 @@ import {watchHostAttribute} from '../utils/watch-host-attribute';
           </h3>
         }
         <div
-          class="text-zinc-700 dark:text-zinc-300 leading-relaxed [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+          class="text-zinc-700 dark:text-brand-muted-dark leading-relaxed [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
         >
           <ng-content></ng-content>
         </div>

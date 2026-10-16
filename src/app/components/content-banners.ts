@@ -93,8 +93,8 @@ export class ContentBanners {
       currentLabel,
       icon: LucideArchive,
       containerClass: 'border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900',
-      iconClass: 'text-zinc-500',
-      bodyClass: 'text-zinc-600 dark:text-zinc-400',
+      iconClass: 'text-brand-muted',
+      bodyClass: 'text-brand-muted dark:text-brand-muted-dark',
     };
   });
 }

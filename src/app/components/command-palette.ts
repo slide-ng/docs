@@ -51,7 +51,7 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
           role="dialog"
           aria-modal="true"
           aria-label="Search docs"
-          class="w-full max-w-2xl rounded-2xl border border-zinc-200 bg-white shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 overflow-hidden"
+          class="w-full max-w-2xl rounded-2xl border border-zinc-200 bg-zinc-50 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 overflow-hidden"
           (click)="$event.stopPropagation()"
           (keydown)="onDialogKeydown($event)"
         >
@@ -75,7 +75,9 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
               (keydown)="onInputKeydown($event)"
             />
             @if (search.loading()) {
-              <span class="text-xs text-zinc-500 dark:text-zinc-400" aria-hidden="true">…</span>
+              <span class="text-xs text-brand-muted dark:text-brand-muted-dark" aria-hidden="true"
+                >…</span
+              >
             }
           </div>
 
@@ -87,7 +89,7 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
               @if (search.favorites().length) {
                 <div
                   id="ngmd-search-favourites"
-                  class="px-4 py-2 text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400"
+                  class="px-4 py-2 text-xs uppercase tracking-wider text-brand-muted dark:text-brand-muted-dark"
                 >
                   Favourites
                 </div>
@@ -101,7 +103,7 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
               }
               @if (search.recents().length) {
                 <div
-                  class="flex items-center justify-between px-4 py-2 text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400"
+                  class="flex items-center justify-between px-4 py-2 text-xs uppercase tracking-wider text-brand-muted dark:text-brand-muted-dark"
                 >
                   <span id="ngmd-search-recents">Recent</span>
                   <button
@@ -147,7 +149,7 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
                       ></div>
                       @if (item.subLabelHtml) {
                         <div
-                          class="text-sm text-zinc-600 dark:text-zinc-400 truncate"
+                          class="text-sm text-brand-muted dark:text-brand-muted-dark truncate"
                           [innerHTML]="item.subLabelHtml"
                         ></div>
                       }
@@ -156,7 +158,7 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
                   @if (!favorite) {
                     <button
                       type="button"
-                      class="rounded p-1.5 text-zinc-500 dark:text-zinc-400 hover:text-amber-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                      class="rounded p-1.5 text-brand-muted dark:text-brand-muted-dark hover:text-amber-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
                       aria-label="Pin to favourites"
                       (click)="toggleFavorite(item.url)"
                     >
@@ -165,7 +167,7 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
                   }
                   <button
                     type="button"
-                    class="rounded p-1.5 text-zinc-500 dark:text-zinc-400 hover:text-red-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                    class="rounded p-1.5 text-brand-muted dark:text-brand-muted-dark hover:text-red-500 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
                     aria-label="Remove from history"
                     (click)="removeAt(item.url)"
                   >
@@ -174,11 +176,11 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
                 </li>
               </ng-template>
             } @else if (search.loading() && !search.results().length) {
-              <div class="p-3 text-zinc-500 dark:text-zinc-400">
+              <div class="p-3 text-brand-muted dark:text-brand-muted-dark">
                 <span>Searching docs…</span>
               </div>
             } @else if (search.hasNoResults()) {
-              <div class="p-3 text-zinc-500 dark:text-zinc-400">
+              <div class="p-3 text-brand-muted dark:text-brand-muted-dark">
                 <span>No results found</span>
               </div>
             } @else if (search.results().length) {
@@ -201,13 +203,13 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
                       ></div>
                       @if (item.subLabelHtml) {
                         <div
-                          class="text-sm text-zinc-600 dark:text-zinc-400 truncate"
+                          class="text-sm text-brand-muted dark:text-brand-muted-dark truncate"
                           [innerHTML]="item.subLabelHtml"
                         ></div>
                       }
                       @if (item.contentHtml) {
                         <div
-                          class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2"
+                          class="mt-1 text-sm text-brand-muted dark:text-brand-muted-dark line-clamp-2"
                           [innerHTML]="item.contentHtml"
                         ></div>
                       }
@@ -216,14 +218,14 @@ import {SearchService, type HistoryItem} from '../services/search/search.service
                 }
               </div>
             } @else if (!search.query().trim() && !search.history().length) {
-              <div class="p-3 text-zinc-500 dark:text-zinc-400">
+              <div class="p-3 text-brand-muted dark:text-brand-muted-dark">
                 <span>Start typing to see results</span>
               </div>
             }
           </div>
           <div role="status" class="sr-only">{{ status() }}</div>
           <div
-            class="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 px-4 py-2 text-xs text-zinc-500 dark:text-zinc-400"
+            class="flex items-center justify-between border-t border-zinc-200 dark:border-zinc-800 px-4 py-2 text-xs text-brand-muted dark:text-brand-muted-dark"
           >
             <span class="flex items-center gap-3">
               <kbd class="rounded border border-zinc-200 dark:border-zinc-700 px-1.5">esc</kbd>

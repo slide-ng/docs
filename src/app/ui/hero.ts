@@ -46,5 +46,5 @@ export class NgmdHero {
     this.gradient() ? 'bg-clip-text text-transparent' : 'text-zinc-900 dark:text-zinc-100',
   );
 
-  readonly bodyClass = computed(() => 'text-zinc-700 dark:text-zinc-300');
+  readonly bodyClass = computed(() => 'text-zinc-700 dark:text-brand-muted-dark');
 }

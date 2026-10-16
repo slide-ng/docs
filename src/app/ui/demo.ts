@@ -27,7 +27,7 @@ import {appBase, withBase} from '../../base';
           loading="lazy"
         ></iframe>
       </div>
-      <figcaption class="mt-2 flex items-center justify-between gap-4 text-sm text-zinc-500">
+      <figcaption class="mt-2 flex items-center justify-between gap-4 text-sm text-brand-muted">
         <span>{{ title() }}</span>
         <a [href]="path()" target="_blank" rel="noopener noreferrer" class="shrink-0">
           Open full size

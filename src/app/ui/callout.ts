@@ -48,7 +48,7 @@ const BOX =
         </p>
       }
       <div
-        class="text-sm text-zinc-700 dark:text-zinc-300 [&>*:last-child]:mb-0 [&>*:first-child]:mt-0"
+        class="text-sm text-zinc-700 dark:text-brand-muted-dark [&>*:last-child]:mb-0 [&>*:first-child]:mt-0"
       >
         <ng-content></ng-content>
       </div>

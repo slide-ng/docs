@@ -42,12 +42,12 @@ import {VersionService} from '../services/version/version.service';
           class="inline-flex items-center gap-1.5 rounded-md border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2.5 py-1 text-xs font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800"
         >
           {{ triggerLabel() }}
-          <svg [lucideIcon]="chevronIcon" class="size-3 text-zinc-500"></svg>
+          <svg [lucideIcon]="chevronIcon" class="size-3 text-brand-muted"></svg>
         </button>
         @if (open()) {
           <ul
             id="ngmd-version-list"
-            class="absolute right-0 top-[calc(100%+0.375rem)] z-40 min-w-52 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 py-1 shadow-lg"
+            class="absolute right-0 top-[calc(100%+0.375rem)] z-40 min-w-52 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 py-1 shadow-lg"
           >
             @for (entry of list(); track entry.label) {
               <li>
@@ -57,7 +57,7 @@ import {VersionService} from '../services/version/version.service';
                     class="flex w-full items-center justify-between gap-3 px-3 py-1.5 text-left text-sm bg-zinc-50 dark:bg-zinc-900"
                   >
                     <span class="flex items-center gap-2">
-                      <svg [lucideIcon]="checkIcon" class="size-3 text-zinc-500"></svg>
+                      <svg [lucideIcon]="checkIcon" class="size-3 text-brand-muted"></svg>
                       {{ entry.label }}
                     </span>
                     <span
@@ -133,7 +133,7 @@ export class VersionSwitcher {
     if (status === 'next' || status === 'rc') {
       return 'bg-amber-100 text-amber-700 dark:bg-amber-950/40 dark:text-amber-300';
     }
-    return 'bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-500';
+    return 'bg-zinc-100 dark:bg-zinc-800 text-brand-muted dark:text-brand-muted-dark';
   }
 
   protected onDocumentClick(event: MouseEvent): void {

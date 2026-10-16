@@ -32,7 +32,7 @@ export function crumbLabel(href: string): string | null {
             <a
               routerLink="/"
               aria-label="Home"
-              class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-50"
+              class="text-brand-muted dark:text-brand-muted-dark hover:text-zinc-900 dark:hover:text-zinc-50"
             >
               <svg [lucideIcon]="home" class="size-4"></svg>
             </a>
@@ -43,7 +43,7 @@ export function crumbLabel(href: string): string | null {
               @if (last) {
                 <span class="font-medium" aria-current="page">{{ crumb.label }}</span>
               } @else {
-                <span class="text-zinc-500 dark:text-zinc-400">{{ crumb.label }}</span>
+                <span class="text-brand-muted dark:text-brand-muted-dark">{{ crumb.label }}</span>
               }
             </li>
           }

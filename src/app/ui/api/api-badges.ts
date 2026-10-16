@@ -35,6 +35,6 @@ export class ApiBadges {
     if (tag === 'beta') {
       return 'bg-sky-100 text-sky-700 dark:bg-sky-950/40 dark:text-sky-300';
     }
-    return 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300';
+    return 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-brand-muted-dark';
   }
 }

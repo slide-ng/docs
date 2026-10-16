@@ -1,5 +1,31 @@
 @import 'tailwindcss';
 
+/* The slide.ng palette. The grey (zinc) scale of the components is the warm paper and ink scale of the
+ * brand: 50 to 200 are paper and sand, 600 the muted text, 900 the raised ink, 950 the ink. */
+@theme {
+  --color-zinc-50: #f7f2ea;
+  --color-zinc-100: #f1ebe1;
+  --color-zinc-200: #e3dacb;
+  --color-zinc-300: #cfc4b1;
+  --color-zinc-400: #8a8590;
+  --color-zinc-500: #5f5b66;
+  --color-zinc-600: #4f4b55;
+  --color-zinc-700: #3b3741;
+  --color-zinc-800: #2a2630;
+  --color-zinc-900: #211d27;
+  --color-zinc-950: #16131a;
+  --color-brand: #d9480f;
+  --color-brand-deep: #a93a0c;
+  --color-brand-dark: #7a2a08;
+  --color-brand-amber: #f08c00;
+  --color-brand-muted-dark: #c9c4cf;
+}
+
+/* Muted text follows the theme: #4f4b55 on paper, #c9c4cf on ink. */
+@theme inline {
+  --color-brand-muted: var(--muted);
+}
+
 /* Tailwind v4 doesn't scan `.md` by default. Tell it to, so authoring
  * components can take Tailwind classes (`<ngmd-accordion class="my-8">`,
  * etc.) and have those utilities actually appear in the generated CSS. */
@@ -196,30 +222,41 @@
 
 @layer base {
   :root {
+    /* The slide.ng palette (the tokens of the brand kit) */
+    --slideng-orange: #d9480f; /* logo, large headings, icons */
+    --slideng-orange-deep: #a93a0c; /* small text, links, button backgrounds on light */
+    --slideng-orange-dark: #7a2a08;
+    --slideng-amber: #f08c00; /* accent on dark backgrounds only */
+    --slideng-ink: #16131a;
+    --slideng-paper: #fbf8f3;
+    --slideng-sand: #f1ebe1;
+    --slideng-ink-raised: #211d27;
+    --slideng-text-muted: #4f4b55;
+    --slideng-text-muted-dark: #c9c4cf;
+
     /* Surface */
-    --bg: #ffffff;
-    --bg-muted: #f4f4f5;
-    --fg: #0a0a0a;
-    --muted: #71717a;
-    --border: #e4e4e7;
-    --border-strong: #d4d4d8;
+    --bg: var(--slideng-paper);
+    --bg-muted: var(--slideng-sand);
+    --fg: var(--slideng-ink);
+    --muted: var(--slideng-text-muted);
+    --border: #e3dacb;
+    --border-strong: #cfc4b1;
 
     /* Brand (used by accent-aware components) */
-    --primary: #18181b;
-    --primary-fg: #fafafa;
-    --accent: #d946ef;
-    --accent-strong: #a21caf;
-    --accent-fg: #ffffff;
-    --accent-soft: rgba(217, 70, 239, 0.12);
-    --accent-gradient: linear-gradient(to right, #f43f5e 0%, #d946ef 50%, #a855f7 100%);
+    --primary: var(--slideng-ink);
+    --primary-fg: var(--slideng-paper);
+    --accent: var(--slideng-orange);
+    --accent-strong: var(--slideng-orange-deep);
+    --accent-fg: var(--slideng-paper);
+    --accent-soft: rgba(217, 72, 15, 0.1);
+    --accent-gradient: linear-gradient(to right, #d9480f 0%, #f08c00 100%);
     --accent-gradient-soft: linear-gradient(
       to bottom right,
-      rgba(244, 63, 94, 0.1) 0%,
-      rgba(217, 70, 239, 0.1) 50%,
-      rgba(168, 85, 247, 0.1) 100%
+      rgba(217, 72, 15, 0.08) 0%,
+      rgba(240, 140, 0, 0.08) 100%
     );
-    --code-border-gradient: linear-gradient(135deg, #f0abfc, #d946ef, #a21caf);
-    --line-highlight: rgba(217, 70, 239, 0.12);
+    --code-border-gradient: linear-gradient(135deg, #f08c00, #d9480f, #a93a0c);
+    --line-highlight: rgba(217, 72, 15, 0.1);
 
     /* Geometry */
     --radius-sm: 0.25rem;
@@ -237,28 +274,27 @@
   }
 
   .dark {
-    --bg: #0a0a0a;
-    --bg-muted: #18181b;
-    --fg: #fafafa;
-    --muted: #a1a1aa;
-    --border: #27272a;
-    --border-strong: #3f3f46;
+    --bg: var(--slideng-ink);
+    --bg-muted: var(--slideng-ink-raised);
+    --fg: var(--slideng-paper);
+    --muted: var(--slideng-text-muted-dark);
+    --border: #34303b;
+    --border-strong: #4a4553;
 
-    --primary: #fafafa;
-    --primary-fg: #18181b;
-    --accent: #e879f9;
-    --accent-strong: #f0abfc;
-    --accent-fg: #18181b;
-    --accent-soft: rgba(217, 70, 239, 0.15);
-    --accent-gradient: linear-gradient(to right, #fb7185 0%, #e879f9 50%, #c084fc 100%);
+    --primary: var(--slideng-paper);
+    --primary-fg: var(--slideng-ink);
+    --accent: var(--slideng-amber);
+    --accent-strong: var(--slideng-amber);
+    --accent-fg: var(--slideng-ink);
+    --accent-soft: rgba(240, 140, 0, 0.14);
+    --accent-gradient: linear-gradient(to right, #d9480f 0%, #f08c00 100%);
     --accent-gradient-soft: linear-gradient(
       to bottom right,
-      rgba(244, 63, 94, 0.1) 0%,
-      rgba(217, 70, 239, 0.1) 50%,
-      rgba(168, 85, 247, 0.1) 100%
+      rgba(217, 72, 15, 0.12) 0%,
+      rgba(240, 140, 0, 0.12) 100%
     );
-    --code-border-gradient: linear-gradient(135deg, #f0abfc, #d946ef, #a21caf);
-    --line-highlight: rgba(217, 70, 239, 0.12);
+    --code-border-gradient: linear-gradient(135deg, #f08c00, #d9480f, #a93a0c);
+    --line-highlight: rgba(240, 140, 0, 0.12);
 
     color-scheme: dark;
   }

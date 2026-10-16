@@ -8,7 +8,7 @@ import siteConfig from '../../ngmd.config';
   imports: [GithubIcon, DiscordIcon],
   template: `
     <footer
-      class="border-t border-zinc-200 dark:border-zinc-800 py-6 px-4 sm:px-6 text-sm text-zinc-500 dark:text-zinc-400"
+      class="border-t border-zinc-200 dark:border-zinc-800 py-6 px-4 sm:px-6 text-sm text-brand-muted dark:text-brand-muted-dark"
     >
       <div class="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3">
         <span>© {{ year }} {{ name }} contributors. Released under the MIT License.</span>

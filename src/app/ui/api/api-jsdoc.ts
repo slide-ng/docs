@@ -21,7 +21,7 @@ type JsDocPart =
   template: `
     @for (block of paragraphs(); track $index) {
       <p
-        class="text-zinc-700 dark:text-zinc-300 leading-relaxed [&_code]:rounded [&_code]:bg-zinc-100 [&_code]:dark:bg-zinc-800 [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-[0.85em]"
+        class="text-zinc-700 dark:text-brand-muted-dark leading-relaxed [&_code]:rounded [&_code]:bg-zinc-100 [&_code]:dark:bg-zinc-800 [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-[0.85em]"
       >
         @for (part of block; track $index) {
           @switch (part.kind) {

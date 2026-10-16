@@ -41,7 +41,7 @@ export class HeadingAnchors implements AfterViewInit {
     button.type = 'button';
     button.setAttribute('aria-label', 'Copy link to this section');
     button.className =
-      'ml-2 inline-flex items-center justify-center size-5 align-middle relative -top-[2px] rounded text-zinc-500 dark:text-zinc-400 hover:text-[color:var(--accent)] opacity-0 transition-opacity group-hover/heading:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100';
+      'ml-2 inline-flex items-center justify-center size-5 align-middle relative -top-[2px] rounded text-brand-muted dark:text-brand-muted-dark hover:text-[color:var(--accent)] opacity-0 transition-opacity group-hover/heading:opacity-100 focus-visible:opacity-100 [@media(hover:none)]:opacity-100';
     button.innerHTML = this.linkIcon();
 
     // h1 is the page itself; copying #h1-slug duplicates the path in the URL.

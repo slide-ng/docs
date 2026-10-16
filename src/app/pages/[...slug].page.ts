@@ -53,9 +53,14 @@ const NOT_FOUND = '__ngmd-not-found__';
         <section
           class="mx-auto max-w-xl w-full px-6 py-16 text-center flex flex-col items-center justify-center min-h-[calc(100vh-12rem)]"
         >
-          <p class="text-sm font-medium tracking-[0.2em] text-zinc-500 dark:text-zinc-400">404</p>
+          <img src="logo-mark.svg" alt="" aria-hidden="true" class="mx-auto mb-6 size-16" />
+          <p
+            class="text-sm font-medium tracking-[0.2em] text-brand-muted dark:text-brand-muted-dark"
+          >
+            404
+          </p>
           <h1 class="mt-3 text-3xl sm:text-4xl font-bold tracking-tight">Page not found</h1>
-          <p class="mt-4 text-base text-zinc-600 dark:text-zinc-400">
+          <p class="mt-4 text-base text-brand-muted dark:text-brand-muted-dark">
             The page you're looking for doesn't exist or has moved.
           </p>
 
@@ -63,11 +68,11 @@ const NOT_FOUND = '__ngmd-not-found__';
             <button
               type="button"
               (click)="gotoHit(hit)"
-              class="mt-8 w-full max-w-sm flex items-center gap-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 py-3 text-left hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)] hover:border-transparent transition-colors"
+              class="mt-8 w-full max-w-sm flex items-center gap-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 px-4 py-3 text-left hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)] hover:border-transparent transition-colors"
             >
               <span class="flex-1 min-w-0">
                 <span
-                  class="block text-[0.625rem] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400"
+                  class="block text-[0.625rem] uppercase tracking-[0.2em] text-brand-muted dark:text-brand-muted-dark"
                 >
                   Maybe you meant
                 </span>

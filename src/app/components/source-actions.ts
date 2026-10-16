@@ -22,7 +22,7 @@ import {RouteUrlService} from '../services/route-url/route-url.service';
           [href]="edit"
           target="_blank"
           rel="noopener noreferrer"
-          class="rounded p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+          class="rounded p-1.5 text-brand-muted hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
           title="Edit this page on GitHub"
           aria-label="Edit this page on GitHub"
         >
@@ -32,7 +32,7 @@ import {RouteUrlService} from '../services/route-url/route-url.service';
           [href]="sourceUrl()"
           target="_blank"
           rel="noopener noreferrer"
-          class="rounded p-1.5 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+          class="rounded p-1.5 text-brand-muted hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
           title="View source on GitHub"
           aria-label="View source on GitHub"
         >
