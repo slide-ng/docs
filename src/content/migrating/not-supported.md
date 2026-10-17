@@ -21,7 +21,7 @@ This list is taken from the parity table that is kept with the slide.ng source, 
 - `dev --base`, `dev --tunnel`, `dev --inspect` and `build --router-mode`.
 - `export` with several entries, and `export --format pptx-editable`.
 - A Prettier plugin, a converter from Vue syntax, `overviewSnapshots` and the browser exporter page. These are left out on purpose.
-- A released VS Code extension. A first version is in the slide-ng/vscode repository; it is not released and was not run inside VS Code.
+- A released VS Code extension. A first version is in the slide-ng/vscode-extension repository; it is not released and was not run inside VS Code.
 - Theme and addon galleries, and community themes.
 - `memory` router mode and `setup/routes.ts`.
 - `setup/vite.config.ts` and `setup/vue.ts`, which are about Vite and Vue.
