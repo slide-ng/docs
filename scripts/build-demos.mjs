@@ -11,6 +11,7 @@ import {existsSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node
 import {dirname, join, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {stageFingerprint, writeSource, writeStageDeck} from './landing-stages.mjs';
+import {copySwitcher, hasSwitcher} from './theme-switcher.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const slideNg = resolve(process.env.SLIDE_NG_DIR ?? join(root, '..', 'slide.ng'));
@@ -49,6 +50,7 @@ for (const name of wanted) {
     if (!existsSync(theme))
       throw new Error(`No theme package at ${theme}. Set SLIDE_NG_THEMES_DIR.`);
     args.push('--theme', theme);
+    if (hasSwitcher(themes)) copySwitcher(themes, [join(root, 'demos', name)]);
   }
   console.log(`\n== ${name}`);
   const result = spawnSync(process.execPath, args, {cwd: root, stdio: 'inherit'});
