@@ -9,7 +9,7 @@ Two things help a coding agent work on a deck: the agent skill, which teaches it
 
 ## The agent skill
 
-The skill is a folder in the common `SKILL.md` format. The main file has the quick start, the syntax and a table of topics. One short reference per topic sits in `references/`. Slide.ng is Angular, so the skill says where Slidev (Vue) habits fail, and it lists what does not exist so that an agent does not invent it.
+The skill is a folder in the common `SKILL.md` format. The main file has the quick start, the syntax and a table of topics. One short reference per topic sits in `references/`. Slide.ng is Angular, so the skill says where Slidev (Vue) habits fail, and it lists what does not exist so that an agent does not invent it. One reference is a recipe for porting a Slidev deck, with a worked Vue to Angular example and a list of pitfalls.
 
 Install it in a deck:
 

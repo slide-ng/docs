@@ -13,7 +13,7 @@ The last HTML comment of a slide is its note. It is stored in the slide's metada
 <!-- This text is a note. It is stored in the metadata, not shown. -->
 ```
 
-In a note, `[click]` and `[click:3]` mark where a click starts, and a double click on a marker in the presenter view jumps there.
+In a note, `[click]` marks where the next click starts, and `[click:3]` moves three clicks on, counted from the marker before it, as in Slidev. A double click on a marker in the presenter view jumps there.
 
 - `/notes` shows only the notes and follows the presenter.
 - `slide-ng export-notes` writes a PDF of the notes.

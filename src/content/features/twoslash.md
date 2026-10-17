@@ -14,6 +14,6 @@ const count = Math.max(1, 2)
 ```
 ````
 
-`//    ^?` shows the type of the word above the `^`.
+`//    ^?` shows the type of the word above the `^`, on a line of its own under that code line, so it does not cover the code.
 
-A block that does not compile is shown without types, with a warning in the output. The `twoslash: dev|build` switch of Slidev is not read.
+A TypeScript error in the block is shown under its line, and the types still work. Add `// @errors: <code>` to mark an error as expected. The `twoslash: dev|build` switch of Slidev is not read.

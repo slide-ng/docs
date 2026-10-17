@@ -18,9 +18,9 @@ Leave a slide out with `hideInToc: true`.
 | Option | Meaning |
 | --- | --- |
 | `columns` | Number of columns, 1 by default. |
-| `listClass`, `listStyle` | Classes or inline style for the lists. |
+| `listClass`, `listStyle` | Classes or inline style for the lists, at every level. |
 | `start` | The first number, 1 by default. |
 | `minDepth`, `maxDepth` | Which levels to list. |
 | `mode` | `all`, `onlyCurrentTree` (the path to the current slide and what is below it) or `onlySiblings` (the lists that contain the current slide). |
 
-The slide's title is plain text. Slidev's `TitleRenderer`, which shows a title as HTML, is not there.
+The slide's title is plain text: the markup of links, code and HTML tags in a heading is taken out, also in the tab title, the go-to box and the PDF outline. `$math$` in a title is drawn with KaTeX here. Slidev's `TitleRenderer`, which shows a title as HTML, is not there.

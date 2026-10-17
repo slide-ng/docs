@@ -20,7 +20,7 @@ drawings:
 | Key | Meaning |
 | --- | --- |
 | `enabled` | `true`, `false`, or `dev` or `build` to allow drawing only in that mode. |
-| `persist` | While `slide-ng dev` runs, save `.slide-ng/drawings/<slide>.svg`. Builds show those files. |
+| `persist` | While `slide-ng dev` runs, save `.slide-ng/drawings/<slide>.svg`. Builds and exported PDFs show those files. In `dev`, a device that joins later sees them only after the next regeneration. |
 | `presenterOnly` | Only the presenter's window can draw. |
 | `syncAll` | `false` keeps viewers' drawings on their own screen. |
 

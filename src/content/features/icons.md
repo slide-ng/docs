@@ -18,4 +18,6 @@ Carbon (`carbon`), Material Design Icons (`mdi`) and Phosphor (`ph`) are install
 npm i -D @iconify-json/tabler
 ```
 
-Then write `<tabler-bell />`. Nothing else is configured, and only the icons you use end up in the CSS. Colour and size come from the text, so `text-red-500` and `text-3xl` work.
+Install it in the deck's folder, next to `slides.md`. Then write `<tabler-bell />`. Nothing else is configured, and only the icons you use end up in the CSS. Colour and size come from the text, so `text-red-500` and `text-3xl` work.
+
+The tag form is rewritten in slide markdown only, and an icon is a `<span>`, not an `<svg>`. In a component or layer template, write `<span class="i-carbon:apps"></span>`.

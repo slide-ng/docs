@@ -17,4 +17,4 @@ h1 { color: red; }
 
 The CSS is placed inside the slide's own element with native CSS nesting, so every selector matches only inside that slide, layout elements included. For example `.two-cols-header { column-gap: 20px }` works. Nested rules and `&` work too.
 
-UnoCSS directives such as `--uno: ...` do not work. Use utility classes in the HTML instead, see [Styling](../guide/styling.md).
+`@keyframes` work. UnoCSS directives such as `--uno: ...` and `@apply` do not work, and the generator warns about them. Use utility classes in the HTML instead, see [Styling](../guide/styling.md).
