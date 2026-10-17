@@ -1,0 +1,1 @@
+import"./main-NXAVSMXK.js";import{C,w as v}from"./chunk-DGombcL_.js";export{v as createArchitectureServices};

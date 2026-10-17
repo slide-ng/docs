@@ -1,1 +1,0 @@
-import"./main-5YFAZGSN.js";import{C,w as v}from"./chunk-NFpKZK1h.js";export{v as createArchitectureServices};
