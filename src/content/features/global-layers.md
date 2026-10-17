@@ -30,4 +30,4 @@ export default class MyFooter {
 }
 ```
 
-Layers let clicks through. Give your own elements `pointer-events: auto` if they need the mouse. Inject `SLIDE_NO` to know which slide a `slide-*` layer is in.
+Layers let clicks through. Give your own elements `pointer-events: auto` if they need the mouse. Inject `SLIDE_NO` to know which slide a layer is drawn on. That is right in the PDF and in the overview too, where every slide is drawn at once. `Nav.no()` stays the presented slide there, so a footer that reads it prints the same number on every page.

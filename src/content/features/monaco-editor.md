@@ -20,7 +20,8 @@ console.log('Modified text')
 ````
 
 - `{monaco}` is an editor with the code. Options go in a second brace: `lines`, `readonly`, `height` (`initial`, `auto` or a CSS size).
-- `{monaco-diff}` shows two texts side by side, split by a line with `~~~`.
+- `{monaco-diff}` shows two texts side by side, split by a line that holds only `~~~`.
+- The editors follow the deck's dark mode. A `setup/monaco.ts` can give a theme of its own for each mode.
 
 Keys typed in an editor do not trigger slide shortcuts. A `setup/monaco.ts` file changes editor options for the whole deck, see [Setup hooks](../customize/setup-hooks.md).
 

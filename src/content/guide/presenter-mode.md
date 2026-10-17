@@ -13,7 +13,7 @@ The audience page, for example `/3`, in another window or on another device foll
 
 ## Notes
 
-A slide's note is its last HTML comment. In a note, `[click]` and `[click:3]` mark where a click starts. Double click a marker to jump to it.
+A slide's note is its last HTML comment. In a note, `[click]` marks where the next click starts, and `[click:3]` moves three clicks on from the marker before it. Double click a marker to jump to it.
 
 ```md
 # A slide
@@ -21,7 +21,7 @@ A slide's note is its last HTML comment. In a note, `[click]` and `[click:3]` ma
 <!--
 Say hello.
 [click] Then show the first point.
-[click:3] And the third.
+[click:3] Three clicks later, at click 4.
 -->
 ```
 
@@ -36,7 +36,7 @@ timer: countdown
 ---
 ```
 
-`duration` takes `30min`, `1h30min`, `90s`, or a number of minutes. `timer` is `stopwatch` (the default) or `countdown`. See [Timer](../features/timer.md).
+`duration` takes `30min`, `1h30min`, `90s`, or a number of minutes. `timer` is `stopwatch` (the default) or `countdown`. A running timer survives a reload of the presenter page. See [Timer](../features/timer.md).
 
 ## Cursor and laser
 
@@ -44,7 +44,9 @@ The presenter's mouse is shown on the audience page as a pointer or a red laser 
 
 ## Syncing
 
-Windows of one browser follow each other with no server, over a `BroadcastChannel`. Other devices need the dev server with `--remote`, see [Remote access](../features/remote-access.md).
+Windows of one browser follow each other with no server, over a `BroadcastChannel`. Other devices need the dev server with `--remote`, see [Remote access](../features/remote-access.md). There, the presenter and notes pages need the password; without it they go to the slides. A window or device that joins later catches up with the presenter, timer included.
+
+Every window follows the presenter. Slidev's sync mode menu (send only, receive only, off) is not there.
 
 ## Turning it off
 

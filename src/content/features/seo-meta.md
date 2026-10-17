@@ -27,7 +27,7 @@ seoMeta:
 | Key | Effect |
 | --- | --- |
 | `title`, `titleTemplate` | The browser tab. `%s` is the title. |
-| `info` | Markdown for the info dialog. Without markup, up to 300 characters, it is also the page description. |
+| `info` | Markdown for the info dialog. With the markup taken out and cut at 300 characters, it is also the page description and the PDF's subject. |
 | `author`, `keywords` | Meta tags. `keywords` is a list or a comma separated text. |
 | `lang`, `htmlAttrs` | Attributes on `<html>`. |
 | `favicon` | A file of `public/`, or a web address. |

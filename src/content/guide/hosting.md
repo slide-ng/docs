@@ -27,10 +27,11 @@ The build empties its output folder. To make sure it never wipes something of yo
 | `index.html`, `main-*.js`, `chunk-*.js`, `styles-*.css` | The app. Monaco, Mermaid and the like are separate chunks, fetched only when a slide uses them. |
 | `404.html` | A copy of `index.html`. GitHub Pages shows it for unknown paths, so `/talk/3` opens the app. |
 | `_redirects` | The same rule for Netlify. |
-| `<exportFilename>.pdf` | Only with `--download` or `download: true`. |
+| `<exportFilename>.pdf` | Only with `--download` or `download: true`. With `download: true` alone, a build without a working Chromium warns and leaves it out. |
 | `og-image.png` | The link preview picture, see [Page head and SEO](../features/seo-meta.md). |
 | `remote-assets/` | Remote pictures that were downloaded, see [Bundle remote assets](../features/remote-assets.md). |
 | `media/` | Font files for KaTeX and for web fonts with `fonts.selfHost`. |
+| `_local/` | Pictures next to `slides.md` that slides name with a relative address, see [Directory structure](../customize/directory-structure.md#pictures-next-to-the-deck). |
 | `sw.js`, `manifest.webmanifest` | Offline support, `pwa: true`. |
 
 ## Addresses and the base path
@@ -110,4 +111,4 @@ Under a sub-path build with `--base /talk/`, put the files in `/usr/share/nginx/
 
 ## Size
 
-A deck without heavy features is about 450 kB at startup, about 110 kB compressed. Decks that use Monaco or KaTeX add their style sheets to that. The build warns above 1.5 MB at startup and fails above 3 MB. Monaco, Mermaid and Magic Move are lazy chunks and do not count.
+A deck without heavy features is about 450 kB at startup, about 110 kB compressed. Decks that use Monaco or KaTeX add their style sheets to that. Every slide is in the first bundle, and highlighted code compiles to a lot of markup, so a long workshop with code on every slide can pass 3 MB. The build warns above 6 MB at startup and fails only above 100 MB. Monaco, Mermaid and Magic Move are lazy chunks and do not count.

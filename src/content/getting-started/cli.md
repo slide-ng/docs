@@ -24,7 +24,7 @@ In a checkout of the repository, run the same thing as `node bin/slide-ng.mjs <c
 
 ## Where a deck is built
 
-A deck inside the slide.ng repository is built in place. Any other deck gets a working copy of the app in `<deck>/.slide-ng/app`, made fresh each time, so the installed package is never written to. Add `.slide-ng/` to your `.gitignore`; the template already does.
+A deck inside the slide.ng repository is built in place. Any other deck gets a working copy of the app in `<deck>/.slide-ng/`, made fresh each time, so the installed package is never written to. `dev`, `build` and `export` each have their own copy (`app`, `app-build` and `app-export`), so a build while the dev server runs leaves the dev server alone. The price is a slower first run of each command. Add `.slide-ng/` to your `.gitignore`; the template already does.
 
 ## The ones you use most
 
@@ -35,4 +35,4 @@ A deck inside the slide.ng repository is built in place. Any other deck gets a w
 | `export` | Opens the deck in Chromium and writes a PDF. `--format png`, `pptx` or `md` for the others. |
 | `format` | Rewrites `slides.md` with tidy spacing and clean YAML. |
 
-Every flag is in the [CLI reference](../built-in/cli.md). The Guide pages [Export](../guide/export.md), [Hosting](../guide/hosting.md) and [Presenting offline](../guide/offline.md) show them in use.
+`slide-ng --version` prints the version, and `slide-ng <command> --help` lists the flags of a command. Every flag is in the [CLI reference](../built-in/cli.md). The Guide pages [Export](../guide/export.md), [Hosting](../guide/hosting.md) and [Presenting offline](../guide/offline.md) show them in use.

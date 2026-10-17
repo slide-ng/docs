@@ -34,6 +34,34 @@ Every exported component with a selector in `components/` is available. The gene
 
 Inputs, outputs, signals and your own services work as in any Angular app. Because a slide has no class of its own, share state between parts of a slide with a template reference, see [Angular in markdown](../guide/angular-templates.md).
 
+Only the `.ts` files directly in `components/` are read, not its sub-folders.
+
+## Pipes and directives
+
+A pipe in `components/` (`@Pipe({ name: 'initials' }) export class InitialsPipe`) is imported into every slide whose expressions use it: `{{ name | initials }}`. A directive is imported when a slide uses its selector: a tag, an attribute (also as `*structural`), a tag with an attribute such as `button[appRipple]`, or a list of these.
+
+## Packages
+
+Components can import `@angular/common`, `@angular/forms` and `@angular/router`, which come with slide.ng. Do not install another copy of an `@angular/*` package in the deck: two copies of Angular give a blank page. `@angular/animations` is not included. Use Angular's `animate.enter` and `animate.leave`, or CSS.
+
+Any other package a component imports, such as `chart.js`, is installed next to `slides.md` (`npm i chart.js`). It is found the way Node finds packages, from the deck's folder up. A package that slide.ng comes with (Angular, `rxjs`, `shiki`) is always slide.ng's copy.
+
+## Web components
+
+A web component such as `<model-viewer>` or Shoelace's `<sl-button>` is not an Angular component, so Angular stops with "is not a known element". Load its script in `setup/main.ts` (`import '@google/model-viewer';`) and list its tags in the headmatter:
+
+```yaml
+customElements: [model-viewer, sl-*] # a name ending in * is a prefix; true allows any tag with a dash
+```
+
+Only the slides that use a listed tag get Angular's `CUSTOM_ELEMENTS_SCHEMA`. Elsewhere a mistyped component name is still an error. Attributes are set as written; bind a property with `[prop]="value"`.
+
+## Where a component is drawn
+
+A slide is drawn in every window that shows it: the presenter page and each audience page. A component that only shows things needs nothing more. One that acts, such as a timer that calls `nav.next()`, a sound or a request, does so in every window, so the deck would move twice. Act in one window only, for example when `inject(RENDER_CONTEXT)` from `slide-ng/lib/slide-context` is `'slide'`, the audience page. It is `'presenter'` on the presenter page, and `'previewNext'`, `'print'` or `'overview'` in previews.
+
+In the PDF and in the overview every slide is drawn at once, so `Nav.no()` is the slide being presented, not the slide being drawn. Inject `SLIDE_NO` to know which slide a component is in.
+
 ## A layout
 
 A layout is a standalone component that puts the slide's content in `<ng-content />`. Put it in `layouts/`:
@@ -66,7 +94,9 @@ layout: banner
 - The layout name is the name of the file, so `layouts/banner.ts` is `layout: banner`.
 - The selector must be a string literal and the class must be exported, because the generator reads the file as text.
 - A layout with the same name as a built-in one replaces it.
-- To take frontmatter keys as inputs, or to name slots, describe them in a `theme.json`, see [Writing a theme](./writing-a-theme.md).
+- To take frontmatter keys as inputs, or to name slots, describe them in a `theme.json` next to `slides.md`, see [Writing a theme](./writing-a-theme.md). The values arrive as attribute text, except lists and objects.
+- A layout is not a slide: it imports the components it uses itself (`imports: [Footer]`).
+- A deck's own `layouts/404.ts` replaces the page shown for an unknown slide.
 
 ## Layers
 

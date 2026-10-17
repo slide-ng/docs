@@ -23,7 +23,7 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `transition` | The transition to the next slide. |
 | `src` | Take the slides from another file, optionally with a `#range`. |
 | `zoom` | Scale this slide. Wins over the headmatter. |
-| `dragPos` | Named positions for `slide-ng-drag`. |
+| `dragPos` | Named positions for `slide-ng-drag`. It is read per slide, so in the headmatter it covers slide 1 only. |
 | `image`, `url`, `scale`, `backgroundSize`, `background`, `layoutClass` | Props of some layouts. |
 
 ## Headmatter, for the deck
@@ -33,15 +33,16 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | Key | What it does |
 | --- | --- |
 | `title` | The deck title, for the browser tab and the info dialog. |
-| `info` | Markdown for the info dialog. |
+| `info` | Markdown for the info dialog. With the markup taken out and cut at 300 characters, it is also the page description and the PDF's subject. |
 | `theme`, `addons` | A folder, a package name or `default`. See [Themes and addons](../customize/themes.md). |
 | `defaults` | Frontmatter every slide starts from. |
 | `transition` | The transition of every slide that sets none. |
-| `colorSchema` | `auto` (default), `light` or `dark`. Fixed values hide the toggle. |
+| `colorSchema` | `auto` (default), `light` or `dark`. Fixed values hide the toggle. A theme that sets `light` or `dark` in its `theme.json` keeps that mode: the deck's own value is not used, and the generator says so. |
 | `canvasWidth`, `aspectRatio` | The canvas. Defaults 980 and `16/9`. |
 | `zoom` | Scale every slide. |
 | `routerMode` | `history` (default) or `hash`. |
 | `fonts` | Web fonts. See [Fonts](../features/fonts.md). |
+| `customElements` | Web component tags the slides may use, such as `[model-viewer, sl-*]`. A name ending in `*` is a prefix, and `true` allows any tag with a dash. See [Layouts and components](../customize/layouts-components.md#web-components). |
 
 ### Code and diagrams
 
@@ -71,12 +72,13 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | Key | What it does |
 | --- | --- |
 | `titleTemplate`, `author`, `keywords`, `favicon`, `lang`, `htmlAttrs`, `seoMeta` | The page's `<head>`. See [Page head and SEO](../features/seo-meta.md). |
-| `download` | A PDF button: `true`, a file name or an address. |
+| `download` | A PDF button: `true`, a file name or an address. With `true`, `slide-ng build` makes the PDF. Without a working Chromium it warns and the button stays disabled. |
 | `exportFilename` | The name of exported files, without the extension. |
 | `export` | Defaults for `slide-ng export`. See [Export](../guide/export.md). |
 | `remoteAssets` | Download remote pictures at build time. |
 | `pwa` | Offline support in a build. |
+| `themeColor` | The colour of the browser's bar for the installed app, such as `'#0f2c4c'`. A theme can set it. |
 
 ## Not read
 
-These Slidev keys are accepted in the file but have no effect: `selectable`, `themeConfig`, `mdc`, `preload`, `clickAnimation`, `overviewSnapshots`, `browserExporter`, `notesAutoRuby`, `monacoTypesSource`, and `colorSchema: all`. The `monaco` and `twoslash` switches of Slidev are not read either: a `{monaco}` or `twoslash` code fence is what turns them on. A key a theme brings through `theme.json` is merged under the deck's headmatter, see [Themes and addons](../customize/themes.md).
+These Slidev keys are accepted in the file but have no effect: `selectable`, `themeConfig`, `preload`, `clickAnimation`, `overviewSnapshots`, `browserExporter`, `notesAutoRuby`, `monacoTypesSource`, and `colorSchema: all`. `mdc: true` and `comark: true` have no effect, and the generator warns that MDC syntax stays text. `highlighter: prism` warns too, because code is always highlighted with Shiki. The `monaco` and `twoslash` switches of Slidev are not read either: a `{monaco}` or `twoslash` code fence is what turns them on. A key a theme brings through `theme.json` is merged under the deck's headmatter, except a fixed `colorSchema`, see [Themes and addons](../customize/themes.md).

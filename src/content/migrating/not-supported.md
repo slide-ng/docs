@@ -10,10 +10,14 @@ This list is taken from the parity table that is kept with the slide.ng source, 
 ## Not there
 
 - Slidev themes and addons: they are Vue packages.
-- Comark or MDC syntax (`comark: true`, `mdc: true`).
+- Comark or MDC syntax (`comark: true`, `mdc: true`). The generator warns, and the syntax stays text.
+- `:emoji:` shortcodes. Type the emoji itself.
+- `v-pre`. Use Angular's `ngNonBindable`, or write `&#123;&#123;` for a literal `{{`.
+- `@apply` and UnoCSS's directive transformer. The generator warns.
+- Slidev's sync mode menu (send only, receive only, off). Windows and devices always follow the presenter.
 - Slide hooks `onSlideEnter`, `onSlideLeave` and `useIsSlideActive`.
 - Custom transitions given as an object, `clickAnimation`, `preloadImages` and slide `preload`.
-- `selectable`, `themeConfig`, `notesAutoRuby` and `TitleRenderer`.
+- `selectable`, `themeConfig`, `notesAutoRuby` and `TitleRenderer`. Slide titles are plain text, except `$math$`, which is drawn in the table of contents.
 - `dev --base`, `dev --tunnel`, `dev --inspect` and `build --router-mode`.
 - `export` with several entries, and `export --format pptx-editable`.
 - A Prettier plugin, a converter from Vue syntax, `overviewSnapshots` and the browser exporter page. These are left out on purpose.
@@ -34,6 +38,7 @@ This list is taken from the parity table that is kept with the slide.ng source, 
 - Magic Move: `magicMoveDuration` and `magicMoveCopy` are read, the other `shiki.magicMove` options are not.
 - `colorSchema`: `auto`, `light` and `dark` work, `all` does not.
 - Touch: swiping works, but pinch zoom and touch tuning for drawing and `slide-ng-drag` were not tried on a real device.
+- Keyboard and screen reader use of the menus: Escape does not always give focus back, the overview moves a highlight instead of the focus, and the context menu has no arrow keys.
 - `addons`: resolution and merge order are tested, but no deck was built with an addon end to end.
 - Raw HTML: HTML and `<style>` work, `<script setup>` has no equivalent.
 
@@ -43,6 +48,7 @@ These were not tried, so treat them as unknown rather than working:
 
 - Firefox and Safari, for the app, export and the offline folder. Only Chromium was used.
 - Real devices over a real network for `--remote`, the real screen share picker, wake lock behaviour and real projectors.
+- A deck installed from the npm registry with the newest changes: a new deck gets the version of `@slide-ng/core` that is published, which can be behind the repository.
 - Real Google Fonts for `fonts.selfHost`, a PWA update on an installed deck, and hosting on GitHub Pages or Netlify beyond writing the files they read.
 - Open Graph pictures in a real crawler.
 

@@ -16,9 +16,9 @@ Starts an MCP server on stdio. A client that speaks the protocol can read and ed
 | `list_slides` | Lists the slides. |
 | `get_outline` | Returns the outline built from slide titles. |
 | `get_slide` | Returns one slide's markdown and metadata. |
-| `update_slide` | Replaces a slide's content. |
-| `insert_slide` | Adds a slide. |
-| `remove_slide` | Removes a slide. |
+| `update_slide` | Replaces one slide: frontmatter, content and notes. It may add or remove the frontmatter, and must stay one slide. |
+| `insert_slide` | Adds a slide after another one. Its `markdown` may start with its own `---` frontmatter block, or the frontmatter is given as an object. |
+| `remove_slide` | Removes a slide, and returns the slides left and the number and title of the one removed. |
 | `move_slide` | Moves a slide. |
 
 - Slide 1, the headmatter, cannot be removed or moved.

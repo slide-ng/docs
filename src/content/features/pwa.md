@@ -18,5 +18,7 @@ pwa: true
 - A label in the bottom right corner says "Available offline" once everything is stored, and "Offline" while the browser has no network.
 - Serve it over HTTPS or `localhost`. Browsers only allow service workers there.
 - A new build gets a new cache name, so visitors get the new version on their next visit.
+- A downloaded PDF (`download: true`) is stored too.
+- `themeColor: '#0f2c4c'` in the headmatter colours the browser's bar of the installed app. A theme can set it.
 
 **The first visit must be online.** A browser that has never opened the deck cannot get it without a network. For talks with no network, use an [offline folder](../guide/offline.md).

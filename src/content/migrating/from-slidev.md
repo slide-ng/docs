@@ -30,8 +30,15 @@ slide.ng reads the same markdown file format as *Slidev, with the same slide spl
 | Your own components in `components/`, written in Vue | Standalone Angular components in `components/`, found by their `selector` |
 | Layouts in `layouts/*.vue` | Layouts in `layouts/*.ts`, see [Layouts and components](../customize/layouts-components.md) |
 | UnoCSS config in `uno.config.ts` | `uno.config.mjs` |
+| `v-pre` for a literal `{{ }}` | `ngNonBindable` on the element, or `\{\{` or `&#123;&#123;` in text |
+| `<template #1>` children of `<v-switch>`, `<template #dark>` of `<LightOrDark>` | `<div at="1">` children of `<slide-ng-switch>`, and `<div dark>` or `<div light>` in `<slide-ng-light-or-dark>`. A `<template #...>` slot renders nothing, and the generator reports it |
+| A named slot of your own component, `<template #title>` | An element with an attribute, `<span slot-title>`, and `<ng-content select="[slot-title]" />` in the component |
+| `@click="$slidev.nav.next"` | A small component that injects `Nav` and calls `nav.next()` |
+| Self-closing HTML tags, `<div />` | `<div></div>`. Angular stops with NG5002 otherwise. Components, `<img />` and `<br />` are fine |
+| `@apply` in CSS | Does nothing, and the generator warns. Write the CSS out, or put the classes on the elements |
+| Windi's comma in arbitrary values, `grid-cols-[80px,1fr]` | `_` as in UnoCSS, `grid-cols-[80px_1fr]` |
 
-`{{ }}` looks the same in both, but the expression inside is an Angular expression, not a JavaScript one with Vue's globals. `@if` and `@for` lines must be on their own line, see [Angular in markdown](../guide/angular-templates.md).
+`{{ }}` looks the same in both, but the expression inside is an Angular expression, not a JavaScript one with Vue's globals. An event handler cannot assign a slide field, because a slide has no class. `@if` and `@for` lines must be on their own line, see [Angular in markdown](../guide/angular-templates.md).
 
 ## Command line
 
@@ -60,5 +67,9 @@ Slidev's setup files use `define...Setup` helpers and get Vue and Vite objects. 
 1. Run `slide-ng` on the deck and read the warnings. Unknown layouts, a missing theme and unknown slots are all reported.
 2. Replace `v-if`, `v-for` and `<script setup>` with Angular's control flow and with components.
 3. Rename component tags to kebab-case with the `slide-ng-` prefix, `v-click` and the other `v-` names to `slide-ng-click` and so on, and `v-click` ranges to `[slide-ng-click]`. Search for `v-click`, `v-after`, `v-mark`, `v-motion`, `v-drag` and `<v-`.
-4. Replace the theme with an official one, or write one.
-5. Check the [not supported](./not-supported.md) list against what the deck uses.
+4. Replace the theme with an official one, or write one. A Slidev theme name such as `seriph` is looked up as `@slide-ng/theme-seriph` and stops the build when that is not installed.
+5. Pictures next to `slides.md` (`./images/x.png`) in a slide's markup are copied into the build. Move the ones that components, CSS `url()` and the frontmatter name into `public/`.
+6. Put each component file directly in `components/`. Sub-folders are not read.
+7. Remember that an HTML comment at the end of a slide is its speaker note, as in Slidev.
+8. `.slidev-layout h4` sets a size, so `<h4 class="text-xs">` keeps the heading size, as in current Slidev. Older decks expected the class to win: add `!`, as in `!text-xs`.
+9. Check the [not supported](./not-supported.md) list against what the deck uses.
