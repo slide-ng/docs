@@ -38,11 +38,15 @@ theme: seriph
 ---
 ```
 
-Slidev themes are written for Vue and are not compatible. Only the folder names are alike.
+Slidev themes are written for Vue and are not compatible. Only the folder names are alike. A Slidev theme name such as `theme: seriph` is looked up as `@slide-ng/theme-seriph`, so install that package, or the build stops.
+
+The slide.ng repository also has example themes to copy into a deck as folders: `examples/theme-minimal`, `theme-paper` (light, editorial: serif headlines and a vermilion accent), `theme-moss` (dark, forest green and clay) and `theme-blueprint` (a navy drafting grid with amber marks). Each README lists its layouts, inputs and component.
 
 ## What a theme can set
 
 A theme can bring layouts, components, layers, CSS, public files, UnoCSS settings, default headmatter and Angular providers. Its default headmatter sits under the deck's own: the deck wins. `defaults`, `fonts`, `drawings`, `htmlAttrs` and `themeConfig` are merged key by key.
+
+The one exception is `colorSchema`. A theme that sets `light` or `dark` has colours for that mode only, so every deck that uses it keeps that mode, as in Slidev. The toggle is gone, and when the deck's headmatter asks for another mode the generator says that it is not used. Of the official themes, `bricks` is light only and `shibainu` dark only.
 
 ## Eject a theme
 
@@ -50,7 +54,9 @@ A theme can bring layouts, components, layers, CSS, public files, UnoCSS setting
 slide-ng theme eject
 ```
 
-copies the theme in use into `./theme` and sets `theme: ./theme`, so you can edit it. For the built-in theme this copies every layout, with their imports rewritten to `slide-ng/...`, and the layouts' CSS as `styles/index.css`. For a package it copies the whole package folder without `node_modules`, `.git` and symbolic links. It refuses a folder that is not empty. `--dir` picks another folder name.
+copies the theme in use into `./theme` and sets `theme: ./theme`, so you can edit it. `--theme` or `SLIDE_NG_THEME` picks another theme to copy. For the built-in theme this copies every layout, with their imports rewritten to `slide-ng/...` (including the helpers `background` and `frame`, which stay in the package), and the layouts' CSS as `styles/index.css`. For a package it copies the whole package folder without `node_modules`, `.git` and symbolic links. It refuses a folder that is not empty. `--dir` picks another folder name.
+
+The built-in styles still load before the ejected `styles/index.css`. Your copy overrides them rule by rule, so deleting a rule from the copy brings the built-in one back. To undo a built-in rule, override it, for example `.slidev-layout.end { background: none }`. A later slide.ng version can change the built-in rules under your copy.
 
 ## Limits
 
@@ -58,5 +64,7 @@ copies the theme in use into `./theme` and sets `theme: ./theme`, so you can edi
 - A layout's inputs are not read from the component, because Angular decorators are not parsed. They come from the built-in layout or from `theme.json`.
 - Class names in a theme are found by UnoCSS in `.ts` files of the roots and in the deck's markdown, not in CSS files.
 - `themeConfig` is not read.
+- `@apply` in a theme's CSS does nothing, because there is no UnoCSS directive transformer. The generator warns. Write the CSS out, or put the classes on the elements.
+- A theme package whose `files` leaves its folders out installs empty. The generator warns, instead of failing later with "is not a known element".
 
 Next: [Writing a theme](./writing-a-theme.md).

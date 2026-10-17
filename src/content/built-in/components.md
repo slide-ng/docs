@@ -14,7 +14,7 @@ These tags work in every slide. The generator imports a component only into the 
 | `<slide-ng-toc />` | Table of contents from slide titles and levels. Options: `columns`, `listClass`, `listStyle`, `start`, `minDepth`, `maxDepth`, `mode`. See [Table of contents](../features/table-of-contents.md). |
 | `<slide-ng-current-no />` | The number of the slide it is on. |
 | `<slide-ng-total />` | The number of slides. |
-| `<slide-ng-link to="3">text</slide-ng-link>` | A link to slide 3, or to a `routeAlias`. It has the prefix because `link` is a built-in HTML tag. |
+| `<slide-ng-link to="3">text</slide-ng-link>` | A link to slide 3, or to a `routeAlias`. It has the prefix because `link` is a built-in HTML tag. The link has the slide's real address, so Ctrl or Cmd + click opens it in a new tab. `title="Details"` is the text when the tag has none. |
 | `<slide-ng-light-or-dark>` | Shows `<div dark>...</div>` in dark mode and `<div light>...</div>` in light mode. |
 | `<slide-ng-render-when context="slide">` | Content only where the slide is drawn: `slide`, `presenter`, `print`, `overview`, or `main` (slide or presenter). `[context]="['slide','overview']"` takes several. Content marked `<div fallback>` shows everywhere else. |
 
@@ -22,8 +22,8 @@ These tags work in every slide. The generator imports a component only into the 
 
 | Tag | What it does |
 | --- | --- |
-| `<slide-ng-clicks>` | Reveals the items of a list one by one. Options: `depth`, `every`, `at`, `hide`. |
-| `<slide-ng-switch>` | One child per click: `<slide-ng-switch><div at="1">a</div><div at="2">b</div><div at="3-5">c</div></slide-ng-switch>`. A number lasts until the next one starts, `3-5` is explicit. |
+| `<slide-ng-clicks>` | Gives each child a click, as Slidev's `v-clicks`: each item of a single list, each body row of a single table, otherwise each child element (paragraphs, pictures, several lists). Options: `depth`, `every`, `at`, `hide`. |
+| `<slide-ng-switch>` | One child per click: `<slide-ng-switch><div at="1">a</div><div at="2">b</div><div at="3-5">c</div></slide-ng-switch>`. A number lasts until the next one starts. `3-5` is clicks 3 and 4: the end is not included. |
 | `<slide-ng-click-gap size="2" />` | Leaves two clicks empty. |
 
 `slide-ng-click` and `slide-ng-after` are directives, see [Directives](./directives.md).
@@ -36,7 +36,7 @@ These tags work in every slide. The generator imports a component only into the 
 | `<slide-ng-transform scale="0.5" origin="top left">` | Scales what is inside. |
 | `<slide-ng-auto-fit-text min="10" max="60" class="w-60 h-20">text</slide-ng-auto-fit-text>` | The biggest font size between `min` (30 by default) and `max` (100) that fits the box. `multi-line="false"` keeps it on one line. |
 | `<slide-ng-drag pos="100,200,300,_">` | A movable box. `_` as height follows the content. |
-| `<slide-ng-drag-arrow pos="100,100,300,200" color="red" [width]="3" />` | A movable arrow. |
+| `<slide-ng-drag-arrow pos="100,100,200,100" color="red" [width]="3" />` | A movable arrow. `pos` is `x,y,width,height`, as in Slidev: from (100, 100), 200 to the right and 100 down. |
 
 ## Media and embeds
 
@@ -63,4 +63,4 @@ These tags work in every slide. The generator imports a component only into the 
 
 ## Not there
 
-Slidev's `PoweredBySlidev` badge and `TitleRenderer` are not available. Your own components work like these, see [Layouts and components](../customize/layouts-components.md).
+Slidev's `PoweredBySlidev` badge and `TitleRenderer` are not available. Slide titles are plain text, except that `$math$` in a title is drawn in `<slide-ng-toc>`. Your own components work like these, see [Layouts and components](../customize/layouts-components.md).

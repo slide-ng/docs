@@ -15,6 +15,10 @@ my-theme/
   layouts/
   components/
   styles/index.css
+  layers/          optional: global-top.ts, global-bottom.ts, slide-top.ts, slide-bottom.ts
+  setup/           optional: setup hooks
+  public/          optional: pictures and fonts, served from /
+  uno.config.mjs   optional: UnoCSS shortcuts and rules
 ```
 
 Put it next to your deck and write `theme: ./my-theme` in the headmatter. Start with only the parts you need.
@@ -42,11 +46,17 @@ If your layout reads frontmatter such as `author: Ada`, give the component an in
 { "layouts": { "quote": { "props": ["author"] } } }
 ```
 
-A layout that replaces a built-in one keeps the built-in layout's inputs. For example `cover` keeps `background`. The frontmatter keys that are inputs become attributes of your tag, so give your component inputs of the same names.
+A layout that replaces a built-in one keeps the built-in layout's inputs. For example `cover` keeps `background`. The frontmatter keys that are inputs become attributes of your tag, so give your component inputs of the same names. A `props` list replaces the built-in inputs, so keep the ones you still want: a `cover` that adds `event` lists `["background", "event"]`, or a `background:` picture is dropped. The `slide-ng/layouts/background` helper turns that input into the style the built-in cover uses.
+
+Text, numbers and booleans arrive as text, as for any HTML attribute. Use `input(0, { transform: numberAttribute })` or `booleanAttribute` for them, otherwise `draft: false` is the text `"false"`. A list or an object (`owners: [Priya, Jonas]`) is bound as its value.
+
+A slot's content arrives as an element with the slot's name as an attribute. Place it with `<ng-content select="[name]" />`.
 
 ## 3. Add a component
 
 `my-theme/components/callout.ts` with `selector: 'my-callout'`. Slides can write `<my-callout>text</my-callout>`, and the generator imports it into every slide that uses the tag.
+
+That is for slides only. A layout, a layer or another component imports the components it uses itself, also those of its own theme: `import { Footer } from '../components/footer'` and `imports: [Footer]`. The theme's folders are copied side by side, so `../` works between them. In a component template, write an icon as `<span class="i-carbon:star"></span>`.
 
 ## 4. Add CSS
 
@@ -55,6 +65,10 @@ A layout that replaces a built-in one keeps the built-in layout's inputs. For ex
 ```js
 export default { shortcuts: { 'my-muted': 'op60 text-sm' } };
 ```
+
+`@apply` does nothing in this CSS, and the generator warns. Write the CSS out, or use the classes in the templates.
+
+Dark mode is the class `dark` on `<html>`: write `html.dark .my-quote { ... }` for the dark palette. The core styles dim the paragraph right after a heading (`h1 + p`, a subtitle). Set its `opacity` in your CSS if your theme should not.
 
 ## 5. Default settings
 
@@ -69,9 +83,16 @@ export default { shortcuts: { 'my-muted': 'op60 text-sm' } };
 ```
 
 - `headmatter`: defaults for the deck. The deck's own headmatter wins. This is also where fonts go, for example `"fonts": { "sans": "Titillium Web", "mono": "Fira Code" }`.
+- A `colorSchema` of `light` or `dark` says the theme has colours for that mode only: every deck that uses it keeps that mode, and the generator warns when a deck asks for another. Leave it out when the theme styles both.
 - `layouts.<name>`: `props` are the frontmatter keys that become inputs, `slots` are the names accepted after `::name::`, and `classProp: true` sends the slide's `class` to the input `contentClass` instead of the tag.
 
+Keys other than `name`, `headmatter` and `layouts` are not read, and the generator says so: settings such as `colorSchema` and `fonts` go under `headmatter`. A value of the wrong type is reported and ignored. A deck's own folder can have a `theme.json` too, to describe the inputs and slots of its own layouts.
+
 Pictures go in `public/`.
+
+## A footer or page number
+
+Put it in `layers/global-top.ts`. Read the slide's number with `inject(SLIDE_NO)` from `slide-ng/lib/slide-context`. `Nav.no()` is the slide being presented, so in the PDF it would print the same number on every page. `layers/global-bottom.ts` is drawn under the slide, so a theme that paints the slide background on `.slidev-layout` hides it. See [Global layers](../features/global-layers.md).
 
 ## Extra: providers and setup hooks
 
@@ -79,13 +100,13 @@ A theme can change the shortcuts, or how code editors run code, with a `setup/` 
 
 | Token | From | Use |
 | --- | --- | --- |
-| `SHORTCUTS_SETUP` | `slide-ng/lib/shortcuts` | A function `(actions, list) => list` to add, change or remove shortcuts. The last root that provides it wins. |
+| `SHORTCUTS_SETUP` | `slide-ng/lib/shortcuts` | A function `(actions, list) => list` to add, change or remove shortcuts. One provider is used, the last root's. The `setup/shortcuts.ts` files of all roots run after it. |
 | `CODE_RUNNERS` | `slide-ng/code/runners` | `{ provide: CODE_RUNNERS, multi: true, useValue: { javascript: (code) => result } }` replaces how `{monaco-run}` runs a language. |
 | `SYNC_TRANSPORTS` | `slide-ng/sync/transport` | Another way to carry presenter sync (multi). |
 
 ## Share it
 
-A theme is a folder, so publish it as an npm package with these folders at the top of the package. slide.ng looks the name up as `@slide-ng/theme-<name>`, then `slide-ng-theme-<name>`, then `<name>`, so name your package `slide-ng-theme-<name>`, or `@your-scope/theme-<name>` and use `theme: @your-scope/theme-<name>`.
+A theme is a folder, so publish it as an npm package with these folders at the top of the package. List every folder in `files`: a package without them installs empty, and the generator warns. slide.ng looks the name up as `@slide-ng/theme-<name>`, then `slide-ng-theme-<name>`, then `<name>`, so name your package `slide-ng-theme-<name>`, or `@your-scope/theme-<name>` and use `theme: @your-scope/theme-<name>`.
 
 ```json
 {
@@ -93,7 +114,7 @@ A theme is a folder, so publish it as an npm package with these folders at the t
   "version": "1.0.0",
   "license": "MIT",
   "keywords": ["slide-ng-theme", "slide-ng"],
-  "files": ["layouts", "components", "styles", "public", "setup", "theme.json"],
+  "files": ["layouts", "components", "layers", "styles", "public", "setup", "theme.json", "uno.config.mjs"],
   "peerDependencies": { "@slide-ng/core": "*" }
 }
 ```

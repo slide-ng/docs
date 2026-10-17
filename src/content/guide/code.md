@@ -8,7 +8,7 @@ description: Highlighted code blocks, line steps, imports from files, groups, Ma
 Code fences are coloured while the deck is generated, with *Shiki, so the browser gets finished HTML. The language is the first word after the backticks. Everything after it is optional and follows Slidev's order:
 
 ````md
-```ts [title.ts] {2,3|5|all} {lines:true, startLine:5, maxHeight:'100px'}
+```ts [title.ts] {6,7|9|all} {lines:true, startLine:5, maxHeight:'100px'}
 const a = 1
 ```
 ````
@@ -19,7 +19,7 @@ const a = 1
 | `{2,3}` | Lines 2 and 3 are highlighted and the others are dimmed. `{*}` highlights nothing and keeps every line normal. |
 | `{1\|3-4\|all}` | One range per click. Each `\|` adds one click to the slide. |
 | `lines:true` | Line numbers. Set `lineNumbers: true` in the headmatter for every block. |
-| `startLine:5` | The first line number. |
+| `startLine:5` | The first line number. Ranges use the numbers shown: with `startLine:5`, `{6,7}` is the second and third line. |
 | `maxHeight:'100px'` | Scroll inside the block. |
 
 The ranges and the options are two separate braces, as in Slidev. Options only take simple values: numbers, `true` or `false`, and text. Hover a block to get the copy button.

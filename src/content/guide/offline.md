@@ -29,6 +29,7 @@ What the flag does:
 - Pictures from other servers are downloaded into the folder, unless the deck says `remoteAssets: false`.
 - Web fonts are downloaded into the folder, unless the deck says `fonts: { selfHost: false }`.
 - Monaco's workers are stored as text and started from blobs.
+- Files of `public/` written with a leading slash in slides (`![](/photo.png)`) are found next to the page. That does not work for `url(/photo.png)` in a slide's `<style>`, which cannot be rewritten, and the build warns. Use an inline `style="background-image: url(/photo.png)"` or an `<img>`, which are rewritten.
 
 Things to know:
 

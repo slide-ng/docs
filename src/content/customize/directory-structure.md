@@ -17,6 +17,7 @@ my-deck/
   public/             files served from the site root (/logo.png)
   setup/              setup hooks: shiki.ts, katex.ts, mermaid.ts, shortcuts.ts, ...
   uno.config.mjs      UnoCSS settings
+  theme.json          inputs and slots of your own layouts
   snippets/           anything you import with <<<
 ```
 
@@ -42,11 +43,11 @@ So a deck can put a `layouts/cover.ts` next to `slides.md` and it beats the them
 | `public/` | Files served from the site root. The later root wins on the same name. |
 | `setup/*.ts` | [Setup hooks](./setup-hooks.md). |
 | `uno.config.mjs` | UnoCSS settings, default export. `presets`, `rules`, `safelist` and `variants` are added to the app's. `shortcuts` and `theme` are merged key by key. |
-| `theme.json` | Name, default headmatter and layout inputs, for themes. See [Writing a theme](./writing-a-theme.md). |
+| `theme.json` | Name, default headmatter and layout inputs and slots. A deck's own folder can have one too, for its own layouts. See [Writing a theme](./writing-a-theme.md). |
 
 ## Importing from the app
 
-Code in these folders is copied into the app before it is compiled, so it cannot use `../` to reach the app. Use the path alias `slide-ng/`, where `slide-ng/<path>` means `src/app/<path>`:
+Code in these folders is copied into the app before it is compiled, so it cannot use `../` to reach the app. Between a root's own folders `../` is fine, for example a layout that imports `../components/footer`, because they are copied side by side. An import from a folder that is not copied fails, and the error says which folders are. Use the path alias `slide-ng/`, where `slide-ng/<path>` means `src/app/<path>`:
 
 ```ts
 import { ClicksContext } from 'slide-ng/lib/clicks';
@@ -54,3 +55,7 @@ import { SHORTCUTS_SETUP } from 'slide-ng/lib/shortcuts';
 ```
 
 Angular and other packages are imported as usual. Symbolic links in these folders are never copied.
+
+## Pictures next to the deck
+
+A picture in `public/` is written with a leading slash, `/photo.png`. A relative address that `public/` does not have, but that names a file in the deck's folder, such as `![](./images/chart.png)` or `<img src="../shared/logo.svg">` from a slide in `pages/`, is copied into the build too and served from `/_local/`. That works in a slide's markup only. A file outside the deck's folder is not copied, and neither are pictures named in components, in CSS `url()` or in the frontmatter: put those in `public/`.

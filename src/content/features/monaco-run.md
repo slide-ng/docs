@@ -17,6 +17,7 @@ console.log('runs on a click and the result appears')
 - `showOutputAt:'+1'` shows the output after a click.
 - The code runs in a sandboxed frame with no access to the slides, and stops after 5 seconds.
 - TypeScript is turned into JavaScript for you.
+- `console.table` and `console.group` are shown too.
 - `import` is not supported.
 
-To run another language, a `setup/code-runners.ts` file maps a language id to a function. See [Setup hooks](../customize/setup-hooks.md).
+To run another language, a `setup/code-runners.ts` file maps a language id to a function. The runner is picked by the language of the code fence, also one Monaco does not know. An editor whose language has no runner says so instead of running it as JavaScript. See [Setup hooks](../customize/setup-hooks.md).

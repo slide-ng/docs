@@ -8,18 +8,14 @@ description: Create a deck folder, run it, edit a slide, and build a static site
 ## 1. Create the folder
 
 ```sh
-node /path/to/slide.ng/bin/slide-ng.mjs create my-deck
+npx @slide-ng/core create my-deck
 cd my-deck
+npm install
 ```
 
 `create` copies a small template: `slides.md`, `package.json` with `dev`, `build`, `export` and `format` scripts, a `README.md` and a `.gitignore`. It refuses a folder that already has files, unless you pass `--force`, which adds only the missing files.
 
-The template's `package.json` depends on the `slide-ng` package. Until the package is published, point it at your checkout, then install:
-
-```sh
-npm pkg set dependencies.slide-ng="file:/path/to/slide.ng"
-npm install
-```
+The template's `package.json` depends on the published `@slide-ng/core` package, at the version that made the deck. To try changes from a checkout of slide.ng instead, run its command directly: `node <checkout>/bin/slide-ng.mjs create my-deck`.
 
 ## 2. Run it
 

@@ -26,11 +26,19 @@ Dark mode follows the system until the viewer presses `d` or the sun and moon bu
 <div class="bg-white dark:bg-black text-black dark:text-white p-4">Adapts</div>
 ```
 
-`colorSchema: light` or `dark` in the headmatter fixes the mode and hides the button.
+`colorSchema: light` or `dark` in the headmatter fixes the mode and hides the button. A theme made for one mode fixes it too, see [Themes and addons](../customize/themes.md#what-a-theme-can-set).
+
+## Responsive prefixes
+
+`md:`, `lg:` and the other responsive prefixes follow the browser window, not the slide. The slide keeps its own size and is scaled, so the same slide can show another column count on a phone, in the presenter preview or in the PDF. Use plain classes for the slide's layout.
 
 ## Plain CSS
 
 A `<style>` block applies to its slide only. See [Scoped styles](../features/scoped-styles.md). For CSS that applies to every slide, a `styles/index.css` in a theme, addon or the deck's folder is added after the app's styles.
+
+`@apply` does nothing in either, because there is no UnoCSS directive transformer. The generator warns and names the slide or the file. Put the classes on the element, or write the CSS out.
+
+The core styles follow Slidev's: code is 12px (`--slidev-code-font-size`), and the paragraph right after a heading is dimmed (`h1 + p`), also when it holds only a component. A raw `<pre>` is not styled.
 
 ## Shortcuts and icons
 

@@ -24,4 +24,4 @@ layout: two-cols
 - `::default::` goes back to the default part, so parts can be written in any order.
 - If the layout has no slot with that name, a warning is printed and the text stays in the normal flow.
 
-Layouts from a theme can declare their own slots, see [Writing a theme](../customize/writing-a-theme.md).
+Layouts from a theme can declare their own slots in `theme.json`, and a deck's own layouts in a `theme.json` next to `slides.md`. A slot's content reaches the layout as an element with the slot's name as an attribute, so the layout places it with `<ng-content select="[name]" />`. The built-in `two-cols` uses `select="[left]"` and `select="[right]"`. See [Writing a theme](../customize/writing-a-theme.md).

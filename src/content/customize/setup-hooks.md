@@ -99,21 +99,28 @@ export default () => ({ theme: 'base', themeVariables: { primaryColor: '#ff0000'
 
 ## Monaco
 
-`setup/monaco.ts` runs once Monaco is loaded, only for decks that have an editor. It gets the `monaco` module, so it can add themes or languages (the `monaco.languages.typescript` namespace is deprecated and has no types in this Monaco version), and the object it returns is merged into the options of every editor. It may be async.
+`setup/monaco.ts` runs once Monaco is loaded, only for decks that have an editor. It gets the `monaco` module, so it can add themes or languages, and the object it returns is merged into the options of every editor. It may be async. TypeScript settings are `monaco.typescript.typescriptDefaults`: the old `monaco.languages.typescript` is undefined in this Monaco version. An editor's model is `file:///model-N.mts`, so an extra library for `import './context'` goes at `file:///context.ts`. A hook that throws is reported, and the editors still work.
 
 ```ts
 // setup/monaco.ts
 import type * as Monaco from 'monaco-editor';
 
 export default (monaco: typeof Monaco) => {
-  monaco.editor.defineTheme('mine', { base: 'vs-dark', inherit: true, rules: [], colors: {} });
-  return { fontSize: 14, minimap: { enabled: true }, theme: 'mine' };
+  monaco.editor.defineTheme('mine-light', { base: 'vs', inherit: true, rules: [], colors: {} });
+  monaco.editor.defineTheme('mine-dark', { base: 'vs-dark', inherit: true, rules: [], colors: {} });
+  return {
+    fontSize: 14,
+    minimap: { enabled: true },
+    theme: { light: 'mine-light', dark: 'mine-dark' },
+  };
 };
 ```
 
+`theme` is one name for light and dark mode alike, or `{ light, dark }` to follow the deck's mode. The default is `vs` and `vs-dark`.
+
 ## Code runners
 
-`setup/code-runners.ts` returns a map from the editor's language id to a function. `{monaco-run}` editors of that language run the function instead of the built-in JavaScript runner. The function gets the editor's text and returns `{ lines: string[][], error?: string }`, where each inner list is one output line.
+`setup/code-runners.ts` returns a map from the editor's language id to a function. `{monaco-run}` editors of that language run the function instead of the built-in JavaScript runner. The function gets the editor's text and returns `{ lines: string[][], error?: string }`, or a promise of it, where each inner list is one output line. A runner that throws shows the error instead of hanging. A deck's own runners win over a theme's or an addon's, and so does a `CODE_RUNNERS` provider of the deck.
 
 ```ts
 // setup/code-runners.ts
@@ -124,7 +131,7 @@ export default () => ({
 
 ## Shortcuts
 
-See [Shortcuts](../built-in/shortcuts.md). The roots are chained: each gets the list the one before returned.
+See [Shortcuts](../built-in/shortcuts.md). The roots are chained: each gets the list the one before returned. They run after a theme's `SHORTCUTS_SETUP` provider, so both add up. When two shortcuts have the same key, the one later in the list wins: appending one replaces a built-in key or an earlier root's.
 
 ## Context menu
 
@@ -142,7 +149,7 @@ export default (items: ContextMenuItem[]): ContextMenuItem[] => [
 
 ## Main
 
-`setup/main.ts` returns Angular providers that are added to the application, so a deck can provide any token the app injects, add an initializer, a router feature or a service. `setup/providers.ts` still works: it default-exports the array itself.
+`setup/main.ts` returns Angular providers that are added to the application, so a deck can provide any token the app injects, add an initializer, a router feature or a service. It is also the place to load the script of a web component, see [Layouts and components](./layouts-components.md#web-components). `setup/providers.ts` still works: it default-exports the array itself.
 
 ```ts
 // setup/main.ts

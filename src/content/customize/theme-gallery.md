@@ -37,7 +37,7 @@ A theme with serif fonts and a blue-grey accent. Original by [Anthony Fu](https:
 
 A dark theme in brown and tan with light grey text. Original by [iiiiiiinès](https://github.com/iiiiiiines).
 
-- Fonts `Titillium Web` and `Fira Code`. The colour schema is `dark` by default.
+- Fonts `Titillium Web` and `Fira Code`. The theme has dark colours only, so a deck that uses it stays dark. slide.ng warns when the deck asks for another mode.
 - 14 layouts with the original's names: `cover`, `default`, `center`, `section`, `section-2`, `section-3`, `default-2` to `default-7`, `right` and `quote`.
 - The original's vector illustrations are replaced by flat shapes drawn in CSS.
 
@@ -45,7 +45,7 @@ A dark theme in brown and tan with light grey text. Original by [iiiiiiinès](ht
 
 A light theme of flat coloured shapes with a serif title font. Original by [iiiiiiinès](https://github.com/iiiiiiines).
 
-- Fonts `Signika Negative`, `Sigmar One` and `Fira Code`.
+- Fonts `Signika Negative`, `Sigmar One` and `Fira Code`. The theme has light colours only, so a deck that uses it stays light. slide.ng warns when the deck asks for another mode.
 - 9 layouts with slots: `cover`, `intro`, `default`, `section`, `items`, `quote`, `fact`, `statement` and `blank`.
 - The eleven polygon shapes of the original as `<polygon-1 />` to `<polygon-11 />`, sized with classes such as `class="w-20 h-20"`.
 
@@ -62,7 +62,7 @@ A plain white theme after Keynote's "Basic White". Original by [Jeremy Meissner]
 The look of [angular.dev](https://angular.dev), the Angular documentation site, in light and dark. Inspired by angular.dev, not an official Angular theme.
 
 - Fonts `Inter`, `Inter Tight` and `DM Mono`. The grey scale, accent colours and gradients are adev's own tokens, with its dark mode mixes.
-- Light and dark are both complete, as on angular.dev, with the theme's own switch: a small sun or moon button in the top right corner of every slide. It only recolours the slides, not the slide.ng dock, and the choice is stored and starts from the system preference.
+- Light and dark are both complete, as on angular.dev, with the theme's own switch: a small sun or moon button in the top right corner of every slide. It only recolours the slides, not the slide.ng dock, and the choice is stored and starts from the system preference. The theme sets no `colorSchema`, so the deck keeps its own page mode.
 - Code uses angular.dev's Shiki themes (`github-light` and `github-dark`), and Angular code is highlighted out of the box: `angular-ts`, `angular-html`, `ng`, `ng-ts` and `ng-html` fences need no setup file, including `@Component` templates and `@if`, `@for` and `@defer` blocks.
 - 12 layouts: `cover`, `intro`, `default`, `center`, `section`, `two-cols`, `image-right`, `image-left`, `quote`, `fact`, `statement` and `end`.
 - Components: alerts (ten kinds, nine of them also as `NOTE:` paragraphs), pills, API item labels, kbd keys, a decorative header, `<adev-card-grid>` with `<adev-card>`, `<adev-stat>`, `<adev-count-up>`, `<adev-steps>` and `<adev-button>`.
