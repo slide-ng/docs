@@ -81,11 +81,11 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/slide-ng/slide.ng-docs.git"
+    "url": "git+https://github.com/slide-ng/docs.git"
   },
   "bugs": {
-    "url": "https://github.com/slide-ng/slide.ng-docs/issues"
+    "url": "https://github.com/slide-ng/docs/issues"
   },
-  "homepage": "https://github.com/slide-ng/slide.ng-docs#readme",
+  "homepage": "https://github.com/slide-ng/docs#readme",
   "packageManager": "pnpm@10.28.0"
 }

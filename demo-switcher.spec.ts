@@ -4,7 +4,7 @@ import {join} from 'node:path';
 import {SWITCHER_FILES, themeDemos} from './scripts/theme-switcher.mjs';
 
 const here = import.meta.dirname;
-const themes = join(process.env['SLIDE_NG_THEMES_DIR'] ?? join(here, '..', 'slide.ng-themes'));
+const themes = join(process.env['SLIDE_NG_THEMES_DIR'] ?? join(here, '..', 'themes'));
 const demos: string[] = themeDemos(here);
 const text = (file: string) => readFileSync(file, 'utf8');
 
@@ -26,7 +26,7 @@ describe('the theme switcher of the theme demos', () => {
     });
 
     const source = join(themes, 'examples', file);
-    (existsSync(source) ? it : it.skip)(`${file} is the one in slide.ng-themes`, () => {
+    (existsSync(source) ? it : it.skip)(`${file} is the one in slide-ng/themes`, () => {
       expect(text(join(demos[0], file))).toBe(text(source));
     });
   }

@@ -3,8 +3,8 @@
 //   node scripts/build-demos.mjs [name ...]
 //
 // It needs a checkout of slide.ng (with its dependencies installed) and, for the theme decks, a checkout of
-// slide.ng-themes. Point to them with SLIDE_NG_DIR and SLIDE_NG_THEMES_DIR (defaults: ../slide.ng and
-// ../slide.ng-themes). The built decks are committed, so the site build itself needs neither.
+// slide-ng/themes. Point to them with SLIDE_NG_DIR and SLIDE_NG_THEMES_DIR (defaults: ../slide.ng and
+// ../themes). The built decks are committed, so the site build itself needs neither.
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {existsSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
@@ -15,7 +15,7 @@ import {copySwitcher, hasSwitcher} from './theme-switcher.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const slideNg = resolve(process.env.SLIDE_NG_DIR ?? join(root, '..', 'slide.ng'));
-const themes = resolve(process.env.SLIDE_NG_THEMES_DIR ?? join(root, '..', 'slide.ng-themes'));
+const themes = resolve(process.env.SLIDE_NG_THEMES_DIR ?? join(root, '..', 'themes'));
 const cli = join(slideNg, 'bin', 'slide-ng.mjs');
 if (!existsSync(cli)) throw new Error(`No slide.ng checkout at ${slideNg}. Set SLIDE_NG_DIR.`);
 
@@ -44,7 +44,7 @@ for (const name of wanted) {
     '--out',
     join('public', 'demos', name),
   ];
-  // demos/theme-<name> use the theme package of the slide.ng-themes checkout instead of one from node_modules.
+  // demos/theme-<name> use the theme package of the slide-ng/themes checkout instead of one from node_modules.
   const theme = name.startsWith('theme-') ? join(themes, 'packages', name) : null;
   if (theme) {
     if (!existsSync(theme))

@@ -5,7 +5,7 @@ description: The five official slide.ng themes, with a live deck for each and cr
 
 # Theme gallery
 
-Four of the official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng, and `adev` is a new theme inspired by angular.dev. Each one lives in its own package in the slide.ng-themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks`, `@slide-ng/theme-apple-basic` and `@slide-ng/theme-adev`. Each deck below has a slide for every layout of its theme, and the adev deck has a slide for every component too. The theme fonts load from Google Fonts, so the decks look right with a network. Each deck has a small theme switcher in the top left corner that opens the same slide in another theme. It is only in these demos and is not part of the theme packages.
+Four of the official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng, and `adev` is a new theme inspired by angular.dev. Each one lives in its own package in the slide-ng/themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks`, `@slide-ng/theme-apple-basic` and `@slide-ng/theme-adev`. Each deck below has a slide for every layout of its theme, and the adev deck has a slide for every component too. The theme fonts load from Google Fonts, so the decks look right with a network. Each deck has a small theme switcher in the top left corner that opens the same slide in another theme. It is only in these demos and is not part of the theme packages.
 
 <ngmd-tabs>
   <ngmd-tab title="seriph">
@@ -68,7 +68,7 @@ The look of [angular.dev](https://angular.dev), the Angular documentation site, 
 - Components: alerts (ten kinds, nine of them also as `NOTE:` paragraphs), pills, API item labels, kbd keys, a decorative header, `<adev-card-grid>` with `<adev-card>`, `<adev-stat>`, `<adev-count-up>`, `<adev-steps>` and `<adev-button>`.
 - Code: prefer and avoid cards (`{prefer}` and `{avoid}` fences), line numbers, highlights, diff lines, a copy button, `::code-group` file tabs, `<<<` snippet cards and `<adev-code-card>`.
 - Media: tabs with `<adev-tab-group>`, image sizes (`#small`, `#medium`), `<adev-video>` and Mermaid diagrams drawn in the theme colours.
-- Every component has its syntax and an example in the [theme README](https://github.com/slide-ng/slide.ng-themes/blob/main/packages/theme-adev/README.md).
+- Every component has its syntax and an example in the [theme README](https://github.com/slide-ng/themes/blob/main/packages/theme-adev/README.md).
 - No Angular logo, wordmark or mascot is included.
 
 ## Use one

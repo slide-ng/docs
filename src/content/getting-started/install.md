@@ -46,4 +46,4 @@ The repository contains a deck of its own, `slides.md`. `npm start` and `npm run
 
 ## Optional: themes
 
-The official themes are separate packages in the slide.ng-themes repository. See [Themes and addons](../customize/themes.md) for how a deck picks one up.
+The official themes are separate packages in the slide-ng/themes repository. See [Themes and addons](../customize/themes.md) for how a deck picks one up.

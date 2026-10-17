@@ -30,7 +30,7 @@ Three documents in the repository explain it: `docs/ARCHITECTURE.md` for how it 
 
 ## Themes
 
-Each official theme is a package in the slide.ng-themes repository. A new theme needs a package folder with `theme.json`, layouts and CSS, a README that credits the original author, an example deck with a slide for every layout, and a test. Do not copy images or fonts that are not MIT or compatible, such as CC BY-NC-SA assets. Draw it in CSS or leave it out. See [Writing a theme](../customize/writing-a-theme.md).
+Each official theme is a package in the slide-ng/themes repository. A new theme needs a package folder with `theme.json`, layouts and CSS, a README that credits the original author, an example deck with a slide for every layout, and a test. Do not copy images or fonts that are not MIT or compatible, such as CC BY-NC-SA assets. Draw it in CSS or leave it out. See [Writing a theme](../customize/writing-a-theme.md).
 
 ## These docs
 

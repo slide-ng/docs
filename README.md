@@ -1,4 +1,4 @@
-# slide.ng-docs
+# slide.ng docs
 
 The documentation website for [slide.ng](https://github.com/slide-ng/slide.ng), a slide deck tool that turns one markdown file into an Angular app. It is live at [slide-ng.dev](https://slide-ng.dev) and built with [NgMd](https://ngmd.netlify.app).
 
@@ -24,15 +24,15 @@ pnpm run format:check
 - The sidebar, header links and the site's name and URL are in `src/ngmd.config.ts`.
 - The home page is `src/app/pages/index.page.ts`; its live demo is in `src/app/landing/`.
 - `<ngmd-demo src="/demos/starter/" title="..."></ngmd-demo>` embeds a built deck in an iframe.
-- The decks in `demos/<name>/slides.md` are built with the slide.ng CLI into `public/demos/<name>/` and the built files are committed, so building the site needs neither slide.ng nor Chromium. To rebuild them, check out slide.ng (and slide.ng-themes for the theme decks):
+- The decks in `demos/<name>/slides.md` are built with the slide.ng CLI into `public/demos/<name>/` and the built files are committed, so building the site needs neither slide.ng nor Chromium. To rebuild them, check out slide.ng (and slide-ng/themes for the theme decks):
 
 ```sh
-SLIDE_NG_DIR=../slide.ng SLIDE_NG_THEMES_DIR=../slide.ng-themes pnpm run demos
+SLIDE_NG_DIR=../slide.ng SLIDE_NG_THEMES_DIR=../themes pnpm run demos
 ```
 
 ## Hosting
 
-The site is built for the root of a host by default. For a sub-path, set `site.base` in `src/ngmd.config.ts` or build with `NGMD_BASE=/slide.ng-docs/ pnpm run build`. The production site (slide-ng.dev) is on Cloudflare with build command `pnpm run build` and deploy command `npx wrangler deploy`; `wrangler.jsonc` serves `dist/analog/public` and the 404 page. The deploy workflow publishes to GitHub Pages.
+The site is built for the root of a host by default. For a sub-path, set `site.base` in `src/ngmd.config.ts` or build with `NGMD_BASE=/docs/ pnpm run build`. The production site (slide-ng.dev) is on Cloudflare with build command `pnpm run build` and deploy command `npx wrangler deploy`; `wrangler.jsonc` serves `dist/analog/public` and the 404 page. The deploy workflow publishes to GitHub Pages.
 
 ## Contributing
 
@@ -60,7 +60,7 @@ Thanks to everyone who has helped. This project follows the [all-contributors](h
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/erkamyaman"><img src="https://avatars.githubusercontent.com/u/88717125?v=4?s=100" width="100px;" alt="Erkam Yaman"/><br /><sub><b>Erkam Yaman</b></sub></a><br /><a href="https://github.com/slide-ng/slide.ng-docs/commits?author=erkamyaman" title="Code">💻</a> <a href="https://github.com/slide-ng/slide.ng-docs/commits?author=erkamyaman" title="Documentation">📖</a> <a href="#infra-erkamyaman" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-erkamyaman" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/erkamyaman"><img src="https://avatars.githubusercontent.com/u/88717125?v=4?s=100" width="100px;" alt="Erkam Yaman"/><br /><sub><b>Erkam Yaman</b></sub></a><br /><a href="https://github.com/slide-ng/docs/commits?author=erkamyaman" title="Code">💻</a> <a href="https://github.com/slide-ng/docs/commits?author=erkamyaman" title="Documentation">📖</a> <a href="#infra-erkamyaman" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-erkamyaman" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>

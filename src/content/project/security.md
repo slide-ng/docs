@@ -9,7 +9,7 @@ description: How to report a vulnerability, and what slide.ng does to protect yo
 
 Do not open a public issue for a security problem. Use GitHub's private vulnerability reporting: open the Security tab of the repository and choose Report a vulnerability. Say what you found, which version it affects and how to reproduce it. The report stays private until a fix is released.
 
-Problems in a theme belong in the slide.ng-themes repository, and problems in the tool itself in the slide.ng repository. Only the latest release gets fixes.
+Problems in a theme belong in the slide-ng/themes repository, and problems in the tool itself in the slide.ng repository. Only the latest release gets fixes.
 
 ## A deck is code
 

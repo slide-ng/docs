@@ -1,4 +1,4 @@
-// The theme switcher of the demo decks is written once, in slide.ng-themes/examples (layers/ and components/).
+// The theme switcher of the demo decks is written once, in slide-ng/themes/examples (layers/ and components/).
 // Every demos/theme-<name>/ gets a copy, which the deck picks up as its own layer and component.
 import {copyFileSync, existsSync, mkdirSync, readdirSync} from 'node:fs';
 import {dirname, join} from 'node:path';
@@ -16,7 +16,7 @@ export function themeDemos(root) {
     .map((entry) => join(root, 'demos', entry.name));
 }
 
-/** Copies the switcher from a slide.ng-themes checkout into the given demo folders. */
+/** Copies the switcher from a slide-ng/themes checkout into the given demo folders. */
 export function copySwitcher(themesDir, folders) {
   for (const folder of folders) {
     for (const file of SWITCHER_FILES) {
