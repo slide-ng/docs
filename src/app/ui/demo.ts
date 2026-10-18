@@ -29,8 +29,8 @@ type DemoState = 'checking' | 'ready' | 'unavailable';
  * Embeds a built slide deck in an iframe, with a link that opens it full size in a new tab.
  *
  *   <ngmd-demo src="/demos/starter/" title="The starter deck"></ngmd-demo>
- *   <ngmd-demo src="https://slide-ng.github.io/slide.ng-showcases/ship-it/" title="Ship it"
- *     source="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/ship-it"></ngmd-demo>
+ *   <ngmd-demo src="https://slide-ng.github.io/showcases/ship-it/" title="Ship it"
+ *     source="https://github.com/slide-ng/showcases/tree/main/decks/ship-it"></ngmd-demo>
  *
  * Only paths on this site and addresses on `DEMO_ORIGINS` are embedded; anything else renders an
  * empty frame. The frame of another origin is sandboxed and is asked for first: when that answers

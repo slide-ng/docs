@@ -153,7 +153,7 @@ describe('NgmdDemo', () => {
     return fixture.nativeElement as HTMLElement;
   }
 
-  const showcase = 'https://slide-ng.github.io/slide.ng-showcases/ship-it/';
+  const showcase = 'https://slide-ng.github.io/showcases/ship-it/';
 
   afterEach(() => vi.unstubAllGlobals());
 
@@ -172,7 +172,7 @@ describe('NgmdDemo', () => {
       '//example.com/',
       '/demos/../secret',
       'javascript:1',
-      'http://slide-ng.github.io/slide.ng-showcases/ship-it/',
+      'http://slide-ng.github.io/showcases/ship-it/',
       'https://slide-ng.github.io.evil.example/x/',
       'https://evil.example/https://slide-ng.github.io/',
       'https://user:pass@slide-ng.github.io/x/',

@@ -1,11 +1,11 @@
-// Writes the showcase pages from showcases.json of the slide.ng-showcases repository.
+// Writes the showcase pages from showcases.json of the slide-ng/showcases repository.
 //
 //   node scripts/sync-showcases.mjs
 //
 // The catalog is read from SLIDE_NG_SHOWCASES_DIR (default ../slide.ng-showcases, then ../showcases).
 // It writes src/app/data/showcases.json (the card grid), one page per deck in
 // src/content/resources/showcases/ and the link list between the markers of
-// src/content/resources/showcases.md. The generated files are committed, so building the site
+// src/content/resources/showcases/index.md. The generated files are committed, so building the site
 // does not need the other repository.
 import {existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync} from 'node:fs';
 import {dirname, join, resolve} from 'node:path';
@@ -14,10 +14,10 @@ import {fileURLToPath} from 'node:url';
 export const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export const dataFile = join(root, 'src', 'app', 'data', 'showcases.json');
 export const pagesDir = join(root, 'src', 'content', 'resources', 'showcases');
-export const indexFile = join(root, 'src', 'content', 'resources', 'showcases.md');
+export const indexFile = join(root, 'src', 'content', 'resources', 'showcases', 'index.md');
 
-export const REPO_URL = 'https://github.com/slide-ng/slide.ng-showcases';
-export const LIVE_URL = 'https://slide-ng.github.io/slide.ng-showcases';
+export const REPO_URL = 'https://github.com/slide-ng/showcases';
+export const LIVE_URL = 'https://slide-ng.github.io/showcases';
 export const MARKERS = ['<!-- showcases:start -->', '<!-- showcases:end -->'];
 
 const LOWER = new Set(['a', 'an', 'and', 'by', 'for', 'in', 'of', 'on', 'the', 'to']);
@@ -117,7 +117,8 @@ function main() {
   mkdirSync(pagesDir, {recursive: true});
   mkdirSync(dirname(dataFile), {recursive: true});
   for (const name of readdirSync(pagesDir)) {
-    if (name.endsWith('.md') && !slugs.includes(name.slice(0, -3))) rmSync(join(pagesDir, name));
+    if (name.endsWith('.md') && name !== 'index.md' && !slugs.includes(name.slice(0, -3)))
+      rmSync(join(pagesDir, name));
   }
   for (const entry of entries) writeFileSync(join(pagesDir, `${entry.slug}.md`), pageOf(entry));
   writeFileSync(dataFile, dataOf(entries));

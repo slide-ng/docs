@@ -10,8 +10,8 @@ A cart total refactored in six Shiki Magic Moves: long stories, ranges, side-by-
 **Theme:** blueprint. **Tags:** magic move, code, slidev.
 
 <ngmd-pill-row>
-  <ngmd-pill href="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/magic-move-stories" title="Source on GitHub"></ngmd-pill>
+  <ngmd-pill href="https://github.com/slide-ng/showcases/tree/main/decks/magic-move-stories" title="Source on GitHub"></ngmd-pill>
   <ngmd-pill href="/resources/showcases" title="All showcases"></ngmd-pill>
 </ngmd-pill-row>
 
-<ngmd-demo src="https://slide-ng.github.io/slide.ng-showcases/magic-move-stories/" title="Magic Move Stories" source="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/magic-move-stories"></ngmd-demo>
+<ngmd-demo src="https://slide-ng.github.io/showcases/magic-move-stories/" title="Magic Move Stories" source="https://github.com/slide-ng/showcases/tree/main/decks/magic-move-stories"></ngmd-demo>

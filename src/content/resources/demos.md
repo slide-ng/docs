@@ -7,7 +7,7 @@ description: Live slide.ng decks on this site, a tour, the starter and a deck fo
 
 These decks are built with slide.ng and run in the frames below. Click a frame and press the right arrow or space to step through, `o` for the overview, `f` for full screen. Each frame has an Open full size link.
 
-For decks written by others, see the [Showcases](./showcases.md).
+For decks written by others, see the [Showcases](./showcases/index.md).
 
 ## Guided decks
 

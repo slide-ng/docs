@@ -10,8 +10,8 @@ Long titles, long lists, wide tables, braces, entities and file names with space
 **Theme:** default. **Tags:** robustness.
 
 <ngmd-pill-row>
-  <ngmd-pill href="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/edge-cases" title="Source on GitHub"></ngmd-pill>
+  <ngmd-pill href="https://github.com/slide-ng/showcases/tree/main/decks/edge-cases" title="Source on GitHub"></ngmd-pill>
   <ngmd-pill href="/resources/showcases" title="All showcases"></ngmd-pill>
 </ngmd-pill-row>
 
-<ngmd-demo src="https://slide-ng.github.io/slide.ng-showcases/edge-cases/" title="Edge Cases" source="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/edge-cases"></ngmd-demo>
+<ngmd-demo src="https://slide-ng.github.io/showcases/edge-cases/" title="Edge Cases" source="https://github.com/slide-ng/showcases/tree/main/decks/edge-cases"></ngmd-demo>
