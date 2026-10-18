@@ -42,20 +42,37 @@ type DemoState = 'checking' | 'ready' | 'unavailable';
   template: `
     <figure class="m-0">
       <div
-        class="relative w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
+        class="group relative w-full rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
         [style.aspect-ratio]="ratio()"
+        (mouseleave)="active.set(false)"
       >
         @switch (state()) {
           @case ('ready') {
             <iframe
               [src]="safeUrl()"
               [title]="title()"
+              #frame
               class="absolute inset-0 w-full h-full border-0"
+              [class.pointer-events-none]="!active()"
               allow="fullscreen; clipboard-write"
               sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-downloads allow-presentation"
               loading="lazy"
               (error)="state.set('unavailable')"
             ></iframe>
+            @if (!active()) {
+              <button
+                type="button"
+                class="absolute inset-0 w-full h-full cursor-pointer border-0 bg-transparent p-0"
+                [attr.aria-label]="'Use the deck: ' + title()"
+                (click)="active.set(true); frame.focus()"
+              >
+                <span
+                  class="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-zinc-900/70 px-3 py-1 text-xs font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 focus-visible:opacity-100"
+                >
+                  Click to use the deck
+                </span>
+              </button>
+            }
           }
           @case ('checking') {
             <p
@@ -109,6 +126,7 @@ export class NgmdDemo {
   );
 
   protected readonly state = signal<DemoState>('ready');
+  protected readonly active = signal(false);
 
   constructor() {
     effect(() => {

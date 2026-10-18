@@ -69,8 +69,8 @@ describe('sync-showcases', () => {
 
   it('points every frame at an address the demo component accepts', () => {
     for (const entry of entries) {
-      expect(liveUrl(entry.slug)).toBe(`https://slide-ng.github.io/showcases/${entry.slug}/`);
-      expect(resolveDemoSrc(liveUrl(entry.slug), '/')).toBe(liveUrl(entry.slug));
+      expect(liveUrl(entry.live)).toBe(`https://slide-ng.github.io/showcases/${entry.live}/`);
+      expect(resolveDemoSrc(liveUrl(entry.live), '/')).toBe(liveUrl(entry.live));
     }
   });
 

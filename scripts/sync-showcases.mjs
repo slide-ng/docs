@@ -39,6 +39,7 @@ export function titleOf(slug) {
 export function entryOf(deck) {
   return {
     slug: deck.slug,
+    live: deck.variants ? `${deck.slug}/${deck.theme}` : deck.slug,
     title: titleOf(deck.slug),
     theme: deck.variants ? 'all five' : deck.theme,
     blurb: deck.blurb,
@@ -74,7 +75,7 @@ ${entry.blurb}
   <ngmd-pill href="/resources/showcases" title="All showcases"></ngmd-pill>
 </ngmd-pill-row>
 
-<ngmd-demo src="${liveUrl(entry.slug)}" title="${attr(entry.title)}" source="${sourceUrl(entry.slug)}"></ngmd-demo>
+<ngmd-demo src="${liveUrl(entry.live ?? entry.slug)}" title="${attr(entry.title)}" source="${sourceUrl(entry.slug)}"></ngmd-demo>
 `;
 }
 
