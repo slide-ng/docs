@@ -11,7 +11,35 @@ import siteConfig from '../../ngmd.config';
       class="border-t border-zinc-200 dark:border-zinc-800 py-6 px-4 sm:px-6 text-sm text-brand-muted dark:text-brand-muted-dark"
     >
       <div class="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3">
-        <span>© {{ year }} {{ name }} contributors. Released under the MIT License.</span>
+        <div class="flex flex-col items-center sm:items-start gap-1">
+          <span>
+            © {{ year }}
+            <a
+              href="https://github.com/erkamyaman"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-zinc-700 dark:hover:text-zinc-300"
+              >Erkam Yaman</a
+            >. Released under the MIT License.
+          </span>
+          <span>
+            Built with
+            <a
+              [href]="ngmdUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-zinc-700 dark:hover:text-zinc-300"
+              >ngmd</a
+            >. Inspired by
+            <a
+              [href]="slidevUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-zinc-700 dark:hover:text-zinc-300"
+              >Slidev</a
+            >.
+          </span>
+        </div>
         <nav class="flex flex-wrap items-center gap-4" aria-label="Project links">
           @if (sponsorUrl) {
             <a
@@ -50,7 +78,8 @@ import siteConfig from '../../ngmd.config';
 })
 export class SiteFooter {
   readonly year = new Date().getFullYear();
-  readonly name = siteConfig.site.name;
+  readonly ngmdUrl = siteConfig.keywords?.['NgMd'] ?? 'https://ngmd.netlify.app';
+  readonly slidevUrl = 'https://sli.dev';
   readonly sponsorUrl = siteConfig.site.links?.sponsor;
   readonly discordUrl = siteConfig.site.links?.discord;
   readonly githubUrl = siteConfig.site.githubUrl;

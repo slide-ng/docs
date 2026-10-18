@@ -44,7 +44,9 @@ describe('sync-showcases', () => {
   });
 
   it('has a page for every deck, written as the generator writes it, and no other page', () => {
-    const files = readdirSync(pagesDir).filter((name) => name.endsWith('.md'));
+    const files = readdirSync(pagesDir).filter(
+      (name) => name.endsWith('.md') && name !== 'index.md',
+    );
     expect(files.sort()).toEqual(entries.map((e) => `${e.slug}.md`).sort());
     for (const entry of entries) {
       expect(readFileSync(join(pagesDir, `${entry.slug}.md`), 'utf8')).toBe(pageOf(entry));
@@ -59,7 +61,7 @@ describe('sync-showcases', () => {
     expect(page).toContain(`**Theme:** ${entry.theme}`);
     expect(page).toContain(entry.tags.join(', '));
     expect(sourceUrl('ship-it')).toBe(
-      'https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/ship-it',
+      'https://github.com/slide-ng/showcases/tree/main/decks/ship-it',
     );
     expect(page).toContain(`href="${sourceUrl('ship-it')}"`);
     expect(page).toContain(`<ngmd-demo src="${liveUrl('ship-it')}"`);
@@ -67,9 +69,7 @@ describe('sync-showcases', () => {
 
   it('points every frame at an address the demo component accepts', () => {
     for (const entry of entries) {
-      expect(liveUrl(entry.slug)).toBe(
-        `https://slide-ng.github.io/slide.ng-showcases/${entry.slug}/`,
-      );
+      expect(liveUrl(entry.slug)).toBe(`https://slide-ng.github.io/showcases/${entry.slug}/`);
       expect(resolveDemoSrc(liveUrl(entry.slug), '/')).toBe(liveUrl(entry.slug));
     }
   });

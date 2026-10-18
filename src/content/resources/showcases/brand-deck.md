@@ -10,8 +10,8 @@ A brand guide for an invented roastery: its own layouts, fonts, a custom pipe an
 **Theme:** paper. **Tags:** branding, custom layouts, pdf.
 
 <ngmd-pill-row>
-  <ngmd-pill href="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/brand-deck" title="Source on GitHub"></ngmd-pill>
+  <ngmd-pill href="https://github.com/slide-ng/showcases/tree/main/decks/brand-deck" title="Source on GitHub"></ngmd-pill>
   <ngmd-pill href="/resources/showcases" title="All showcases"></ngmd-pill>
 </ngmd-pill-row>
 
-<ngmd-demo src="https://slide-ng.github.io/slide.ng-showcases/brand-deck/" title="Brand Deck" source="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/brand-deck"></ngmd-demo>
+<ngmd-demo src="https://slide-ng.github.io/showcases/brand-deck/" title="Brand Deck" source="https://github.com/slide-ng/showcases/tree/main/decks/brand-deck"></ngmd-demo>

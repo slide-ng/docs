@@ -10,8 +10,8 @@ All seven slide transitions, view transitions, forward and backward pairs, slide
 **Theme:** moss. **Tags:** transitions, motion, slidev.
 
 <ngmd-pill-row>
-  <ngmd-pill href="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/motion-and-transitions" title="Source on GitHub"></ngmd-pill>
+  <ngmd-pill href="https://github.com/slide-ng/showcases/tree/main/decks/motion-and-transitions" title="Source on GitHub"></ngmd-pill>
   <ngmd-pill href="/resources/showcases" title="All showcases"></ngmd-pill>
 </ngmd-pill-row>
 
-<ngmd-demo src="https://slide-ng.github.io/slide.ng-showcases/motion-and-transitions/" title="Motion and Transitions" source="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/motion-and-transitions"></ngmd-demo>
+<ngmd-demo src="https://slide-ng.github.io/showcases/motion-and-transitions/" title="Motion and Transitions" source="https://github.com/slide-ng/showcases/tree/main/decks/motion-and-transitions"></ngmd-demo>

@@ -26,7 +26,7 @@
   },
   {
     "slug": "forms-and-di",
-    "title": "Forms and Di",
+    "title": "Forms and DI",
     "theme": "moss",
     "blurb": "Reactive and template-driven forms with @angular/forms, a root service shared across slides, host bindings and a directive in markdown.",
     "tags": [

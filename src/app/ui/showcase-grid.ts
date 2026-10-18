@@ -1,4 +1,4 @@
-import {Component, computed, signal} from '@angular/core';
+import {Component, ElementRef, computed, inject, signal} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import showcases from '../data/showcases.json';
 
@@ -125,6 +125,11 @@ export function filterShowcases(
   `,
 })
 export class NgmdShowcaseGrid {
+  constructor() {
+    // The page lists the decks as links inside this tag for readers without scripts.
+    inject<ElementRef<HTMLElement>>(ElementRef).nativeElement.replaceChildren();
+  }
+
   readonly decks: readonly Showcase[] = showcases;
   readonly tags = sharedTags(this.decks);
 

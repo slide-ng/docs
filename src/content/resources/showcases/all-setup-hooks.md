@@ -10,8 +10,8 @@ One slide per setup hook: Shiki, KaTeX, transformers, a preparser, Mermaid, Mona
 **Theme:** default. **Tags:** setup, customisation.
 
 <ngmd-pill-row>
-  <ngmd-pill href="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/all-setup-hooks" title="Source on GitHub"></ngmd-pill>
+  <ngmd-pill href="https://github.com/slide-ng/showcases/tree/main/decks/all-setup-hooks" title="Source on GitHub"></ngmd-pill>
   <ngmd-pill href="/resources/showcases" title="All showcases"></ngmd-pill>
 </ngmd-pill-row>
 
-<ngmd-demo src="https://slide-ng.github.io/slide.ng-showcases/all-setup-hooks/" title="All Setup Hooks" source="https://github.com/slide-ng/slide.ng-showcases/tree/main/decks/all-setup-hooks"></ngmd-demo>
+<ngmd-demo src="https://slide-ng.github.io/showcases/all-setup-hooks/" title="All Setup Hooks" source="https://github.com/slide-ng/showcases/tree/main/decks/all-setup-hooks"></ngmd-demo>

@@ -5,7 +5,7 @@ description: Example decks made with slide.ng, each one a project you can read, 
 
 # Showcases
 
-These decks are made with slide.ng. Every one is a normal project in the [slide.ng-showcases](https://github.com/slide-ng/slide.ng-showcases) repository: a `slides.md` and, where the deck needs them, its own components, setup files, styles, layouts and snippets. Open a deck here, then read its source next to it.
+These decks are made with slide.ng. Every one is a normal project in the [slide-ng/showcases](https://github.com/slide-ng/showcases) repository: a `slides.md` and, where the deck needs them, its own components, setup files, styles, layouts and snippets. Open a deck here, then read its source next to it.
 
 Pick a card to see the deck in a frame on its own page. The frames load from GitHub Pages (`slide-ng.github.io`).
 
@@ -15,7 +15,7 @@ Pick a card to see the deck in a frame on its own page. The frames load from Git
 
 - [Angular Workshop](/resources/showcases/angular-workshop)
 - [Signals Deep Dive](/resources/showcases/signals-deep-dive)
-- [Forms and Di](/resources/showcases/forms-and-di)
+- [Forms and DI](/resources/showcases/forms-and-di)
 - [Pipes and i18n](/resources/showcases/pipes-and-i18n)
 - [Control Flow Torture](/resources/showcases/control-flow-torture)
 - [Angular Animations and Styles](/resources/showcases/angular-animations-and-styles)
