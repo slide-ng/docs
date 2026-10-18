@@ -22,23 +22,6 @@ import siteConfig from '../../ngmd.config';
               >Erkam Yaman</a
             >. Released under the MIT License.
           </span>
-          <span>
-            Built with
-            <a
-              [href]="ngmdUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-zinc-700 dark:hover:text-zinc-300"
-              >ngmd</a
-            >. Inspired by
-            <a
-              [href]="slidevUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-zinc-700 dark:hover:text-zinc-300"
-              >Slidev</a
-            >.
-          </span>
         </div>
         <nav class="flex flex-wrap items-center gap-4" aria-label="Project links">
           @if (sponsorUrl) {
@@ -78,8 +61,6 @@ import siteConfig from '../../ngmd.config';
 })
 export class SiteFooter {
   readonly year = new Date().getFullYear();
-  readonly ngmdUrl = siteConfig.keywords?.['NgMd'] ?? 'https://ngmd.netlify.app';
-  readonly slidevUrl = 'https://sli.dev';
   readonly sponsorUrl = siteConfig.site.links?.sponsor;
   readonly discordUrl = siteConfig.site.links?.discord;
   readonly githubUrl = siteConfig.site.githubUrl;
