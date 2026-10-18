@@ -29,6 +29,7 @@ import {ThemeService} from './theme';
 import {LayoutMode} from './layout-mode.service';
 import {RouteUrlService} from './services/route-url/route-url.service';
 import {onNavigation} from './utils/enhance-on-navigation';
+import {fetchStars, formatStars, repoFromUrl, type StarStorage} from './utils/github-stars';
 import siteConfig from '../ngmd.config';
 import {CommandPalette} from './components/command-palette';
 import {Sidebar} from './components/sidebar';
@@ -178,10 +179,13 @@ import {ContentBanners} from './components/content-banners';
             [href]="githubUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
-            aria-label="GitHub"
+            class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-2.5 py-1 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900"
+            [attr.aria-label]="stars() ? 'GitHub, ' + stars() + ' stars' : 'GitHub'"
           >
             <svg ngmdGithubIcon class="size-5"></svg>
+            @if (stars(); as count) {
+              <span>{{ count }}</span>
+            }
           </a>
           @if (discordUrl) {
             <a
@@ -328,6 +332,15 @@ export class App implements OnInit {
   readonly headerNav = siteConfig.headerNav ?? [];
 
   readonly drawerOpen = signal(false);
+  readonly stars = signal('');
+
+  private starStorage(): StarStorage {
+    try {
+      return window.localStorage;
+    } catch {
+      return {getItem: () => null, setItem: () => undefined};
+    }
+  }
 
   constructor() {
     effect(() =>
@@ -338,6 +351,12 @@ export class App implements OnInit {
     const onChange = () => {
       if (desktop.matches) this.drawerOpen.set(false);
     };
+    const repo = repoFromUrl(this.githubUrl);
+    if (repo) {
+      void fetchStars(repo, this.starStorage()).then((count) =>
+        this.stars.set(count === null ? '' : formatStars(count)),
+      );
+    }
     desktop.addEventListener('change', onChange);
     this.destroyRef.onDestroy(() => desktop.removeEventListener('change', onChange));
   }
