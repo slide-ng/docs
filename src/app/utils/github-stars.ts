@@ -1,4 +1,4 @@
-const TTL_MS = 60 * 60 * 1000;
+const TTL_MS = 10 * 60 * 1000;
 
 export interface StarStorage {
   getItem(key: string): string | null;
@@ -29,7 +29,7 @@ function read(storage: StarStorage, key: string): {count: number; at: number} | 
   }
 }
 
-/** The star count of a repository, cached for an hour; a failed request falls back to the last known count. */
+/** The star count of a repository, cached for ten minutes; a failed request falls back to the last known count. */
 export async function fetchStars(
   repo: string,
   storage: StarStorage,

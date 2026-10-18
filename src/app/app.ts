@@ -161,12 +161,26 @@ import {ContentBanners} from './components/content-banners';
             [href]="githubUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 px-2.5 py-1 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-900"
+            class="inline-flex items-center gap-2 rounded-full border border-zinc-200 dark:border-zinc-800 py-1 pl-2.5 pr-3 text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-900"
             [attr.aria-label]="stars() ? 'GitHub, ' + stars() + ' stars' : 'GitHub'"
           >
             <svg ngmdGithubIcon class="size-5"></svg>
             @if (stars(); as count) {
-              <span>{{ count }}</span>
+              <span
+                class="inline-flex items-center gap-1 border-l border-zinc-200 dark:border-zinc-800 pl-2 tabular-nums"
+              >
+                <svg
+                  viewBox="0 0 16 16"
+                  class="size-3.5 text-amber-500"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
+                  />
+                </svg>
+                {{ count }}
+              </span>
             }
           </a>
           @if (discordUrl) {
