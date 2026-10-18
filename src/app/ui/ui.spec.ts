@@ -4,7 +4,7 @@ import {provideRouter} from '@angular/router';
 import {NgmdBadge} from './badge';
 import {NgmdCard} from './card';
 import {NgmdCardGrid} from './card-grid';
-import {NgmdDemo} from './demo';
+import {NgmdDemo, resolveDemoSrc} from './demo';
 import {NgmdImage} from './image';
 import {NgmdPill} from './pill';
 import {NgmdTab, NgmdTabs} from './tabs';
@@ -145,12 +145,17 @@ describe('NgmdTabs', () => {
 });
 
 describe('NgmdDemo', () => {
-  async function render(src: string) {
+  async function render(src: string, extra: Record<string, string> = {}) {
     const fixture = TestBed.createComponent(NgmdDemo);
     fixture.componentRef.setInput('src', src);
+    for (const [name, value] of Object.entries(extra)) fixture.componentRef.setInput(name, value);
     await fixture.whenStable();
     return fixture.nativeElement as HTMLElement;
   }
+
+  const showcase = 'https://slide-ng.github.io/slide.ng-showcases/ship-it/';
+
+  afterEach(() => vi.unstubAllGlobals());
 
   it('embeds a path of this site and links to it', async () => {
     const el = await render('/demos/starter/');
@@ -160,14 +165,60 @@ describe('NgmdDemo', () => {
   });
 
   it('refuses other origins and parent paths', async () => {
+    const fetchSpy = vi.fn();
+    vi.stubGlobal('fetch', fetchSpy);
     for (const src of [
       'https://example.com/',
       '//example.com/',
       '/demos/../secret',
       'javascript:1',
+      'http://slide-ng.github.io/slide.ng-showcases/ship-it/',
+      'https://slide-ng.github.io.evil.example/x/',
+      'https://evil.example/https://slide-ng.github.io/',
+      'https://user:pass@slide-ng.github.io/x/',
+      'https://slide-ng.github.io:8443/x/',
+      'data:text/html,<p>x</p>',
     ]) {
       const el = await render(src);
       expect(el.querySelector('iframe')?.getAttribute('src')).toBe('about:blank');
     }
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it('resolves the allowed addresses', () => {
+    expect(resolveDemoSrc(showcase, '/')).toBe(showcase);
+    expect(resolveDemoSrc('/demos/tour/', '/docs/')).toBe('/docs/demos/tour/');
+    expect(resolveDemoSrc('https://slide-ng.github.io/themes/seriph/', '/')).toBe(
+      'https://slide-ng.github.io/themes/seriph/',
+    );
+    expect(resolveDemoSrc('https://example.com/', '/')).toBeNull();
+  });
+
+  it('embeds a showcase deck in a sandboxed frame once the host answers', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ok: true}));
+    const el = await render(showcase, {source: 'https://github.com/slide-ng/x'});
+    const frame = el.querySelector('iframe')!;
+    expect(frame.getAttribute('src')).toBe(showcase);
+    expect(frame.getAttribute('sandbox')).toContain('allow-scripts');
+    expect(frame.getAttribute('sandbox')).not.toContain('allow-top-navigation');
+    expect(frame.getAttribute('allow')).toContain('fullscreen');
+    expect(el.querySelector('a')?.getAttribute('href')).toBe(showcase);
+  });
+
+  it('shows a note and a GitHub link when the deck is not published', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ok: false, status: 404}));
+    const el = await render(showcase, {source: 'https://github.com/slide-ng/x'});
+    expect(el.querySelector('iframe')).toBeNull();
+    expect(el.querySelector('[role="status"]')?.textContent).toContain('not available');
+    const link = el.querySelector<HTMLAnchorElement>('[role="status"] a')!;
+    expect(link.textContent).toContain('Open on GitHub');
+    expect(link.href).toBe('https://github.com/slide-ng/x');
+    expect(el.textContent).not.toContain('Open full size');
+  });
+
+  it('still tries the frame when the check itself fails', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('offline')));
+    const el = await render(showcase);
+    expect(el.querySelector('iframe')?.getAttribute('src')).toBe(showcase);
   });
 });
