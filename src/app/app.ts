@@ -32,6 +32,7 @@ import {onNavigation} from './utils/enhance-on-navigation';
 import {fetchStars, formatStars, repoFromUrl, type StarStorage} from './utils/github-stars';
 import siteConfig from '../ngmd.config';
 import {CommandPalette} from './components/command-palette';
+import {HeaderNav} from './components/header-nav';
 import {Sidebar} from './components/sidebar';
 import {Breadcrumb} from './components/breadcrumb';
 import {Toc} from './components/toc';
@@ -59,6 +60,7 @@ import {ContentBanners} from './components/content-banners';
     GithubIcon,
     DiscordIcon,
     CommandPalette,
+    HeaderNav,
     Sidebar,
     Breadcrumb,
     Toc,
@@ -110,27 +112,7 @@ import {ContentBanners} from './components/content-banners';
         </a>
 
         @if (headerNav.length > 0) {
-          <nav aria-label="Main" class="hidden sm:flex items-center gap-1 text-sm">
-            @for (item of headerNav; track item.href) {
-              @if (isExternal(item.href)) {
-                <a
-                  [href]="item.href"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="rounded px-3 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
-                >
-                  {{ item.label }}
-                </a>
-              } @else {
-                <a
-                  [routerLink]="item.href"
-                  class="rounded px-3 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
-                >
-                  {{ item.label }}
-                </a>
-              }
-            }
-          </nav>
+          <app-header-nav [items]="headerNav" />
         }
 
         <div class="ml-auto flex items-center gap-1 sm:gap-2">
@@ -246,6 +228,11 @@ import {ContentBanners} from './components/content-banners';
             [attr.aria-hidden]="!drawerOpen()"
             [attr.inert]="!drawerOpen() ? '' : null"
           >
+            @if (headerNav.length > 0) {
+              <div class="sm:hidden mb-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+                <app-header-nav [items]="headerNav" layout="list" />
+              </div>
+            }
             <app-sidebar />
           </aside>
         }
@@ -369,10 +356,6 @@ export class App implements OnInit {
   readonly showBreadcrumb = this.isDocsRoute;
   readonly showToc = this.isDocsRoute;
   readonly showFooter = this.isDocsRoute;
-
-  isExternal(href: string): boolean {
-    return /^https?:\/\//.test(href);
-  }
 
   toggleDrawer(): void {
     if (this.drawerOpen()) {

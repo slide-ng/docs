@@ -15,6 +15,8 @@ export interface NavItem {
    * (`new`, `updated`, `alpha`, `beta`, `stable`, `deprecated`), so the
    * sidebar chip and inline `<ngmd-badge>` always stay in sync. */
   status?: BadgeVariant;
+  /** Header only: turns the item into a dropdown. The item's own `href` is not a link then. */
+  children?: NavItem[];
 }
 
 export interface NavSection {
@@ -162,7 +164,20 @@ const config: NgmdConfig = {
     {label: 'Docs', href: '/welcome'},
     {label: 'Guide', href: '/guide/syntax'},
     {label: 'Reference', href: '/built-in/headmatter'},
-    {label: 'Themes', href: '/customize/theme-gallery'},
+    {
+      label: 'Resources',
+      href: '/resources/showcases',
+      children: [
+        {label: 'Showcases', href: '/resources/showcases'},
+        {label: 'Theme Gallery', href: '/customize/theme-gallery'},
+        {label: 'Starter', href: '/resources/starter'},
+        {label: 'Live Demos', href: '/resources/demos'},
+        {
+          label: 'Release Notes',
+          href: 'https://github.com/slide-ng/slide.ng/blob/main/CHANGELOG.md',
+        },
+      ],
+    },
   ],
 
   keywords: {
@@ -286,10 +301,18 @@ const config: NgmdConfig = {
       items: [
         {label: 'Directory structure', href: '/customize/directory-structure'},
         {label: 'Themes and addons', href: '/customize/themes'},
-        {label: 'Theme gallery', href: '/customize/theme-gallery'},
         {label: 'Writing a theme', href: '/customize/writing-a-theme'},
         {label: 'Layouts and components', href: '/customize/layouts-components'},
         {label: 'Setup hooks', href: '/customize/setup-hooks'},
+      ],
+    },
+    {
+      label: 'Resources',
+      items: [
+        {label: 'Showcases', href: '/resources/showcases'},
+        {label: 'Theme gallery', href: '/customize/theme-gallery'},
+        {label: 'Starter', href: '/resources/starter'},
+        {label: 'Live demos', href: '/resources/demos'},
       ],
     },
     {
