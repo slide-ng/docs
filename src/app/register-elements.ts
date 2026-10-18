@@ -10,6 +10,7 @@ import {NgmdDemo} from './ui/demo';
 import {NgmdHero} from './ui/hero';
 import {NgmdImage} from './ui/image';
 import {NgmdPill, NgmdPillRow} from './ui/pill';
+import {NgmdShowcaseGrid} from './ui/showcase-grid';
 import {NgmdTab, NgmdTabs} from './ui/tabs';
 import {NgmdVideo} from './ui/video';
 import {NgmdStep, NgmdWorkflow} from './ui/workflow';
@@ -62,6 +63,7 @@ const elementMap: Array<[string, Type<unknown>]> = [
   ['ngmd-image', NgmdImage],
   ['ngmd-pill', NgmdPill],
   ['ngmd-pill-row', NgmdPillRow],
+  ['ngmd-showcase-grid', NgmdShowcaseGrid],
   ['ngmd-step', NgmdStep],
   ['ngmd-tab', NgmdTab],
   ['ngmd-tabs', NgmdTabs],

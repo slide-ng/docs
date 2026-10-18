@@ -24,6 +24,7 @@
     "check:dist": "node scripts/check-dist.mjs",
     "check:landing": "node scripts/check-landing.mjs",
     "demos": "node scripts/build-demos.mjs",
+    "showcases": "node scripts/sync-showcases.mjs",
     "test": "vitest run",
     "format": "prettier --write .",
     "format:check": "prettier --check ."

@@ -1,0 +1,330 @@
+[
+  {
+    "slug": "angular-workshop",
+    "title": "Angular Workshop",
+    "theme": "default",
+    "blurb": "A hands-on signals workshop: live components, Twoslash types, Magic Move refactors and a runnable editor.",
+    "tags": [
+      "angular",
+      "signals",
+      "monaco",
+      "twoslash",
+      "magic move"
+    ]
+  },
+  {
+    "slug": "signals-deep-dive",
+    "title": "Signals Deep Dive",
+    "theme": "default",
+    "blurb": "signal, computed, effect, linkedSignal, resource, model() and view queries, each running on its slide.",
+    "tags": [
+      "angular",
+      "signals",
+      "components",
+      "clicks"
+    ]
+  },
+  {
+    "slug": "forms-and-di",
+    "title": "Forms and Di",
+    "theme": "moss",
+    "blurb": "Reactive and template-driven forms with @angular/forms, a root service shared across slides, host bindings and a directive in markdown.",
+    "tags": [
+      "angular",
+      "forms",
+      "dependency injection"
+    ]
+  },
+  {
+    "slug": "pipes-and-i18n",
+    "title": "Pipes and i18n",
+    "theme": "paper",
+    "blurb": "Angular's number, currency, date and text pipes in German, async and i18n pipes, and a custom pipe used straight from a slide.",
+    "tags": [
+      "angular",
+      "pipes",
+      "i18n"
+    ]
+  },
+  {
+    "slug": "control-flow-torture",
+    "title": "Control Flow Torture",
+    "theme": "blueprint",
+    "blurb": "@if, @for, @switch, @let and @defer written straight into markdown, nested and mixed with tables, code and clicks.",
+    "tags": [
+      "angular",
+      "control flow"
+    ]
+  },
+  {
+    "slug": "angular-animations-and-styles",
+    "title": "Angular Animations and Styles",
+    "theme": "minimal",
+    "blurb": "animate.enter and animate.leave, view encapsulation, per-slide styles and CSS animations on clicks.",
+    "tags": [
+      "angular",
+      "animations",
+      "css"
+    ]
+  },
+  {
+    "slug": "scaffold-flow",
+    "title": "Scaffold Flow",
+    "theme": "moss",
+    "blurb": "The deck `slide-ng create` gives you, grown into a short talk on signals.",
+    "tags": [
+      "angular",
+      "signals",
+      "starter"
+    ]
+  },
+  {
+    "slug": "clicks-masterclass",
+    "title": "Clicks Masterclass",
+    "theme": "default",
+    "blurb": "Absolute and relative clicks, ranges, hide, nested lists, switches, fixed totals and click markers in notes.",
+    "tags": [
+      "clicks",
+      "slidev"
+    ]
+  },
+  {
+    "slug": "motion-and-transitions",
+    "title": "Motion and Transitions",
+    "theme": "moss",
+    "blurb": "All seven slide transitions, view transitions, forward and backward pairs, slide-ng-motion and hand-drawn marks.",
+    "tags": [
+      "transitions",
+      "motion",
+      "slidev"
+    ]
+  },
+  {
+    "slug": "magic-move-stories",
+    "title": "Magic Move Stories",
+    "theme": "blueprint",
+    "blurb": "A cart total refactored in six Shiki Magic Moves: long stories, ranges, side-by-side blocks, snippets and clicks.",
+    "tags": [
+      "magic move",
+      "code",
+      "slidev"
+    ]
+  },
+  {
+    "slug": "monaco-and-twoslash",
+    "title": "Monaco and Twoslash",
+    "theme": "moss",
+    "blurb": "Editors in slides, diffs, code you can run in JavaScript and TypeScript, and Twoslash types.",
+    "tags": [
+      "monaco",
+      "twoslash",
+      "code runners"
+    ]
+  },
+  {
+    "slug": "polyglot-code",
+    "title": "Polyglot Code",
+    "theme": "default",
+    "blurb": "One API in twenty languages: titles, line steps, diffs, scrolling blocks, snippet regions and code groups.",
+    "tags": [
+      "code",
+      "shiki"
+    ]
+  },
+  {
+    "slug": "diagram-zoo",
+    "title": "Diagram Zoo",
+    "theme": "minimal",
+    "blurb": "Mermaid flowcharts, sequences, classes, states, ER diagrams and Gantt charts, in light and dark.",
+    "tags": [
+      "mermaid",
+      "diagrams"
+    ]
+  },
+  {
+    "slug": "math-lecture",
+    "title": "Math Lecture",
+    "theme": "default",
+    "blurb": "A 4:3 linear algebra lecture with KaTeX, stepped derivations and draggable vectors.",
+    "tags": [
+      "katex",
+      "math",
+      "drag"
+    ]
+  },
+  {
+    "slug": "math-heavy",
+    "title": "Math Heavy",
+    "theme": "paper",
+    "blurb": "Gradient descent: math in titles, derivations one line per click, matrices and footnotes.",
+    "tags": [
+      "katex",
+      "math",
+      "clicks"
+    ]
+  },
+  {
+    "slug": "markdown-extras",
+    "title": "Markdown Extras",
+    "theme": "blueprint",
+    "blurb": "A site file in markdown: footnotes, GitHub alerts, tables, task lists, keys, heading ids, image sizes, imported slides and HTML with markdown inside.",
+    "tags": [
+      "markdown"
+    ]
+  },
+  {
+    "slug": "layouts-and-sizes",
+    "title": "Layouts and Sizes",
+    "theme": "paper",
+    "blurb": "Every built-in layout on a square 1:1 canvas, from cover to iframe, with a table of contents per section.",
+    "tags": [
+      "layouts",
+      "aspect ratio"
+    ]
+  },
+  {
+    "slug": "layouts-and-sizes-portrait",
+    "title": "Layouts and Sizes Portrait",
+    "theme": "paper",
+    "blurb": "The same layouts on a 9:16 portrait canvas, for phones and vertical screens.",
+    "tags": [
+      "layouts",
+      "aspect ratio"
+    ]
+  },
+  {
+    "slug": "presenter-and-drawing",
+    "title": "Presenter and Drawing",
+    "theme": "minimal",
+    "blurb": "A talk about giving talks: presenter notes with clicks, a countdown, drawing, the laser pointer, custom keys and remote control.",
+    "tags": [
+      "presenter",
+      "drawing"
+    ]
+  },
+  {
+    "slug": "all-setup-hooks",
+    "title": "All Setup Hooks",
+    "theme": "default",
+    "blurb": "One slide per setup hook: Shiki, KaTeX, transformers, a preparser, Mermaid, Monaco, custom code runners, keys and the right-click menu.",
+    "tags": [
+      "setup",
+      "customisation"
+    ]
+  },
+  {
+    "slug": "theme-switcher",
+    "title": "Theme Switcher",
+    "theme": "all five",
+    "blurb": "A talk on edge caching that builds unchanged with any of the five themes.",
+    "tags": [
+      "themes"
+    ]
+  },
+  {
+    "slug": "typography-history",
+    "title": "Typography History",
+    "theme": "paper",
+    "blurb": "A short history of type in the paper theme: a contents page, marks, footnotes and a type specimen.",
+    "tags": [
+      "story",
+      "paper theme"
+    ]
+  },
+  {
+    "slug": "recipes-zine",
+    "title": "Recipes Zine",
+    "theme": "paper",
+    "blurb": "A kitchen zine with its own recipe layout, a running footer layer and reader notes in four scripts.",
+    "tags": [
+      "custom layouts",
+      "layers",
+      "unicode"
+    ]
+  },
+  {
+    "slug": "brand-deck",
+    "title": "Brand Deck",
+    "theme": "paper",
+    "blurb": "A brand guide for an invented roastery: its own layouts, fonts, a custom pipe and a PDF download.",
+    "tags": [
+      "branding",
+      "custom layouts",
+      "pdf"
+    ]
+  },
+  {
+    "slug": "forest-carbon-report",
+    "title": "Forest Carbon Report",
+    "theme": "moss",
+    "blurb": "A field report in the moss theme: KaTeX, Mermaid charts, a live plot table and a custom pipe.",
+    "tags": [
+      "report",
+      "moss theme",
+      "mermaid"
+    ]
+  },
+  {
+    "slug": "architecture-review",
+    "title": "Architecture Review",
+    "theme": "blueprint",
+    "blurb": "An architecture review: topology diagrams, code imported from files, Twoslash and an outbox refactor.",
+    "tags": [
+      "architecture",
+      "mermaid",
+      "snippets"
+    ]
+  },
+  {
+    "slug": "conference-keynote",
+    "title": "Conference Keynote",
+    "theme": "blueprint",
+    "blurb": "A keynote on Angular performance with a stamp addon, review notes, PWA install and a PDF download.",
+    "tags": [
+      "keynote",
+      "addons",
+      "pwa"
+    ]
+  },
+  {
+    "slug": "product-update",
+    "title": "Product Update",
+    "theme": "minimal",
+    "blurb": "A quarterly product update that uses every built-in layout: big numbers, quotes, charts and a live changelog.",
+    "tags": [
+      "business",
+      "minimal theme"
+    ]
+  },
+  {
+    "slug": "ship-it",
+    "title": "Ship It",
+    "theme": "moss",
+    "blurb": "How a talk ships as a site, a PDF, an offline folder and an installable app, and how this gallery goes out to GitHub Pages.",
+    "tags": [
+      "build",
+      "offline",
+      "pwa"
+    ]
+  },
+  {
+    "slug": "rtl-and-languages",
+    "title": "RTL and Languages",
+    "theme": "blueprint",
+    "blurb": "A transit plan in Arabic: right-to-left slides with left-to-right code, plus Japanese, German and Hebrew pages.",
+    "tags": [
+      "rtl",
+      "i18n",
+      "unicode"
+    ]
+  },
+  {
+    "slug": "edge-cases",
+    "title": "Edge Cases",
+    "theme": "default",
+    "blurb": "Long titles, long lists, wide tables, braces, entities and file names with spaces, all laid out cleanly.",
+    "tags": [
+      "robustness"
+    ]
+  }
+]
