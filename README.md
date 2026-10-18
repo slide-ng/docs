@@ -23,7 +23,13 @@ pnpm run format:check
 - Pages are markdown files under `src/content/`. The path is the URL.
 - The sidebar, header links and the site's name and URL are in `src/ngmd.config.ts`.
 - The home page is `src/app/pages/index.page.ts`; its live demo is in `src/app/landing/`.
-- `<ngmd-demo src="/demos/starter/" title="..."></ngmd-demo>` embeds a built deck in an iframe.
+- `<ngmd-demo src="/demos/starter/" title="..."></ngmd-demo>` embeds a built deck in an iframe. Besides paths of this site it embeds addresses on `slide-ng.github.io`, in a sandboxed frame.
+- The Resources menu in the header and the Resources section of the sidebar lead to the showcases, the theme gallery, the starter and the live demos (`src/content/resources/`). The showcase pages are generated from `showcases.json` of the slide-ng/showcases repository and committed:
+
+```sh
+SLIDE_NG_SHOWCASES_DIR=../slide.ng-showcases pnpm run showcases
+```
+
 - The decks in `demos/<name>/slides.md` are built with the slide.ng CLI into `public/demos/<name>/` and the built files are committed, so building the site needs neither slide.ng nor Chromium. To rebuild them, check out slide.ng (and slide-ng/themes for the theme decks):
 
 ```sh

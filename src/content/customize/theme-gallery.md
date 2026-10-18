@@ -5,6 +5,8 @@ description: The five official slide.ng themes, with a live deck for each and cr
 
 # Theme gallery
 
+This page is part of the Resources menu. Decks made with the themes are in the [Showcases](../resources/showcases.md), the [starter](../resources/starter.md) deck has its own page, and every demo deck is on the [Live demos](../resources/demos.md) page. The themes repository also publishes its decks as a standalone site at [slide-ng.github.io/themes](https://slide-ng.github.io/themes/).
+
 Four of the official themes are ports of the official Slidev themes, rebuilt as Angular code for slide.ng, and `adev` is a new theme inspired by angular.dev. Each one lives in its own package in the slide-ng/themes repository: `@slide-ng/theme-seriph`, `@slide-ng/theme-shibainu`, `@slide-ng/theme-bricks`, `@slide-ng/theme-apple-basic` and `@slide-ng/theme-adev`. Each deck below has a slide for every layout of its theme, and the adev deck has a slide for every component too. The theme fonts load from Google Fonts, so the decks look right with a network. Each deck has a small theme switcher in the top left corner that opens the same slide in another theme. It is only in these demos and is not part of the theme packages.
 
 <ngmd-tabs>
