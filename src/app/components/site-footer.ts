@@ -18,7 +18,7 @@ import siteConfig from '../../ngmd.config';
               href="https://github.com/erkamyaman"
               target="_blank"
               rel="noopener noreferrer"
-              class="hover:text-zinc-700 dark:hover:text-zinc-300"
+              class="font-medium text-[color:var(--accent-strong)] hover:underline"
               >Erkam Yaman</a
             >. Released under the MIT License.
           </span>
