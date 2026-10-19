@@ -14,6 +14,7 @@ These tags work in every slide. The generator imports a component only into the 
 | `<slide-ng-toc />` | Table of contents from slide titles and levels. Options: `columns`, `listClass`, `listStyle`, `start`, `minDepth`, `maxDepth`, `mode`. See [Table of contents](../features/table-of-contents.md). |
 | `<slide-ng-current-no />` | The number of the slide it is on. |
 | `<slide-ng-total />` | The number of slides. |
+| `<slide-ng-title-renderer />` | The title of the slide it is on, as HTML: its inline markdown and `$math$` are drawn. `no="3"` shows the title of slide 3. Raw HTML in a title is shown as text. Slidev's `TitleRenderer`. |
 | `<slide-ng-link to="3">text</slide-ng-link>` | A link to slide 3, or to a `routeAlias`. It has the prefix because `link` is a built-in HTML tag. The link has the slide's real address, so Ctrl or Cmd + click opens it in a new tab. `title="Details"` is the text when the tag has none. |
 | `<slide-ng-light-or-dark>` | Shows `<div dark>...</div>` in dark mode and `<div light>...</div>` in light mode. |
 | `<slide-ng-render-when context="slide">` | Content only where the slide is drawn: `slide`, `presenter`, `print`, `overview`, or `main` (slide or presenter). `[context]="['slide','overview']"` takes several. Content marked `<div fallback>` shows everywhere else. |
@@ -42,7 +43,7 @@ These tags work in every slide. The generator imports a component only into the 
 
 | Tag | What it does |
 | --- | --- |
-| `<slide-ng-youtube id="luoMHjh-XcQ" width="560" height="315" />` | An embedded YouTube video. `id` is the video id. There are no start time or playlist options. |
+| `<slide-ng-youtube id="luoMHjh-XcQ?start=60" width="560" height="315" />` | An embedded YouTube video. `id` is the video id, optionally followed by YouTube's embed options, as in Slidev: `?start=60&end=90`, `list`, `loop`, `autoplay`, `mute` and the other documented ones. Other options are dropped. `start` (seconds) and `list` (a playlist id) can also be attributes, and they win over the same option in `id`. |
 | `<slide-ng-video autoplay="true" autoreset="click" controls poster="...">` | A video that plays when its slide, or its `slide-ng-click`, comes. `autoplay="once"` plays once. `timestamp` starts at a second. Put `<source>` tags inside. |
 | `<slide-ng-tweet id="20" scale="0.8" conversation="none" cards="hidden" />` | An embedded tweet. Loads Twitter's script, so it needs the network. |
 | `<slide-ng-blue-sky uri="at://did:.../app.bsky.feed.post/..." scale="0.8" />` | An embedded Bluesky post, needs the network. `uri` can also be the post's web address. |
@@ -63,4 +64,4 @@ These tags work in every slide. The generator imports a component only into the 
 
 ## Not there
 
-Slidev's `PoweredBySlidev` badge and `TitleRenderer` are not available. Slide titles are plain text, except that `$math$` in a title is drawn in `<slide-ng-toc>`. Your own components work like these, see [Layouts and components](../customize/layouts-components.md).
+Slidev's `PoweredBySlidev` badge is not available. Your own components work like these, see [Layouts and components](../customize/layouts-components.md).

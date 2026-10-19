@@ -26,6 +26,10 @@ Export opens the deck in Chromium. slide.ng never downloads a browser, so set `C
 
 In a PDF, a slide that has clicks shows its last state. `--with-clicks` makes a page for every click step. A `@defer` block that waits (`on timer`, `on viewport`) may still show its placeholder when the page is captured: give `export` a `--wait`. `<slide-ng-render-when context="print">` shows content only on paper, see [Components](../built-in/components.md).
 
+## Links in a PDF
+
+A link to a slide, written in markdown (`[x](5)`) or as `<slide-ng-link>`, points at the first page of that slide in the PDF, so a click jumps there instead of opening the local server's address. It works only when the target slide is in the same file: with `--per-slide`, or with a `--range` that leaves the slide out, a link to another slide is no link. Links to web pages stay links.
+
 ## Choosing slides and looks
 
 ```sh

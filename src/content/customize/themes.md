@@ -48,6 +48,35 @@ A theme can bring layouts, components, layers, CSS, public files, UnoCSS setting
 
 The one exception is `colorSchema`. A theme that sets `light` or `dark` has colours for that mode only, so every deck that uses it keeps that mode, as in Slidev. The toggle is gone, and when the deck's headmatter asks for another mode the generator says that it is not used. Of the official themes, `bricks` is light only and `shibainu` dark only.
 
+## Theme settings
+
+`themeConfig` holds the values a theme offers to change, as in Slidev. Each key with a text or number value becomes the CSS variable `--slidev-theme-<key>` on `<body>`, with the key as written: `primary` is `--slidev-theme-primary`, `accentDark` is `--slidev-theme-accentDark`. It is there in the page, the presenter, the PDF and offline builds.
+
+```md
+---
+themeConfig:
+  primary: '#5d8392'
+---
+```
+
+`primary` recolours the built-in accent: `text-primary`, `bg-primary`, `border-primary`, the progress bar and the controls. Other keys do what the theme makes of them.
+
+- The theme's `theme.json` can give defaults. The deck's keys win, key by key, and so do an addon's.
+- A key must be letters, digits, `-` and `_`. A value that could leave the CSS declaration (`;`, `{`, `}`, `<`, `>`, `\`, a comment, a line break, quotes or brackets that do not close) is skipped with a warning.
+- There is one value for both colour modes, as in Slidev.
+- A slide reads the whole map as `themeConfig`, for example `{{ themeConfig['primary'] }}`. The brackets are needed because the map has no fixed keys. Lists and objects are kept there, but they are not CSS variables.
+- A theme's component reads it with `inject(THEME_CONFIG)` from `slide-ng/lib/theme-config`. See [Writing a theme](./writing-a-theme.md#5-default-settings).
+
+## Translating the interface
+
+A theme or an addon can translate slide.ng's own interface (the bar, the menus, the presenter) with a `locales/` folder. `locales/tr.json`, or `pt.json` and `pt-BR.json`, holds flat `"key": "text"` pairs with their `{name}` placeholders kept:
+
+```json
+{ "nav.next": "Sonraki slayta git", "presenter.noNotes": "{no}. slayt için not yok." }
+```
+
+The deck's `lang` or `uiLang` picks the file. The built-in translations come first, then the theme, the addons and the deck, key by key, so a deck can change one text of its theme. A theme's own components can show the same texts with the `t` pipe: import `T` from `slide-ng/i18n/t`, then write `{{ 'nav.next' | t }}`. See [Interface language](../features/interface-language.md).
+
 ## Eject a theme
 
 ```sh
@@ -63,7 +92,6 @@ The built-in styles still load before the ejected `styles/index.css`. Your copy 
 - There is no versioning or compatibility check between a theme and the app.
 - A layout's inputs are not read from the component, because Angular decorators are not parsed. They come from the built-in layout or from `theme.json`.
 - Class names in a theme are found by UnoCSS in `.ts` files of the roots and in the deck's markdown, not in CSS files.
-- `themeConfig` is not read.
 - `@apply` in a theme's CSS does nothing, because there is no UnoCSS directive transformer. The generator warns. Write the CSS out, or put the classes on the elements.
 - A theme package whose `files` leaves its folders out installs empty. The generator warns, instead of failing later with "is not a known element".
 

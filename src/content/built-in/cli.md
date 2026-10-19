@@ -26,6 +26,7 @@ Starts the dev server. This is the default command.
 | `--log error\|warn\|info\|silent` | How much of the child programs' output to show. Default `info`. `error` and `silent` hide it. |
 | `--force`, `-f` | Clear the build cache. |
 | `--theme`, `-t` | A theme name or path, instead of the headmatter's. |
+| `--lang <tag>` | Use this language (`tr`, `pt-BR`) instead of the headmatter's `lang`: the interface, the locale of dates and numbers, and `<html lang>`. See [Interface language](../features/interface-language.md). |
 
 `--tunnel` and `--base` are refused with a message. The dev server always runs at `/`.
 
@@ -45,6 +46,7 @@ Makes a static site. See [Hosting](../guide/hosting.md).
 | `--allow-local` | Let the page Chromium renders reach loopback and private addresses. They are blocked otherwise. |
 | `--timeout` | Timeout in milliseconds for each page Chromium renders. |
 | `--theme`, `-t` | A theme name or path. |
+| `--lang <tag>` | Use this language instead of the headmatter's `lang`, for one deck in several languages: `slide-ng build slides.tr.md --out dist/tr`. |
 
 ## export
 
@@ -71,6 +73,7 @@ Makes a PDF, PNG, PPTX or Markdown file. See [Export](../guide/export.md).
 | `--url <address>` | Export a running server, for example the dev server. |
 | `--base` | The base path the deck is served under, for `--dist`. |
 | `--theme`, `-t` | A theme name or path. |
+| `--lang <tag>` | Use this language instead of the headmatter's `lang`. |
 
 `export` takes one entry file per run. A `--range` that picks no slide fails before the deck is built.
 
@@ -124,6 +127,7 @@ Makes a new deck folder. `--force`, `-f` adds the files that are missing to a fo
 | --- | --- |
 | `CHROME_PATH` | The Chromium that export, `--download`, `pwa` icons and `ogImage: auto` use. |
 | `SLIDE_NG_THEME` | A theme name or path that overrides the headmatter. `--theme` sets it. |
+| `SLIDE_NG_LANG` | The same as `--lang`. |
 | `SLIDE_NG_NO_SANDBOX` | `1` is the same as `--no-sandbox`. |
 | `SLIDE_NG_PASSWORD` | The password for `dev --remote`. It keeps the password out of the shell history. |
 | `SLIDES_FILE` | The entry file, when no argument names one. |

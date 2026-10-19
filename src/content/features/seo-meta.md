@@ -29,7 +29,7 @@ seoMeta:
 | `title`, `titleTemplate` | The browser tab. `%s` is the title. |
 | `info` | Markdown for the info dialog. With the markup taken out and cut at 300 characters, it is also the page description and the PDF's subject. |
 | `author`, `keywords` | Meta tags. `keywords` is a list or a comma separated text. |
-| `lang`, `htmlAttrs` | Attributes on `<html>`. |
+| `lang`, `htmlAttrs` | Attributes on `<html>`. `lang` also picks the [interface language](./interface-language.md) and the locale of dates and numbers, and `ar`, `he`, `fa` and `ur` add `dir="rtl"` unless `htmlAttrs.dir` is set. |
 | `favicon` | A file of `public/`, or a web address. |
 | `seoMeta` | Open Graph and Twitter tags: `ogTitle`, `ogDescription`, `ogImage`, `ogUrl`, `twitterCard` and so on. |
 

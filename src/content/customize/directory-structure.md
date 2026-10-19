@@ -16,6 +16,7 @@ my-deck/
   styles/index.css    CSS added after the app's styles
   public/             files served from the site root (/logo.png)
   setup/              setup hooks: shiki.ts, katex.ts, mermaid.ts, shortcuts.ts, ...
+  locales/            translations of the interface: tr.json, de.json, ...
   uno.config.mjs      UnoCSS settings
   theme.json          inputs and slots of your own layouts
   snippets/           anything you import with <<<
@@ -42,6 +43,7 @@ So a deck can put a `layouts/cover.ts` next to `slides.md` and it beats the them
 | `styles/index.css` | CSS, added after the app's styles. |
 | `public/` | Files served from the site root. The later root wins on the same name. |
 | `setup/*.ts` | [Setup hooks](./setup-hooks.md). |
+| `locales/<lang>.json` | Translations of the interface, flat `"key": "text"` pairs. Merged key by key, the later root wins. See [Interface language](../features/interface-language.md). |
 | `uno.config.mjs` | UnoCSS settings, default export. `presets`, `rules`, `safelist` and `variants` are added to the app's. `shortcuts` and `theme` are merged key by key. |
 | `theme.json` | Name, default headmatter and layout inputs and slots. A deck's own folder can have one too, for its own layouts. See [Writing a theme](./writing-a-theme.md). |
 

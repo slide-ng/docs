@@ -271,6 +271,7 @@ const config: NgmdConfig = {
         {label: 'Drawing', href: '/features/drawing'},
         {label: 'Recording', href: '/features/recording'},
         {label: 'Context menu', href: '/features/context-menu'},
+        {label: 'Interface language', href: '/features/interface-language'},
       ],
     },
     {

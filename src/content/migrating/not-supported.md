@@ -17,7 +17,7 @@ This list is taken from the parity table that is kept with the slide.ng source, 
 - Slidev's sync mode menu (send only, receive only, off). Windows and devices always follow the presenter.
 - Slide hooks `onSlideEnter`, `onSlideLeave` and `useIsSlideActive`.
 - Custom transitions given as an object, `clickAnimation`, `preloadImages` and slide `preload`.
-- `selectable`, `themeConfig`, `notesAutoRuby` and `TitleRenderer`. Slide titles are plain text, except `$math$`, which is drawn in the table of contents.
+- `selectable` and `notesAutoRuby`.
 - `dev --base`, `dev --tunnel`, `dev --inspect` and `build --router-mode`.
 - `export` with several entries, and `export --format pptx-editable`.
 - A Prettier plugin, a converter from Vue syntax, `overviewSnapshots` and the browser exporter page. These are left out on purpose.
@@ -33,7 +33,8 @@ This list is taken from the parity table that is kept with the slide.ng source, 
 
 - `slide-ng-motion`: CSS transitions between states, no spring physics or presets.
 - Recording: no separate camera file, no mp4 or mkv, no cloud upload.
-- `<youtube>`: no start time or playlist options.
+- Links to slides: in speaker notes a link to a slide is a plain address, so a click in the presenter view loads the page again. In a PDF made with `--per-slide`, or with a `--range` that leaves the slide out, a link to another slide is no link.
+- The interface language: Turkish is the only built-in translation, browser error messages stay English, and in a right-to-left deck the arrow keys, swipes and the drawing toolbar are not mirrored. See [Interface language](../features/interface-language.md).
 - `fonts`: loaded from the provider like Slidev's, plus `selfHost`, which is tested against a fake provider only.
 - Magic Move: `magicMoveDuration` and `magicMoveCopy` are read, the other `shiki.magicMove` options are not.
 - `colorSchema`: `auto`, `light` and `dark` work, `all` does not.

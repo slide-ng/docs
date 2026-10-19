@@ -18,6 +18,7 @@ my-theme/
   layers/          optional: global-top.ts, global-bottom.ts, slide-top.ts, slide-bottom.ts
   setup/           optional: setup hooks
   public/          optional: pictures and fonts, served from /
+  locales/         optional: translations of the interface, tr.json, de.json, ...
   uno.config.mjs   optional: UnoCSS shortcuts and rules
 ```
 
@@ -86,9 +87,23 @@ Dark mode is the class `dark` on `<html>`: write `html.dark .my-quote { ... }` f
 - A `colorSchema` of `light` or `dark` says the theme has colours for that mode only: every deck that uses it keeps that mode, and the generator warns when a deck asks for another. Leave it out when the theme styles both.
 - `layouts.<name>`: `props` are the frontmatter keys that become inputs, `slots` are the names accepted after `::name::`, and `classProp: true` sends the slide's `class` to the input `contentClass` instead of the tag.
 
+Settings a deck may change, such as the accent colour, go in `themeConfig`, as in Slidev. Each one is the CSS variable `--slidev-theme-<key>` on `<body>`, and the deck's `themeConfig: { accent: '#22c55e' }` replaces your default:
+
+```json
+{ "headmatter": { "themeConfig": { "accent": "#f59e0b" } } }
+```
+
+```css
+.my-quote {
+  border-left: 4px solid var(--slidev-theme-accent);
+}
+```
+
+The variables are written after the roots' style sheets, so they win over a value you set on `:root` or `html.dark`. Use them in rules on the elements, or alias them on `body` or below: an alias on `:root` is worked out before the variable exists there. `primary` is the colour of the built-in accent (`text-primary`, the progress bar). In a component, `inject(THEME_CONFIG)` from `slide-ng/lib/theme-config` gives the whole map, lists and objects too. There is one value for both colour modes, so a theme that wants another dark colour can offer a second key, such as `primaryDark`, and use it under `html.dark`. The rules for values are in [Themes and addons](./themes.md#theme-settings).
+
 Keys other than `name`, `headmatter` and `layouts` are not read, and the generator says so: settings such as `colorSchema` and `fonts` go under `headmatter`. A value of the wrong type is reported and ignored. A deck's own folder can have a `theme.json` too, to describe the inputs and slots of its own layouts.
 
-Pictures go in `public/`.
+Pictures go in `public/`. Translations of slide.ng's interface go in `locales/<lang>.json`, see [Themes and addons](./themes.md#translating-the-interface).
 
 ## A footer or page number
 
@@ -114,7 +129,7 @@ A theme is a folder, so publish it as an npm package with these folders at the t
   "version": "1.0.0",
   "license": "MIT",
   "keywords": ["slide-ng-theme", "slide-ng"],
-  "files": ["layouts", "components", "layers", "styles", "public", "setup", "theme.json", "uno.config.mjs"],
+  "files": ["layouts", "components", "layers", "styles", "public", "setup", "locales", "theme.json", "uno.config.mjs"],
   "peerDependencies": { "@slide-ng/core": "*" }
 }
 ```

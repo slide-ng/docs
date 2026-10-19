@@ -42,4 +42,4 @@ The core styles follow Slidev's: code is 12px (`--slidev-code-font-size`), and t
 
 ## Shortcuts and icons
 
-slide.ng defines a few of Slidev's utility shortcuts, such as `bg-main`, `text-primary` and `border-main`. Icons are classes or tags, see [Icons](../features/icons.md). A theme or deck can add its own UnoCSS settings in `uno.config.mjs`, see [Directory structure](../customize/directory-structure.md).
+slide.ng defines a few of Slidev's utility shortcuts, such as `bg-main`, `text-primary` and `border-main`. `themeConfig: { primary: '#5d8392' }` in the headmatter changes the colour of `text-primary`, see [Theme settings](../customize/themes.md#theme-settings). Icons are classes or tags, see [Icons](../features/icons.md). A theme or deck can add its own UnoCSS settings in `uno.config.mjs`, see [Directory structure](../customize/directory-structure.md).
