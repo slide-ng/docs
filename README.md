@@ -4,6 +4,12 @@ The documentation website for [slide.ng](https://github.com/slide-ng/slide.ng), 
 
 It covers getting started, a guide, a page for every feature, the built-in reference (layouts, components, directives, shortcuts, CLI, frontmatter keys), customizing, a comparison with Slidev, and live example decks.
 
+<p align="center">
+  <img alt="Typing a slides.md file while the slides take shape next to it" src="https://raw.githubusercontent.com/slide-ng/slide.ng/main/docs/assets/how-it-works.gif" width="420">
+  <br>
+  <sub>Type markdown, get slides.</sub>
+</p>
+
 ## Develop
 
 Node 22.22.3 or newer (see `.nvmrc`) and [pnpm](https://pnpm.io).
