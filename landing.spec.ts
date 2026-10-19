@@ -34,11 +34,11 @@ describe('the landing deck', () => {
     expect(texts[2].startsWith('---\nlayout: center\n---\n\n# Welcome')).toBe(true);
     expect(texts[3].startsWith('---\nlayout: cover\n---\n\n# Welcome')).toBe(true);
     expect(
-      texts[4].startsWith('---\nlayout: cover\nbackground: /demo-cover.svg\n---\n\n# Welcome'),
+      texts[4].startsWith('---\nlayout: cover\nbackground: /ngpoland-conf.jpg\n---\n\n# Welcome'),
     ).toBe(true);
     expect(texts[5].endsWith('\n\n---\n\n')).toBe(true);
-    expect(texts[6].endsWith('# Page 2\n\n')).toBe(true);
-    expect(texts[7].endsWith('- 📄 Write slides in a single Markdown file\n')).toBe(true);
+    expect(texts[6].endsWith('# Why slide.ng\n\n')).toBe(true);
+    expect(texts[7].endsWith('- 📄 Write your slides in one Markdown file\n')).toBe(true);
     expect(texts[8].endsWith('- 🌈 Themes, code blocks, Angular components\n')).toBe(true);
     expect(texts[9]).toBe(source);
   });
@@ -80,9 +80,9 @@ describe('the deck of stages', () => {
     );
     expect(slides[2].frontmatter).toContain('layout: center');
     expect(slides[3].frontmatter).toContain('layout: cover');
-    expect(slides[4].frontmatter).toContain('background: /demo-cover.svg');
+    expect(slides[4].frontmatter).toContain('background: /ngpoland-conf.jpg');
     expect(slides[9].body).toBe(
-      '# Page 2\n\n- 📄 Write slides in a single Markdown file\n- 🌈 Themes, code blocks, Angular components\n- 😎 Read the docs to learn more!',
+      '# Why slide.ng\n\n- 📄 Write your slides in one Markdown file\n- 🌈 Themes, code blocks, Angular components\n- 😎 Read the docs to learn more!',
     );
   });
 
@@ -101,11 +101,9 @@ describe('the deck of stages', () => {
     ).toBe(stageFingerprint(here));
   });
 
-  it('ships its cover picture, an SVG, inside the deck', () => {
-    expect(existsSync(join(here, 'public/demos/landing/demo-cover.svg'))).toBe(true);
-    const svg = readFileSync(join(here, 'demos/landing/public/demo-cover.svg'), 'utf8');
-    expect(svg).not.toMatch(/<image|href="http/);
-    expect(svg.length).toBeLessThan(4000);
+  it('ships its cover picture, a photo, inside the deck', () => {
+    expect(existsSync(join(here, 'public/demos/landing/ngpoland-conf.jpg'))).toBe(true);
+    expect(existsSync(join(here, 'demos/landing/public/ngpoland-conf.jpg'))).toBe(true);
   });
 });
 

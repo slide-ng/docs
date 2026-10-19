@@ -13,8 +13,8 @@
  */
 import {del, exec, move, pause, replay, type, type Step} from './steps.ts';
 
-/** Where the cover image of the deck is (`demos/landing/public/demo-cover.svg`). */
-export const COVER_URL = '/demo-cover.svg';
+/** Where the cover image of the deck is (`demos/landing/public/ngpoland-conf.jpg`). */
+export const COVER_URL = '/ngpoland-conf.jpg';
 
 /** Time per character, and the wait before the first one, as in Slidev's demo. */
 export const TYPING = {speed: 50, startDelay: 900} as const;
@@ -44,9 +44,9 @@ export const CHOREOGRAPHY: readonly Step[] = [
   type('\n\n---\n\n', {delay: 400}),
   exec('page:1'),
   exec('stage:5'),
-  type('# Page 2\n\n', {delay: 400}),
+  type('# Why slide.ng\n\n', {delay: 400}),
   exec('stage:6'),
-  type('- 📄 Write slides in a single Markdown file\n', {delay: 800}),
+  type('- 📄 Write your slides in one Markdown file\n', {delay: 800}),
   exec('stage:7'),
   type('- 🌈 Themes, code blocks, Angular components\n', {delay: 800}),
   exec('stage:8'),

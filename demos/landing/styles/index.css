@@ -34,6 +34,8 @@ html.dark .canvas {
 .slidev-layout.cover {
   color: #fbf8f3;
   background-color: #16131a;
+  align-content: end;
+  padding-bottom: 5rem;
 }
 .slidev-layout.cover h1 {
   color: #fbf8f3;

@@ -1,16 +1,15 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {LandingDemo} from '../landing/landing-demo';
-import {LandingFeatures} from '../landing/landing-features';
 
 /**
  * The home page, laid out like Slidev's: no docs sidebar (the app shell hides it on `/`), a left
  * column with the logo, the tagline and two buttons, and the live demo on the right. On screens
- * narrower than `xl` the two stack. Three highlights follow below.
+ * narrower than `xl` the two stack.
  */
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, LandingDemo, LandingFeatures],
+  imports: [RouterLink, LandingDemo],
   template: `
     <div
       class="mx-auto min-h-[80vh] max-w-[100vw] gap-4 px-8 py-5 xl:grid xl:max-w-[112.5rem] xl:grid-cols-[3fr_4fr] xl:px-20"
@@ -56,18 +55,6 @@ import {LandingFeatures} from '../landing/landing-features';
         <app-landing-demo class="m-auto w-full" />
       </div>
     </div>
-
-    <section
-      class="mx-auto mt-10 max-w-6xl border-t border-zinc-200 px-8 pt-10 dark:border-zinc-800"
-    >
-      <app-landing-features />
-    </section>
-
-    <p class="mt-12 mb-10 text-center text-sm text-brand-muted">
-      slide.ng is early and not on npm yet. Read
-      <a routerLink="/migrating/not-supported">what is not supported</a>
-      before you start.
-    </p>
   `,
   styles: `
     :host {
