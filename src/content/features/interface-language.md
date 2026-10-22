@@ -50,7 +50,7 @@ The "go to" box (`g`) compares titles by the rules of the deck's language and wi
 
 ## Right to left
 
-`ar`, `he`, `fa` and `ur` set `dir="rtl"` on the page, unless `htmlAttrs.dir` says otherwise. The bar, the menus, the go-to box and the presenter are mirrored.
+`ar`, `he`, `fa` and `ur` set `dir="rtl"` on the page, unless `htmlAttrs.dir` says otherwise. The bar, the menus, the go-to box and the presenter are mirrored, and so are a blockquote's line and the progress bar's minutes. Mermaid drawings stay left to right, as Mermaid lays them out; their Arabic or Hebrew labels still read right to left.
 
 - The keys stay physical, as in Slidev: right and space go to the next click, left to the one before. A selected `slide-ng-drag` element moves the way the arrow points.
 - In the quick overview the arrow keys follow the mirrored grid: left goes to the next card, which is on the left. In the sync menu ArrowLeft goes to the next mode.
