@@ -71,6 +71,8 @@ UnoCSS's directives work in this CSS, as in Slidev: `@apply p-4 text-red-500;`, 
 
 Dark mode is the class `dark` on `<html>`: write `html.dark .my-quote { ... }` for the dark palette. The core styles dim the paragraph right after a heading (`h1 + p`, a subtitle). Set its `opacity` in your CSS if your theme should not.
 
+Write sides with logical properties (`border-inline-start`, `padding-inline-start`, `ms-4`, `ps-4`) rather than `left` and `right`, so the theme mirrors in a right-to-left deck (`lang: ar`, `he`, `fa` or `ur`). The core blockquote line is a `border-inline-start`: a theme that sets `border-left` on a blockquote shows both lines in such a deck.
+
 ## 5. Default settings
 
 `theme.json` can set headmatter defaults and describe layouts:
