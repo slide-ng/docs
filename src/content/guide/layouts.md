@@ -18,7 +18,7 @@ image: /photo.png
 Text next to the picture.
 ```
 
-slide.ng has all the layouts of Slidev, with the same names and props, plus `404` and `error`. The first slide is `cover` and every other slide is `default` unless you say otherwise. An unknown name prints a warning that lists the real names and uses `default`.
+slide.ng has all the layouts of Slidev, with the same names and props, plus `404` and `error`. The first slide is `cover` and every other slide is `default` unless you say otherwise. An unknown name prints a warning that names the nearest layout, lists the real names and uses `default`.
 
 <ngmd-image src="/images/layouts/two-cols.png" alt="A slide with two columns" caption="The two-cols layout" width="480"></ngmd-image>
 

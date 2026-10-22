@@ -12,13 +12,14 @@ my-deck/
   slides.md
   layouts/            your own layouts
   components/         your own components, usable as tags in slides
-  layers/             global-top, global-bottom, slide-top, slide-bottom
+  layers/             global-top, global-bottom, slide-top, slide-bottom, custom-nav-controls
   styles/index.css    CSS added after the app's styles
   public/             files served from the site root (/logo.png)
   setup/              setup hooks: shiki.ts, katex.ts, mermaid.ts, shortcuts.ts, ...
   locales/            translations of the interface: tr.json, de.json, ...
   uno.config.mjs      UnoCSS settings
   theme.json          inputs and slots of your own layouts
+  index.html          extra tags for the page's head and body
   snippets/           anything you import with <<<
 ```
 
@@ -45,6 +46,7 @@ So a deck can put a `layouts/cover.ts` next to `slides.md` and it beats the them
 | `setup/*.ts` | [Setup hooks](./setup-hooks.md). |
 | `locales/<lang>.json` | Translations of the interface, flat `"key": "text"` pairs. Merged key by key, the later root wins. See [Interface language](../features/interface-language.md). |
 | `uno.config.mjs` | UnoCSS settings, default export. `presets`, `rules`, `safelist` and `variants` are added to the app's. `shortcuts` and `theme` are merged key by key. |
+| `index.html` | Tags added to the page's `<head>` and `<body>`, such as analytics. See [Page head and SEO](../features/seo-meta.md#your-own-index-html). |
 | `theme.json` | Name, default headmatter and layout inputs and slots. A deck's own folder can have one too, for its own layouts. See [Writing a theme](./writing-a-theme.md). |
 
 ## Importing from the app
@@ -61,3 +63,5 @@ Angular and other packages are imported as usual. Symbolic links in these folder
 ## Pictures next to the deck
 
 A picture in `public/` is written with a leading slash, `/photo.png`. A relative address that `public/` does not have, but that names a file in the deck's folder, such as `![](./images/chart.png)` or `<img src="../shared/logo.svg">` from a slide in `pages/`, is copied into the build too and served from `/_local/`. That works in a slide's markup only. A file outside the deck's folder is not copied, and neither are pictures named in components, in CSS `url()` or in the frontmatter: put those in `public/`.
+
+The generator warns about a picture with a leading `/` that `public/` does not have, about `/public/x.png` (write `/x.png`), and about a relative picture that is neither next to the markdown file nor in `public/`. `public/` must be a real folder: a symbolic link there is not followed, and the generator warns.

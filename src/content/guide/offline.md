@@ -24,7 +24,7 @@ Copy `talk-offline` to the presenting machine, or to a USB stick, and open `talk
 What the flag does:
 
 - One classic script holds the app and all its lazy chunks (Mermaid, Monaco, KaTeX). Chromium does not run module scripts or `import()` from `file://`, so a normal build shows a blank page there.
-- Addresses are relative and there is no `<base>`, so the folder works from any place on disk. The slide is after a `#`, as in `index.html#/3`, and `routerMode` is forced to `hash`.
+- Addresses are relative and there is no `<base>`, so the folder works from any place on disk. The slide is after a `#`, as in `index.html#/3`, and `routerMode` is forced to `hash`: `--router-mode memory` is refused, and a headmatter `routerMode: memory` is replaced with a warning. A `<script type="module" src>` in the deck's own `index.html` does not run there; use a plain `<script>`.
 - There is no service worker, because browsers do not allow one on `file://`. `pwa` is ignored.
 - Pictures from other servers are downloaded into the folder, unless the deck says `remoteAssets: false`.
 - Web fonts are downloaded into the folder, unless the deck says `fonts: { selfHost: false }`.
