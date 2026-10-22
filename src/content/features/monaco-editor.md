@@ -28,5 +28,7 @@ Keys typed in an editor do not trigger slide shortcuts. A `setup/monaco.ts` file
 Monaco does not load type definitions of packages (`monacoTypesSource` is not supported), so it does not know types from `node_modules`.
 
 <ngmd-callout type="warning" title="Size">
-  A deck with Monaco and Mermaid becomes a large script in an offline folder. See [Presenting offline](../guide/offline.md).
+
+A deck with Monaco and Mermaid becomes a large script in an offline folder. See [Presenting offline](../guide/offline.md).
+
 </ngmd-callout>

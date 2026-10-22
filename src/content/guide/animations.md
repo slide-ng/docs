@@ -40,7 +40,9 @@ Options: `depth="2"` includes nested lists, `every="2"` shows two items per clic
 `<slide-ng-switch>` shows one child per click (`at="3-5"` is clicks 3 and 4, the end is not included), and `<slide-ng-click-gap size="2" />` leaves two clicks empty. See [Directives](../built-in/directives.md) and [Components](../built-in/components.md).
 
 <ngmd-callout type="tip" title="Set the number of clicks yourself">
-  `clicks: 3` in a slide's frontmatter fixes the number of clicks, whatever its elements ask for. `clicksStart` sets the first click number, `0` by default.
+
+`clicks: 3` in a slide's frontmatter fixes the number of clicks, whatever its elements ask for. `clicksStart` sets the first click number, `0` by default.
+
 </ngmd-callout>
 
 The URL carries the state: `/7?clicks=2` is slide 7 at click 2.

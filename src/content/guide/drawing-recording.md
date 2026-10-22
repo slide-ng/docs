@@ -34,5 +34,7 @@ The camera is a round, draggable picture over the slides. Recording uses the bro
 The presenter page has a Screen Mirror switch that shows a shared window instead of the slide.
 
 <ngmd-callout type="info" title="Limits">
-  There is no separate camera file, no mp4 or mkv, and no cloud upload. See [Recording](../features/recording.md).
+
+There is no separate camera file, no mp4 or mkv, and no cloud upload. See [Recording](../features/recording.md).
+
 </ngmd-callout>
