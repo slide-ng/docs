@@ -15,7 +15,7 @@ my-theme/
   layouts/
   components/
   styles/index.css
-  layers/          optional: global-top.ts, global-bottom.ts, slide-top.ts, slide-bottom.ts
+  layers/          optional: global-top.ts, global-bottom.ts, slide-top.ts, slide-bottom.ts, custom-nav-controls.ts
   setup/           optional: setup hooks
   public/          optional: pictures and fonts, served from /
   locales/         optional: translations of the interface, tr.json, de.json, ...
@@ -67,7 +67,7 @@ That is for slides only. A layout, a layer or another component imports the comp
 export default { shortcuts: { 'my-muted': 'op60 text-sm' } };
 ```
 
-`@apply` does nothing in this CSS, and the generator warns. Write the CSS out, or use the classes in the templates.
+UnoCSS's directives work in this CSS, as in Slidev: `@apply p-4 text-red-500;`, `--uno: p-4;`, `@screen md { ... }` and `theme('colors.red.500')` are written out as CSS while the deck is generated. A utility UnoCSS does not know gives a warning. Variant groups such as `hover:(a b)` are not expanded in the `.ts` files of a theme: write the classes out there.
 
 Dark mode is the class `dark` on `<html>`: write `html.dark .my-quote { ... }` for the dark palette. The core styles dim the paragraph right after a heading (`h1 + p`, a subtitle). Set its `opacity` in your CSS if your theme should not.
 

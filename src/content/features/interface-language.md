@@ -5,7 +5,7 @@ description: Show the bar, the menus and the presenter in the deck's language, a
 
 # Interface language
 
-slide.ng's own interface is in English: the bar and its tooltips, the settings menu, the overview, the go-to box, the right-click menu, the presenter, the info dialog and the drawing toolbar. The headmatter's `lang` picks another language. Turkish is built in.
+slide.ng's own interface is in English: the bar and its tooltips, the settings and sync menus, the overview, the go-to box, the right-click menu, the presenter and its click preview, the `/overview` and notes pages, the info dialog, the drawing toolbar and the password prompt of `dev --remote`. The headmatter's `lang` picks another language. Turkish is built in.
 
 ```md
 ---
@@ -46,9 +46,17 @@ The keys and their English text are listed in [UI-STRINGS.md](https://github.com
 
 Only that locale's data goes into the build. `pt-BR` uses Angular's `pt-BR` data, or else `pt`. A language Angular has no data for is written the English way, and the generator says so. `uiLang` does not change the locale. The date on the notes PDF follows `lang` too.
 
+The "go to" box (`g`) compares titles by the rules of the deck's language and without accents, so in a Turkish deck `izmir` finds "İzmir" and `cafe` finds "Café". A slide number may be typed with Arabic-Indic or Persian digits (`٣`, `۵`).
+
 ## Right to left
 
 `ar`, `he`, `fa` and `ur` set `dir="rtl"` on the page, unless `htmlAttrs.dir` says otherwise. The bar, the menus, the go-to box and the presenter are mirrored.
+
+- The keys stay physical, as in Slidev: right and space go to the next click, left to the one before. A selected `slide-ng-drag` element moves the way the arrow points.
+- In the quick overview the arrow keys follow the mirrored grid: left goes to the next card, which is on the left. In the sync menu ArrowLeft goes to the next mode.
+- Transitions are not mirrored: `slide-left` still slides to the left.
+- An interface language written the other way than the page, such as `uiLang: en` in an Arabic deck, keeps the direction of its text, so "2 slides" keeps its order.
+- The note editors and the side editor take the direction of each line from its first letter, so a line that mixes Arabic and Latin is not reordered.
 
 ## One deck in several languages
 
@@ -67,12 +75,16 @@ slide-ng build slides.md --out dist/en
 slide-ng build slides.tr.md --out dist/tr
 ```
 
-`--lang tr` on `dev`, `build` and `export` sets `lang` for one run without changing the file. `SLIDE_NG_LANG` does the same. See the [CLI reference](../built-in/cli.md).
+`--lang tr` on `dev`, `build` and `export` sets `lang` for one run without changing the file, and replaces `uiLang` too, so the interface follows it. `SLIDE_NG_LANG` does the same. See the [CLI reference](../built-in/cli.md).
+
+`--lang` is for slides written in that language. It also sets `<html lang>` and the language of the PDF, so `--lang en` on a Turkish deck tells screen readers that the Turkish text is English. To change only the interface, set `uiLang` in the headmatter instead.
+
+The language of a deck is fixed when it is built, so `export --dist` and `export --url` refuse `--lang`. Build each language with `slide-ng build --lang <tag>`, then export that folder.
 
 ## Limits
 
 - Turkish is the only built-in translation.
 - Error messages that come from the browser (camera, recording, screen sharing) and the generator's warnings stay English.
-- In a right-to-left deck the arrow keys, swipes and the position of the drawing toolbar are not mirrored.
+- In a right-to-left deck the keys and the transitions are not mirrored, on purpose, as in Slidev.
 - The language cannot be switched while presenting. Build one deck per language instead.
 - The built-in context menu labels follow the language, so a `setup/context-menu.ts` should pick an entry by its `icon`, not its label.

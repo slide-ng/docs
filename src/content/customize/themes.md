@@ -62,7 +62,8 @@ themeConfig:
 `primary` recolours the built-in accent: `text-primary`, `bg-primary`, `border-primary`, the progress bar and the controls. Other keys do what the theme makes of them.
 
 - The theme's `theme.json` can give defaults. The deck's keys win, key by key, and so do an addon's.
-- A key must be letters, digits, `-` and `_`. A value that could leave the CSS declaration (`;`, `{`, `}`, `<`, `>`, `\`, a comment, a line break, quotes or brackets that do not close) is skipped with a warning.
+- A key must be letters, digits, `-` and `_`. A value that could leave the CSS declaration (`;`, `{`, `}`, `<`, `>`, `\`, a comment, a line break, quotes or brackets that do not close) is skipped with a warning. So is a `url(...)` or `image-set(...)`, because the generated CSS would look for the file in the wrong folder. Name pictures in the theme's or the deck's CSS.
+- A number is written without a unit, as in Slidev: `radius: 6` is `--slidev-theme-radius: 6`, which CSS does not take as a length. Write `radius: 6px`.
 - There is one value for both colour modes, as in Slidev.
 - A slide reads the whole map as `themeConfig`, for example `{{ themeConfig['primary'] }}`. The brackets are needed because the map has no fixed keys. Lists and objects are kept there, but they are not CSS variables.
 - A theme's component reads it with `inject(THEME_CONFIG)` from `slide-ng/lib/theme-config`. See [Writing a theme](./writing-a-theme.md#5-default-settings).
@@ -92,7 +93,6 @@ The built-in styles still load before the ejected `styles/index.css`. Your copy 
 - There is no versioning or compatibility check between a theme and the app.
 - A layout's inputs are not read from the component, because Angular decorators are not parsed. They come from the built-in layout or from `theme.json`.
 - Class names in a theme are found by UnoCSS in `.ts` files of the roots and in the deck's markdown, not in CSS files.
-- `@apply` in a theme's CSS does nothing, because there is no UnoCSS directive transformer. The generator warns. Write the CSS out, or put the classes on the elements.
 - A theme package whose `files` leaves its folders out installs empty. The generator warns, instead of failing later with "is not a known element".
 
 Next: [Writing a theme](./writing-a-theme.md).
