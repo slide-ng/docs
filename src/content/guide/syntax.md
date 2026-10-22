@@ -42,6 +42,27 @@ The last HTML comment of a slide is its speaker note. It is stored with the slid
 <!-- This text is a note. -->
 ```
 
+## Links
+
+As in Slidev, a markdown link to a slide moves inside the deck, and a link to a web page opens a new tab:
+
+```md
+[go to slide 5](5), or [5](/5), [5](./5), [5](#/5)
+[pricing](/pricing) goes to the slide with routeAlias: pricing
+[results](#results) goes to a heading of this slide
+[the docs](https://example.org) opens in a new tab
+```
+
+- An address of only digits, or `/`, `./` or `#/` followed by a slide number or a `routeAlias`, becomes a `<slide-ng-link>`. A click moves to that slide without loading the page again, with history or hash routing, a base or an offline folder. Ctrl or Cmd + click opens it in a new tab. A number past the last slide goes to the last slide.
+- Other addresses that start with `/` or `./`, such as `/file.pdf` or a name that is no `routeAlias`, stay plain links.
+- `#id` and `./#id` scroll to that element of the slide. `#5` is such an anchor too: write `5` or `#/5` for slide 5.
+- An `http:` or `https:` address gets `target="_blank" rel="noopener"`. `mailto:` and other links stay as they are.
+- An `<a>` written as HTML is left as written. Use `<slide-ng-link to="4">` for a link to a slide in HTML.
+- In speaker notes a web page opens a new tab too, but a link to a slide stays a plain address.
+- In an exported PDF a link to a slide points at that slide's page, see [Export](./export.md#links-in-a-pdf).
+
+The differences with Slidev are on the [differences page](../migrating/from-slidev.md).
+
 ## Slots
 
 A line with only `::name::` starts a named part of the slide, which a layout can place somewhere:

@@ -23,4 +23,4 @@ Leave a slide out with `hideInToc: true`.
 | `minDepth`, `maxDepth` | Which levels to list. |
 | `mode` | `all`, `onlyCurrentTree` (the path to the current slide and what is below it) or `onlySiblings` (the lists that contain the current slide). |
 
-The slide's title is plain text: the markup of links, code and HTML tags in a heading is taken out, also in the tab title, the go-to box and the PDF outline. `$math$` in a title is drawn with KaTeX here. Slidev's `TitleRenderer`, which shows a title as HTML, is not there.
+The list shows each title as HTML: inline markdown such as `**bold**` and `code` is drawn, and `$math$` with KaTeX. Raw HTML in a title is shown as text. `<slide-ng-title-renderer no="3" />` shows one title the same way anywhere, see [Components](../built-in/components.md). The tab title, the go-to box and the PDF outline use the plain text, with the markup taken out.

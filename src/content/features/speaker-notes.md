@@ -18,4 +18,5 @@ In a note, `[click]` marks where the next click starts, and `[click:3]` moves th
 - `/notes` shows only the notes and follows the presenter.
 - `slide-ng export-notes` writes a PDF of the notes.
 - `slide-ng build --without-notes` leaves the notes out of the built site.
+- A link to a web page in a note opens a new tab, so the presenter view stays. A link to a slide stays a plain address, and a click on it loads that page.
 - The notes are plain text. Ruby annotations for Japanese (`notesAutoRuby`) are not supported.

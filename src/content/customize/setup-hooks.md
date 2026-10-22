@@ -135,7 +135,7 @@ See [Shortcuts](../built-in/shortcuts.md). The roots are chained: each gets the 
 
 ## Context menu
 
-`setup/context-menu.ts` gets the entries of the right-click menu and returns the list to show. An entry is `{ icon, label, run, disabled? }`, and `icon` is an icon class such as `i-carbon:star`. The roots are chained.
+`setup/context-menu.ts` gets the entries of the right-click menu and returns the list to show. An entry is `{ icon, label, run, disabled? }`, and `icon` is an icon class such as `i-carbon:star`. The roots are chained. The built-in labels are in the deck's [interface language](../features/interface-language.md), so pick an entry by its `icon`, not its label.
 
 ```ts
 // setup/context-menu.ts
