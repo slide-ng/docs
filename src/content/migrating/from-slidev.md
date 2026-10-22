@@ -16,6 +16,10 @@ slide.ng reads the same markdown file format as *Slidev, with the same slide spl
 - Most headmatter keys, see [Headmatter and frontmatter](../built-in/headmatter.md), and most of the command line.
 - The same keyboard shortcuts, the presenter view, drawing and recording.
 
+## Added in slide.ng
+
+- A click preview on the presenter page: the eye button or `u` shows what the later clicks of the current slide show, greyed out, and a click on a part goes to its click. See [Presenter mode](../guide/presenter-mode.md#click-preview).
+
 ## Syntax differences
 
 | In Slidev | In slide.ng |

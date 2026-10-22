@@ -16,6 +16,7 @@ description: The keyboard and mouse controls of a deck, and how to change them.
 | `d` | Dark or light mode |
 | `g` | Go to a slide: type a number or part of a title, then Enter |
 | Escape | Close the overview, dialogs and menus |
+| `u` | Presenter page: show or hide the [click preview](../guide/presenter-mode.md#click-preview) |
 
 Shortcuts are off while you type in a text field or an editor, and while the drawing toolbar is open. Escape leaves a text field (not an editor), so the keys work again. After a click on a checkbox or a button, the arrow keys still move the slides. While the info dialog or a modal `<dialog>` of a slide is open, only Escape works. When a `slide-ng-drag` element is selected, the arrow keys nudge it instead of moving through the slides.
 
@@ -43,7 +44,7 @@ export default (actions: ShortcutActions, list: Shortcut[]): Shortcut[] => [
 ];
 ```
 
-`key` is a `KeyboardEvent.key` name, with `shift+` in front if needed, and `space` for the space bar. When two shortcuts have the same key, the one later in the list wins, so appending `{ key: 'k' }` replaces a built-in `k`. A deck's `setup/shortcuts.ts` runs after the shortcuts of its theme and addons, so it gets their list and has the last word. The names of the default shortcuts are `next_space`, `prev_space`, `next_right`, `prev_left`, `next_page_key`, `prev_page_key`, `next_down`, `prev_up`, `next_shift`, `prev_shift`, `toggle_dark`, `toggle_overview`, `toggle_overview_backtick`, `hide_overview`, `goto`, `fullscreen`, and the overview moves `right_overview`, `left_overview`, `up_overview`, `down_overview` and `goto_from_overview`.
+`key` is a `KeyboardEvent.key` name, with `shift+` in front if needed, and `space` for the space bar. When two shortcuts have the same key, the one later in the list wins, so appending `{ key: 'k' }` replaces a built-in `k`. A deck's `setup/shortcuts.ts` runs after the shortcuts of its theme and addons, so it gets their list and has the last word. The names of the default shortcuts are `next_space`, `prev_space`, `next_right`, `prev_left`, `next_page_key`, `prev_page_key`, `next_down`, `prev_up`, `next_shift`, `prev_shift`, `toggle_dark`, `toggle_overview`, `toggle_overview_backtick`, `hide_overview`, `goto`, `fullscreen`, `toggle_click_preview` (presenter page only), and the overview moves `right_overview`, `left_overview`, `up_overview`, `down_overview` and `goto_from_overview`.
 
 ## Color mode
 

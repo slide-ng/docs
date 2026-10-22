@@ -27,6 +27,37 @@ Say hello.
 
 `slide-ng export-notes` makes a PDF of the notes. See [Speaker notes](../features/speaker-notes.md).
 
+## Click preview
+
+The eye button next to the layout button, or `u`, turns on a click preview of the current slide. The preview is on the presenter page only. The audience page, `/notes` and the next-step pane do not change.
+
+- Parts that are already shown look as usual.
+- The part of the next click is brighter and has a dashed outline.
+- The parts of later clicks are greyed out.
+- Each part that a later click changes has a badge with the number of that click.
+
+Click a badge or a greyed-out part to go to that click. Every window follows. A link or button inside a greyed-out part is not followed; parts already shown keep their own clicks. While you draw, the pen gets the click and the slide does not move. The choice is remembered in the browser, under the key `slide-ng-presenter-click-preview`. The shortcut is named `toggle_click_preview`, see [Shortcuts](../built-in/shortcuts.md#change-the-keys).
+
+A theme or a deck can change the look with CSS variables:
+
+| Variable | Default | What it sets |
+| --- | --- | --- |
+| `--slide-ng-ghost-opacity` | `0.25` | Opacity of the parts of later clicks |
+| `--slide-ng-ghost-next-opacity` | `0.75` | Opacity of the part of the next click |
+| `--slide-ng-ghost-next` | `var(--slidev-theme-primary)` | Colour of the outline and the badge of the next click |
+| `--slide-ng-ghost-badge-background` | `#6b7280` | Background of the other badges |
+| `--slide-ng-ghost-badge-foreground` | `white` | Text of the badges |
+
+The parts carry the classes `slide-ng-click-ahead` and, for the next click, `slide-ng-click-next`. The click is in `data-slide-ng-click-at`.
+
+The preview has limits:
+
+- A `<slide-ng-switch>` shows only its current child. The badge on the switch says when it changes.
+- Code line steps, Magic Move, `slide-ng-mark` and `slide-ng-motion` show their state at the current click, not their later state. A badge says when they change next.
+- The notes PDF has no click preview.
+
+Slidev has no click preview, see [What differs from Slidev](../migrating/from-slidev.md#added-in-slide-ng).
+
 ## Timer
 
 ```md
