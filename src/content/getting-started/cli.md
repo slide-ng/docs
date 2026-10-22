@@ -11,6 +11,7 @@ description: The commands of slide-ng and what each one does.
 slide-ng create my-deck            # a new deck folder
 slide-ng [dev] [slides.md]         # dev server
 slide-ng build [slides.md]         # a static site in ./dist
+slide-ng build a.md b.md           # two decks, in dist/a and dist/b
 slide-ng build --offline           # a folder you open from disk
 slide-ng export [slides.md]        # PDF, PNG, PPTX or Markdown
 slide-ng export-notes [slides.md]  # a PDF of the speaker notes
@@ -34,5 +35,7 @@ A deck inside the slide.ng repository is built in place. Any other deck gets a w
 | `build` | Makes a static site. `--base /talk/` for a sub-path, `--download` to also make the PDF. |
 | `export` | Opens the deck in Chromium and writes a PDF. `--format png`, `pptx` or `md` for the others. |
 | `format` | Rewrites `slides.md` with tidy spacing and clean YAML. |
+
+While the dev server runs, keys in its terminal work as in Slidev: `r` restarts it, `o` opens the browser, `e` opens the deck in your editor, `c` prints a QR code for `--remote` and `q` quits. See the [CLI reference](../built-in/cli.md#dev).
 
 `slide-ng --version` prints the version, and `slide-ng <command> --help` lists the flags of a command. Every flag is in the [CLI reference](../built-in/cli.md). The Guide pages [Export](../guide/export.md), [Hosting](../guide/hosting.md) and [Presenting offline](../guide/offline.md) show them in use.

@@ -9,4 +9,4 @@ While `slide-ng dev` runs, the edit button in the bar opens a side editor with t
 
 <ngmd-image src="/images/ui/side-editor.png" alt="The side editor next to a slide" caption="The side editor" width="640"></ngmd-image>
 
-`editor: false` in the headmatter hides the button. A static build has no side editor and makes no requests.
+On the presenter page the side editor opens in the notes pane. `editor: false` in the headmatter hides the button. A static build leaves the side editor out and makes no requests. Each line takes its direction from its first letter, so a line that mixes Arabic and Latin keeps its order.

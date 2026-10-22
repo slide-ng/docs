@@ -31,7 +31,7 @@ The skill is part of the `slide-ng` package, so an installed copy has it. Point 
 slide-ng mcp [slides.md]
 ```
 
-This starts an MCP server on stdio, so a client can read and edit the deck's slides. See [MCP server](../features/mcp.md) for the tools.
+This starts an MCP server on stdio, so a client can read and edit the deck's slides. While `slide-ng dev` runs, the same tools, plus `get_info` and `goto_slide`, are served over HTTP at `http://localhost:4230/__mcp`. See [MCP server](../features/mcp.md) for the tools.
 
 ## See also
 

@@ -24,3 +24,23 @@ Starts an MCP server on stdio. A client that speaks the protocol can read and ed
 - Slide 1, the headmatter, cannot be removed or moved.
 - Insert, remove and move need all slides to be in the entry file.
 - Every change is parsed again before it is written, and only the deck's own markdown files are touched. A path outside the deck's folder is refused.
+
+## Over HTTP from the dev server
+
+`slide-ng dev` also serves MCP at `http://localhost:4230/__mcp`, with the streamable HTTP transport, as Slidev does. It is stateless and takes POST only. It has the seven tools above and two more:
+
+| Tool | What it does |
+| --- | --- |
+| `get_info` | The entry file, the title, the number of slides, the files, the dev address and the current slide. With `--remote` also `remoteUrls`, the addresses other machines open, without the password. |
+| `goto_slide` | Moves every open window to a slide and click, and answers the click step the windows took. A step past the slide's last click becomes the last. With no window open the answer is the asked step, and `windows` is 0. |
+
+A client configuration:
+
+```json
+{ "mcpServers": { "slide-ng": { "type": "http", "url": "http://localhost:4230/__mcp" } } }
+```
+
+- It has the dev server's rules: the Host and Origin checks, and with `--remote` the password. The client sends it as `Authorization: Bearer <password>`. Spaces at its start or end are ignored.
+- A password that is not ASCII may be sent as UTF-8, as `curl` does. `fetch`, and so the MCP TypeScript SDK's client, cannot send a character above U+00FF: such a client puts the UTF-8 bytes in the header itself, in Node `'Bearer ' + Buffer.from(password, 'utf8').toString('latin1')`.
+- `mcp: false` in the headmatter turns the endpoint off.
+- A window whose sync is turned off does not follow `goto_slide`. It is waited for 5 seconds, and the answer is then the asked step.
