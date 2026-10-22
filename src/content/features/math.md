@@ -18,7 +18,7 @@ $$ {1|2|all}
 $$
 ```
 
-- `{1|2|all}` after the opening `$$` steps through the formula's lines with clicks, with the same range syntax as code.
+- `{1|2|all}` after the opening `$$` steps through the formula's lines with clicks, with the same range syntax as code. The lines are the rows of its environment, split by `\\`, and a step that picks none of them gets a warning.
 - Inline math follows Slidev's rule, so `$5 and $10` stays text.
 - Inside math, `{{` is math, never an Angular interpolation.
 - `mhchem` is not loaded.

@@ -27,7 +27,7 @@ const d = 4
 ```
 ````
 
-- A range is a line (`2`), a list (`2,3`) or a span (`3-4`). With `startLine` in the options, the numbers are the ones shown, see [Line numbers](./line-numbers.md).
+- A range is a line (`2`), a list (`2,3`) or a span (`3-4`). With `startLine` in the options, the numbers are the ones shown, see [Line numbers](./line-numbers.md). A step that picks none of the numbers shown, such as `{3-5}` with `startLine:10`, gets a warning.
 - `all` shows every line normally. `hide` shows nothing. `*` highlights nothing and keeps every line normal.
 - Each `|` adds one click to the slide.
 - In the options brace, `at` is the first click of the ranges (default `+1`) and `finally` is what is shown after the last click: `last`, `all`, `hide` or a range. Example: `{1|2} {at:'+1', finally:'last'}`.

@@ -15,4 +15,4 @@ Rewrites the file with the same parser that reads it. Slide by slide it:
 - prints the frontmatter again as clean YAML, keeping comments
 - puts the speaker note in an HTML comment at the end
 
-Files that `src:` imports are not touched. Name them as arguments to format them too. A file that is already tidy is reported as such. The [VS Code extension](https://github.com/slide-ng/vscode-extension) can run it from the editor (first version, not released). There is no Prettier plugin.
+Frontmatter that is not valid YAML stops it with the file, line and slide, and what is wrong in plain words, and the file is left as it is. A frontmatter that lost its closing `---`, so that a heading became a YAML comment, gets a warning, and the line is kept. Files that `src:` imports are not touched. Name them as arguments to format them too. A file that is already tidy is reported as such. The [VS Code extension](https://github.com/slide-ng/vscode-extension) can run it from the editor (first version, not released). There is no Prettier plugin.

@@ -28,4 +28,15 @@ const add = () => count += 1
 - `magicMoveDuration` in the headmatter sets the duration for the deck, and `magicMoveCopy: false` removes the copy button.
 - A `[title]` before the options gives a title bar.
 
-Only some `shiki.magicMove` options of Slidev are read. The stagger is fixed.
+The headmatter's `shiki.magicMove` takes the animation options of Slidev and `@shikijs/magic-move`: `duration`, `stagger` (milliseconds, default 1), `delayMove`, `delayLeave`, `delayEnter`, `delayContainer`, `easing`, `animateContainer`, `containerStyle`, `splitTokens` and `enhanceMatching`.
+
+```md
+---
+shiki:
+  magicMove:
+    stagger: 20
+    easing: ease-in-out
+---
+```
+
+A block's own `duration` wins, then `magicMoveDuration`, then `shiki.magicMove.duration`. A title may have an icon, see [Code groups](./code-groups.md#icons-in-titles).

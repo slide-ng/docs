@@ -15,7 +15,9 @@ console.log('runs on a click and the result appears')
 
 - `autorun` is `true`, `false` or `'once'`.
 - `showOutputAt:'+1'` shows the output after a click.
-- The code runs in a sandboxed frame with no access to the slides, and stops after 5 seconds.
+- The code runs in a sandboxed frame with no access to the slides, and stops after 5 seconds. Pressing run again, or leaving the slide, stops a run that is still going at once, such as an endless loop.
+- The code runs in strict mode, as in Slidev: `total = 1` without `let` or `const` stops with "ReferenceError: total is not defined". `monacoRunUseStrict: false` in the headmatter runs it without `"use strict"`.
+- The output takes its click in document order: an output at `showOutputAt:'+1'` followed by a `slide-ng-click` shows first.
 - TypeScript is turned into JavaScript for you.
 - `console.table` and `console.group` are shown too.
 - `import` is not supported.

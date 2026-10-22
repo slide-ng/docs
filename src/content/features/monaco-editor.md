@@ -25,6 +25,20 @@ console.log('Modified text')
 
 Keys typed in an editor do not trigger slide shortcuts. A `setup/monaco.ts` file changes editor options for the whole deck, see [Setup hooks](../customize/setup-hooks.md).
 
+## On or off per mode
+
+`monaco` in the headmatter takes `true` (the default), `false`, `dev` or `build`, as in Slidev:
+
+```md
+---
+monaco: dev # editors in slide-ng dev, plain highlighted code in builds and exports
+---
+```
+
+Where it is off, every `{monaco}`, `{monaco-diff}`, `{monaco-run}` and `{monaco-write}` block is a plain highlighted block. A `{monaco-run}` with `showOutputAt` then has no click, so with `monaco: build` its slide has one click less in `slide-ng dev` than in the build, and the `[click]` markers of its notes move.
+
+The editor costs nothing on the first slide: Monaco and its stylesheet are downloaded the first time a slide with an editor is shown.
+
 Monaco does not load type definitions of packages (`monacoTypesSource` is not supported), so it does not know types from `node_modules`.
 
 <ngmd-callout type="warning" title="Size">
