@@ -21,7 +21,7 @@ Starts the dev server. This is the default command.
 
 | Flag | Meaning |
 | --- | --- |
-| `--port`, `-p` | Port. Default 4230. |
+| `--port`, `-p` | Port. Default 4230, or the next free one when 4230 is taken. A port given here that is taken stops the server, with a free one to try. |
 | `--open`, `-o` | Open the deck in a browser. |
 | `--remote[=password]` | Listen on every address so other devices can open the deck and follow the presenter. Always with a password: the one given, `SLIDE_NG_PASSWORD`, a prompt on a terminal, or a random one that is printed. See [Remote access](../features/remote-access.md). |
 | `--bind <address>` | The address to listen on with `--remote`. Default `0.0.0.0`. |
@@ -42,7 +42,7 @@ In a terminal the dev server reads keys, as Slidev's does, and prints a line tha
 | `q` | Quit. Ctrl+C works too. |
 | `c` | With `--remote`, print a QR code of the private address for each network address. Without it, say how to start with it. |
 
-- One deck runs one dev server. A second `slide-ng dev` on the same deck stops before it changes anything, whatever its `--port`, and names the running one. A port in use stops it too. Run two decks side by side from their own folders, each with its own `--port`.
+- One deck runs one dev server. A second `slide-ng dev` on the same deck stops before it changes anything, whatever its `--port`, and names the running one. When the default port 4230 is taken by something else, the server takes the next free one and says so (`port 4230 is in use, so the dev server uses 4231`). A `--port` that is taken stops it, with a free port to try. Run two decks side by side from their own folders: the second one moves to the next port by itself.
 - When the first Angular build fails, the port shows a page with the error until the build works, and an open tab then loads the slides by itself.
 - The dev server keeps watching after an editor saves by renaming a new file over the old one (vim, JetBrains, `git checkout`).
 - It also serves MCP over HTTP at `/__mcp`, see [MCP server](../features/mcp.md#over-http-from-the-dev-server).
