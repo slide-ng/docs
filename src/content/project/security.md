@@ -13,7 +13,7 @@ Problems in a theme belong in the slide-ng/themes repository, and problems in th
 
 ## A deck is code
 
-A deck can contain Angular templates, components, setup files and themes, and slide.ng compiles and runs them. Treat a deck from someone else as you would treat a project from someone else: read it before you run `slide-ng` on it. A `<script>` element in a slide is removed with a warning, and a link to a `javascript:` address is replaced by `#`, but components, setup files and themes still run code. The checks below limit what a deck can ask the tool to do. They do not make it safe to run an unknown deck.
+A deck can contain Angular templates, components, setup files and themes, and slide.ng compiles and runs them. Treat a deck from someone else as you would treat a project from someone else: read it before you run `slide-ng` on it. A `<script>` element in a slide is removed with a warning, and a `javascript:` address in a link, an `<iframe>`'s `src` or an `<object>`'s `data` is replaced by `#`, so is `data:text/html` in the last two. An inline handler such as `onclick="..."` is kept and runs, with a warning. Components, setup files, themes and an `index.html` next to `slides.md` still run code. The checks below limit what a deck can ask the tool to do. They do not make it safe to run an unknown deck.
 
 ## What the tool checks
 
@@ -23,7 +23,7 @@ A deck can contain Angular templates, components, setup files and themes, and sl
 
 **Export and build.** File names pass a sanitiser, so `exportFilename` from a deck can only be a plain name in the current folder. A deck cannot choose the output folder or the browser program: `output` and `executablePath` come only from the command line or the environment. The build only empties a folder that is new, empty or marked `.slide-ng-build`, and refuses the current folder, your home folder and `/`. The static server used for export confines paths too.
 
-**The MCP server.** Every change is parsed again before it is written, and only the deck's own markdown files are touched.
+**The MCP server.** Every change is parsed again before it is written, and only the deck's own markdown files are touched. The dev server's MCP endpoint, `/__mcp`, has the dev server's Host and Origin checks, and with `--remote` it needs the password as a bearer token; wrong ones are limited like the login. `mcp: false` in the headmatter turns it off.
 
 **The code runner.** `{monaco-run}` code runs in a sandboxed frame with no access to the slides, and stops after 5 seconds.
 

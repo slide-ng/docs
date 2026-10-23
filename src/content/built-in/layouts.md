@@ -30,7 +30,7 @@ Set a layout in a slide's frontmatter with `layout: <name>`. The names and props
 
 `image` is an address (`/photo.png` is served from the `public/` folder) or a colour for the background. `backgroundSize` defaults to `cover`.
 
-An unknown layout name prints a warning that lists the names and uses `default`. Themes and decks can add layouts or replace these, see [Themes and addons](../customize/themes.md).
+An unknown layout name prints a warning that names the nearest layout (`image-rigth`: "Did you mean "image-right"?"), lists the names and uses `default`. Themes and decks can add layouts or replace these, see [Themes and addons](../customize/themes.md).
 
 ## Pictures
 

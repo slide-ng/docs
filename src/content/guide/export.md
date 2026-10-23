@@ -26,6 +26,10 @@ Export opens the deck in Chromium. slide.ng never downloads a browser, so set `C
 
 In a PDF, a slide that has clicks shows its last state. `--with-clicks` makes a page for every click step. A `@defer` block that waits (`on timer`, `on viewport`) may still show its placeholder when the page is captured: give `export` a `--wait`. `<slide-ng-render-when context="print">` shows content only on paper, see [Components](../built-in/components.md).
 
+## Links in a PDF
+
+A link to a slide, written in markdown (`[x](5)`) or as `<slide-ng-link>`, points at the first page of that slide in the PDF, so a click jumps there instead of opening the local server's address. It works only when the target slide is in the same file. With a `--range` that leaves the slide out, the link is no link. With `--per-slide` every link between slides is plain text, also one to the slide it is on, and the tags for screen readers are lost; the command says so. Links to web pages stay links. Other links to the deck's own site, such as `/file.pdf` or an `<a href="/3" target="_blank">`, are text without a link in the PDF, because they would point at the temporary server the export reads the deck from.
+
 ## Choosing slides and looks
 
 ```sh
@@ -58,7 +62,17 @@ slide-ng export --dist dist          # export a build you already made
 slide-ng export --url http://localhost:4230/   # export a running server
 ```
 
+`--dist` opens the build with the router mode it was built with. `--lang` cannot change the language of an existing build or a running server, so it is refused with `--dist` and `--url`.
+
 Without `--dist` or `--url`, export builds the deck first, in its own working copy, so it does not disturb a dev server that is running. If the page never goes idle, the export says so: try `--wait-until load`.
+
+## Several decks
+
+```sh
+slide-ng export a.md b.md            # a-export.pdf and b-export.pdf
+```
+
+Each deck is built and exported in turn, to its own file named as for one deck. `--output`, `--dist` and `--url` name one place, so they are refused with several entries. `export-notes` takes several entries too.
 
 ## Notes
 

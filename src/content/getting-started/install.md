@@ -5,6 +5,8 @@ description: Requirements and how to get slide.ng running today.
 
 # Install
 
+These pages describe slide.ng 2.0. The commands below install the newest version. A deck that uses 1.x keeps working with it: to move it to 2.0, read [Upgrading from 1.x to 2.0](../migrating/upgrading-to-2.md), or pin the old version with `npm install -D @slide-ng/core@^1`.
+
 ## Requirements
 
 - Node 22.22.3 or newer. The `engines` field of the package says `>=22.22.3`.
@@ -29,7 +31,7 @@ npm install -D @slide-ng/core
 npx slide-ng dev
 ```
 
-The command is `slide-ng`, described in [The command line](./cli.md). [Your first deck](./first-deck.md) shows what to do next.
+`npx slide-ng --version` prints the version you have. The command is `slide-ng`, described in [The command line](./cli.md). [Your first deck](./first-deck.md) shows what to do next.
 
 ## From a checkout
 

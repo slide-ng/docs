@@ -16,13 +16,15 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `title` | The slide title. Otherwise the first `#` heading. Used in the browser tab, the table of contents and the go-to box. |
 | `level` | Depth in the table of contents. Otherwise the number of `#` in the first heading. |
 | `hideInToc` | Leave this slide out of `<slide-ng-toc>`. |
-| `routeAlias` | An extra address: `routeAlias: intro` makes `/intro` open the slide. |
+| `routeAlias` | An extra address: `routeAlias: intro` makes `/intro` open the slide. Names of the app's pages, numbers and names with `/`, `.`, `?`, `#` or `\` are refused, see [Slide addresses](../features/routing.md#aliases). |
 | `hide`, `disabled` | The slide is left out of the deck completely. |
-| `clicks` | Fixes the number of clicks, whatever the elements ask for. |
-| `clicksStart` | The first click number. Default 0. |
+| `clicks` | Fixes the number of clicks, whatever the elements ask for. A value that is not a number, or a negative one, is ignored with a warning. |
+| `clicksStart` | The first click number. Default 0. A negative one counts as 0. |
+| `clickAnimation` | The click animation preset of the slide's click elements, such as `up` or `fade right`. See [Click animations](../features/click-animations.md). |
 | `transition` | The transition to the next slide. |
 | `src` | Take the slides from another file, optionally with a `#range`. |
 | `zoom` | Scale this slide. Wins over the headmatter. |
+| `preload` | `false` leaves the slide's pictures out of [loading ahead](../features/preload-images.md). |
 | `dragPos` | Named positions for `slide-ng-drag`. It is read per slide, so in the headmatter it covers slide 1 only. |
 | `image`, `url`, `scale`, `backgroundSize`, `background`, `layoutClass` | Props of some layouts. |
 
@@ -40,8 +42,13 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `colorSchema` | `auto` (default), `light` or `dark`. Fixed values hide the toggle. A theme that sets `light` or `dark` in its `theme.json` keeps that mode: the deck's own value is not used, and the generator says so. |
 | `canvasWidth`, `aspectRatio` | The canvas. Defaults 980 and `16/9`. |
 | `zoom` | Scale every slide. |
-| `routerMode` | `history` (default) or `hash`. |
+| `routerMode` | `history` (default), `hash` or `memory`. See [Slide addresses](../features/routing.md). |
+| `clickAnimation` | The click animation preset of every slide. |
+| `progressBar` | A progress bar on every slide: `true`, `top`, `bottom` or an object. See [Progress bar](../features/progress-bar.md). |
+| `preloadImages` | `true` (default), `{ ahead: n }` or `false`. See [Loading pictures ahead](../features/preload-images.md). |
+| `unocss` | `{ attributify: false }` turns attributify off. See [UnoCSS](../features/unocss.md). |
 | `fonts` | Web fonts. See [Fonts](../features/fonts.md). |
+| `themeConfig` | Settings for the theme, such as `themeConfig: { primary: '#5d8392' }`. Each text or number key becomes the CSS variable `--slidev-theme-<key>`. See [Themes and addons](../customize/themes.md#theme-settings). |
 | `customElements` | Web component tags the slides may use, such as `[model-viewer, sl-*]`. A name ending in `*` is a prefix, and `true` allows any tag with a dash. See [Layouts and components](../customize/layouts-components.md#web-components). |
 
 ### Code and diagrams
@@ -52,7 +59,9 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `codeCopy` | `false` removes the copy button. |
 | `codeAliases` | Extra language names, `{ mylang: ts }`. |
 | `shiki` | Shiki options such as `themes: { light, dark }`. |
-| `magicMoveDuration`, `magicMoveCopy` | Duration in milliseconds, and the copy button of Magic Move. |
+| `magicMoveDuration`, `magicMoveCopy` | Duration in milliseconds, and the copy button of Magic Move. `shiki.magicMove` takes the other animation options, see [Magic Move](../features/magic-move.md). |
+| `monaco`, `twoslash` | `true` (default), `false`, `dev` or `build`. Off, `{monaco}` blocks are plain highlighted code and Twoslash does not run. |
+| `monacoRunUseStrict` | `false` runs `{monaco-run}` code without `"use strict"`. |
 | `plantUmlServer` | The PlantUML server. |
 
 ### Presenting
@@ -65,13 +74,16 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `presenter` | `false`, or `dev` or `build`, to limit the presenter page. |
 | `editor` | `false` hides the side editor button. |
 | `contextMenu` | `true`, `false`, `dev` or `build`. |
-| `wakeLock` | `true` starts with the screen kept awake. The viewer can change it in the settings menu. |
+| `wakeLock` | `true` (default), `false`, `dev` or `build`. Keeps the screen awake. A choice stored in the browser wins, and the viewer can change it in the settings menu. |
+| `notesAutoRuby` | `{ word: reading }` shows a reading above each listed word in the notes. See [Speaker notes](../features/speaker-notes.md#readings-above-words). |
+| `mcp` | `false` turns off the dev server's MCP endpoint. See [MCP server](../features/mcp.md). |
 
 ### The page, export and build
 
 | Key | What it does |
 | --- | --- |
-| `titleTemplate`, `author`, `keywords`, `favicon`, `lang`, `htmlAttrs`, `seoMeta` | The page's `<head>`. See [Page head and SEO](../features/seo-meta.md). |
+| `titleTemplate`, `author`, `keywords`, `favicon`, `htmlAttrs`, `seoMeta` | The page's `<head>`. See [Page head and SEO](../features/seo-meta.md). |
+| `lang`, `uiLang` | `lang` is `<html lang>`, the interface language and the locale of the `date`, `number` and `currency` pipes. `ar`, `he`, `fa` and `ur` mirror the page. `uiLang` changes the interface language only. See [Interface language](../features/interface-language.md). |
 | `download` | A PDF button: `true`, a file name or an address. With `true`, `slide-ng build` makes the PDF. Without a working Chromium it warns and the button stays disabled. |
 | `exportFilename` | The name of exported files, without the extension. |
 | `export` | Defaults for `slide-ng export`. See [Export](../guide/export.md). |
@@ -81,4 +93,4 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 
 ## Not read
 
-These Slidev keys are accepted in the file but have no effect: `selectable`, `themeConfig`, `preload`, `clickAnimation`, `overviewSnapshots`, `browserExporter`, `notesAutoRuby`, `monacoTypesSource`, and `colorSchema: all`. `mdc: true` and `comark: true` have no effect, and the generator warns that MDC syntax stays text. `highlighter: prism` warns too, because code is always highlighted with Shiki. The `monaco` and `twoslash` switches of Slidev are not read either: a `{monaco}` or `twoslash` code fence is what turns them on. A key a theme brings through `theme.json` is merged under the deck's headmatter, except a fixed `colorSchema`, see [Themes and addons](../customize/themes.md).
+These Slidev keys are accepted in the file but have no effect: `selectable`, `overviewSnapshots`, `browserExporter`, `monacoTypesSource`, and `colorSchema: all`. `mdc: true` and `comark: true` have no effect, and the generator warns that MDC syntax stays text. `highlighter: prism` warns too, because code is always highlighted with Shiki. A key a theme brings through `theme.json` is merged under the deck's headmatter, except a fixed `colorSchema`, see [Themes and addons](../customize/themes.md).

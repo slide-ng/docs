@@ -31,6 +31,7 @@ The generator turns the markdown of each slide into an Angular template, and it 
 - `{{ ... }}` is passed through untouched.
 - A single `{`, `}` or `@` in normal text, such as an email address, is safe. It is escaped for you.
 - An `@if` or `@for` in the middle of a line is not read as control flow, and the generator warns.
+- A control-flow block that is not complete, such as `@if (x >= 1 {`, stops the build with a message that names the block and its line. `@let x = 5` without its `;` is shown as text, with a warning.
 
 ## Pipes and directives
 
@@ -41,6 +42,35 @@ Price: {{ 1234.5 | currency }}
 ```
 
 So do the common directives (`*ngTemplateOutlet`, `[ngClass]`, `[ngStyle]`, `*ngIf`, `*ngFor`, `[ngSwitch]`, `[ngPlural]`, `ngComponentOutlet`) and the forms directives: `[(ngModel)]` imports `FormsModule`, and `[formGroup]`, `formControlName` and the like import `ReactiveFormsModule`. Each is imported only by the slides that use it. A pipe or a directive of your own in `components/` is imported the same way, see [Layouts and components](../customize/layouts-components.md).
+
+## The global context
+
+Every slide has Slidev's global context, under the same names. The values that change are Angular signals, so they are called with `()`:
+
+| Name | What it is |
+| --- | --- |
+| `$clicks()` | The current click of this slide. |
+| `$page()` | This slide's number, from 1. |
+| `$renderContext()` | Where the slide is drawn: `slide`, `presenter`, `previewNext`, `print` or `overview`. |
+| `$frontmatter` | This slide's frontmatter: `{{ $frontmatter.title }}`. |
+| `$nav` | The navigation: `currentPage()`, `currentLayout()`, `currentFrontmatter()`, `total`, `clicks()`, `next()`, `prev()`, `go(no)` and more. |
+| `$slidev.nav` | The same as `$nav`. |
+| `$slidev.configs` | The headmatter: `{{ $slidev.configs.title }}`. |
+| `$slidev.themeConfigs` | The headmatter's `themeConfig`, merged with the theme's. |
+
+```md
+Slide {{ $page() }} of {{ $nav.total }}
+
+@if ($clicks() > 1) {
+Shown from the second click.
+}
+
+<button (click)="$nav.go(1)">Back to the start</button>
+```
+
+Vue reads `$clicks` without the call. Here `{{ $clicks }}` would print the signal's function, so the generator warns about the uncalled forms (`$clicks`, `$page`, `$nav.currentPage`, ...) in interpolations, bindings, `@let` and control flow. In a comparison, such as `$page === 2` or `@if ($clicks > 1)`, it is a build error, because a signal is not a number. The other way round, `$nav.total`, `$nav.slides` and `$nav.isPresenter` are plain values, and `{{ $nav.total() }}` stops the generator with a message that says to drop the `()`.
+
+`$page()` is the number of the slide that is drawn, `$nav.currentPage()` the one on screen. They differ in thumbnails and in the PDF. `{{ clicks.current() }}` is the older spelling of `{{ $clicks() }}`.
 
 ## Sharing state
 

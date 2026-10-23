@@ -24,7 +24,7 @@ dragPos:
 ---
 ```
 
-Click an element to select it. Corner handles resize it (Shift keeps the shape), the round handle above rotates it (Shift snaps to 15 degrees), and the arrow keys move it by 1 pixel (Shift: 10).
+Click an element to select it. Corner handles resize it (Shift keeps the shape), the round handle above rotates it (Shift snaps to 15 degrees), and the arrow keys move it by 1 pixel (Shift: 10). On a touch screen, a finger drag that starts on the element or a handle moves it and does not swipe to another slide.
 
 `slide-ng-drag-arrow` takes `pos` as `x,y,width,height`, as in Slidev: it goes from (x, y) to (x + width, y + height), and the sizes may be negative.
 

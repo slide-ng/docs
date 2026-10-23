@@ -12,7 +12,7 @@ The folder can be in the deck's own folder, in a theme and in an addon. Every ro
 There are two kinds of hooks:
 
 - Node hooks run while the slides are generated: `shiki`, `katex`, `transformers` and `preparser`. They are bundled with esbuild first, so they can be written in TypeScript and import their own files and packages. An error names the root and the file.
-- Browser hooks become part of the app: `main`, `root`, `shortcuts`, `context-menu`, `mermaid`, `monaco` and `code-runners`. They must be `.ts` files. Angular compiles them with the rest of the app, so `import type { ... } from 'slide-ng/...'` and `@angular/core` work.
+- Browser hooks become part of the app: `main`, `root`, `routes`, `shortcuts`, `context-menu`, `mermaid`, `mermaid-renderer`, `monaco` and `code-runners`. They must be `.ts` files. Angular compiles them with the rest of the app, so `import type { ... } from 'slide-ng/...'` and `@angular/core` work.
 
 | File | Runs | The function receives | Returns |
 | --- | --- | --- | --- |
@@ -21,12 +21,14 @@ There are two kinds of hooks:
 | `setup/transformers.ts` | generating | nothing | `{ pre, codeblocks }` |
 | `setup/preparser.ts` | generating | `{ filepath, headmatter, mode }` | a list of extensions |
 | `setup/mermaid.ts` | browser | nothing | Mermaid config |
+| `setup/mermaid-renderer.ts` | browser | nothing | a function that draws a diagram, or nothing |
 | `setup/monaco.ts` | browser | `monaco` | editor options, or nothing |
 | `setup/code-runners.ts` | browser | nothing | `{ language: run }` |
 | `setup/shortcuts.ts` | browser | `(actions, list)` | the list of shortcuts |
 | `setup/context-menu.ts` | browser | `items` | the list of entries |
 | `setup/main.ts` | browser, at start | nothing | Angular providers |
 | `setup/root.ts` | browser, at start | nothing | nothing |
+| `setup/routes.ts` | browser, at start | the app's routes | the list of routes |
 | `setup/providers.ts` | browser, at start | the older way | an array of providers is the default export |
 
 ## Shiki
@@ -97,6 +99,27 @@ export default () => [
 export default () => ({ theme: 'base', themeVariables: { primaryColor: '#ff0000' } });
 ```
 
+## Mermaid renderer
+
+`setup/mermaid-renderer.ts` returns a function that draws a diagram with another library, as in Slidev. The function gets the diagram's code and its options (the theme, the config of `setup/mermaid.ts` and the fence's own options, merged in that order) and returns the SVG as a string, or a promise of it. Mermaid itself is then not loaded. `scale` is still applied, and the export waits for the drawing.
+
+```ts
+// setup/mermaid-renderer.ts: Mermaid's hand-drawn look for every diagram
+let counter = 0;
+
+export default () => async (code: string, options: Record<string, unknown>) => {
+  const { default: mermaid } = await import('mermaid');
+  mermaid.initialize({ startOnLoad: false, ...options, look: 'handDrawn' });
+  return (await mermaid.render(`hand-drawn-${++counter}`, code)).svg;
+};
+```
+
+- The setup function may be async, and it may return nothing to keep Mermaid.
+- When several roots have the file, the last one that returns a function wins.
+- A setup that throws is skipped with a warning in the console, and the next root or Mermaid draws instead.
+- A renderer that throws, or that resolves to something other than a string, shows the red error box in place of the diagram.
+- A renderer that uses another library imports it the same way. Install the library in the deck first.
+
 ## Monaco
 
 `setup/monaco.ts` runs once Monaco is loaded, only for decks that have an editor. It gets the `monaco` module, so it can add themes or languages, and the object it returns is merged into the options of every editor. It may be async. TypeScript settings are `monaco.typescript.typescriptDefaults`: the old `monaco.languages.typescript` is undefined in this Monaco version. An editor's model is `file:///model-N.mts`, so an extra library for `import './context'` goes at `file:///context.ts`. A hook that throws is reported, and the editors still work.
@@ -135,7 +158,7 @@ See [Shortcuts](../built-in/shortcuts.md). The roots are chained: each gets the 
 
 ## Context menu
 
-`setup/context-menu.ts` gets the entries of the right-click menu and returns the list to show. An entry is `{ icon, label, run, disabled? }`, and `icon` is an icon class such as `i-carbon:star`. The roots are chained.
+`setup/context-menu.ts` gets the entries of the right-click menu and returns the list to show. An entry is `{ icon, label, run, disabled? }`, and `icon` is an icon class such as `i-carbon:star`. The roots are chained. The built-in labels are in the deck's [interface language](../features/interface-language.md), so pick an entry by its `icon`, not its label.
 
 ```ts
 // setup/context-menu.ts
@@ -173,9 +196,33 @@ export default () => {
 };
 ```
 
+## Routes
+
+`setup/routes.ts` gets the app's Angular routes and returns the list to use, so a deck can add pages of its own, as with Slidev's `setup/routes.ts`. A page is an Angular component, in the file itself or imported from the root, such as `import { Gallery } from '../components/gallery'`. The roots are chained: each gets the list the one before returned.
+
+```ts
+// setup/routes.ts
+import { Component } from '@angular/core';
+import type { Routes } from '@angular/router';
+
+@Component({ selector: 'deck-about', template: '<h1>About this talk</h1>' })
+class About {}
+
+export default (routes: Routes): Routes => [...routes, { path: 'about', component: About }];
+```
+
+Now `/about` opens the page.
+
+- Angular takes the first route that matches. So that a page you append is reached, the app's routes that match any address (the slide and the catch-all) are moved to the end afterwards. Routes the file adds stay where it put them.
+- A page comes before the slides, so a slide whose `routeAlias` has the page's path is not reached at that address. The build cannot see these routes, so it cannot warn: give pages and aliases different names.
+- The page is shown on its own, without the slide frame, the bar or the keys of the slides. With `dev --remote` it is not behind the password; add Angular's `canActivate` if it should be.
+- The services of a deck page are not there: `inject(Nav)` fails, and `inject(Nav, { optional: true })` gives `null`. A page can inject Angular's `Router`, `Dark` from `slide-ng/lib/dark`, and the providers of `setup/main.ts`.
+- A file that throws, or returns something other than a list, is skipped with a message in the console, and the slides still open.
+
 ## Differences from Slidev
 
 - Slidev's setup files use `define...Setup` helpers from `@slidev/types`. Here a plain function is enough, and types come from `slide-ng/...`.
 - `setup/main.ts` returns Angular providers, where Slidev's gets the Vue app. `setup/root.ts` has no component to work on.
 - Shortcuts are `{ name, key, run, when }`, where Slidev's are `{ key, fn, autoRepeat }`. Context menu entries are `{ icon, label, run, disabled }`.
-- Not available: `setup/vite.config.ts`, `setup/vue.ts`, `setup/routes.ts`, a run context for `setup/code-runners.ts` (it gets the text only), Monaco's `monacoTypesSource`, and markdown-it plugins in `setup/transformers.ts`. The `codeblocks` function is the way to render a block yourself.
+- `setup/routes.ts` gets Angular routes, where Slidev's gets Vue router records, and the slide routes stay last instead of being ranked by the router.
+- Not available: `setup/vite.config.ts`, `setup/vue.ts`, a run context for `setup/code-runners.ts` (it gets the text only), Monaco's `monacoTypesSource`, and markdown-it plugins in `setup/transformers.ts`. The `codeblocks` function is the way to render a block yourself.

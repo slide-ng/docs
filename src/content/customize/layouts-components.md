@@ -62,6 +62,38 @@ A slide is drawn in every window that shows it: the presenter page and each audi
 
 In the PDF and in the overview every slide is drawn at once, so `Nav.no()` is the slide being presented, not the slide being drawn. Inject `SLIDE_NO` to know which slide a component is in.
 
+## Slide hooks
+
+Slidev's slide hooks are in `slide-ng/lib/slide-hooks`. Call them in an injection context, which is a field or the constructor of a component:
+
+- `onSlideEnter((to, from) => ...)` runs once the component is drawn while its slide is on screen, and each time the deck comes back to the slide.
+- `onSlideLeave((to, from) => ...)` runs when another slide is shown after this one.
+- `isSlideActive()` is a signal, true while the slide is on screen. It is Slidev's `useIsSlideActive`.
+
+```ts
+// components/enter-count.ts
+import { Component, signal } from '@angular/core';
+import { isSlideActive, onSlideEnter } from 'slide-ng/lib/slide-hooks';
+
+@Component({
+  selector: 'enter-count',
+  template: '{{ active() ? "here" : "away" }}, entered {{ n() }} times',
+})
+export class EnterCount {
+  active = isSlideActive();
+  n = signal(0);
+  constructor() {
+    onSlideEnter(() => this.n.update((v) => v + 1));
+  }
+}
+```
+
+- `to` and `from` are slide numbers, from 1. `from` is `undefined` when no other slide was shown before.
+- The hooks run on the slide and presenter pages and in print (`export` and the PDF), not in thumbnails or the presenter's next-step pane.
+- In print every page is its slide on screen, as in Slidev: `onSlideEnter` runs once per page, `onSlideLeave` never runs, and `isSlideActive()` is true. Something a hook animates is captured as it is when the page is taken, so give `export` a `--wait`.
+- The deck removes a slide it leaves, so a component that should remember something across visits keeps it outside the component.
+- A hook that throws is reported in the browser console. The other hooks of the slide still run.
+
 ## A layout
 
 A layout is a standalone component that puts the slide's content in `<ng-content />`. Put it in `layouts/`:

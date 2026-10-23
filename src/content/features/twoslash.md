@@ -16,4 +16,6 @@ const count = Math.max(1, 2)
 
 `//    ^?` shows the type of the word above the `^`, on a line of its own under that code line, so it does not cover the code.
 
-A TypeScript error in the block is shown under its line, and the types still work. Add `// @errors: <code>` to mark an error as expected. The `twoslash: dev|build` switch of Slidev is not read.
+A TypeScript error in the block is shown under its line, and the types still work. Add `// @errors: <code>` to mark an error as expected. A code that `// @errors` lists but TypeScript does not report gets a warning that names the slide; the block is still drawn. When Twoslash fails on a block, the warning gives its reason and the slide.
+
+`twoslash` in the headmatter takes `true` (the default), `false`, `dev` or `build`, as in Slidev. `false` shows the blocks without types, and `dev` or `build` runs Twoslash in that mode only. A build and an export count as `build`.
