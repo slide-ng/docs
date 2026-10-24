@@ -74,7 +74,7 @@ export default () => ({
 
 ## Preparser
 
-`setup/preparser.ts` runs when the markdown file is read, before it is cut into slides. It returns a list of extensions of Slidev's parser: `transformRawLines(lines)` changes the array in place, `transformSlide(content, frontmatter)` returns new text, and `transformNote(note, frontmatter)`. The extensions of all roots are used.
+`setup/preparser.ts` runs when the markdown file is read, before it is cut into slides. Its `headmatter` is the headmatter over the deck's `slide-ng.config.yaml`, if there is one. It returns a list of extensions of Slidev's parser: `transformRawLines(lines)` changes the array in place, `transformSlide(content, frontmatter)` returns new text, and `transformNote(note, frontmatter)`. The extensions of all roots are used.
 
 ```ts
 // setup/preparser.ts

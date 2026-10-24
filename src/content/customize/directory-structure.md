@@ -10,20 +10,21 @@ A deck is a folder with a `slides.md` in it. These folders and files next to it 
 ```
 my-deck/
   slides.md
-  layouts/            your own layouts
-  components/         your own components, usable as tags in slides
-  layers/             global-top, global-bottom, slide-top, slide-bottom, custom-nav-controls
-  styles/index.css    CSS added after the app's styles
-  public/             files served from the site root (/logo.png)
-  setup/              setup hooks: shiki.ts, katex.ts, mermaid.ts, shortcuts.ts, ...
-  locales/            translations of the interface: tr.json, de.json, ...
-  uno.config.mjs      UnoCSS settings
-  theme.json          inputs and slots of your own layouts
-  index.html          extra tags for the page's head and body
-  snippets/           anything you import with <<<
+  slide-ng.config.yaml  the deck's options, as in the headmatter
+  layouts/              your own layouts
+  components/           your own components, usable as tags in slides
+  layers/               global-top, global-bottom, slide-top, slide-bottom, custom-nav-controls
+  styles/index.css      CSS added after the app's styles
+  public/               files served from the site root (/logo.png)
+  setup/                setup hooks: shiki.ts, katex.ts, mermaid.ts, shortcuts.ts, ...
+  locales/              translations of the interface: tr.json, de.json, ...
+  uno.config.mjs        UnoCSS settings
+  theme.json            inputs and slots of your own layouts
+  index.html            extra tags for the page's head and body
+  snippets/             anything you import with <<<
 ```
 
-`snippets/` is only a convention, since a snippet path is written out in full. The deck's folder is searched only for the folders listed above. The rest of it, your markdown and `node_modules`, is never copied.
+`snippets/` is only a convention, since a snippet path is written out in full. The deck's folder is searched only for the folders listed above. The rest of it, your markdown and `node_modules`, is never copied. `slide-ng.config.yaml` is the deck's only, a theme or addon has none: see [The config file](../built-in/headmatter.md#the-config-file-slide-ng-config-yaml).
 
 ## Roots
 

@@ -44,7 +44,7 @@ In a terminal the dev server reads keys, as Slidev's does, and prints a line tha
 
 - One deck runs one dev server. A second `slide-ng dev` on the same deck stops before it changes anything, whatever its `--port`, and names the running one. When the default port 4230 is taken by something else, the server takes the next free one and says so (`port 4230 is in use, so the dev server uses 4231`). A `--port` that is taken stops it, with a free port to try. Run two decks side by side from their own folders: the second one moves to the next port by itself.
 - During the first build the port shows a "Building the slides" page, so the port is taken from the start. When that build fails, the page shows the error until the build works, and an open tab then loads the slides by itself.
-- The dev server keeps watching after an editor saves by renaming a new file over the old one (vim, JetBrains, `git checkout`).
+- The dev server keeps watching after an editor saves by renaming a new file over the old one (vim, JetBrains, `git checkout`). It watches the deck's `slide-ng.config.yaml` too, also when one is added or removed.
 - It also serves MCP over HTTP at `/__mcp`, see [MCP server](../features/mcp.md#over-http-from-the-dev-server).
 
 ## build
