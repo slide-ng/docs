@@ -91,7 +91,7 @@ The bar then has a language button, with a translate icon. Its menu lists the la
 - A page starts in the entry file's language until the reader chooses another.
 - It works in `dev`, in a build and in an offline folder.
 
-Each file is read as a deck. Its headmatter goes over the entry file's, so you can translate `title`, `info` and `titleTemplate`, and write the theme, `fonts` and the rest once. The key in `languages` is its `lang`, and its `uiLang` is its own. The theme, addons, `allowOutsideRoot` and the page's `<head>` come from the entry file.
+Each file is read as a deck. Its headmatter goes over the entry file's (and over the deck's [config file](../built-in/headmatter.md#the-config-file-slide-ng-config-yaml), if it has one, where `languages` may be too), so you can translate `title`, `info` and `titleTemplate`, and write the theme, `fonts` and the rest once. The key in `languages` is its `lang`, and its `uiLang` is its own. The theme, addons, `allowOutsideRoot` and the page's `<head>` come from the entry file.
 
 Slides are paired by number, because the number is the address:
 

@@ -5,7 +5,7 @@ description: Every key slide.ng reads in the headmatter and in a slide's frontma
 
 # Headmatter and frontmatter
 
-The first block of YAML in `slides.md` is the headmatter. It describes the deck. The block at the top of any slide is that slide's frontmatter. Any other key is kept in the slide's metadata and ignored.
+The first block of YAML in `slides.md` is the headmatter. It describes the deck. The keys of the deck can also go in a file of their own, see [The config file](#the-config-file-slide-ng-config-yaml). The block at the top of any slide is that slide's frontmatter. Any other key is kept in the slide's metadata and ignored.
 
 ## Frontmatter, per slide
 
@@ -44,7 +44,7 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `zoom` | Scale every slide. |
 | `routerMode` | `history` (default), `hash` or `memory`. See [Slide addresses](../features/routing.md). |
 | `clickAnimation` | The click animation preset of every slide. |
-| `navPosition` | Where the navigation bar sits on the slide page: `bottom-left` (default), `bottom-center`, `bottom-right`, `top-left`, `top-center` or `top-right`. Left and right follow the writing direction, so a right-to-left deck mirrors them. At the top, the bar's menus open below it. The presenter page keeps its bar. Another value is warned about and keeps the bottom left. Not in Slidev. |
+| `navPosition` | Where the navigation bar sits on the slide page: `bottom-left` (default), `bottom-center`, `bottom-right`, `top-left`, `top-center` or `top-right`. Left and right follow the writing direction, so a right-to-left deck mirrors them. At the top, the bar's menus open below it. A viewer can choose another place in the [settings menu](./shortcuts.md#mouse). The presenter page keeps its bar. Another value is warned about and keeps the bottom left. Not in Slidev. |
 | `progressBar` | A progress bar on every slide: `true`, `top`, `bottom` or an object. See [Progress bar](../features/progress-bar.md). |
 | `preloadImages` | `true` (default), `{ ahead: n }` or `false`. See [Loading pictures ahead](../features/preload-images.md). |
 | `unocss` | `{ attributify: false }` turns attributify off. See [UnoCSS](../features/unocss.md). |
@@ -85,13 +85,38 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | --- | --- |
 | `titleTemplate`, `author`, `keywords`, `favicon`, `htmlAttrs`, `seoMeta` | The page's `<head>`. See [Page head and SEO](../features/seo-meta.md). |
 | `lang`, `uiLang` | `lang` is `<html lang>`, the interface language and the locale of the `date`, `number` and `currency` pipes. `ar`, `he`, `fa` and `ur` mirror the page. `uiLang` changes the interface language only. See [Interface language](../features/interface-language.md). |
-| `languages` | One file per language, such as `{ en: slides.md, tr: slides.tr.md }`, in the entry file. The bar gets a language menu. See [One deck in several languages](../features/interface-language.md#one-deck-in-several-languages). |
+| `languages` | One file per language, such as `{ en: slides.md, tr: slides.tr.md }`, in the entry file or the config file. The bar gets a language menu. See [One deck in several languages](../features/interface-language.md#one-deck-in-several-languages). |
 | `download` | A PDF button: `true`, a file name or an address. With `true`, `slide-ng build` makes the PDF. Without a working Chromium it warns and the button stays disabled. |
 | `exportFilename` | The name of exported files, without the extension. |
 | `export` | Defaults for `slide-ng export`. See [Export](../guide/export.md). |
 | `remoteAssets` | Download remote pictures at build time. |
 | `pwa` | Offline support in a build. |
 | `themeColor` | The colour of the browser's bar for the installed app, such as `'#0f2c4c'`. A theme can set it. |
+
+## The config file: `slide-ng.config.yaml`
+
+The deck's options can also live in a file next to `slides.md`: `slide-ng.config.yaml`, or `slide-ng.config.yml`, or `slide-ng.config.json`. It holds the keys of the headmatter, and each key does what it does there. Not in Slidev, whose options are in the headmatter only.
+
+```yaml
+# slide-ng.config.yaml
+title: My talk
+theme: ./my-theme
+fonts:
+  sans: Inter
+themeConfig:
+  primary: '#5d8392'
+languages:
+  en: slides.md
+  tr: slides.tr.md
+```
+
+- The headmatter wins, key by key. `fonts`, `themeConfig`, `htmlAttrs`, `drawings` and `defaults` are merged one level deep, as a theme's `theme.json` is: `fonts: { sans: Inter, mono: Fira Code }` in the file and `fonts: { mono: JetBrains Mono }` in the headmatter give `sans: Inter` and `mono: JetBrains Mono`. Any other value, a list or an object such as `seoMeta` or `languages`, is replaced whole.
+- Keys of the first slide stay in `slides.md`. `layout`, `class`, `src`, `hide`, `routeAlias`, `clicks`, `dragPos` and the layout props in the headmatter are about slide 1, so the config file does not set them and warns. Put them in the first slide, or under `defaults` for every slide. `title` in the file is the deck's title.
+- Only the entry file's folder is looked in, and the file must really be there: a symbolic link that leads out of the folder stops the build. It can set what the headmatter can, `allowOutsideRoot` too, and no more. When more than one of the three names is there, the first in the order above is read and the others are warned about.
+- With `languages`, the file is for the whole deck: each language file reads it under its own headmatter, so `title`, `info` and `titleTemplate` can still be translated per file.
+- Warnings and errors name the file and the line of the key, such as `slide-ng.config.yaml:3: ...`. A file that is not valid YAML or JSON stops the build.
+- `dev` watches it like `slides.md`: saving, adding or removing it rebuilds the deck.
+- Only YAML and JSON are read. A `slide-ng.config.mjs` or `.ts` with code is not supported.
 
 ## Not read
 
