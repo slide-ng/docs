@@ -22,7 +22,7 @@ Shortcuts are off while you type in a text field or an editor, and while the dra
 
 ## Mouse
 
-The bar at the bottom left has buttons for fullscreen, previous, next, overview, dark mode, drawing, presenter mode, info, sync mode, settings and a counter. It shows when the mouse is there. On the presenter page it also has the layout button and the [click preview](../guide/presenter-mode.md#click-preview). A `layers/custom-nav-controls.ts` adds buttons of your own at its end, see [Global layers](../features/global-layers.md). The fullscreen button is left out where the page may not go fullscreen: in an iframe without `allow="fullscreen"`, and on an iPhone. `f` does nothing there.
+The bar at the bottom left has buttons for fullscreen, previous, next, overview, dark mode, drawing, presenter mode, info, sync mode, settings and a counter. It shows when the mouse is there. `navPosition` in the headmatter puts it in another corner, or in the middle of the top or bottom edge, see [Headmatter and frontmatter](./headmatter.md#the-deck-and-its-look). On the presenter page the bar stays where it is and also has the layout button and the [click preview](../guide/presenter-mode.md#click-preview). A `layers/custom-nav-controls.ts` adds buttons of your own at its end, see [Global layers](../features/global-layers.md). The fullscreen button is left out where the page may not go fullscreen: in an iframe without `allow="fullscreen"`, and on an iPhone. `f` does nothing there.
 
 <ngmd-image src="/images/ui/nav-bar-light.png" alt="The navigation bar at the bottom left of a slide" caption="The navigation bar" width="480"></ngmd-image>
 
