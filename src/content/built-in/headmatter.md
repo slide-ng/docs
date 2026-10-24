@@ -85,6 +85,7 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | --- | --- |
 | `titleTemplate`, `author`, `keywords`, `favicon`, `htmlAttrs`, `seoMeta` | The page's `<head>`. See [Page head and SEO](../features/seo-meta.md). |
 | `lang`, `uiLang` | `lang` is `<html lang>`, the interface language and the locale of the `date`, `number` and `currency` pipes. `ar`, `he`, `fa` and `ur` mirror the page. `uiLang` changes the interface language only. See [Interface language](../features/interface-language.md). |
+| `languages` | One file per language, such as `{ en: slides.md, tr: slides.tr.md }`, in the entry file. The bar gets a language menu. See [One deck in several languages](../features/interface-language.md#one-deck-in-several-languages). |
 | `download` | A PDF button: `true`, a file name or an address. With `true`, `slide-ng build` makes the PDF. Without a working Chromium it warns and the button stays disabled. |
 | `exportFilename` | The name of exported files, without the extension. |
 | `export` | Defaults for `slide-ng export`. See [Export](../guide/export.md). |
