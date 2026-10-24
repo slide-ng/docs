@@ -28,7 +28,7 @@ Starts the dev server. This is the default command.
 | `--log error\|warn\|info\|silent` | How much of the child programs' output to show. Default `info`. `error` and `silent` hide it. |
 | `--force`, `-f` | Clear the build cache. |
 | `--theme`, `-t` | A theme name or path, instead of the headmatter's. |
-| `--lang <tag>` | Use this language (`tr`, `pt-BR`) instead of the headmatter's `lang`: the interface, the locale of dates and numbers, and `<html lang>`. See [Interface language](../features/interface-language.md). |
+| `--lang <tag>` | Use this language (`tr`, `pt-BR`) instead of the headmatter's `lang`: the interface, the locale of dates and numbers, and `<html lang>`. With `languages`, the language the page starts in. See [Interface language](../features/interface-language.md). |
 
 `--tunnel` and `--base` are refused with a message. The dev server always runs at `/`.
 
@@ -70,7 +70,7 @@ With several entries each deck is built in turn into `<out>/<name>/` and served 
 | `--allow-local` | Let the page Chromium renders reach loopback and private addresses. They are blocked otherwise. |
 | `--timeout` | Timeout in milliseconds for each page Chromium renders. |
 | `--theme`, `-t` | A theme name or path. |
-| `--lang <tag>` | Use this language instead of the headmatter's `lang`, for one deck in several languages: `slide-ng build slides.tr.md --out dist/tr`. |
+| `--lang <tag>` | Use this language instead of the headmatter's `lang`, as in `slide-ng build slides.tr.md --out dist/tr`. With `languages`, the language the page starts in. See [One deck in several languages](../features/interface-language.md#one-deck-in-several-languages). |
 
 ## export
 
@@ -99,7 +99,7 @@ With several entries (`slide-ng export a.md b.md`) each deck is built and export
 | `--url <address>` | Export a running server, for example the dev server. |
 | `--base` | The base path the build at `--dist` was made with. Read from its `index.html` when left out. |
 | `--theme`, `-t` | A theme name or path. |
-| `--lang <tag>` | Use this language instead of the headmatter's `lang`. Refused with `--dist` and `--url`, whose language was fixed when they were built. |
+| `--lang <tag>` | Use this language instead of the headmatter's `lang`. With `languages`, export the slides of that language: `slide-ng export --lang tr`. Refused with `--dist` and `--url`, whose language was fixed when they were built. |
 
 A `--range` that picks no slide fails before the deck is built.
 

@@ -62,7 +62,7 @@ slide-ng export --dist dist          # export a build you already made
 slide-ng export --url http://localhost:4230/   # export a running server
 ```
 
-`--dist` opens the build with the router mode it was built with. `--lang` cannot change the language of an existing build or a running server, so it is refused with `--dist` and `--url`.
+`--dist` opens the build with the router mode it was built with. `--lang` cannot change the language of an existing build or a running server, so it is refused with `--dist` and `--url`. For a deck with `languages`, `slide-ng export --lang tr` builds the deck and exports its Turkish slides.
 
 Without `--dist` or `--url`, export builds the deck first, in its own working copy, so it does not disturb a dev server that is running. If the page never goes idle, the export says so: try `--wait-until load`.
 
