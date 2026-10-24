@@ -20,7 +20,9 @@ slide.ng reads the same markdown file format as *Slidev, with the same slide spl
 
 - A click preview on the presenter page: the eye button or `u` shows what the later clicks of the current slide show, greyed out, and a click on a part goes to its click. See [Presenter mode](../guide/presenter-mode.md#click-preview).
 - A progress bar on the slides, `progressBar` or `<slide-ng-progress-bar />`. Slidev has one on its presenter page only. See [Progress bar](../features/progress-bar.md).
+- `navPosition` puts the navigation bar in any corner, or in the middle of the top or bottom edge. Slidev's bar is always at the bottom left. See [Headmatter and frontmatter](../built-in/headmatter.md#the-deck-and-its-look).
 - A built-in Turkish interface and `locales/<lang>.json` to translate the interface. See [Interface language](../features/interface-language.md).
+- One deck in several languages, with a language menu in the bar that switches the slides and the interface. See [Interface language](../features/interface-language.md#one-deck-in-several-languages).
 
 ## Syntax differences
 

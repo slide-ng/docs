@@ -44,6 +44,7 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | `zoom` | Scale every slide. |
 | `routerMode` | `history` (default), `hash` or `memory`. See [Slide addresses](../features/routing.md). |
 | `clickAnimation` | The click animation preset of every slide. |
+| `navPosition` | Where the navigation bar sits on the slide page: `bottom-left` (default), `bottom-center`, `bottom-right`, `top-left`, `top-center` or `top-right`. Left and right follow the writing direction, so a right-to-left deck mirrors them. At the top, the bar's menus open below it. The presenter page keeps its bar. Another value is warned about and keeps the bottom left. Not in Slidev. |
 | `progressBar` | A progress bar on every slide: `true`, `top`, `bottom` or an object. See [Progress bar](../features/progress-bar.md). |
 | `preloadImages` | `true` (default), `{ ahead: n }` or `false`. See [Loading pictures ahead](../features/preload-images.md). |
 | `unocss` | `{ attributify: false }` turns attributify off. See [UnoCSS](../features/unocss.md). |
@@ -84,6 +85,7 @@ The first block of YAML in `slides.md` is the headmatter. It describes the deck.
 | --- | --- |
 | `titleTemplate`, `author`, `keywords`, `favicon`, `htmlAttrs`, `seoMeta` | The page's `<head>`. See [Page head and SEO](../features/seo-meta.md). |
 | `lang`, `uiLang` | `lang` is `<html lang>`, the interface language and the locale of the `date`, `number` and `currency` pipes. `ar`, `he`, `fa` and `ur` mirror the page. `uiLang` changes the interface language only. See [Interface language](../features/interface-language.md). |
+| `languages` | One file per language, such as `{ en: slides.md, tr: slides.tr.md }`, in the entry file. The bar gets a language menu. See [One deck in several languages](../features/interface-language.md#one-deck-in-several-languages). |
 | `download` | A PDF button: `true`, a file name or an address. With `true`, `slide-ng build` makes the PDF. Without a working Chromium it warns and the button stays disabled. |
 | `exportFilename` | The name of exported files, without the extension. |
 | `export` | Defaults for `slide-ng export`. See [Export](../guide/export.md). |

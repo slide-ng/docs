@@ -96,7 +96,7 @@ Use one presenter page. Two presenter pages do not follow each other: each keeps
 
 ### Sync mode
 
-The sync button in the bar (up and down arrows, before the settings) opens Slidev's sync mode menu:
+The sync button in the bar (up and down arrows, near the settings) opens Slidev's sync mode menu:
 
 | Mode | What the window does |
 | --- | --- |
