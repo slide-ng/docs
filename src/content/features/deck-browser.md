@@ -81,7 +81,7 @@ Without the proxy (a built deck, or `--remote`), pages load directly. With the d
 DuckDuckGo refuses to be shown inside another page, and only a proxy gets around that. So when no search engine is chosen, the deck browser searches:
 
 - DuckDuckGo under `slide-ng dev`, through its proxy;
-- DuckDuckGo's plain version (`html.duckduckgo.com`) through [a proxy of your own](#a-proxy-of-your-own);
+- Brave Search through [a proxy of your own](#a-proxy-of-your-own): DuckDuckGo, Bing and Google show a bot check to a hosting company's servers, and Brave Search does not;
 - Bing otherwise, in a built deck or with `--remote`. Bing shows inside the deck, but its result links open new tabs, which a deck cannot change without a proxy.
 
 A search engine chosen in Customise or set in `browser.search` is always kept.
@@ -111,7 +111,7 @@ Set `DECK_ORIGINS` on the host to the deck's address, such as `https://you.githu
 What the proxy does to keep the deck safe:
 
 - Every page it shows is sandboxed on an origin of its own, so it cannot reach the deck, also when the proxy is on the deck's own site, or the other pages.
-- It passes on only plain content headers, and drops cookies. Sites that need a sign-in or their own storage may not work, and nobody should sign in to anything through it.
+- It passes on only plain content headers, and drops cookies. Pages get their storage in memory while they are open, so sites that need it still work. Sites that need a sign-in or their own storage may not work, and nobody should sign in to anything through it.
 - It refuses addresses written as local or private. It does not look up names, so run it on one of these hosts, which cannot reach a private network, not on a machine inside one.
 
 Under `slide-ng dev`, the dev server's own proxy still wins. Back, forward and the address field follow only the pages opened from the deck, as without a proxy.
