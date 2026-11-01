@@ -276,7 +276,7 @@ const config: NgmdConfig = {
         {label: 'Drawing', href: '/features/drawing'},
         {label: 'Recording', href: '/features/recording'},
         {label: 'Context menu', href: '/features/context-menu', status: 'updated'},
-        {label: 'Deck browser', href: '/features/deck-browser', status: 'new'},
+        {label: 'Deck browser', href: '/features/deck-browser', status: 'updated'},
         {label: 'Interface language', href: '/features/interface-language', status: 'new'},
         {label: 'Loading pictures ahead', href: '/features/preload-images', status: 'new'},
       ],
