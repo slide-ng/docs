@@ -58,72 +58,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
     // grow to match the tallest sibling card via the `h-full` on it below.
     class: 'block h-full my-4',
   },
-  template: `
-    @if (link()) {
-      @if (isExternal()) {
-        <!-- External: plain anchor + target="_blank". routerLink would
-             interpret a full URL as a relative route and 404. -->
-        <a
-          [href]="link()"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-5 text-inherit no-underline transition-colors hover:border-zinc-400 dark:hover:border-zinc-600"
-        >
-          <ng-container *ngTemplateOutlet="body"></ng-container>
-        </a>
-      } @else {
-        <a
-          [routerLink]="route()"
-          class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-5 text-inherit no-underline transition-colors hover:border-zinc-400 dark:hover:border-zinc-600"
-        >
-          <ng-container *ngTemplateOutlet="body"></ng-container>
-        </a>
-      }
-    } @else {
-      <div
-        class="h-full flex flex-col rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-5"
-      >
-        <ng-container *ngTemplateOutlet="body"></ng-container>
-      </div>
-    }
-
-    <ng-template #body>
-      @if (image()) {
-        <img
-          [src]="image()"
-          alt=""
-          class="mb-4"
-          [class]="avatar() ? 'size-14 rounded-full object-cover' : 'size-8 object-contain'"
-          aria-hidden="true"
-          loading="lazy"
-        />
-      } @else if (iconImg(); as img) {
-        <svg
-          [lucideIcon]="img"
-          class="size-6 mb-4 text-[color:var(--accent)]"
-          aria-hidden="true"
-        ></svg>
-      }
-      @if (title()) {
-        <!-- <p> not <h3>: card titles are labels, not section headings.
-             Using <h3> here would pollute the page TOC (Toc scanner picks
-             up h2/h3 inside analog-markdown) with every card title. -->
-        <p class="text-base font-semibold mt-0 mb-2 text-zinc-900 dark:text-zinc-100">
-          {{ title() }}
-        </p>
-      }
-      <div
-        class="text-sm text-brand-muted dark:text-brand-muted-dark flex-1 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
-      >
-        <ng-content></ng-content>
-      </div>
-      @if (cta()) {
-        <span class="mt-3 inline-block text-sm font-medium text-[color:var(--accent-strong)]"
-          >{{ cta() }} <span aria-hidden="true">→</span></span
-        >
-      }
-    </ng-template>
-  `,
+  templateUrl: './card.html',
 })
 export class NgmdCard {
   private readonly router = inject(Router);

@@ -12,7 +12,7 @@ import {enhanceOnNavigation} from '../utils/enhance-on-navigation';
  */
 @Component({
   selector: 'app-code-group',
-  template: '',
+  templateUrl: './code-group.html',
   styles: `
     :host {
       display: none;

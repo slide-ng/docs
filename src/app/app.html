@@ -1,0 +1,228 @@
+<div class="min-h-screen flex flex-col">
+  <header
+    class="sticky top-0 z-30 flex items-center gap-2 sm:gap-4 border-b border-zinc-200/60 dark:border-zinc-800/60 backdrop-blur-sm px-4 py-3"
+  >
+    @if (showSidebar()) {
+      <button
+        #menuButton
+        type="button"
+        (click)="toggleDrawer()"
+        class="lg:hidden rounded p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        [attr.aria-label]="drawerOpen() ? 'Close menu' : 'Open menu'"
+      >
+        <svg [lucideIcon]="drawerOpen() ? closeIcon : menuIcon" class="size-5"></svg>
+      </button>
+    }
+
+    <a
+      routerLink="/"
+      class="flex items-center gap-2 text-lg font-bold tracking-tight font-[Geist_Mono,ui-monospace,monospace]"
+    >
+      <img
+        src="brand/lockup-horizontal-color.svg"
+        [alt]="siteName"
+        height="34"
+        class="h-[34px] w-auto dark:hidden"
+      />
+      <img
+        src="brand/lockup-horizontal-color-dark.svg"
+        [alt]="siteName"
+        height="34"
+        class="hidden h-[34px] w-auto dark:block"
+      />
+    </a>
+
+    @if (headerNav.length > 0) {
+      <app-header-nav [items]="headerNav" />
+    }
+
+    <div class="ml-auto flex items-center gap-1 sm:gap-2">
+      <app-version-switcher></app-version-switcher>
+      <button
+        type="button"
+        (click)="palette.toggle()"
+        class="hidden lg:inline-flex items-center gap-2 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-3 py-1.5 text-sm text-brand-muted dark:text-brand-muted-dark hover:bg-zinc-100 dark:hover:bg-zinc-800 min-w-56"
+      >
+        <svg [lucideIcon]="searchIcon" class="size-4"></svg>
+        <span class="flex-1 text-left">Search documentation...</span>
+        <span class="flex items-center gap-0.5">
+          <kbd
+            class="inline-flex h-5 min-w-5 items-center justify-center rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 px-1 text-xs font-medium"
+          >
+            ⌘
+          </kbd>
+          <kbd
+            class="inline-flex h-5 min-w-5 items-center justify-center rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-950 px-1 text-xs font-medium"
+          >
+            K
+          </kbd>
+        </span>
+      </button>
+      <button
+        type="button"
+        (click)="palette.toggle()"
+        class="lg:hidden rounded p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        aria-label="Search"
+      >
+        <svg [lucideIcon]="searchIcon" class="size-5"></svg>
+      </button>
+      <span class="hidden sm:block h-4 w-px bg-zinc-300/60 dark:bg-zinc-700/60"></span>
+      @if (sponsorUrl) {
+        <a
+          [href]="sponsorUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded p-1.5 text-[color:var(--accent-strong)] hover:bg-zinc-100 dark:hover:bg-zinc-900"
+          aria-label="Sponsor"
+        >
+          <svg [lucideIcon]="heartIcon" class="size-5"></svg>
+        </a>
+      }
+      <a
+        [href]="githubUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 rounded-full border border-zinc-200 dark:border-zinc-800 py-1 pl-2.5 pr-3 text-sm font-medium text-zinc-700 dark:text-zinc-300 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        [attr.aria-label]="stars() ? 'GitHub, ' + stars() + ' stars' : 'GitHub'"
+      >
+        <svg ngmdGithubIcon class="size-5"></svg>
+        @if (stars(); as count) {
+          <span
+            class="inline-flex items-center gap-1 border-l border-zinc-200 dark:border-zinc-800 pl-2 tabular-nums"
+          >
+            <svg
+              viewBox="0 0 16 16"
+              class="size-3.5 text-amber-500"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"
+              />
+            </svg>
+            {{ count }}
+          </span>
+        }
+      </a>
+      @if (discordUrl) {
+        <a
+          [href]="discordUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+          aria-label="Discord"
+        >
+          <svg ngmdDiscordIcon class="size-5"></svg>
+        </a>
+      }
+      <span class="hidden sm:block h-4 w-px bg-zinc-300/60 dark:bg-zinc-700/60"></span>
+      <button
+        type="button"
+        (click)="theme.cycle()"
+        class="rounded p-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        [attr.aria-label]="'Theme: ' + theme.mode()"
+        [title]="'Theme: ' + theme.mode()"
+      >
+        <svg
+          [lucideIcon]="
+            theme.mode() === 'light' ? sunIcon : theme.mode() === 'dark' ? moonIcon : autoIcon
+          "
+          class="size-5"
+        ></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex flex-1">
+    @if (showSidebar()) {
+      <aside
+        aria-label="Sidebar"
+        class="ngmd-scroll-track-mini hidden lg:flex w-64 shrink-0 flex-col border-r border-zinc-200 dark:border-zinc-800 p-4 overflow-y-auto sticky top-[57px] self-start h-[calc(100vh-57px)]"
+      >
+        <app-sidebar />
+      </aside>
+
+      <!-- Mobile drawer. Always mounted so its slide-in / slide-out
+               animation has something to transition against; pointer-events
+               and visibility flip off when closed so it can't intercept
+               touches while hidden. -->
+      <div
+        class="lg:hidden fixed inset-0 z-40 bg-black/50 transition-opacity duration-200"
+        [class.opacity-0]="!drawerOpen()"
+        [class.opacity-100]="drawerOpen()"
+        [class.pointer-events-none]="!drawerOpen()"
+        (click)="closeDrawer()"
+        aria-hidden="true"
+      ></div>
+      <aside
+        #drawer
+        aria-label="Documentation menu"
+        class="lg:hidden fixed left-0 top-[57px] bottom-0 z-40 w-64 overflow-y-auto border-r border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-4 transform transition-transform duration-200 ease-out"
+        [class.-translate-x-full]="!drawerOpen()"
+        [class.translate-x-0]="drawerOpen()"
+        [attr.aria-hidden]="!drawerOpen()"
+        [attr.inert]="!drawerOpen() ? '' : null"
+      >
+        @if (headerNav.length > 0) {
+          <div class="sm:hidden mb-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+            <app-header-nav [items]="headerNav" layout="list" />
+          </div>
+        }
+        <app-sidebar />
+      </aside>
+    }
+
+    <main class="flex-1 min-w-0 flex flex-col">
+      <div class="flex-1">
+        @if (showBreadcrumb()) {
+          <app-breadcrumb />
+        }
+        @if (showFooter()) {
+          <app-source-actions />
+          <app-content-banners class="block mx-auto max-w-3xl px-4 sm:px-8" />
+        }
+        @if (showToc()) {
+          <details
+            #tocDetails
+            class="xl:hidden mx-4 sm:mx-6 mt-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 group"
+          >
+            <summary
+              class="flex items-center justify-between cursor-pointer list-none px-4 py-2.5 text-sm font-semibold"
+            >
+              On this page
+              <span class="text-zinc-400 transition-transform group-open:rotate-180">▾</span>
+            </summary>
+            <div class="px-4 pb-4" (click)="tocDetails.open = false">
+              <app-toc [showActive]="false" />
+            </div>
+          </details>
+        }
+        <router-outlet />
+        @if (showFooter()) {
+          <div class="mx-auto max-w-3xl px-4 sm:px-8">
+            <app-page-footer />
+          </div>
+        }
+      </div>
+      <app-site-footer />
+    </main>
+
+    @if (showToc()) {
+      <aside
+        aria-label="On this page"
+        class="ngmd-scroll-track-mini hidden xl:block w-56 shrink-0 border-l border-zinc-200 dark:border-zinc-800 p-6 sticky top-[57px] self-start max-h-[calc(100vh-57px)] overflow-y-auto"
+      >
+        <p class="mb-3 text-sm font-semibold">On this page</p>
+        <app-toc />
+      </aside>
+    }
+  </div>
+</div>
+
+<app-command-palette #palette />
+<app-code-copy />
+<app-external-links />
+<app-heading-anchors />
+<app-code-group />
+<app-media-enhancer />
+<app-toaster />

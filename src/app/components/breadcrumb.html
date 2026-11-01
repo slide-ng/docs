@@ -1,0 +1,28 @@
+@if (crumbs().length > 0) {
+  <nav
+    aria-label="Breadcrumb"
+    class="px-6 py-3 text-sm border-b border-zinc-200 dark:border-zinc-800"
+  >
+    <ol class="flex flex-wrap items-center gap-1.5">
+      <li class="flex">
+        <a
+          routerLink="/"
+          aria-label="Home"
+          class="text-brand-muted dark:text-brand-muted-dark hover:text-zinc-900 dark:hover:text-zinc-50"
+        >
+          <svg [lucideIcon]="home" class="size-4"></svg>
+        </a>
+      </li>
+      @for (crumb of crumbs(); track crumb.href; let last = $last) {
+        <li class="flex items-center gap-1.5">
+          <svg [lucideIcon]="chevron" class="size-3.5 text-zinc-400"></svg>
+          @if (last) {
+            <span class="font-medium" aria-current="page">{{ crumb.label }}</span>
+          } @else {
+            <span class="text-brand-muted dark:text-brand-muted-dark">{{ crumb.label }}</span>
+          }
+        </li>
+      }
+    </ol>
+  </nav>
+}

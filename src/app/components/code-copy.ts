@@ -10,7 +10,7 @@ import {enhanceOnNavigation} from '../utils/enhance-on-navigation';
  */
 @Component({
   selector: 'app-code-copy',
-  template: '',
+  templateUrl: './code-copy.html',
   styles: `
     :host {
       display: none;

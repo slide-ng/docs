@@ -91,11 +91,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
       'block focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-[color:var(--accent)]',
     '[hidden]': '!active()',
   },
-  template: `
-    <div class="p-5 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0" [hidden]="!active()">
-      <ng-content></ng-content>
-    </div>
-  `,
+  templateUrl: './tabs.ngmd-tab.html',
 })
 export class NgmdTab {
   readonly title = input<string>('');
@@ -116,44 +112,7 @@ export class NgmdTab {
 @Component({
   selector: 'ngmd-tabs',
   imports: [LucideDynamicIcon],
-  template: `
-    <div class="rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden">
-      <div
-        role="tablist"
-        class="flex flex-wrap border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900"
-      >
-        @for (tab of tabs(); track tab.key; let i = $index) {
-          <button
-            type="button"
-            role="tab"
-            [id]="tab.key + '-tab'"
-            [attr.aria-selected]="active() === tab.key"
-            [attr.aria-controls]="tab.key + '-panel'"
-            [tabindex]="active() === tab.key ? 0 : -1"
-            (click)="setActive(tab.key)"
-            (keydown)="onKey($event, i)"
-            class="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium border-b-2 -mb-px cursor-pointer transition-colors aria-selected:border-[color:var(--accent)] aria-selected:text-[color:var(--accent-strong)] [&[aria-selected=false]]:border-transparent [&[aria-selected=false]]:text-zinc-500 dark:[&[aria-selected=false]]:text-zinc-400 [&[aria-selected=false]]:hover:text-zinc-900 dark:[&[aria-selected=false]]:hover:text-zinc-100 bg-transparent"
-          >
-            @if (tab.image) {
-              <img
-                [src]="tab.image"
-                alt=""
-                aria-hidden="true"
-                class="size-4 object-contain"
-                loading="lazy"
-              />
-            } @else if (tab.iconImg; as img) {
-              <svg [lucideIcon]="img" class="size-4" aria-hidden="true"></svg>
-            }
-            {{ tab.label }}
-          </button>
-        }
-      </div>
-      <div>
-        <ng-content></ng-content>
-      </div>
-    </div>
-  `,
+  templateUrl: './tabs.ngmd-tabs.html',
 })
 export class NgmdTabs implements AfterViewInit {
   private readonly host: ElementRef<HTMLElement> = inject(ElementRef);

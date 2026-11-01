@@ -14,27 +14,7 @@ import {watchHostAttribute} from '../utils/watch-host-attribute';
 
 @Component({
   selector: 'ngmd-step',
-  template: `
-    <div class="flex gap-4 pb-8 relative ngmd-step">
-      <div
-        class="flex-shrink-0 w-10 h-10 rounded-full border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 flex items-center justify-center font-semibold text-sm relative z-10"
-      >
-        {{ index() + 1 }}
-      </div>
-      <div class="flex-1 min-w-0">
-        @if (title()) {
-          <h3 class="text-lg font-semibold mt-1.5 mb-2 text-zinc-900 dark:text-zinc-100">
-            {{ title() }}
-          </h3>
-        }
-        <div
-          class="text-zinc-700 dark:text-brand-muted-dark leading-relaxed [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
-        >
-          <ng-content></ng-content>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './workflow.ngmd-step.html',
 })
 export class NgmdStep {
   readonly title = input<string>('');
@@ -60,13 +40,7 @@ export class NgmdStep {
 
 @Component({
   selector: 'ngmd-workflow',
-  template: `
-    <div
-      class="[&_ngmd-step:not(:last-child)_.ngmd-step]:before:content-[''] [&_ngmd-step:not(:last-child)_.ngmd-step]:before:absolute [&_ngmd-step:not(:last-child)_.ngmd-step]:before:left-5 [&_ngmd-step:not(:last-child)_.ngmd-step]:before:top-11 [&_ngmd-step:not(:last-child)_.ngmd-step]:before:bottom-0 [&_ngmd-step:not(:last-child)_.ngmd-step]:before:w-px [&_ngmd-step:not(:last-child)_.ngmd-step]:before:bg-zinc-200 dark:[&_ngmd-step:not(:last-child)_.ngmd-step]:before:bg-zinc-800"
-    >
-      <ng-content></ng-content>
-    </div>
-  `,
+  templateUrl: './workflow.ngmd-workflow.html',
 })
 export class NgmdWorkflow implements AfterContentInit, AfterViewInit {
   @ContentChildren(NgmdStep) private readonly steps!: QueryList<NgmdStep>;

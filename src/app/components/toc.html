@@ -1,0 +1,22 @@
+@if (headings().length > 0) {
+  <nav class="text-sm">
+    <ul class="flex flex-col gap-2">
+      @for (h of headings(); track h.id) {
+        <li [style.padding-left.rem]="(h.level - 2) * 0.75">
+          <a
+            [href]="path() + '#' + h.id"
+            (click)="scrollToHeading(h.id, $event)"
+            class="block rounded px-2 -mx-2 py-0.5 text-brand-muted dark:text-brand-muted-dark hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)] focus:outline-none focus-visible:outline-none"
+            [class]="
+              isActive(h.id)
+                ? 'bg-[color:var(--accent-soft)]! text-[color:var(--accent-strong)]! font-medium'
+                : ''
+            "
+          >
+            {{ h.text }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+}

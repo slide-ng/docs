@@ -10,52 +10,7 @@ import {LandingDemo} from '../landing/landing-demo';
 @Component({
   selector: 'app-home',
   imports: [RouterLink, LandingDemo],
-  template: `
-    <div
-      class="mx-auto min-h-[80vh] max-w-[100vw] gap-4 px-8 py-5 xl:grid xl:max-w-[112.5rem] xl:grid-cols-[3fr_4fr] xl:px-20"
-    >
-      <div class="flex min-h-[37.5rem] flex-col items-center justify-center max-xl:min-h-[28rem]">
-        <h1 class="sr-only">slide.ng</h1>
-        <img
-          src="brand/lockup-stacked-color.svg"
-          alt=""
-          aria-hidden="true"
-          width="400"
-          height="356"
-          class="w-72 xl:w-96 dark:hidden"
-        />
-        <img
-          src="brand/lockup-stacked-color-dark.svg"
-          alt=""
-          aria-hidden="true"
-          width="400"
-          height="356"
-          class="hidden w-72 xl:w-96 dark:block"
-        />
-        <p class="m-0 mt-3 text-balance text-center text-2xl text-brand-muted sm:text-3xl">
-          Presentation slides for Angular developers
-        </p>
-        <div class="mt-5 flex justify-center gap-3 p-4">
-          <a
-            routerLink="/getting-started/install"
-            class="landing-button h-max rounded-xl bg-brand-deep px-5 py-3 text-xl font-bold !text-zinc-50 no-underline hover:bg-brand-dark"
-          >
-            Get Started
-          </a>
-          <a
-            routerLink="/getting-started/what-and-why"
-            class="landing-button h-max rounded-xl bg-zinc-950 px-5 py-3 text-xl font-bold !text-zinc-50 no-underline hover:bg-brand-deep dark:bg-zinc-100 dark:!text-zinc-950 dark:hover:!text-zinc-50"
-          >
-            Why
-          </a>
-        </div>
-      </div>
-
-      <div class="flex">
-        <app-landing-demo class="m-auto w-full" />
-      </div>
-    </div>
-  `,
+  templateUrl: './index.page.html',
   styles: `
     :host {
       display: block;

@@ -8,14 +8,7 @@ import {BADGE_VARIANTS, type BadgeVariant} from '../../types/badge';
  */
 @Component({
   selector: 'ngmd-badge',
-  template: `
-    <span
-      class="inline-flex items-center rounded-full px-2 py-0.5 text-[0.6875rem] font-medium uppercase tracking-wider align-middle"
-      [class]="variantClass()"
-    >
-      <ng-content></ng-content>
-    </span>
-  `,
+  templateUrl: './badge.html',
 })
 export class NgmdBadge {
   readonly variant = input<BadgeVariant>('new');

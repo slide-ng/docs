@@ -18,38 +18,7 @@ type JsDocPart =
 @Component({
   selector: 'app-api-jsdoc',
   imports: [RouterLink],
-  template: `
-    @for (block of paragraphs(); track $index) {
-      <p
-        class="text-zinc-700 dark:text-brand-muted-dark leading-relaxed [&_code]:rounded [&_code]:bg-zinc-100 [&_code]:dark:bg-zinc-800 [&_code]:px-1 [&_code]:py-0.5 [&_code]:text-[0.85em]"
-      >
-        @for (part of block; track $index) {
-          @switch (part.kind) {
-            @case ('code') {
-              <code>{{ part.text }}</code>
-            }
-            @case ('url') {
-              <a
-                [href]="part.href"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-[color:var(--accent-strong)] underline"
-                >{{ part.text }}</a
-              >
-            }
-            @case ('symbol') {
-              <a [routerLink]="part.href" class="text-[color:var(--accent-strong)] underline"
-                ><code>{{ part.text }}</code></a
-              >
-            }
-            @default {
-              <ng-container>{{ part.text }}</ng-container>
-            }
-          }
-        }
-      </p>
-    }
-  `,
+  templateUrl: './api-jsdoc.html',
 })
 export class ApiJsDoc {
   readonly text = input<string>('');

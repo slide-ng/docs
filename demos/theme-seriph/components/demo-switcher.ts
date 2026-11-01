@@ -4,42 +4,7 @@ import { THEMES, demoUrl, detectSite } from './demo-switcher-urls';
 
 @Component({
   selector: 'demo-switcher',
-  template: `
-    @if (site && shown) {
-      <button
-        type="button"
-        class="demo-switcher-pill"
-        aria-haspopup="menu"
-        [attr.aria-expanded]="open()"
-        [attr.aria-label]="'Theme demo: ' + site.theme + '. Switch to another theme.'"
-        (click)="toggle()"
-        (keydown)="onButtonKey($event)"
-      >
-        <span aria-hidden="true">{{ site.theme }}</span>
-        <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" /></svg>
-      </button>
-      @if (open()) {
-        <div
-          class="demo-switcher-menu"
-          role="menu"
-          aria-label="Theme demos"
-          (keydown)="onMenuKey($event)"
-        >
-          @for (name of themes; track name) {
-            <button
-              type="button"
-              role="menuitem"
-              class="demo-switcher-item"
-              [attr.aria-current]="name === site.theme ? 'true' : null"
-              (click)="choose(name)"
-            >
-              {{ name }}
-            </button>
-          }
-        </div>
-      }
-    }
-  `,
+  templateUrl: './demo-switcher.html',
   styles: `
     :host {
       --ds-bg: #ffffff;

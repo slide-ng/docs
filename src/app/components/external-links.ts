@@ -8,7 +8,7 @@ import {enhanceOnNavigation} from '../utils/enhance-on-navigation';
  */
 @Component({
   selector: 'app-external-links',
-  template: '',
+  templateUrl: './external-links.html',
   styles: `
     :host {
       display: none;

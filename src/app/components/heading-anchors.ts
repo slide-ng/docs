@@ -11,7 +11,7 @@ import {enhanceOnNavigation} from '../utils/enhance-on-navigation';
  */
 @Component({
   selector: 'app-heading-anchors',
-  template: '',
+  templateUrl: './heading-anchors.html',
   styles: `
     :host {
       display: none;

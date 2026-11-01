@@ -4,6 +4,6 @@ import { DemoSwitcher } from '../components/demo-switcher';
 @Component({
   selector: 'demo-switcher-layer',
   imports: [DemoSwitcher],
-  template: `<demo-switcher />`,
+  templateUrl: './slide-top.html',
 })
 export default class DemoSwitcherLayer {}

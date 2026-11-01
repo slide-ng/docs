@@ -1,0 +1,60 @@
+@if (related().length || prev() || next()) {
+  <footer class="mt-2 border-t border-zinc-200 dark:border-zinc-800 pt-5 pb-10 text-sm">
+    @if (related().length && currentSection(); as section) {
+      <p
+        class="text-xs font-medium tracking-[0.2em] uppercase text-brand-muted dark:text-brand-muted-dark mb-3"
+      >
+        More in {{ section }}
+      </p>
+      <ul class="grid gap-2 sm:grid-cols-2 mb-8">
+        @for (item of related(); track item.href) {
+          <li>
+            <a
+              [routerLink]="item.href"
+              class="block rounded-lg border border-zinc-200 dark:border-zinc-800 px-3 py-2 hover:border-[color:var(--accent)] hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)] transition-colors"
+            >
+              <span class="block text-sm font-medium truncate">{{ item.label }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    }
+
+    @if (prev() || next()) {
+      <nav aria-label="Previous and next pages" class="grid gap-3 sm:grid-cols-2">
+        @if (prev(); as p) {
+          <a
+            [routerLink]="p.href"
+            class="group rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 hover:border-[color:var(--accent)] transition-colors sm:col-start-1"
+          >
+            <span
+              class="flex items-center gap-1.5 text-xs text-brand-muted dark:text-brand-muted-dark"
+            >
+              <svg [lucideIcon]="prevIcon" class="size-3.5"></svg>
+              Previous
+            </span>
+            <span class="mt-1 block text-base font-medium text-zinc-900 dark:text-zinc-100">{{
+              p.label
+            }}</span>
+          </a>
+        }
+        @if (next(); as n) {
+          <a
+            [routerLink]="n.href"
+            class="group rounded-lg border border-zinc-200 dark:border-zinc-800 p-4 hover:border-[color:var(--accent)] transition-colors text-right sm:col-start-2"
+          >
+            <span
+              class="flex items-center justify-end gap-1.5 text-xs text-brand-muted dark:text-brand-muted-dark"
+            >
+              Next
+              <svg [lucideIcon]="nextIcon" class="size-3.5"></svg>
+            </span>
+            <span class="mt-1 block text-base font-medium text-zinc-900 dark:text-zinc-100">{{
+              n.label
+            }}</span>
+          </a>
+        }
+      </nav>
+    }
+  </footer>
+}
