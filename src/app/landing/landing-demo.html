@@ -1,0 +1,67 @@
+<div #root role="group" aria-label="A deck typed as markdown, and its slides next to it">
+  <div class="demo-editor">
+    <div class="filename">./slides.md</div>
+    <button
+      type="button"
+      class="replay"
+      title="Replay"
+      aria-label="Replay the demo"
+      (click)="play()"
+    >
+      <svg [lucideIcon]="replayIcon" class="size-4" aria-hidden="true"></svg>
+    </button>
+    <div class="code">
+      <pre
+        class="text"
+      ><code>@for (line of lines(); track $index) {<span class="line">@for (seg of line; track $index) {@if (seg.kind === 'caret') {<span class="caret" aria-hidden="true"></span>} @else {<span [class]="'t-' + seg.kind">{{ seg.text }}</span>}}</span>}</code></pre>
+    </div>
+  </div>
+
+  <div #card class="slide-card">
+    <div class="ratio"></div>
+    <div class="slide-fill">
+      <div class="track" [class.page-2]="page() === 1">
+        @for (n of pages; track n) {
+          <div class="page">
+            <div
+              class="slide-content"
+              [style.width.px]="slideWidth"
+              [style.height.px]="slideHeight"
+              [style.transform]="transform()"
+            >
+              <iframe
+                #frame
+                class="frame"
+                [class.shown]="shown(n)"
+                [src]="src"
+                [title]="'Page ' + (n + 1) + ' of the deck, built with slide.ng'"
+                tabindex="-1"
+                (load)="onLoad(n)"
+              ></iframe>
+            </div>
+          </div>
+        }
+      </div>
+      <div class="chevrons">
+        <button
+          type="button"
+          class="chevron"
+          aria-label="Previous page"
+          [disabled]="page() === 0"
+          (click)="page.set(0)"
+        >
+          <svg [lucideIcon]="leftIcon" class="size-5" aria-hidden="true"></svg>
+        </button>
+        <button
+          type="button"
+          class="chevron"
+          aria-label="Next page"
+          [disabled]="page() === 1"
+          (click)="page.set(1)"
+        >
+          <svg [lucideIcon]="rightIcon" class="size-5" aria-hidden="true"></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

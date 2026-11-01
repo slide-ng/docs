@@ -12,7 +12,7 @@ import {enhanceOnNavigation} from '../utils/enhance-on-navigation';
  */
 @Component({
   selector: 'app-media-enhancer',
-  template: '',
+  templateUrl: './media-enhancer.html',
   styles: `
     :host {
       display: none;

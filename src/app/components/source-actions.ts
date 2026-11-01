@@ -15,32 +15,7 @@ import {RouteUrlService} from '../services/route-url/route-url.service';
 @Component({
   selector: 'app-source-actions',
   imports: [LucideDynamicIcon],
-  template: `
-    @if (editUrl(); as edit) {
-      <div class="flex items-center justify-end gap-2 px-4 sm:px-8 pt-4">
-        <a
-          [href]="edit"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded p-1.5 text-brand-muted hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
-          title="Edit this page on GitHub"
-          aria-label="Edit this page on GitHub"
-        >
-          <svg [lucideIcon]="editIcon" class="size-4"></svg>
-        </a>
-        <a
-          [href]="sourceUrl()"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="rounded p-1.5 text-brand-muted hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
-          title="View source on GitHub"
-          aria-label="View source on GitHub"
-        >
-          <svg [lucideIcon]="sourceIcon" class="size-4"></svg>
-        </a>
-      </div>
-    }
-  `,
+  templateUrl: './source-actions.html',
 })
 export class SourceActions {
   private readonly cleanUrl = inject(RouteUrlService).cleanUrl;

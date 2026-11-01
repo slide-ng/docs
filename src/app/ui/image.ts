@@ -2,21 +2,7 @@ import {Component, computed, input} from '@angular/core';
 
 @Component({
   selector: 'ngmd-image',
-  template: `
-    <figure class="mx-0" [style.max-width]="maxWidth()">
-      <img
-        [src]="src()"
-        [alt]="alt()"
-        loading="lazy"
-        class="w-full h-auto rounded-lg border border-zinc-200 dark:border-zinc-800"
-      />
-      @if (caption()) {
-        <figcaption class="mt-2 text-center text-sm text-brand-muted dark:text-brand-muted-dark">
-          {{ caption() }}
-        </figcaption>
-      }
-    </figure>
-  `,
+  templateUrl: './image.html',
 })
 export class NgmdImage {
   readonly src = input.required<string>();

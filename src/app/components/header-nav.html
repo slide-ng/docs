@@ -1,0 +1,163 @@
+@if (layout() === 'bar') {
+  <nav aria-label="Main" class="hidden sm:flex items-center gap-1 text-sm">
+    @for (item of items(); track item.label) {
+      @if (item.children?.length) {
+        <div
+          class="relative"
+          (pointerenter)="onPointerEnter($event, item)"
+          (pointerleave)="onPointerLeave($event, item)"
+        >
+          <button
+            type="button"
+            [attr.data-nav-trigger]="item.label"
+            [attr.aria-expanded]="openLabel() === item.label"
+            aria-haspopup="menu"
+            [attr.aria-controls]="menuId(item)"
+            (click)="onTriggerClick($event, item)"
+            (keydown)="onTriggerKey($event, item)"
+            class="inline-flex items-center gap-1 rounded px-3 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+            [class]="
+              isGroupActive(item)
+                ? 'bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)]'
+                : ''
+            "
+          >
+            {{ item.label }}
+            <svg
+              [lucideIcon]="chevronIcon"
+              class="size-3.5 opacity-60 transition-transform"
+              [class.rotate-180]="openLabel() === item.label"
+              aria-hidden="true"
+            ></svg>
+          </button>
+          @if (openLabel() === item.label) {
+            <div class="absolute left-0 top-full z-40 pt-1.5">
+              <ul
+                role="menu"
+                [id]="menuId(item)"
+                [attr.aria-label]="item.label"
+                (keydown)="onMenuKey($event, item)"
+                class="min-w-52 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 py-1 shadow-lg"
+              >
+                @for (child of item.children; track child.href) {
+                  <li role="none">
+                    @if (isExternal(child.href)) {
+                      <a
+                        role="menuitem"
+                        tabindex="-1"
+                        [href]="child.href"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        (click)="closeMenu()"
+                        class="flex items-center justify-between gap-3 px-3 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                      >
+                        {{ child.label }}
+                        <svg
+                          [lucideIcon]="externalIcon"
+                          class="size-3.5 text-zinc-400"
+                          aria-hidden="true"
+                        ></svg>
+                        <span class="sr-only">(opens in a new tab)</span>
+                      </a>
+                    } @else {
+                      <a
+                        role="menuitem"
+                        tabindex="-1"
+                        [routerLink]="child.href"
+                        (click)="closeMenu()"
+                        class="flex items-center justify-between gap-3 px-3 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+                        [class]="
+                          isActive(child)
+                            ? 'bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)] font-medium'
+                            : ''
+                        "
+                        [attr.aria-current]="isActive(child) ? 'page' : null"
+                      >
+                        {{ child.label }}
+                      </a>
+                    }
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+        </div>
+      } @else if (isExternal(item.href)) {
+        <a
+          [href]="item.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded px-3 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        >
+          {{ item.label }}
+        </a>
+      } @else {
+        <a
+          [routerLink]="item.href"
+          class="rounded px-3 py-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        >
+          {{ item.label }}
+        </a>
+      }
+    }
+  </nav>
+} @else {
+  <nav aria-label="Main" class="flex flex-col gap-1 text-sm">
+    @for (item of items(); track item.label) {
+      @if (item.children?.length) {
+        <p class="px-3 pt-1.5 font-bold text-zinc-900 dark:text-zinc-100">{{ item.label }}</p>
+        <ul class="ml-4 flex flex-col gap-1 border-l border-zinc-200 dark:border-zinc-800 pl-2">
+          @for (child of item.children; track child.href) {
+            <li>
+              @if (isExternal(child.href)) {
+                <a
+                  [href]="child.href"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center justify-between gap-2 rounded-md px-3 py-1.5 text-zinc-700 dark:text-brand-muted-dark hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)]"
+                >
+                  {{ child.label }}
+                  <svg
+                    [lucideIcon]="externalIcon"
+                    class="size-3.5 text-zinc-400"
+                    aria-hidden="true"
+                  ></svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              } @else {
+                <a
+                  [routerLink]="child.href"
+                  class="flex items-center rounded-md px-3 py-1.5 text-zinc-700 dark:text-brand-muted-dark hover:bg-[color:var(--accent-soft)] hover:text-[color:var(--accent-strong)]"
+                  [class]="
+                    isActive(child)
+                      ? 'bg-[color:var(--accent-soft)] text-[color:var(--accent-strong)] font-medium'
+                      : ''
+                  "
+                  [attr.aria-current]="isActive(child) ? 'page' : null"
+                >
+                  {{ child.label }}
+                </a>
+              }
+            </li>
+          }
+        </ul>
+      } @else if (isExternal(item.href)) {
+        <a
+          [href]="item.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-md px-3 py-1.5 font-bold text-zinc-900 dark:text-zinc-100 hover:bg-[color:var(--accent-soft)]"
+        >
+          {{ item.label }}
+        </a>
+      } @else {
+        <a
+          [routerLink]="item.href"
+          class="rounded-md px-3 py-1.5 font-bold text-zinc-900 dark:text-zinc-100 hover:bg-[color:var(--accent-soft)]"
+        >
+          {{ item.label }}
+        </a>
+      }
+    }
+  </nav>
+}

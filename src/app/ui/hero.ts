@@ -2,32 +2,7 @@ import {Component, computed, input} from '@angular/core';
 
 @Component({
   selector: 'ngmd-hero',
-  template: `
-    <header
-      class="rounded-2xl px-6 py-10 sm:px-10 sm:py-14"
-      [class]="bgClass()"
-      [style.background-image]="gradient() ? 'var(--accent-gradient-soft)' : null"
-    >
-      <div class="flex items-center gap-3 mb-3">
-        @if (logo()) {
-          <img [src]="logo()" alt="" aria-hidden="true" class="size-9 sm:size-10 object-contain" />
-        }
-        <p
-          class="text-3xl sm:text-4xl font-bold tracking-tight m-0"
-          [class]="titleClass()"
-          [style.background-image]="gradient() ? 'var(--accent-gradient)' : null"
-        >
-          {{ title() }}
-        </p>
-      </div>
-      <div
-        class="text-base sm:text-lg leading-relaxed max-w-prose [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
-        [class]="bodyClass()"
-      >
-        <ng-content></ng-content>
-      </div>
-    </header>
-  `,
+  templateUrl: './hero.html',
 })
 export class NgmdHero {
   readonly title = input.required<string>();

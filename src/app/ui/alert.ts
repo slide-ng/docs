@@ -50,20 +50,7 @@ const BOX =
 @Component({
   selector: 'ngmd-alert',
   imports: [LucideDynamicIcon],
-  template: `
-    <div [class]="boxClass()">
-      <svg
-        [lucideIcon]="iconImg()"
-        class="size-4 shrink-0 mt-0.5"
-        [class]="accentClass()"
-        aria-hidden="true"
-      ></svg>
-      <div class="flex-1 [&>*:first-child]:inline [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
-        <strong class="font-semibold mr-1" [class]="accentClass()">{{ tag() }}:</strong>
-        <ng-content></ng-content>
-      </div>
-    </div>
-  `,
+  templateUrl: './alert.html',
 })
 export class NgmdAlert {
   readonly severity = input<AlertSeverity>('info');

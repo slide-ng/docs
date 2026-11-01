@@ -10,11 +10,7 @@ import {Component, computed, input} from '@angular/core';
  */
 @Component({
   selector: 'ngmd-card-grid',
-  template: `
-    <div class="grid grid-cols-1 gap-4 [&>ngmd-card]:my-0" [class]="colsClass()">
-      <ng-content></ng-content>
-    </div>
-  `,
+  templateUrl: './card-grid.html',
 })
 export class NgmdCardGrid {
   readonly columns = input(2, {

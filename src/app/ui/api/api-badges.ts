@@ -7,20 +7,7 @@ import {Component, input} from '@angular/core';
  */
 @Component({
   selector: 'app-api-badges',
-  template: `
-    @if (tags().length) {
-      <span class="inline-flex flex-wrap gap-1.5 align-middle">
-        @for (tag of tags(); track tag) {
-          <span
-            class="rounded-full px-2 py-0.5 text-[0.625rem] font-semibold uppercase tracking-wider"
-            [class]="classFor(tag)"
-          >
-            {{ tag }}
-          </span>
-        }
-      </span>
-    }
-  `,
+  templateUrl: './api-badges.html',
 })
 export class ApiBadges {
   readonly tags = input.required<readonly string[]>();

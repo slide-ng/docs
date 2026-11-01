@@ -29,71 +29,7 @@ import {VersionService} from '../services/version/version.service';
     '(focusout)': 'onFocusOut($event)',
   },
   imports: [LucideDynamicIcon],
-  template: `
-    @if (visible()) {
-      <div class="relative">
-        <button
-          #trigger
-          type="button"
-          (click)="toggle()"
-          [attr.aria-expanded]="open()"
-          aria-controls="ngmd-version-list"
-          [attr.aria-label]="'Documentation version: ' + triggerLabel()"
-          class="inline-flex items-center gap-1.5 rounded-md border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 px-2.5 py-1 text-xs font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800"
-        >
-          {{ triggerLabel() }}
-          <svg [lucideIcon]="chevronIcon" class="size-3 text-brand-muted"></svg>
-        </button>
-        @if (open()) {
-          <ul
-            id="ngmd-version-list"
-            class="absolute right-0 top-[calc(100%+0.375rem)] z-40 min-w-52 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 py-1 shadow-lg"
-          >
-            @for (entry of list(); track entry.label) {
-              <li>
-                @if (entry.label === selfLabel()) {
-                  <span
-                    aria-current="true"
-                    class="flex w-full items-center justify-between gap-3 px-3 py-1.5 text-left text-sm bg-zinc-50 dark:bg-zinc-900"
-                  >
-                    <span class="flex items-center gap-2">
-                      <svg [lucideIcon]="checkIcon" class="size-3 text-brand-muted"></svg>
-                      {{ entry.label }}
-                    </span>
-                    <span
-                      class="rounded px-1.5 py-0.5 text-[0.625rem] font-medium uppercase tracking-wider"
-                      [class]="chipClasses(entry.status)"
-                    >
-                      {{ chipLabel(entry.status) }}
-                    </span>
-                  </span>
-                } @else {
-                  <a
-                    [href]="entry.url"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    (click)="open.set(false)"
-                    class="flex w-full items-center justify-between gap-3 px-3 py-1.5 text-left text-sm hover:bg-zinc-100 dark:hover:bg-zinc-900"
-                  >
-                    <span class="flex items-center gap-2">
-                      <svg [lucideIcon]="externalIcon" class="size-3 text-zinc-400"></svg>
-                      {{ entry.label }}
-                    </span>
-                    <span
-                      class="rounded px-1.5 py-0.5 text-[0.625rem] font-medium uppercase tracking-wider"
-                      [class]="chipClasses(entry.status)"
-                    >
-                      {{ chipLabel(entry.status) }}
-                    </span>
-                  </a>
-                }
-              </li>
-            }
-          </ul>
-        }
-      </div>
-    }
-  `,
+  templateUrl: './version-switcher.html',
 })
 export class VersionSwitcher {
   private readonly versions = inject(VersionService);

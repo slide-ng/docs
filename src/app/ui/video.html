@@ -1,0 +1,13 @@
+<div
+  class="relative w-full aspect-video rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800"
+>
+  <iframe
+    [src]="safeUrl()"
+    [title]="title()"
+    class="absolute inset-0 w-full h-full border-0"
+    allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    loading="lazy"
+    credentialless
+  ></iframe>
+</div>

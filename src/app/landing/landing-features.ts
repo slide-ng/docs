@@ -33,23 +33,7 @@ const FEATURES: Feature[] = [
   selector: 'app-landing-features',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink],
-  template: `
-    <ul class="m-0 grid list-none gap-8 p-0 md:grid-cols-3">
-      @for (feature of features; track feature.title) {
-        <li>
-          <h2 class="m-0 text-base font-semibold">{{ feature.title }}</h2>
-          <p class="mt-2 mb-3 text-sm text-brand-muted">
-            {{ feature.text }}
-          </p>
-          <p class="m-0 flex flex-wrap gap-x-4 text-sm">
-            @for (link of feature.links; track link.href) {
-              <a [routerLink]="link.href" class="font-medium">{{ link.label }}</a>
-            }
-          </p>
-        </li>
-      }
-    </ul>
-  `,
+  templateUrl: './landing-features.html',
 })
 export class LandingFeatures {
   protected readonly features = FEATURES;

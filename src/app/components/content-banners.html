@@ -1,0 +1,20 @@
+@if (banner(); as b) {
+  <div class="mt-6 flex items-start gap-3 rounded-lg border px-4 py-3" [class]="b.containerClass">
+    <svg [lucideIcon]="b.icon" class="mt-0.5 size-5 shrink-0" [class]="b.iconClass"></svg>
+    <div class="text-sm">
+      <p class="font-medium">{{ b.title }}</p>
+      <p class="mt-1" [class]="b.bodyClass">
+        {{ b.prefix }}
+        <a
+          [href]="b.currentUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1 font-medium text-[color:var(--accent-strong)] underline"
+        >
+          {{ b.currentLabel }}
+          <svg [lucideIcon]="externalIcon" class="size-3"></svg></a
+        >.
+      </p>
+    </div>
+  </div>
+}
