@@ -275,7 +275,8 @@ const config: NgmdConfig = {
         {label: 'Side editor', href: '/features/side-editor'},
         {label: 'Drawing', href: '/features/drawing'},
         {label: 'Recording', href: '/features/recording'},
-        {label: 'Context menu', href: '/features/context-menu'},
+        {label: 'Context menu', href: '/features/context-menu', status: 'updated'},
+        {label: 'Deck browser', href: '/features/deck-browser', status: 'new'},
         {label: 'Interface language', href: '/features/interface-language', status: 'new'},
         {label: 'Loading pictures ahead', href: '/features/preload-images', status: 'new'},
       ],
@@ -325,7 +326,8 @@ const config: NgmdConfig = {
     {
       label: 'Migrating',
       items: [
-        {label: 'Upgrading from 1.x', href: '/migrating/upgrading-to-2', status: 'new'},
+        {label: 'Upgrading from 2.x', href: '/migrating/upgrading-to-3', status: 'new'},
+        {label: 'Upgrading from 1.x', href: '/migrating/upgrading-to-2'},
         {label: 'What differs from Slidev', href: '/migrating/from-slidev'},
         {label: 'Not supported', href: '/migrating/not-supported'},
       ],

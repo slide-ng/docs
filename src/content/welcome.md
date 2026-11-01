@@ -50,6 +50,6 @@ Every page that shows a deck embeds a real build of it. You can also open them d
 
 <ngmd-callout type="warning" title="Status">
 
-These pages describe slide.ng 2.0, which is on npm as `@slide-ng/core`. A deck made with 1.x: read [Upgrading from 1.x to 2.0](./migrating/upgrading-to-2.md). Some Slidev features are missing, and the [list of what is not supported](./migrating/not-supported.md) is kept honest.
+These pages describe slide.ng 3.0, which is on npm as `@slide-ng/core`. A deck made with 2.x: read [Upgrading from 2.x to 3.0](./migrating/upgrading-to-3.md); with 1.x, first [Upgrading from 1.x to 2.0](./migrating/upgrading-to-2.md). Some Slidev features are missing, and the [list of what is not supported](./migrating/not-supported.md) is kept honest.
 
 </ngmd-callout>
