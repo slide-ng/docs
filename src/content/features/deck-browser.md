@@ -34,7 +34,7 @@ browser:
 
 - **Background** of the start page: the slide.ng artwork (default), solid colours, gradients or images uploaded from this device. Each kind can pick a new one on every new tab. Text stays readable on light and dark backgrounds.
 - **Appearance**: like the deck, light or dark.
-- **Search engine**: DuckDuckGo, Bing, Wikipedia, or your own address with `%s` for the words. The default depends on where the deck runs, see [Search without a proxy](#search-without-a-proxy).
+- **Search engine**: DuckDuckGo, Brave Search, Bing, Wikipedia, or your own address with `%s` for the words. The default depends on where the deck runs, see [Search without a proxy](#search-without-a-proxy).
 - **Shortcuts**: which groups of tiles show.
 - **Clock and date**: the time and the date, with or without seconds, 12 or 24 hours, a font, a size and a date style.
 - **Weather**, off until you turn it on. Turning it on asks for your location; you can also type a city. It shows the current condition, high and low, feels-like, wind and humidity, with a five-day forecast on hover, in °C or °F.
@@ -106,12 +106,13 @@ Then sites like DuckDuckGo and GitHub show inside the deck, and links and forms 
 | Cloudflare Workers | `npx wrangler deploy cloudflare.js --name deck-proxy` | `https://deck-proxy.<you>.workers.dev/?url=%s` |
 | Deno Deploy | Deploy `deno.js`. | `https://<project>.deno.dev/?url=%s` |
 
-Set `DECK_ORIGINS` on the host to the deck's address, such as `https://you.github.io` (several are separated by commas). The proxy then only answers that deck and the pages shown through it. It reads the browser's `Referer`, so it stops other sites, not a script that sends a false one.
+Set `DECK_ORIGINS` on the host to the deck's address, such as `https://you.github.io` (several are separated by commas). The proxy then only answers that deck when it opens a page. It reads the browser's `Referer`; a sandboxed page sends none, so moving on from a page shown in a frame is let through. That keeps scripts off it, not another site that frames it, which only costs your plan its requests.
 
 What the proxy does to keep the deck safe:
 
 - Every page it shows is sandboxed on an origin of its own, so it cannot reach the deck, also when the proxy is on the deck's own site, or the other pages.
 - It passes on only plain content headers, and drops cookies. Pages get their storage in memory while they are open, so sites that need it still work. Sites that need a sign-in or their own storage may not work, and nobody should sign in to anything through it.
+- Links stay inside, also the ones a page's own scripts set later. Brave Search is shown without its scripts, which would send the frame back to the real site.
 - It refuses addresses written as local or private. It does not look up names, so run it on one of these hosts, which cannot reach a private network, not on a machine inside one.
 
 Under `slide-ng dev`, the dev server's own proxy still wins. Back, forward and the address field follow only the pages opened from the deck, as without a proxy.
