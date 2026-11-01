@@ -5,7 +5,7 @@ description: Requirements and how to get slide.ng running today.
 
 # Install
 
-These pages describe slide.ng 2.0. The commands below install the newest version. A deck that uses 1.x keeps working with it: to move it to 2.0, read [Upgrading from 1.x to 2.0](../migrating/upgrading-to-2.md), or pin the old version with `npm install -D @slide-ng/core@^1`.
+These pages describe slide.ng 3.0. The commands below install the newest version. A deck that uses 2.x keeps working with it: to move it to 3.0, read [Upgrading from 2.x to 3.0](../migrating/upgrading-to-3.md), or pin the old version with `npm install -D @slide-ng/core@^2`.
 
 ## Requirements
 
