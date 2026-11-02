@@ -12,7 +12,9 @@ import {
   viewChild,
 } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
-import {Router, RouterLink, RouterOutlet} from '@angular/router';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
+import {filter} from 'rxjs';
 import {
   LucideDynamicIcon,
   LucideMenu,
@@ -28,6 +30,7 @@ import {DiscordIcon} from './ui/discord-icon';
 import {ThemeService} from './theme';
 import {LayoutMode} from './layout-mode.service';
 import {RouteUrlService} from './services/route-url/route-url.service';
+import {SeoService} from './services/seo/seo.service';
 import {onNavigation} from './utils/enhance-on-navigation';
 import {fetchStars, formatStars, repoFromUrl, type StarStorage} from './utils/github-stars';
 import siteConfig from '../ngmd.config';
@@ -84,6 +87,10 @@ export class App implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
   protected readonly layout = inject(LayoutMode);
   private readonly routeUrl = inject(RouteUrlService);
+  private readonly seo = inject(SeoService);
+  private readonly navigation = toSignal(
+    this.router.events.pipe(filter((e) => e instanceof NavigationEnd)),
+  );
   private readonly injector = inject(Injector);
   private readonly document = inject(DOCUMENT);
   private readonly menuButton = viewChild<ElementRef<HTMLButtonElement>>('menuButton');
@@ -115,6 +122,11 @@ export class App implements OnInit {
   }
 
   constructor() {
+    effect(() => {
+      // Runs after the title is set, and again when a missing page sets its own.
+      this.layout.chromeHidden();
+      if (this.navigation()) this.seo.apply(this.routeUrl.cleanUrl());
+    });
     effect(() =>
       this.document.documentElement.classList.toggle('max-lg:overflow-hidden', this.drawerOpen()),
     );

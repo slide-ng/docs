@@ -34,7 +34,7 @@ describe('the landing deck', () => {
     expect(texts[2].startsWith('---\nlayout: center\n---\n\n# Welcome')).toBe(true);
     expect(texts[3].startsWith('---\nlayout: cover\n---\n\n# Welcome')).toBe(true);
     expect(
-      texts[4].startsWith('---\nlayout: cover\nbackground: /ngpoland-conf.jpg\n---\n\n# Welcome'),
+      texts[4].startsWith('---\nlayout: cover\nbackground: /ngpoland-conf.webp\n---\n\n# Welcome'),
     ).toBe(true);
     expect(texts[5].endsWith('\n\n---\n\n')).toBe(true);
     expect(texts[6].endsWith('# Why slide.ng\n\n')).toBe(true);
@@ -80,7 +80,7 @@ describe('the deck of stages', () => {
     );
     expect(slides[2].frontmatter).toContain('layout: center');
     expect(slides[3].frontmatter).toContain('layout: cover');
-    expect(slides[4].frontmatter).toContain('background: /ngpoland-conf.jpg');
+    expect(slides[4].frontmatter).toContain('background: /ngpoland-conf.webp');
     expect(slides[9].body).toBe(
       '# Why slide.ng\n\n- 📄 Write your slides in one Markdown file\n- 🌈 Themes, code blocks, Angular components\n- 😎 Read the docs to learn more!',
     );
@@ -102,8 +102,8 @@ describe('the deck of stages', () => {
   });
 
   it('ships its cover picture, a photo, inside the deck', () => {
-    expect(existsSync(join(here, 'public/demos/landing/ngpoland-conf.jpg'))).toBe(true);
-    expect(existsSync(join(here, 'demos/landing/public/ngpoland-conf.jpg'))).toBe(true);
+    expect(existsSync(join(here, 'public/demos/landing/ngpoland-conf.webp'))).toBe(true);
+    expect(existsSync(join(here, 'demos/landing/public/ngpoland-conf.webp'))).toBe(true);
   });
 });
 

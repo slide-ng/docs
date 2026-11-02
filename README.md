@@ -18,7 +18,7 @@ Node 22.22.3 or newer (see `.nvmrc`) and [pnpm](https://pnpm.io).
 pnpm install
 pnpm run dev          # http://localhost:5173
 pnpm run build        # static site in dist/analog/public, with the link guards
-pnpm run check:dist   # checks every internal link, image and script of the built HTML
+pnpm run check:dist   # checks every internal link, image and script of the built HTML, and each page's SEO tags
 pnpm run check:landing # opens the built home page in Chromium and checks the live demo
 pnpm test             # unit tests
 pnpm run format:check
@@ -44,7 +44,7 @@ SLIDE_NG_DIR=../slide.ng SLIDE_NG_THEMES_DIR=../themes pnpm run demos
 
 ## Hosting
 
-The site is built for the root of a host by default. For a sub-path, set `site.base` in `src/ngmd.config.ts` or build with `NGMD_BASE=/docs/ pnpm run build`. The production site (slide-ng.dev) is on Cloudflare with build command `pnpm run build` and deploy command `npx wrangler deploy`; `wrangler.jsonc` serves `dist/analog/public` and the 404 page. The deploy workflow publishes to GitHub Pages.
+The site is built for the root of a host by default. For a sub-path, set `site.base` in `src/ngmd.config.ts` or build with `NGMD_BASE=/docs/ pnpm run build`. The production site (slide-ng.dev) is on Cloudflare with build command `pnpm run build` and deploy command `npx wrangler deploy`; `wrangler.jsonc` serves `dist/analog/public` and the 404 page, at addresses without a trailing slash so the links, the sitemap and the canonical URLs all match what the host answers with a 200. The deploy workflow publishes to GitHub Pages.
 
 ## Contributing
 

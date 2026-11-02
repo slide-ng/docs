@@ -90,7 +90,7 @@ export default class DocPage implements OnDestroy {
     effect(() => {
       const missing = this.doc()?.content === NOT_FOUND;
       this.layout.chromeHidden.set(missing);
-      if (missing) this.title.setTitle(`${siteConfig.site.name} | Page not found`);
+      if (missing) this.title.setTitle(`Page not found | ${siteConfig.site.name}`);
     });
   }
 

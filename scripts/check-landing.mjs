@@ -467,7 +467,7 @@ const sizes = [
 const moments = [
   ['early', 'Presentation slides'],
   ['page1-center', 'layout: center'],
-  ['cover', 'background: /ngpoland-conf.jpg'],
+  ['cover', 'background: /ngpoland-conf.webp'],
   ['page2-typing', '- 🌈 Themes, code'],
 ];
 for (const [name, viewport] of sizes) {

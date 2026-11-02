@@ -1,4 +1,5 @@
-// Checks the built site: every internal link, image, script and iframe in the HTML must point at a file or a page.
+// Checks the built site: every internal link, image, script and iframe in the HTML must point at a file or a page,
+// and every page has the tags a crawler reads.
 //
 //   node scripts/check-dist.mjs [dist/analog/public]
 //
@@ -45,10 +46,32 @@ const exists = (url, plainPath = false) => {
 
 const problems = [];
 let checked = 0;
+// What a crawler needs from each page: one H1, alt text, its own title and description, and a
+// canonical URL that the sitemap lists.
+const seoProblems = [];
+const sitemap = readFileSync(join(dist, 'sitemap.xml'), 'utf8');
+const locs = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]));
+const seen = new Map();
+const once = (kind, value, where) => {
+  const key = `${kind}: ${value}`;
+  if (seen.has(key)) seoProblems.push(`${where}: same ${kind} as ${seen.get(key)}`);
+  seen.set(key, where);
+};
 for (const page of pages) {
   // Code samples print attributes as text, so look at tags outside of <pre> blocks only.
   const html = readFileSync(page, 'utf8').replace(/<pre[\s\S]*?<\/pre>/g, '');
   const where = page.slice(dist.length) || '/';
+  const h1s = html.match(/<h1\b/g)?.length ?? 0;
+  if (h1s !== 1) seoProblems.push(`${where}: ${h1s} h1 elements`);
+  for (const [img] of html.matchAll(/<img\b[^>]*>/g)) {
+    if (!/\salt=/.test(img)) seoProblems.push(`${where}: image without alt: ${img}`);
+  }
+  if (where !== '/404.html') {
+    once('title', html.match(/<title[^>]*>([^<]*)/)?.[1], where);
+    once('description', html.match(/<meta name="description" content="([^"]*)/)?.[1], where);
+    const canonical = html.match(/<link rel="canonical" href="([^"]*)/)?.[1];
+    if (!locs.has(canonical)) seoProblems.push(`${where}: canonical ${canonical} not in sitemap`);
+  }
   for (const [, tag, attrs] of html.matchAll(/<([a-z][\w-]*)\b([^>]*)>/gi)) {
     for (const [, name, url] of attrs.matchAll(/([\w-]*\b(?:href|src))="(\/[^"/][^"]*|\/)"/g)) {
       checked++;
@@ -66,4 +89,9 @@ if (problems.length) {
   );
   process.exit(1);
 }
+if (seoProblems.length) {
+  console.error(`${seoProblems.length} SEO problem(s):\n${seoProblems.join('\n')}`);
+  process.exit(1);
+}
 console.log(`Checked ${checked} internal links in ${pages.length} pages: none broken.`);
+console.log(`Checked the title, description, canonical, h1 and alt text of ${pages.length} pages.`);

@@ -5,7 +5,7 @@ import siteConfig, {navItems, navLabels} from '../ngmd.config';
 import {stripUrl} from './services/route-url/route-url.service';
 
 /**
- * Custom title strategy. Every page renders as `NgMd | <Title>`, where
+ * Custom title strategy. Every page renders as `<Title> | slide.ng`, where
  * `<Title>` resolves in this order:
  *
  *   1. The route's own `title` (set by Analog from markdown frontmatter or
@@ -43,6 +43,6 @@ export class NgmdTitleStrategy extends TitleStrategy {
           .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
           .join(' ');
     }
-    this.title.setTitle(pageTitle ? `${name} | ${pageTitle}` : name);
+    this.title.setTitle(pageTitle ? `${pageTitle} | ${name}` : name);
   }
 }
