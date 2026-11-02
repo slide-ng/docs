@@ -66,7 +66,8 @@ for (const page of pages) {
   for (const [img] of html.matchAll(/<img\b[^>]*>/g)) {
     if (!/\salt=/.test(img)) seoProblems.push(`${where}: image without alt: ${img}`);
   }
-  if (where !== '/404.html') {
+  // A sub-path build also writes each page under the base; check one copy.
+  if (where !== '/404.html' && !(base !== '/' && where.startsWith(base))) {
     once('title', html.match(/<title[^>]*>([^<]*)/)?.[1], where);
     once('description', html.match(/<meta name="description" content="([^"]*)/)?.[1], where);
     const canonical = html.match(/<link rel="canonical" href="([^"]*)/)?.[1];

@@ -97,7 +97,7 @@ export function jsonLd(path: string, root: string, title: string, description: s
       description,
       url: `${root}${encodeURI(path)}`,
       image: `${root}/og.png`,
-      dateModified: page?.lastUpdated,
+      dateModified: page?.lastUpdated && `${page.lastUpdated}T00:00:00Z`,
       inLanguage: 'en',
       isPartOf: website,
     });
