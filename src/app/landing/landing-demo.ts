@@ -370,7 +370,7 @@ export class LandingDemo {
     if (!isPlatformBrowser(this.platformId)) return;
     // Draw the cover image before it is needed, so it is there when the slide turns to it.
     const preload = new Image();
-    preload.src = withBase(appBase(), `${DECK_URL}ngpoland-conf.jpg`);
+    preload.src = withBase(appBase(), `${DECK_URL}ngpoland-conf.webp`);
 
     this.resizer = new ResizeObserver(() => this.measure());
     this.resizer.observe(this.card().nativeElement);

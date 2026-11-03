@@ -18,6 +18,12 @@
           <svg [lucideIcon]="chevron" class="size-3.5 text-zinc-400"></svg>
           @if (last) {
             <span class="font-medium" aria-current="page">{{ crumb.label }}</span>
+          } @else if (crumb.isPage) {
+            <a
+              [routerLink]="crumb.href"
+              class="text-brand-muted dark:text-brand-muted-dark hover:text-zinc-900 dark:hover:text-zinc-50"
+              >{{ crumb.label }}</a
+            >
           } @else {
             <span class="text-brand-muted dark:text-brand-muted-dark">{{ crumb.label }}</span>
           }

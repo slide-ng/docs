@@ -1,6 +1,6 @@
 ---
 layout: cover
-background: /ngpoland-conf.jpg
+background: /ngpoland-conf.webp
 ---
 
 # Welcome to slide.ng!

@@ -7,7 +7,7 @@ description: The presenter page, speaker notes, the timer, the laser pointer and
 
 Open `/presenter` or press the presenter button in the bar. The page shows the current slide, a preview of the next step, your notes with click markers, a slider for the clicks, and a timer.
 
-<ngmd-image src="/images/ui/presenter-layout-1.png" alt="The presenter page: the current slide, the next step and the notes" caption="The presenter page, first layout" width="640"></ngmd-image>
+<ngmd-image src="/images/ui/presenter-layout-1.webp" alt="The presenter page: the current slide, the next step and the notes" caption="The presenter page, first layout" width="640"></ngmd-image>
 
 The audience page, for example `/3`, in another window or on another device follows the presenter. `/notes` shows only the notes and follows too. A layout button cycles through three arrangements of the presenter page. `/overview` lists every slide with its notes, and `/entry` links to all these pages, see [Overview and notes pages](../features/overview-pages.md).
 

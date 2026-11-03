@@ -7,6 +7,7 @@ interface NgmdImageToken extends Tokens.Generic {
   alt: string;
   caption?: string;
   width?: string;
+  ratio?: string;
 }
 
 // Accepts both self-closing `<ngmd-image .../>` and paired
@@ -35,12 +36,15 @@ export const ngmdImageExtension = {
       alt: attrRule('alt').exec(attrs)?.[1] ?? '',
       caption: attrRule('caption').exec(attrs)?.[1],
       width: attrRule('width').exec(attrs)?.[1],
+      ratio: attrRule('ratio').exec(attrs)?.[1],
     };
   },
   renderer(token: NgmdImageToken) {
-    const widthAttr = escapeHtml(token.width ?? '');
-    const alt = escapeHtml(token.alt);
-    const caption = escapeHtml(token.caption ?? '');
-    return `<div class="ngmd-image" data-image-src="${escapeHtml(token.src)}" data-image-alt="${alt}" data-image-caption="${caption}" data-image-width="${widthAttr}"></div>`;
+    const width = token.width?.trim() ?? '';
+    const maxWidth = /^\d+(\.\d+)?$/.test(width) ? `${width}px` : width;
+    const figureStyle = maxWidth ? ` style="max-width:${escapeHtml(maxWidth)}"` : '';
+    const ratio = escapeHtml(token.ratio ?? '16 / 9');
+    const caption = token.caption ? `<figcaption>${escapeHtml(token.caption)}</figcaption>` : '';
+    return `<figure class="ngmd-image"${figureStyle}><img src="${escapeHtml(token.src)}" alt="${escapeHtml(token.alt)}" loading="lazy" decoding="async" style="aspect-ratio:${ratio}">${caption}</figure>`;
   },
 };

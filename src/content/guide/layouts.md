@@ -20,7 +20,7 @@ Text next to the picture.
 
 slide.ng has all the layouts of Slidev, with the same names and props, plus `404` and `error`. The first slide is `cover` and every other slide is `default` unless you say otherwise. An unknown name prints a warning that names the nearest layout, lists the real names and uses `default`.
 
-<ngmd-image src="/images/layouts/two-cols.png" alt="A slide with two columns" caption="The two-cols layout" width="480"></ngmd-image>
+<ngmd-image src="/images/layouts/two-cols.webp" alt="A slide with two columns" caption="The two-cols layout" width="480"></ngmd-image>
 
 The [Layouts reference](../built-in/layouts.md) lists every layout with its props and a picture. A theme can add layouts or replace a built-in one, see [Themes and addons](../customize/themes.md).
 

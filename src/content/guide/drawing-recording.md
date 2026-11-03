@@ -9,7 +9,7 @@ description: Draw on slides, show a camera bubble, and record your screen or cam
 
 The pen button in the bar, or the right-click menu, opens a toolbar: pen, line, arrow, ellipse, rectangle, eraser, colours, width, undo, redo, clear and pin.
 
-<ngmd-image src="/images/ui/drawing-toolbar.png" alt="The drawing toolbar over a slide" caption="The drawing toolbar" width="640"></ngmd-image>
+<ngmd-image src="/images/ui/drawing-toolbar.webp" alt="The drawing toolbar over a slide" caption="The drawing toolbar" width="640"></ngmd-image>
 
 Keys while the toolbar is open: `L` line, `A` arrow, `S` stylus, `R` rectangle, `E` ellipse, `C` clear, digits for colours, `Ctrl+Z` undo, `Escape` closes. The eraser is a button in the toolbar and has no key. Drawings belong to a slide, are shared between windows and are kept in the browser.
 

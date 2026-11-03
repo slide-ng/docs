@@ -193,6 +193,25 @@
   visibility: hidden;
 }
 
+/* These upgrade after the bundle loads. Hold their final size so the page
+ * below them does not move: the frame plus its caption, and the hero's
+ * padding plus its title row around the text it already contains. */
+:is(analog-markdown, analog-markdown-route) ngmd-demo:not(:defined) {
+  box-sizing: content-box;
+  aspect-ratio: 16 / 9;
+  padding-bottom: 1.75rem;
+}
+:is(analog-markdown, analog-markdown-route) ngmd-hero:not(:defined) {
+  padding: 5.75rem 1.5rem 2.5rem;
+  line-height: 1.625;
+}
+@media (min-width: 40rem) {
+  :is(analog-markdown, analog-markdown-route) ngmd-hero:not(:defined) {
+    padding: 7.25rem 2.5rem 3.5rem;
+    font-size: 1.125rem;
+  }
+}
+
 @layer base {
   /* Host margin lives here (not on the inner template div) so a class
    * on the markdown tag overrides it. Inner-div margins are trapped by

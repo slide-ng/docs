@@ -13,8 +13,8 @@
  */
 import {del, exec, move, pause, replay, type, type Step} from './steps.ts';
 
-/** Where the cover image of the deck is (`demos/landing/public/ngpoland-conf.jpg`). */
-export const COVER_URL = '/ngpoland-conf.jpg';
+/** Where the cover image of the deck is (`demos/landing/public/ngpoland-conf.webp`). */
+export const COVER_URL = '/ngpoland-conf.webp';
 
 /** Time per character, and the wait before the first one, as in Slidev's demo. */
 export const TYPING = {speed: 50, startDelay: 900} as const;

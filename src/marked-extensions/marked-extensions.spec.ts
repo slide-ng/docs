@@ -28,10 +28,20 @@ describe('ngmd-image', () => {
     const html = render(
       '<ngmd-image src="/a.png?x=1&y=2" alt="<b" caption="Tom & Jerry" width="3<"></ngmd-image>',
     );
-    expect(html).toContain('data-image-src="/a.png?x=1&amp;y=2"');
-    expect(html).toContain('data-image-alt="&lt;b"');
-    expect(html).toContain('data-image-caption="Tom &amp; Jerry"');
-    expect(html).toContain('data-image-width="3&lt;"');
+    expect(html).toContain('src="/a.png?x=1&amp;y=2"');
+    expect(html).toContain('alt="&lt;b"');
+    expect(html).toContain('<figcaption>Tom &amp; Jerry</figcaption>');
+    expect(html).toContain('style="max-width:3&lt;"');
+  });
+
+  it('writes a real image with a reserved shape', () => {
+    const html = render('<ngmd-image src="/a.webp" alt="A" width="640"></ngmd-image>');
+    expect(html).toContain('<figure class="ngmd-image" style="max-width:640px">');
+    expect(html).toContain('<img src="/a.webp" alt="A"');
+    expect(html).toContain('style="aspect-ratio:16 / 9"');
+    expect(render('<ngmd-image src="/a.webp" ratio="1 / 1"></ngmd-image>')).toContain(
+      'style="aspect-ratio:1 / 1"',
+    );
   });
 });
 
