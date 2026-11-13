@@ -87,6 +87,7 @@ title: Konuşmam
 The bar then has a language button, with a translate icon. Its menu lists the languages, each named in its own language, with the current one ticked. Choosing one keeps the address and the slide. It switches the slides, `<html lang>` and `dir`, the page title, the locale of the pipes and the interface text.
 
 - The page loads again for the switch, because Angular fixes the locale when the app starts.
+- A link can pick the language: `/1?lang=tr` opens slide 1 in Turkish, for that tab only, and takes `lang` off the address. A host redirect makes it short, for example `/tr  /1?lang=tr  302` in `public/_redirects` on Netlify (see [Hosting](../guide/hosting.md#netlify)). New in 3.5.
 - The choice is kept in the browser, per deck, like the other settings. The presenter and audience windows of one browser switch together. Another device keeps its own choice.
 - A page starts in the entry file's language until the reader chooses another.
 - It works in `dev`, in a build and in an offline folder.

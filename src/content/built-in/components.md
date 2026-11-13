@@ -14,6 +14,7 @@ These tags work in every slide. The generator imports a component only into the 
 | `<slide-ng-toc />` | Table of contents from slide titles and levels. Options: `columns`, `listClass`, `listStyle`, `start`, `minDepth`, `maxDepth`, `mode`. See [Table of contents](../features/table-of-contents.md). |
 | `<slide-ng-current-no />` | The number of the slide it is on. |
 | `<slide-ng-total />` | The number of slides. |
+| `<slide-ng-timer />` | The presenter timer as a clock; a click starts or pauses it. See [Timer](../features/timer.md). New in 3.5. |
 | `<slide-ng-progress-bar />` | A bar that shows how far through the deck the slide is. Options: `position` (`top`, `bottom`, `inline`), `height`, `color`, `track`, `clicks`, `minutes`. See [Progress bar](../features/progress-bar.md). |
 | `<slide-ng-title-renderer />` | The title of the slide it is on, as HTML: its inline markdown and `$math$` are drawn. `no="3"` shows the title of slide 3. Raw HTML in a title is shown as text. Slidev's `TitleRenderer`. |
 | `<slide-ng-link to="3">text</slide-ng-link>` | A link to slide 3, or to a `routeAlias`. It has the prefix because `link` is a built-in HTML tag. The link has the slide's real address, so Ctrl or Cmd + click opens it in a new tab. `title="Details"` is the text when the tag has none. |
