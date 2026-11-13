@@ -5,7 +5,7 @@ description: A browser inside the deck, so a talk can show websites without leav
 
 # Deck browser
 
-slide.ng's own, new in 3.0. Press `b`, or the globe button in the bar, and a browser opens as a layer over the current slide. The **Slides** button, `b` or Escape close it and bring back the same slide and click. Its tabs stay loaded while it is closed, so a page you prepared is still there when you come back to it.
+slide.ng's own, new in 3.0. Press `b`, or the Chrome button in the bar, and a browser opens as a layer over the current slide. The **Slides** button, `b` or Escape close it and bring back the same slide and click. Its tabs stay loaded while it is closed, so a page you prepared is still there when you come back to it.
 
 ## Links on slides
 
@@ -69,7 +69,7 @@ The generator warns about other values.
 Many sites refuse to be shown inside another page. With `slide-ng dev` on your machine, pages load through a proxy in the dev server's companion, so these sites (GitHub, most large sites) still show inside the deck, and the address field follows the clicks inside a page.
 
 - Each site gets its own address under `localhost`, with a random key for each session, apart from the deck and from the other sites.
-- The proxy drops the headers that refuse framing, keeps each site's cookies on its own address, turns off service workers and sends links that open a new window to a new tab.
+- The proxy drops the headers that refuse framing, keeps each site's cookies itself and applies their SameSite rules, so a sign-in stays signed in (new in 3.4), turns off service workers and sends links that open a new window to a new tab.
 - An address on your computer or your local network, such as `localhost:4200` or a router, loads only when you opened it: from the address field, a slide link, a tile or a bookmark. A page in the deck browser cannot open one.
 - Some sites still break through it, for example sign-ins that check where they run. **Open in window** shows the real page.
 - Google and some other search engines show a bot check through the proxy, so DuckDuckGo is the default there.
