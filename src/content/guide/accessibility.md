@@ -9,7 +9,7 @@ This page lists what the slides, the presenter and the other pages do for people
 
 ## Screen readers
 
-- Each new slide is announced with its number and title, in a polite live region. A title is read as plain text: its markdown marks go, and `$math$` is its TeX, with TeX's one-character escapes undone, so `$400\%$` is "400%".
+- Each new slide is announced with its number and title, in a polite live region. A title is read as plain text: its markdown marks go, and `$math$` is its TeX, with TeX's one-character escapes undone, so `$400\%$` is "400%". A `<br>` and `&ngsp;` are a space and a picture is its `alt` text, so `Open Source 101<br>with <img alt="Angular">` is "Open Source 101 with Angular".
 - Elements that wait for a click are hidden from screen readers until they show. They are inert too: their links and buttons take no focus, also with the `fade` preset, where they are visible but dimmed.
 - The slide, with the bar, is the main landmark of the audience page. The presenter, `/overview` and `/notes` each have a main landmark and a level-one heading, and `/entry`, `/notes-edit` and the notes print page have a main landmark.
 - The presenter page has three named regions: Current slide, Next step and Notes. The next-step picture is skipped, so headings are not read twice. Line numbers of code and of Magic Move are skipped too.
