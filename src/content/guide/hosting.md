@@ -92,6 +92,13 @@ The build contains `_redirects`. Or use `netlify.toml`:
   status = 200
 ```
 
+Netlify reads `_redirects` before `netlify.toml`, so redirects of your own in `netlify.toml` never run: the build's catch-all matches first. Put them in `public/_redirects` instead. The build keeps those lines and adds its catch-all after them (3.5.1 and newer):
+
+```txt
+/tr    /1?lang=tr    302!
+/en    /1?lang=en    302!
+```
+
 ## Vercel
 
 ```json
