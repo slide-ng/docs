@@ -88,5 +88,5 @@
     "url": "https://github.com/slide-ng/docs/issues"
   },
   "homepage": "https://github.com/slide-ng/docs#readme",
-  "packageManager": "pnpm@10.28.0"
+  "packageManager": "pnpm@10.34.9"
 }
